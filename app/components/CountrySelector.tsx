@@ -11,12 +11,12 @@ interface Country {
 // Using emoji flags instead of SVG files
 const countries: Country[] = [
   { code: 'in', name: 'India', flag: '🇮🇳' },
-  { code: 'us', name: 'United States', flag: '🇺🇸' },
-  { code: 'gb', name: 'United Kingdom', flag: '🇬🇧' },
-  { code: 'de', name: 'Germany', flag: '🇩🇪' },
-  { code: 'fr', name: 'France', flag: '🇫🇷' },
-  { code: 'jp', name: 'Japan', flag: '🇯🇵' },
-  { code: 'cn', name: 'China', flag: '🇨🇳' },
+  { code: 'us', name: 'US', flag: '🇺🇸' },
+  { code: 'gb', name: 'UK', flag: '🇬🇧' },
+  { code: 'de', name: 'German', flag: '🇩🇪' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'jp', name: 'Japanese', flag: '🇯🇵' },
+  { code: 'cn', name: '中国人', flag: '🇨🇳' },
   { code: 'br', name: 'Brazil', flag: '🇧🇷' },
 ];
 
