@@ -1,24 +1,13 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter, Montserrat } from 'next/font/google';
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
 
-// Load fonts
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
-
-const montserrat = Montserrat({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-montserrat',
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Acuron Products - Medical Devices & Supplies',
-  description: 'High-quality disposable medical products with advanced connectivity features',
-};
+  title: 'Acuron Medical',
+  description: 'Medical supplies and equipment',
+}
 
 export default function RootLayout({
   children,
@@ -26,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
-      <body className="min-h-screen font-body antialiased">{children}</body>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
     </html>
-  );
-}
+  )
+} 
