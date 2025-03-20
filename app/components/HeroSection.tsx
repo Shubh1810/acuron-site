@@ -1,54 +1,48 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { FC } from 'react';
 
 interface HeroSectionProps {
   title: string;
   subtitle: string;
   ctaText: string;
   ctaLink: string;
-  backgroundImage?: string;
 }
 
-const HeroSection: FC<HeroSectionProps> = ({
-  title,
-  subtitle,
-  ctaText,
-  ctaLink,
-  backgroundImage = '/images/hero-background.jpg',
-}) => {
+const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) => {
   return (
-    <section className="relative h-[600px] w-full overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-900 to-blue-900 opacity-80"></div>
-      
-      {backgroundImage && (
-        <div className="absolute inset-0 -z-10">
-          <Image 
-            src={backgroundImage} 
-            alt="Medical professionals" 
-            fill 
-            style={{objectFit: 'cover'}} 
-            priority 
-            className="opacity-40"
-          />
-        </div>
-      )}
-      
-      <div className="absolute inset-0 flex flex-col justify-center px-12 md:px-24 z-10">
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-slide-down">
-          {title}
-        </h1>
-        <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl animate-slide-up">
-          {subtitle}
-        </p>
-        <Link 
-          href={ctaLink} 
-          className="btn-primary w-fit animate-fade-in"
-        >
-          {ctaText}
-        </Link>
+    <div className="relative h-[600px] flex items-center">
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <Image
+          src="/medical-1.jpg"
+          alt="Medical Background"
+          fill
+          priority
+          className="object-cover brightness-50"  // Darkens the image for better text visibility
+        />
       </div>
-    </section>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            {title}
+          </h1>
+          <p className="text-lg sm:text-xl mb-8 text-gray-100">
+            {subtitle}
+          </p>
+          <Link 
+            href={ctaLink}
+            className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg hover:shadow-xl"
+          >
+            {ctaText}
+          </Link>
+        </div>
+      </div>
+
+      {/* Optional overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent pointer-events-none" />
+    </div>
   );
 };
 

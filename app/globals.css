@@ -97,3 +97,17 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* Add these styles to remove input focus outlines globally */
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Specifically for the search input */
+.search-input {
+  outline: none !important;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
