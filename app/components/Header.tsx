@@ -7,7 +7,7 @@ const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full shadow-md">
       {/* Top Navigation Bar */}
       <div className="bg-gradient-to-r from-[#0A2F35] to-[#0B4F6C] text-white">
         <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end items-center space-x-6">
@@ -29,14 +29,14 @@ const Header: FC = () => {
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center space-x-8 lg:space-x-12">
             <Link href="/" className="flex-shrink-0">
-              <div className="w-28 sm:w-32 h-12 flex items-center justify-start hover:opacity-90 transition-opacity duration-300 mt-1">
+              <div className="w-32 sm:w-36 h-14 flex items-center justify-start hover:opacity-90 transition-opacity duration-300 mt-1">
                 <Image
                   src="/acuron.png"
                   alt="Acuron Logo"
-                  width={220}
-                  height={66}
+                  width={260}
+                  height={78}
                   priority
-                  className="object-contain scale-110"
+                  className="object-contain scale-150"
                 />
               </div>
             </Link>

@@ -6,10 +6,14 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    scrollbar-width: none; /* Firefox */
   }
   
   body {
     @apply antialiased text-gray-800;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -80,22 +84,22 @@
   transform: translateY(-5px);
 }
 
-/* Custom scrollbar */
+/* Hide WebKit scrollbar but keep functionality */
 ::-webkit-scrollbar {
-  width: 10px;
+  display: none;
 }
 
+/* Remove these sections completely */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  display: none;
 }
 
 /* Add these styles to remove input focus outlines globally */
