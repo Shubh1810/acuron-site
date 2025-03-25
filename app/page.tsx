@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import ScrollbarEffect from './components/ScrollbarEffect';
+import GridBackground from './components/ui/grid-background';
 
 export default function Home() {
   // Animation on scroll functionality
@@ -28,6 +29,7 @@ export default function Home() {
 
   return (
     <>
+      <GridBackground />
       <Header />
       <ScrollbarEffect />
       <main className="min-h-screen pt-[110px]">
@@ -51,8 +53,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* What&apos;s Trending Section */}
-        <section className="py-16 px-8">
+        {/* What's Trending Section */}
+        <section className="py-16 px-8 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="flex justify-center mb-12">
               <div className="relative">

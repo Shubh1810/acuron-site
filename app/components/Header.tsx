@@ -29,14 +29,14 @@ const Header: FC = () => {
         <div className="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
           <div className="flex items-center space-x-6 lg:space-x-8">
             <Link href="/" className="flex-shrink-0">
-              <div className="w-36 sm:w-40 h-14 flex items-center justify-start hover:opacity-90 transition-opacity duration-300 mt-0.5 ml-1.5">
+              <div className="w-36 sm:w-40 h-14 flex items-center justify-start hover:opacity-90 transition-opacity duration-300 ml-1.5">
                 <Image
                   src="/acuron.png"
                   alt="Acuron Logo"
                   width={280}
                   height={84}
                   priority
-                  className="object-contain scale-125"
+                  className="object-contain scale-125 translate-y-0.5"
                 />
               </div>
             </Link>

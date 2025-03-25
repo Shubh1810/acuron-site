@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 export default function ScrollbarEffect() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
-  const [headerHeight, setHeaderHeight] = useState(110);
+  const [headerHeight, setHeaderHeight] = useState(105);
   const scrollbarRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function ScrollbarEffect() {
       }}
     >
       <div 
-        className="w-full bg-gradient-to-b from-teal-500 to-teal-600 rounded-b-lg transition-all duration-200 ease-out"
+        className="w-full bg-gradient-to-b from-teal-500 to-teal-600 rounded-t-sm rounded-b-lg transition-all duration-200 ease-out"
         style={{ 
           height: `${scrollPosition}%`,
           boxShadow: '0 0 8px rgba(20, 184, 166, 0.6)'
