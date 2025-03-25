@@ -30,7 +30,7 @@ export default function Home() {
     <>
       <Header />
       <ScrollbarEffect />
-      <main className="min-h-screen pt-[120px]">
+      <main className="min-h-screen pt-[110px]">
         <HeroSection 
           title="ADVANCING MEDICAL CARE WORLDWIDE"
           subtitle="Our connectivity network delivers essential medical products where they&apos;re needed most."

@@ -26,36 +26,36 @@ const Header: FC = () => {
       
       {/* Logo and Main Navigation */}
       <div className="bg-[#051B20] text-white">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center space-x-8 lg:space-x-12">
+        <div className="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+          <div className="flex items-center space-x-6 lg:space-x-8">
             <Link href="/" className="flex-shrink-0">
-              <div className="w-32 sm:w-36 h-14 flex items-center justify-start hover:opacity-90 transition-opacity duration-300 mt-1">
+              <div className="w-36 sm:w-40 h-14 flex items-center justify-start hover:opacity-90 transition-opacity duration-300 mt-0.5 ml-1.5">
                 <Image
                   src="/acuron.png"
                   alt="Acuron Logo"
-                  width={260}
-                  height={78}
+                  width={280}
+                  height={84}
                   priority
-                  className="object-contain scale-150"
+                  className="object-contain scale-125"
                 />
               </div>
             </Link>
             
             {/* Main Navigation */}
-            <nav className="hidden md:flex space-x-4 lg:space-x-6">
+            <nav className="hidden md:flex space-x-3 lg:space-x-4">
               {[
                 { href: '/consumers', label: 'CONSUMERS' },
-                { href: '/healthcare', label: 'HEALTHCARE PROFESSIONALS' },
+                { href: '/healthcare', label: 'PRODUCTS', highlight: true },
                 { href: '/careers', label: 'CAREERS' },
                 { href: '/about', label: 'ABOUT ACURON' },
               ].map((link) => (
                 <Link 
                   key={link.href} 
                   href={link.href} 
-                  className="text-[10px] lg:text-[11px] tracking-wide font-bold text-white hover:text-teal-300 relative group whitespace-nowrap"
+                  className={`text-[10px] lg:text-[11px] tracking-wide font-bold ${link.highlight ? 'text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-cyan-200' : 'text-white'} hover:text-teal-300 relative group whitespace-nowrap`}
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 group-hover:w-full transition-all duration-300"></span>
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${link.highlight ? 'bg-gradient-to-r from-teal-300 to-cyan-200' : 'bg-teal-400'} group-hover:w-full transition-all duration-300`}></span>
                 </Link>
               ))}
             </nav>
