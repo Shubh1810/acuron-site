@@ -27,7 +27,7 @@ export default function ScrollbarEffect() {
   if (!isMounted) return null;
   
   return (
-    <div className="fixed right-0 top-[120px] w-2 h-[calc(100%-120px)] z-50 pointer-events-none">
+    <div className="fixed right-0 top-[130px] w-2 h-[calc(100%-130px)] z-50 pointer-events-none">
       <div 
         className="w-full bg-gradient-to-b from-teal-500 to-teal-600 rounded-b-lg transition-all duration-200 ease-out"
         style={{ 
