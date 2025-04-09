@@ -32,6 +32,8 @@ module.exports = {
         display: ['var(--font-montserrat)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
         heading: ['var(--font-montserrat)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
         body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        playfair: ['var(--font-playfair)', 'serif'],
+        sakamoto: ['Sakamoto', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

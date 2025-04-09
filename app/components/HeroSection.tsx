@@ -34,7 +34,7 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
             <span className="whitespace-nowrap"><ColourfulText text="Medical Supply" /></span>
             {titleParts[1]}
           </h1>
-          <p className="text-lg sm:text-xl mb-8 text-gray-100">
+          <p className="text-lg sm:text-xl mb-8 text-gray-100 font-playfair">
             {subtitle}
           </p>
           <Link 
