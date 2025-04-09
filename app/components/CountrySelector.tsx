@@ -1,23 +1,23 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 interface Country {
   code: string;
   name: string;
-  flag: string;
 }
 
-// Using emoji flags instead of SVG files
+// Using SVG flags from flagcdn.com
 const countries: Country[] = [
-  { code: 'in', name: 'India', flag: '🇮🇳' },
-  { code: 'us', name: 'US', flag: '🇺🇸' },
-  { code: 'gb', name: 'UK', flag: '🇬🇧' },
-  { code: 'de', name: 'German', flag: '🇩🇪' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'jp', name: 'Japanese', flag: '🇯🇵' },
-  { code: 'cn', name: '中国人', flag: '🇨🇳' },
-  { code: 'br', name: 'Brazil', flag: '🇧🇷' },
+  { code: 'in', name: 'India' },
+  { code: 'us', name: 'USA' },
+  { code: 'gb', name: 'UK' },
+  { code: 'de', name: 'Deutsche' },
+  { code: 'fr', name: 'Français' },
+  { code: 'jp', name: '日本語' },
+  { code: 'cn', name: '中国人' },
+  { code: 'br', name: 'Brazil' },
 ];
 
 const CountrySelector = () => {
@@ -47,7 +47,15 @@ const CountrySelector = () => {
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <span className="text-lg hover:opacity-80 transition-opacity duration-300">{selectedCountry.flag}</span>
+        <div className="w-5 h-3.5 overflow-hidden rounded-sm hover:opacity-80 transition-opacity duration-300">
+          <Image 
+            src={`https://flagcdn.com/w40/${selectedCountry.code}.png`}
+            alt={selectedCountry.name}
+            width={20} 
+            height={14}
+            className="object-cover w-full h-full"
+          />
+        </div>
       </button>
 
       {isOpen && (
@@ -64,7 +72,15 @@ const CountrySelector = () => {
                   selectedCountry.code === country.code ? 'bg-gray-50 text-teal-700' : 'text-gray-700'
                 }`}
               >
-                <span className="text-lg mr-3">{country.flag}</span>
+                <div className="w-5 h-3.5 overflow-hidden rounded-sm mr-3">
+                  <Image 
+                    src={`https://flagcdn.com/w40/${country.code}.png`}
+                    alt={country.name}
+                    width={20} 
+                    height={14}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
                 <span>{country.name}</span>
               </button>
             ))}

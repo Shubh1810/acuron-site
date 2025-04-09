@@ -7,6 +7,7 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import ScrollbarEffect from './components/ScrollbarEffect';
 import GridBackground from './components/ui/grid-background';
+import { BackgroundGradientAnimation } from './components/ui/background-gradient-animation';
 
 
 export default function Home() {
@@ -80,53 +81,59 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Feature Cards */}
-              <div className="card hover-lift animate-on-scroll" style={{ transitionDelay: `0ms` }}>
-                <div className="h-64 gradient-bg"></div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">Clinical-Grade Quality</h3>
-                  <p className="text-gray-600 mb-4 font-playfair">
-                    All our products meet rigorous medical standards and are certified for healthcare use, ensuring maximum safety and reliability.
-                  </p>
-                  <Link href="/about/quality" className="text-teal-600 font-semibold hover:text-teal-800 transition-colors duration-300 flex items-center">
-                    Learn more 
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </Link>
-                </div>
+            <div className="mb-1 ml-8 sm:ml-8">
+              <div className="relative">
+                <h2 className="section-title text-3xl sm:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center sm:text-left">Tenders Awarded</h2>
               </div>
-              
-              <div className="card hover-lift animate-on-scroll" style={{ transitionDelay: `100ms` }}>
-                <div className="h-64 gradient-bg"></div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">Affordable Solutions</h3>
-                  <p className="text-gray-600 mb-4 font-playfair">
-                    We manufacture locally to offer cost-effective medical products without compromising on quality, making protection accessible to all.
-                  </p>
-                  <Link href="/about/pricing" className="text-teal-600 font-semibold hover:text-teal-800 transition-colors duration-300 flex items-center">
-                    Learn more 
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </Link>
-                </div>
+            </div>
+            
+            {/* Mobile view (static display) */}
+            <div className="relative w-full block sm:hidden p-0">
+              <div className="flex flex-wrap justify-center">
+                {Array.from({ length: 11 }).map((_, index) => (
+                  <div key={index} className={`relative ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl transition-all duration-300 p-0 w-[16.666%] h-[70px] flex items-center justify-center ${index >= 6 ? 'w-[20%]' : ''}`}>
+                    <Image 
+                      src={`/tender${index + 1}.png`} 
+                      alt={`Tender ${index + 1}`} 
+                      width={300} 
+                      height={300} 
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
+                ))}
               </div>
-              
-              <div className="card hover-lift animate-on-scroll" style={{ transitionDelay: `200ms` }}>
-                <div className="h-64 gradient-bg"></div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">Nationwide Availability</h3>
-                  <p className="text-gray-600 mb-4 font-playfair">
-                    Our extensive distribution network ensures that healthcare providers across India can access our products when and where they need them.
-                  </p>
-                  <Link href="/about/distribution" className="text-teal-600 font-semibold hover:text-teal-800 transition-colors duration-300 flex items-center">
-                    Learn more 
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </Link>
+            </div>
+            
+            {/* Desktop view (animated scrolling) */}
+            <div className="relative w-full overflow-hidden hidden sm:block">
+              <div className="flex flex-nowrap gap-8" role="region" aria-label="Tender logos" style={{ ["--animation-duration" as string]: "40s" }}>
+                <div className="flex items-center gap-4 md:gap-12 animate-scroll" style={{ ["--animation-direction" as string]: "forwards" }}>
+                  {Array.from({ length: 11 }).map((_, index) => (
+                    <div key={index} className={`relative flex-shrink-0 ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl transition-all duration-300 p-2 md:p-4 w-40 md:w-48 h-40 md:h-48 flex items-center justify-center`}>
+                      <Image 
+                        src={`/tender${index + 1}.png`} 
+                        alt={`Tender ${index + 1}`} 
+                        width={200} 
+                        height={200} 
+                        className="object-contain max-w-full max-h-full"
+                      />
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Duplicate set for seamless scrolling */}
+                <div className="flex items-center gap-4 md:gap-12 animate-scroll ml-4" style={{ ["--animation-direction" as string]: "forwards" }}>
+                  {Array.from({ length: 11 }).map((_, index) => (
+                    <div key={index} className={`relative flex-shrink-0 ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl transition-all duration-300 p-2 md:p-4 w-40 md:w-48 h-40 md:h-48 flex items-center justify-center`}>
+                      <Image 
+                        src={`/tender${index + 1}.png`} 
+                        alt={`Tender ${index + 1}`} 
+                        width={200} 
+                        height={200}
+                        className="object-contain max-w-full max-h-full"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -134,15 +141,61 @@ export default function Home() {
         </section>
 
         {/* Mission Statement Section */}
-        <section className="py-20 bg-gradient-to-r from-teal-900 to-blue-900 text-white">
-          <div className="max-w-6xl mx-auto px-8">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              We are committed to advancing healthcare: connecting providers with essential medical solutions worldwide.
-            </h2>
-            <p className="text-xl md:text-2xl font-playfair">
-              Imagine the impact of reliable medical supplies in every healthcare setting.
-            </p>
-          </div>
+        <section className="relative py-32 min-h-[600px] text-white">
+          <BackgroundGradientAnimation 
+            gradientBackgroundStart="rgb(10, 61, 98)" 
+            gradientBackgroundEnd="rgb(15, 70, 110)"
+            firstColor="18, 113, 255"
+            secondColor="80, 210, 255"
+            thirdColor="30, 160, 230"
+            fourthColor="20, 120, 200"
+            fifthColor="90, 180, 250"
+            pointerColor="100, 220, 255"
+            blendingValue="soft-light"
+            size="150%"
+            containerClassName="absolute inset-0"
+          >
+            <div className="relative z-10 max-w-6xl mx-auto px-8 py-24 flex flex-col justify-center h-full">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10">
+                We are committed to advancing healthcare: connecting providers with essential medical solutions worldwide.
+              </h2>
+              <p className="text-lg md:text-xl font-playfair mb-8">
+                Imagine the impact of reliable medical supplies in every healthcare setting.
+              </p>
+              <p className="text-base md:text-lg font-playfair mb-8">
+                At Acuron, we're dedicated to creating a future where quality healthcare materials are accessible to all medical professionals, ensuring better patient care across the globe.
+              </p>
+              <p className="text-base md:text-lg font-playfair mb-8">
+                Our commitment extends beyond simply providing products - we're fostering a global ecosystem where healthcare professionals can access the tools they need to deliver exceptional care, regardless of location or resources.
+              </p>
+              <div className="flex flex-wrap gap-5 mt-2">
+                <div className="flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <span className="text-base">Highest quality standards</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="text-base">Global distribution network</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="text-base">Cost-effective solutions</span>
+                </div>
+              </div>
+            </div>
+          </BackgroundGradientAnimation>
         </section>
 
         {/* Our Impact Section */}
@@ -162,8 +215,30 @@ export default function Home() {
                   See how
                 </Link>
               </div>
-              <div className="md:w-1/2 bg-gradient-to-br from-teal-800 to-blue-900 min-h-[400px] rounded-lg">
-                {/* Placeholder for your impact image */}
+              <div className="md:w-1/2 rounded-lg overflow-hidden relative min-h-[400px]">
+                <BackgroundGradientAnimation 
+                  gradientBackgroundStart="rgb(5, 70, 90)" 
+                  gradientBackgroundEnd="rgb(5, 50, 80)"
+                  firstColor="0, 150, 170"
+                  secondColor="20, 120, 160"
+                  thirdColor="40, 80, 130"
+                  fourthColor="10, 100, 140"
+                  fifthColor="30, 90, 120"
+                  interactive={false}
+                  size="120%"
+                >
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-white text-opacity-90 text-center p-6">
+                      <div className="mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+                      </div>
+                      <h4 className="text-xl font-bold mb-2">Global Reach</h4>
+                      <p className="font-playfair">Serving healthcare facilities across 25+ countries with essential medical products</p>
+                    </div>
+                  </div>
+                </BackgroundGradientAnimation>
               </div>
             </div>
           </div>
@@ -174,9 +249,46 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Product Categories</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {['Surgical', 'Diagnostic', 'Monitoring', 'Protective'].map((category) => (
-                <div key={category} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                  <div className="h-48 bg-gradient-to-br from-teal-700 to-blue-800"></div>
+              {['Surgical', 'Diagnostic', 'Monitoring', 'Protective'].map((category, index) => (
+                <div key={category} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+                  <div className="h-48 relative overflow-hidden">
+                    <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
+                      <BackgroundGradientAnimation 
+                        gradientBackgroundStart={index % 2 === 0 ? "rgb(5, 70, 90)" : "rgb(10, 60, 85)"} 
+                        gradientBackgroundEnd={index % 2 === 0 ? "rgb(5, 50, 80)" : "rgb(5, 40, 70)"}
+                        firstColor={index === 0 ? "0, 160, 180" : index === 1 ? "0, 140, 200" : index === 2 ? "20, 130, 190" : "10, 150, 180"}
+                        secondColor={index === 0 ? "20, 140, 170" : index === 1 ? "30, 120, 180" : index === 2 ? "40, 110, 170" : "20, 130, 170"}
+                        thirdColor={index === 0 ? "40, 120, 160" : index === 1 ? "50, 100, 160" : index === 2 ? "60, 90, 150" : "30, 110, 160"}
+                        interactive={false}
+                        size="150%"
+                        blendingValue="normal"
+                      />
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center z-10">
+                      <div className="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center backdrop-blur-sm">
+                        {index === 0 && (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          </svg>
+                        )}
+                        {index === 1 && (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                          </svg>
+                        )}
+                        {index === 2 && (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                          </svg>
+                        )}
+                        {index === 3 && (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-800 mb-2">{category} Products</h3>
                     <Link href={`/category/${category.toLowerCase()}`} className="text-teal-600 font-semibold hover:text-teal-800">
@@ -190,21 +302,35 @@ export default function Home() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-20 bg-gradient-to-r from-teal-900 to-blue-900 text-white">
-          <div className="max-w-4xl mx-auto text-center px-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to transform your medical supply chain?</h2>
-            <p className="text-xl mb-8 font-playfair">
-              Join thousands of healthcare providers who trust Acuron Products for reliable, high-quality medical supplies.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="bg-white text-teal-900 hover:bg-gray-100 font-bold py-3 px-8 rounded-md inline-block transition duration-300">
-                CONTACT SALES
-              </Link>
-              <Link href="/catalog" className="border-2 border-white text-white hover:bg-white hover:text-teal-900 font-bold py-3 px-8 rounded-md inline-block transition duration-300">
-                VIEW CATALOG
-              </Link>
+        <section className="relative py-24 min-h-[350px] text-white">
+          <BackgroundGradientAnimation 
+            gradientBackgroundStart="rgb(15, 60, 90)" 
+            gradientBackgroundEnd="rgb(0, 40, 70)"
+            firstColor="0, 130, 180"
+            secondColor="0, 180, 170"
+            thirdColor="30, 130, 180"
+            fourthColor="60, 90, 150"
+            fifthColor="10, 90, 150"
+            pointerColor="0, 210, 200"
+            size="130%"
+            blendingValue="soft-light"
+            containerClassName="absolute inset-0"
+          >
+            <div className="relative z-10 max-w-4xl mx-auto text-center px-8 py-12 flex flex-col justify-center h-full">
+              <h2 className="text-3xl md:text-4xl font-bold mb-8">Ready to transform your medical supply chain?</h2>
+              <p className="text-xl mb-10 font-playfair">
+                Join thousands of healthcare providers who trust Acuron Products for reliable, high-quality medical supplies.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/contact" className="bg-white text-teal-900 hover:bg-gray-100 font-bold py-3 px-8 rounded-md inline-block transition duration-300">
+                  CONTACT SALES
+                </Link>
+                <Link href="/catalog" className="border-2 border-white text-white hover:bg-white hover:text-teal-900 font-bold py-3 px-8 rounded-md inline-block transition duration-300">
+                  VIEW CATALOG
+                </Link>
+              </div>
             </div>
-          </div>
+          </BackgroundGradientAnimation>
         </section>
 
         {/* Footer */}
@@ -215,7 +341,7 @@ export default function Home() {
               <div className="md:col-span-3">
                 <div className="mb-6">
                   <Image 
-                    src="/loggo.png" 
+                    src="/logggo.png" 
                     alt="Acuron Logo" 
                     width={150} 
                     height={60} 

@@ -54,7 +54,9 @@ export default function ScrollbarEffect() {
       className="fixed right-0 z-50 pointer-events-none w-2"
       style={{ 
         top: `${headerHeight}px`,
-        height: `calc(100% - ${headerHeight}px)`
+        height: `calc(100% - ${headerHeight}px)`,
+        position: 'fixed',
+        transform: 'translateZ(0)'
       }}
     >
       <div 
