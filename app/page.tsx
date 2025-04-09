@@ -2,10 +2,12 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import ScrollbarEffect from './components/ScrollbarEffect';
 import GridBackground from './components/ui/grid-background';
+
 
 export default function Home() {
   // Animation on scroll functionality
@@ -34,53 +36,99 @@ export default function Home() {
       <ScrollbarEffect />
       <main className="min-h-screen pt-[110px]">
         <HeroSection 
-          title="ADVANCING MEDICAL CARE WORLDWIDE"
-          subtitle="Our connectivity network delivers essential medical products where they&apos;re needed most."
+          title="Revolutionizing Medical Supply with Precision & Care."
+          subtitle="India's trusted manufacturer of clinically-certified medical products."
           ctaText="EXPLORE PRODUCTS"
           ctaLink="/products"
         />
 
-        {/* Navigation Dots */}
-        <div className="flex justify-center -mt-12 relative z-20">
-          <div className="flex gap-3">
-            {[0, 1, 2, 3, 4].map((index) => (
-              <button 
-                key={index} 
-                className={`h-3 w-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-teal-500 scale-125' : 'bg-gray-300 hover:bg-gray-400'}`}
-                aria-label={`Slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* What's Trending Section */}
+        {/* About Us and Why Choose Acuron? Section */}
         <section className="py-16 px-8 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="flex justify-center mb-12">
               <div className="relative">
-                <h2 className="section-title">WHAT&apos;S TRENDING</h2>
+                <h2 className="section-title text-4xl font-bold"> WHY CHOOSE ACURON?</h2>
+              </div>
+            </div>
+            
+            {/* Founders Image and About Text */}
+            <div className="flex flex-col md:flex-row gap-10 mb-16">
+              <div className="md:w-2/5 relative">
+                <div className="absolute inset-0 bg-sky-400/50 rounded-full blur-3xl transform scale-125 animate-pulse"></div>
+                <div className="relative">
+                  <Image 
+                    src="/group-ac.png" 
+                    alt="Acuron Founders" 
+                    width={500} 
+                    height={350} 
+                    className="w-full h-auto relative z-10"
+                  />
+                </div>
+              </div>
+              <div className="md:w-3/5 flex flex-col justify-center">
+                <h3 className="text-5xl font-bold text-gray-800 mb-4 font-sakamoto">Our Founders</h3>
+                <p className="text-xl text-gray-700 mb-6">
+                  Founded by a team of healthcare professionals and industry experts, Acuron Products 
+                  was established with a mission to deliver high-quality medical supplies to healthcare 
+                  providers worldwide. Our founders combine decades of experience in healthcare, 
+                  supply chain management, and product development.
+                </p>
+                <p className="text-xl text-gray-700">
+                  Together, they've built Acuron into a trusted name in medical supply, focusing on 
+                  quality, accessibility, and innovation to meet the evolving needs of the healthcare industry.
+                </p>
               </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Feature Cards */}
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="card hover-lift animate-on-scroll" style={{ transitionDelay: `${(item - 1) * 100}ms` }}>
-                  <div className="h-64 gradient-bg"></div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-3">Featured Product {item}</h3>
-                    <p className="text-gray-600 mb-4">
-                      High-quality disposable medical products with advanced connectivity features.
-                    </p>
-                    <Link href={`/product/${item}`} className="text-teal-600 font-semibold hover:text-teal-800 transition-colors duration-300 flex items-center">
-                      Learn more 
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </Link>
-                  </div>
+              <div className="card hover-lift animate-on-scroll" style={{ transitionDelay: `0ms` }}>
+                <div className="h-64 gradient-bg"></div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">Clinical-Grade Quality</h3>
+                  <p className="text-gray-600 mb-4">
+                    All our products meet rigorous medical standards and are certified for healthcare use, ensuring maximum safety and reliability.
+                  </p>
+                  <Link href="/about/quality" className="text-teal-600 font-semibold hover:text-teal-800 transition-colors duration-300 flex items-center">
+                    Learn more 
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </Link>
                 </div>
-              ))}
+              </div>
+              
+              <div className="card hover-lift animate-on-scroll" style={{ transitionDelay: `100ms` }}>
+                <div className="h-64 gradient-bg"></div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">Affordable Solutions</h3>
+                  <p className="text-gray-600 mb-4">
+                    We manufacture locally to offer cost-effective medical products without compromising on quality, making protection accessible to all.
+                  </p>
+                  <Link href="/about/pricing" className="text-teal-600 font-semibold hover:text-teal-800 transition-colors duration-300 flex items-center">
+                    Learn more 
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+              
+              <div className="card hover-lift animate-on-scroll" style={{ transitionDelay: `200ms` }}>
+                <div className="h-64 gradient-bg"></div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">Nationwide Availability</h3>
+                  <p className="text-gray-600 mb-4">
+                    Our extensive distribution network ensures that healthcare providers across India can access our products when and where they need them.
+                  </p>
+                  <Link href="/about/distribution" className="text-teal-600 font-semibold hover:text-teal-800 transition-colors duration-300 flex items-center">
+                    Learn more 
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>

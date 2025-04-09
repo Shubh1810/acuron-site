@@ -115,3 +115,34 @@ input:focus {
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@500&display=swap');
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overscroll-behavior: none;
+}
+
+/* Additional mobile viewport adjustments */
+@media (max-width: 767px) {
+  /* Ensure scrollbar is visible and not hidden by browser UI on mobile */
+  html, body {
+    overscroll-behavior-y: none;
+    height: 100%;
+    position: relative;
+  }
+  
+  /* Ensure scrollbar component is visible above all content */
+  div[class*="fixed right-0 z-50"] {
+    z-index: 9999 !important;
+    right: 0 !important;
+    opacity: 0.8;
+  }
+}
