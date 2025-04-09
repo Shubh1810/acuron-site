@@ -34,6 +34,7 @@ module.exports = {
         body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         playfair: ['var(--font-playfair)', 'serif'],
         sakamoto: ['Sakamoto', 'sans-serif'],
+        roboto: ['var(--font-roboto)', 'Arial', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

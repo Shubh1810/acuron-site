@@ -8,6 +8,7 @@ import HeroSection from './components/HeroSection';
 import ScrollbarEffect from './components/ScrollbarEffect';
 import GridBackground from './components/ui/grid-background';
 import { BackgroundGradientAnimation } from './components/ui/background-gradient-animation';
+import Metric from './components/ui/metric';
 
 
 export default function Home() {
@@ -25,8 +26,45 @@ export default function Home() {
     
     animatedElements.forEach(el => observer.observe(el));
     
+    // Animate counters
+    const counters = document.querySelectorAll('.counter');
+    
+    const animateCounter = (counter: Element) => {
+      const target = parseInt(counter.getAttribute('data-target') || '0');
+      const duration = 400; // Animation duration in milliseconds (much faster)
+      const steps = 15; // Even fewer steps for speedometer-like jumps
+      const stepTime = duration / steps;
+      const increment = target / steps;
+      let current = 0;
+      
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.textContent = Math.round(current).toString();
+          setTimeout(updateCounter, stepTime);
+        } else {
+          counter.textContent = target.toString() + (target === 500 || target === 20 ? '+' : '');
+        }
+      };
+      
+      updateCounter();
+    };
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => counterObserver.unobserve(counter));
+    counters.forEach(counter => counterObserver.observe(counter));
+    
     return () => {
       animatedElements.forEach(el => observer.unobserve(el));
+      counters.forEach(counter => counterObserver.unobserve(counter));
     };
   }, []);
 
@@ -81,67 +119,57 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="mb-1 ml-8 sm:ml-8">
+            <div className="mb-1 mt-2">
               <div className="relative">
-                <h2 className="section-title text-3xl sm:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center sm:text-left">Tenders Awarded</h2>
+                <h2 className="section-title text-3xl sm:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center">Tenders Awarded</h2>
               </div>
             </div>
             
-            {/* Mobile view (static display) */}
-            <div className="relative w-full block sm:hidden p-0">
-              <div className="flex flex-wrap justify-center">
+            {/* Mobile view (horizontal scroll) */}
+            <div className="sm:hidden w-full p-4">
+              <div className="flex flex-wrap justify-center" role="region" aria-label="Tender logos">
                 {Array.from({ length: 11 }).map((_, index) => (
-                  <div key={index} className={`relative ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl transition-all duration-300 p-0 w-[16.666%] h-[70px] flex items-center justify-center ${index >= 6 ? 'w-[20%]' : ''}`}>
+                  <div 
+                    key={index} 
+                    className={`relative p-2 ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-[16.666%] ${index >= 6 ? 'w-[20%]' : ''} flex items-center justify-center`}
+                  >
                     <Image 
                       src={`/tender${index + 1}.png`} 
                       alt={`Tender ${index + 1}`} 
-                      width={300} 
-                      height={300} 
-                      className="object-contain w-full h-full"
+                      width={200} 
+                      height={200}
+                      className="object-contain max-w-full max-h-full" 
                     />
                   </div>
                 ))}
               </div>
             </div>
             
-            {/* Desktop view (animated scrolling) */}
-            <div className="relative w-full overflow-hidden hidden sm:block">
-              <div className="flex flex-nowrap gap-8" role="region" aria-label="Tender logos" style={{ ["--animation-duration" as string]: "40s" }}>
-                <div className="flex items-center gap-4 md:gap-12 animate-scroll" style={{ ["--animation-direction" as string]: "forwards" }}>
-                  {Array.from({ length: 11 }).map((_, index) => (
-                    <div key={index} className={`relative flex-shrink-0 ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl transition-all duration-300 p-2 md:p-4 w-40 md:w-48 h-40 md:h-48 flex items-center justify-center`}>
-                      <Image 
-                        src={`/tender${index + 1}.png`} 
-                        alt={`Tender ${index + 1}`} 
-                        width={200} 
-                        height={200} 
-                        className="object-contain max-w-full max-h-full"
-                      />
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Duplicate set for seamless scrolling */}
-                <div className="flex items-center gap-4 md:gap-12 animate-scroll ml-4" style={{ ["--animation-direction" as string]: "forwards" }}>
-                  {Array.from({ length: 11 }).map((_, index) => (
-                    <div key={index} className={`relative flex-shrink-0 ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl transition-all duration-300 p-2 md:p-4 w-40 md:w-48 h-40 md:h-48 flex items-center justify-center`}>
-                      <Image 
-                        src={`/tender${index + 1}.png`} 
-                        alt={`Tender ${index + 1}`} 
-                        width={200} 
-                        height={200}
-                        className="object-contain max-w-full max-h-full"
-                      />
-                    </div>
-                  ))}
-                </div>
+            {/* Desktop view (overlapping icons) */}
+            <div className="relative w-full overflow-x-auto hidden sm:block py-4">
+              <div className="flex flex-nowrap min-w-max justify-center pb-4 px-8" role="region" aria-label="Tender logos">
+                {Array.from({ length: 11 }).map((_, index) => (
+                  <div 
+                    key={index} 
+                    className={`relative flex-shrink-0 ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl hover:scale-110 hover:z-10 transition-all duration-300 p-0 border-0 w-32 md:w-40 h-32 md:h-40 flex items-center justify-center`}
+                    style={{ marginLeft: index === 0 ? '0' : '-50px' }}
+                  >
+                    <Image 
+                      src={`/tender${index + 1}.png`} 
+                      alt={`Tender ${index + 1}`} 
+                      width={180} 
+                      height={180} 
+                      className="object-contain max-w-full max-h-full"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
         {/* Mission Statement Section */}
-        <section className="relative py-32 min-h-[600px] text-white">
+        <section className="relative py-0 min-h-[950px] md:min-h-[750px] text-white">
           <BackgroundGradientAnimation 
             gradientBackgroundStart="rgb(10, 61, 98)" 
             gradientBackgroundEnd="rgb(15, 70, 110)"
@@ -155,43 +183,30 @@ export default function Home() {
             size="150%"
             containerClassName="absolute inset-0"
           >
-            <div className="relative z-10 max-w-6xl mx-auto px-8 py-24 flex flex-col justify-center h-full">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10">
-                We are committed to advancing healthcare: connecting providers with essential medical solutions worldwide.
-              </h2>
-              <p className="text-lg md:text-xl font-playfair mb-8">
-                Imagine the impact of reliable medical supplies in every healthcare setting.
-              </p>
-              <p className="text-base md:text-lg font-playfair mb-8">
-                At Acuron, we're dedicated to creating a future where quality healthcare materials are accessible to all medical professionals, ensuring better patient care across the globe.
-              </p>
-              <p className="text-base md:text-lg font-playfair mb-8">
-                Our commitment extends beyond simply providing products - we're fostering a global ecosystem where healthcare professionals can access the tools they need to deliver exceptional care, regardless of location or resources.
-              </p>
-              <div className="flex flex-wrap gap-5 mt-2">
-                <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="max-w-5xl mx-auto px-8 md:px-10 lg:px-12 pt-16 pb-6 flex-grow flex flex-col justify-between">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold italic mb-8 font-sakamoto text-white/90">
+                  We are committed to advancing healthcare: connecting providers with essential medical solutions worldwide.
+                </h2>
+                
+                <div className="backdrop-blur-sm bg-white/5 rounded-xl shadow-xl border border-white/10 flex-grow flex flex-col mb-0">
+                  <div className="p-6 md:p-8 lg:p-10 flex-grow flex flex-col">
+                    <p className="text-md sm:text-lg md:text-xl font-playfair mb-6 md:mb-8 mt-2">
+                      At Acuron, innovation drives our commitment to healthcare excellence. Our dedicated R&D team consistently develops cutting-edge solutions, enhancing clinical efficiency and patient safety across India and beyond
+                    </p>
+                    <p className="text-sm sm:text-base md:text-lg font-playfair mb-5 md:mb-7">
+                      Trusted by renowned hospitals and healthcare institutions nationwide, including leading public hospitals, private healthcare groups, and government medical agencies, Acuron® has consistently delivered superior quality and reliable service at scale
+                    </p>
+                    <p className="text-sm sm:text-base md:text-lg font-playfair mb-6 md:mb-8">
+                      Our rigorous adherence to international quality standards—ISO-certified, BIS-compliant, and globally recognized—ensures every Acuron® product is of unparalleled quality and reliability.
+                    </p>
+                    
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-5 mt-auto mb-4">
+                      <Metric value={10000} label="Satisfied Customers" className="w-full sm:w-auto flex-1" showDecimals={false} />
+                      <Metric value={500} label="Products" className="w-full sm:w-auto flex-1" showDecimals={false} />
+                      <Metric value={20} label="Years of Experience" className="w-full sm:w-auto flex-1" showDecimals={false} />
+                    </div>
                   </div>
-                  <span className="text-base">Highest quality standards</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <span className="text-base">Global distribution network</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <span className="text-base">Cost-effective solutions</span>
                 </div>
               </div>
             </div>
