@@ -122,9 +122,9 @@ export default function Home() {
             <div className="mb-1 mt-2">
               <div className="relative">
                 <h2 className="section-title text-3xl sm:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center">Tenders Awarded</h2>
+                </div>
               </div>
-            </div>
-            
+              
             {/* Mobile view (horizontal scroll) */}
             <div className="sm:hidden w-full p-4">
               <div className="flex flex-wrap justify-center" role="region" aria-label="Tender logos">
@@ -142,9 +142,9 @@ export default function Home() {
                     />
                   </div>
                 ))}
+                </div>
               </div>
-            </div>
-            
+              
             {/* Desktop view (overlapping icons) */}
             <div className="relative w-full overflow-x-auto hidden sm:block py-4">
               <div className="flex flex-nowrap min-w-max justify-center pb-4 px-8" role="region" aria-label="Tender logos">
@@ -161,7 +161,7 @@ export default function Home() {
                       height={180} 
                       className="object-contain max-w-full max-h-full"
                     />
-                  </div>
+                </div>
                 ))}
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function Home() {
         </section>
 
         {/* Mission Statement Section */}
-        <section className="relative py-0 min-h-[950px] md:min-h-[750px] text-white">
+        <section className="relative py-10 sm:py-16 min-h-[1000px] sm:min-h-[800px] md:min-h-[750px] lg:min-h-[780px] text-white overflow-hidden pb-0 mb-0">
           <BackgroundGradientAnimation 
             gradientBackgroundStart="rgb(10, 61, 98)" 
             gradientBackgroundEnd="rgb(15, 70, 110)"
@@ -181,27 +181,27 @@ export default function Home() {
             pointerColor="100, 220, 255"
             blendingValue="soft-light"
             size="150%"
-            containerClassName="absolute inset-0"
+            containerClassName="absolute inset-0 rounded-t-3xl"
           >
             <div className="relative z-10 flex flex-col h-full">
-              <div className="max-w-5xl mx-auto px-8 md:px-10 lg:px-12 pt-16 pb-6 flex-grow flex flex-col justify-between">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold italic mb-8 font-sakamoto text-white/90">
-                  We are committed to advancing healthcare: connecting providers with essential medical solutions worldwide.
-                </h2>
+              <div className="max-w-5xl mx-auto px-5 sm:px-8 md:px-10 lg:px-12 pt-12 sm:pt-16 pb-8 flex-grow flex flex-col justify-between">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-sakamoto text-white/90">
+                  We are committed to advancing Healthcare: connecting providers with essential Medical Solutions nationwide.
+            </h2>
                 
                 <div className="backdrop-blur-sm bg-white/5 rounded-xl shadow-xl border border-white/10 flex-grow flex flex-col mb-0">
-                  <div className="p-6 md:p-8 lg:p-10 flex-grow flex flex-col">
-                    <p className="text-md sm:text-lg md:text-xl font-playfair mb-6 md:mb-8 mt-2">
-                      At Acuron, innovation drives our commitment to healthcare excellence. Our dedicated R&D team consistently develops cutting-edge solutions, enhancing clinical efficiency and patient safety across India and beyond
+                  <div className="p-5 sm:p-6 md:p-8 lg:p-10 flex-grow flex flex-col">
+                    <p className="text-lg sm:text-xl font-playfair mb-4 sm:mb-6 md:mb-8 mt-2">
+                      At Acuron, innovation drives our commitment to healthcare excellence. Our dedicated R&D team consistently develops cutting-edge solutions, enhancing clinical efficiency and patient safety across India and beyond.
                     </p>
-                    <p className="text-sm sm:text-base md:text-lg font-playfair mb-5 md:mb-7">
-                      Trusted by renowned hospitals and healthcare institutions nationwide, including leading public hospitals, private healthcare groups, and government medical agencies, Acuron® has consistently delivered superior quality and reliable service at scale
+                    <p className="text-lg sm:text-xl font-playfair mb-3 sm:mb-5 md:mb-7">
+                      Trusted by renowned hospitals and healthcare institutions nationwide, including leading public hospitals, private healthcare groups, and government medical agencies, Acuron® has consistently delivered superior quality and reliable service at scale.
                     </p>
-                    <p className="text-sm sm:text-base md:text-lg font-playfair mb-6 md:mb-8">
+                    <p className="text-lg sm:text-xl font-playfair mb-4 sm:mb-6 md:mb-8">
                       Our rigorous adherence to international quality standards—ISO-certified, BIS-compliant, and globally recognized—ensures every Acuron® product is of unparalleled quality and reliability.
                     </p>
                     
-                    <div className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-5 mt-auto mb-4">
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 md:gap-5 mt-auto mb-2 sm:mb-4">
                       <Metric value={10000} label="Satisfied Customers" className="w-full sm:w-auto flex-1" showDecimals={false} />
                       <Metric value={500} label="Products" className="w-full sm:w-auto flex-1" showDecimals={false} />
                       <Metric value={20} label="Years of Experience" className="w-full sm:w-auto flex-1" showDecimals={false} />
@@ -209,28 +209,28 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+          </div>
           </BackgroundGradientAnimation>
         </section>
 
         {/* Our Impact Section */}
-        <section className="py-16 px-8 bg-white">
+        <section className="py-12 pt-0 sm:pt-12 sm:py-20 px-5 sm:px-8 bg-white mt-0">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-12">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-12">
               <div className="md:w-1/2">
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">OUR IMPACT</h2>
-                <h3 className="text-4xl md:text-5xl font-bold text-teal-800 mb-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 sm:mb-4">OUR IMPACT</h2>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-teal-800 mb-4 sm:mb-6">
                   Delivering essential care worldwide
                 </h3>
-                <p className="text-lg text-gray-700 mb-8 font-playfair">
+                <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 font-playfair">
                   Through our extensive distribution network, Acuron Products ensures that healthcare 
                   providers have access to high-quality disposable medical products when and where they need them.
                 </p>
-                <Link href="/impact" className="border-2 border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white font-bold py-3 px-8 rounded-md inline-block transition duration-300">
+                <Link href="/impact" className="border-2 border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-md inline-block transition duration-300 shadow-md">
                   See how
                 </Link>
               </div>
-              <div className="md:w-1/2 rounded-lg overflow-hidden relative min-h-[400px]">
+              <div className="mt-8 md:mt-0 md:w-1/2 rounded-lg overflow-hidden relative min-h-[300px] sm:min-h-[400px] shadow-xl">
                 <BackgroundGradientAnimation 
                   gradientBackgroundStart="rgb(5, 70, 90)" 
                   gradientBackgroundEnd="rgb(5, 50, 80)"
@@ -293,7 +293,7 @@ export default function Home() {
                         )}
                         {index === 2 && (
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 00-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                           </svg>
                         )}
                         {index === 3 && (
@@ -316,36 +316,87 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="relative py-24 min-h-[350px] text-white">
-          <BackgroundGradientAnimation 
-            gradientBackgroundStart="rgb(15, 60, 90)" 
-            gradientBackgroundEnd="rgb(0, 40, 70)"
-            firstColor="0, 130, 180"
-            secondColor="0, 180, 170"
-            thirdColor="30, 130, 180"
-            fourthColor="60, 90, 150"
-            fifthColor="10, 90, 150"
-            pointerColor="0, 210, 200"
-            size="130%"
-            blendingValue="soft-light"
-            containerClassName="absolute inset-0"
-          >
-            <div className="relative z-10 max-w-4xl mx-auto text-center px-8 py-12 flex flex-col justify-center h-full">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Ready to transform your medical supply chain?</h2>
-              <p className="text-xl mb-10 font-playfair">
-                Join thousands of healthcare providers who trust Acuron Products for reliable, high-quality medical supplies.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact" className="bg-white text-teal-900 hover:bg-gray-100 font-bold py-3 px-8 rounded-md inline-block transition duration-300">
-                  CONTACT SALES
-                </Link>
-                <Link href="/catalog" className="border-2 border-white text-white hover:bg-white hover:text-teal-900 font-bold py-3 px-8 rounded-md inline-block transition duration-300">
-                  VIEW CATALOG
-                </Link>
+        {/* Send Us an Inquiry Section */}
+        <section className="relative py-12 sm:py-24 bg-gradient-to-b from-[#0A3D62] to-[#002846] text-white">
+          <div className="absolute inset-0 overflow-hidden">
+            <BackgroundGradientAnimation 
+              gradientBackgroundStart="rgb(15, 60, 90)" 
+              gradientBackgroundEnd="rgb(0, 40, 70)"
+              firstColor="0, 130, 180"
+              secondColor="0, 180, 170"
+              thirdColor="30, 130, 180"
+              fourthColor="60, 90, 150"
+              fifthColor="10, 90, 150"
+              pointerColor="0, 210, 200"
+              size="130%"
+              blendingValue="soft-light"
+              containerClassName="absolute inset-0"
+              interactive={false}
+            />
+          </div>
+          <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-12">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
+              <div className="w-full md:w-1/2 text-left">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">Send Us an Inquiry</h2>
+                <p className="text-lg sm:text-xl mb-6 sm:mb-8 font-playfair">
+                  Interested in our medical supplies or have questions? Fill out the form, and our team will get back to you shortly.
+                </p>
+                <div className="hidden md:block">
+                  <div className="flex items-center mb-5">
+                    <div className="bg-white/20 p-3 rounded-full mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-white/70 text-sm">Email Us At</p>
+                      <p className="text-white font-medium">info@acuron.com</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="bg-white/20 p-3 rounded-full mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-white/70 text-sm">Call Us At</p>
+                      <p className="text-white font-medium">+91 123 456 7890</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Mobile contact info - only shown on small screens */}
+                <div className="mt-8 block md:hidden">
+                  <div className="flex items-center mb-3">
+                    <div className="bg-white/20 p-2 rounded-full mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-white/70 text-xs">Email Us At</p>
+                      <p className="text-white text-sm font-medium">info@acuron.com</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="bg-white/20 p-2 rounded-full mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-white/70 text-xs">Call Us At</p>
+                      <p className="text-white text-sm font-medium">+91 123 456 7890</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="w-full md:w-1/2">
               </div>
             </div>
-          </BackgroundGradientAnimation>
+          </div>
         </section>
 
         {/* Footer */}
@@ -416,7 +467,7 @@ export default function Home() {
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
                       <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
                     </svg>
-                  </Link>
+                    </Link>
                 </div>
               </div>
             </div>

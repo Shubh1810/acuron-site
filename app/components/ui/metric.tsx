@@ -144,19 +144,19 @@ export default function Metric({
   return (
     <div className={`flex flex-col items-center ${className}`} ref={counterRef}>
       <div 
-        className={`text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-300 via-lime-300 to-emerald-300 bg-clip-text text-transparent mb-1 transition-all duration-300
-          ${animationState === 'running' ? 'scale-110' : ''}
-          ${animationState === 'finishing' ? 'scale-105' : ''}
-          ${animationState === 'completed' ? 'scale-110 animate-pulse' : ''}
+        className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-green-300 via-lime-300 to-emerald-300 bg-clip-text text-transparent mb-1 transition-all duration-300
+          ${animationState === 'running' ? 'scale-105 sm:scale-110' : ''}
+          ${animationState === 'finishing' ? 'scale-102 sm:scale-105' : ''}
+          ${animationState === 'completed' ? 'scale-105 sm:scale-110 animate-pulse' : ''}
         `}
       >
         {counter}
         {showDecimals && decimalPart > 0 && (
-          <span className="text-base sm:text-lg md:text-xl">.{decimalPart}</span>
+          <span className="text-sm sm:text-base md:text-lg lg:text-xl">.{decimalPart}</span>
         )}
         {suffix}
       </div>
-      <div className="text-xs sm:text-sm md:text-base text-white/50">{label}</div>
+      <div className="text-xs sm:text-sm md:text-base text-white/70">{label}</div>
     </div>
   );
 }

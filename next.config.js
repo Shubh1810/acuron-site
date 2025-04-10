@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',  // Change to 'export' for static site generation
-  trailingSlash: true,  // Add trailing slashes to URLs
+  reactStrictMode: true,
   images: {
-    unoptimized: true  // Required for static export
-  }
-}
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
+        pathname: '**',
+      },
+    ],
+  },
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig;
