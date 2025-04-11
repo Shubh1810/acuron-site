@@ -169,8 +169,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Mission Statement Section */}
-        <section className="relative py-0 min-h-[1100px] md:min-h-[800px] text-white">
+ {/* Mission Statement Section */}
+ <section className="relative py-0 min-h-[1100px] md:min-h-[800px] text-white">
           <BackgroundGradientAnimation 
             gradientBackgroundStart="rgb(10, 61, 98)" 
             gradientBackgroundEnd="rgb(15, 70, 110)"
@@ -351,65 +351,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Products Showcase */}
-        <section className="py-16 px-8 bg-gray-100">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Product Categories</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {['Surgical', 'Diagnostic', 'Monitoring', 'Protective'].map((category, index) => (
-                <div key={category} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-                  <div className="h-48 relative overflow-hidden">
-                    <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-                      <BackgroundGradientAnimation 
-                        gradientBackgroundStart={index % 2 === 0 ? "rgb(5, 70, 90)" : "rgb(10, 60, 85)"} 
-                        gradientBackgroundEnd={index % 2 === 0 ? "rgb(5, 50, 80)" : "rgb(5, 40, 70)"}
-                        firstColor={index === 0 ? "0, 160, 180" : index === 1 ? "0, 140, 200" : index === 2 ? "20, 130, 190" : "10, 150, 180"}
-                        secondColor={index === 0 ? "20, 140, 170" : index === 1 ? "30, 120, 180" : index === 2 ? "40, 110, 170" : "20, 130, 170"}
-                        thirdColor={index === 0 ? "40, 120, 160" : index === 1 ? "50, 100, 160" : index === 2 ? "60, 90, 150" : "30, 110, 160"}
-                        interactive={false}
-                        size="150%"
-                        blendingValue="normal"
-                      />
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center z-10">
-                      <div className="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center backdrop-blur-sm">
-                        {index === 0 && (
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                          </svg>
-                        )}
-                        {index === 1 && (
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                          </svg>
-                        )}
-                        {index === 2 && (
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                          </svg>
-                        )}
-                        {index === 3 && (
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                          </svg>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{category} Products</h3>
-                    <Link href={`/category/${category.toLowerCase()}`} className="text-teal-600 font-semibold hover:text-teal-800">
-                      View all →
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Call to Action */}
-        <section className="relative py-12 md:py-24 min-h-screen md:min-h-[800px]">
+        <section className="relative py-12 md:py-24 min-h-[1600px] md:min-h-[900px]">
           <BackgroundGradientAnimation 
             gradientBackgroundStart="rgb(10, 61, 98)" 
             gradientBackgroundEnd="rgb(15, 70, 110)"
@@ -424,58 +367,64 @@ export default function Home() {
             containerClassName="absolute inset-0"
           >
             <div className="relative z-10 h-full flex items-start sm:items-center">
-              <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full py-3 sm:py-8 md:py-12">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-12">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 pb-24 sm:py-8 md:py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-12">
                   {/* Left Column - Map and Company Info */}
-                  <div className="lg:col-span-2 space-y-3">
+                  <div className="lg:col-span-2 space-y-6">
                     {/* Company Logo and Heading */}
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                      <div>
-                        <h2 className="text-4xl font-bold text-white/95 font-sakamoto tracking-tight">Get in Touch</h2>
-                        <p className="text-white/70 text-base mt-2 font-playfair">We're here to help you</p>
+                    <div className="relative">
+                      <div className="absolute -left-3 -top-3 w-12 h-12 bg-gradient-to-br from-blue-400/40 to-teal-300/40 rounded-full blur-lg"></div>
+                      <div className="relative z-10">
+                        <span className="inline-block px-3 py-1 text-xs uppercase tracking-wider font-semibold bg-white/10 backdrop-blur-sm rounded-full mb-2 border-l-2 border-accent-400">Contact Us</span>
+                        <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight text-white/95 leading-tight mb-2">
+                          Get in Touch
+                          <span className="block text-lg md:text-xl text-accent-300 mt-2 font-normal">We're here to help you</span>
+                        </h2>
                       </div>
                     </div>
 
-                    {/* Google Maps Integration with Dark Mode */}
-                    <div className="relative aspect-[16/9] rounded-lg overflow-hidden shadow-xl bg-white">
-                      <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.2088125606095!2d77.1500147!3d28.5919339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM1JzMxLjAiTiA3N8KwMDknMDAuMSJF!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin"
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        className="absolute inset-0"
-                      ></iframe>
+                    {/* Google Maps Integration */}
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                      <div className="aspect-[16/9]">
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.2088125606095!2d77.1500147!3d28.5919339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM1JzMxLjAiTiA3N8KwMDknMDAuMSJF!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin"
+                          width="100%"
+                          height="100%"
+                          style={{ border: 0 }}
+                          allowFullScreen
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                          className="absolute inset-0"
+                        ></iframe>
+                      </div>
                     </div>
 
                     {/* Contact Information Cards */}
-                    <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
-                      <div className="bg-white/90 backdrop-blur-sm p-2 rounded-lg shadow-lg border border-gray-100 hover:border-gray-200 transition-all duration-300">
-                        <div className="flex items-start space-x-2">
-                          <div className="p-1.5 bg-gradient-to-br from-teal-50 to-blue-50 rounded-lg shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="grid grid-cols-1 xs:grid-cols-2 gap-4">
+                      <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
+                        <div className="flex items-start space-x-3">
+                          <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-accent-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                           </div>
                           <div className="min-w-0">
-                            <h3 className="text-gray-800 font-semibold text-sm">Visit Us</h3>
-                            <p className="text-gray-600 text-xs mt-0.5 break-words">123 Industrial Area, Phase 1, New Delhi, India</p>
+                            <h3 className="text-white/90 font-semibold text-sm">Visit Us</h3>
+                            <p className="text-white/70 text-sm mt-1 break-words">123 Industrial Area, Phase 1, New Delhi, India</p>
                           </div>
                         </div>
                       </div>
-                      <div className="bg-white/90 backdrop-blur-sm p-2 rounded-lg shadow-lg border border-gray-100 hover:border-gray-200 transition-all duration-300">
-                        <div className="flex items-start space-x-2">
-                          <div className="p-1.5 bg-gradient-to-br from-teal-50 to-blue-50 rounded-lg shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
+                        <div className="flex items-start space-x-3">
+                          <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-accent-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                           </div>
                           <div className="min-w-0">
-                            <h3 className="text-gray-800 font-semibold text-sm">Email Us</h3>
-                            <p className="text-gray-600 text-xs mt-0.5 break-words">contact@acuron.com</p>
+                            <h3 className="text-white/90 font-semibold text-sm">Email Us</h3>
+                            <p className="text-white/70 text-sm mt-1 break-words">contact@acuron.com</p>
                           </div>
                         </div>
                       </div>
@@ -483,12 +432,12 @@ export default function Home() {
                   </div>
 
                   {/* Right Column - Inquiry Form */}
-                  <div className="relative mt-3 lg:mt-0 lg:col-span-3">
-                    <div className="absolute inset-0 bg-gradient-to-r from-teal-100/50 to-blue-100/50 rounded-lg transform rotate-3 scale-105 blur-xl"></div>
-                    <div className="relative bg-white/90 backdrop-blur-xl rounded-lg shadow-2xl p-8 border border-gray-100">
-                      {/* Add logo inside the form */}
-                      <div className="flex justify-start mb-10">
-                        <div className="relative w-[320px] h-28">
+                  <div className="relative mt-6 lg:mt-0 lg:col-span-3">
+                    <div className="absolute inset-0 bg-gradient-to-r from-teal-100/50 to-blue-100/50 rounded-2xl transform rotate-3 scale-105 blur-xl"></div>
+                    <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl p-6 sm:p-8 border border-gray-100">
+                      {/* Logo */}
+                      <div className="flex justify-start mb-8">
+                        <div className="relative w-[280px] sm:w-[320px] h-24 sm:h-28">
                           <Image 
                             src="/acuronog.png" 
                             alt="Acuron Logo" 
@@ -498,22 +447,23 @@ export default function Home() {
                           />
                         </div>
                       </div>
+
                       <form className="space-y-5">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name*</label>
+                          <div className="space-y-1.5">
+                            <label className="block text-sm font-medium text-gray-700">Full Name*</label>
                             <input 
                               type="text" 
-                              className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
+                              className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
                               placeholder="John Doe"
                               required
                             />
                           </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Organization*</label>
+                          <div className="space-y-1.5">
+                            <label className="block text-sm font-medium text-gray-700">Organization*</label>
                             <input 
                               type="text" 
-                              className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
+                              className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
                               placeholder="Company Name"
                               required
                             />
@@ -521,29 +471,29 @@ export default function Home() {
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Email*</label>
+                          <div className="space-y-1.5">
+                            <label className="block text-sm font-medium text-gray-700">Email*</label>
                             <input 
                               type="email" 
-                              className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
+                              className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
                               placeholder="email@example.com"
                               required
                             />
                           </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone</label>
+                          <div className="space-y-1.5">
+                            <label className="block text-sm font-medium text-gray-700">Phone</label>
                             <input 
                               type="tel" 
-                              className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
+                              className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
                               placeholder="+1 (555) 000-0000"
                             />
                           </div>
                         </div>
 
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">Product Interest</label>
+                        <div className="space-y-1.5">
+                          <label className="block text-sm font-medium text-gray-700">Product Interest</label>
                           <select 
-                            className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 text-sm transition-colors duration-200"
+                            className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 text-sm transition-colors duration-200"
                           >
                             <option value="" className="bg-white">Select product category</option>
                             <option value="surgical" className="bg-white">Surgical Products</option>
@@ -555,11 +505,11 @@ export default function Home() {
                           </select>
                         </div>
 
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
+                        <div className="space-y-1.5">
+                          <label className="block text-sm font-medium text-gray-700">Message</label>
                           <textarea 
                             rows={4}
-                            className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 resize-none text-sm transition-colors duration-200"
+                            className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 resize-none text-sm transition-colors duration-200"
                             placeholder="Tell us about your requirements..."
                           ></textarea>
                         </div>
@@ -567,7 +517,7 @@ export default function Home() {
                         <div>
                           <button 
                             type="submit"
-                            className="w-full bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 relative overflow-hidden group text-sm"
+                            className="w-full bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white font-semibold py-3.5 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 relative overflow-hidden group"
                           >
                             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
                             <span className="relative">Send Inquiry</span>
@@ -587,7 +537,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-white py-16">
+        <footer className="bg-gray-900 text-white py-8 md:py-16 mt-0">
           <div className="max-w-7xl mx-auto px-8">
             <div className="grid grid-cols-1 md:grid-cols-9 gap-8">
               {/* Logo Column */}
