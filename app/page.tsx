@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -216,7 +217,7 @@ export default function Home() {
                               </div>
                               <h3 className="text-base font-semibold text-white/90">Innovation Driven</h3>
                             </div>
-                            <p className="text-base text-white/80 pl-11">
+                            <p className="text-base text-white/80 pl-11 font-playfair">
                               At Acuron, innovation drives our commitment to healthcare excellence. Our dedicated R&D team consistently develops cutting-edge solutions, enhancing clinical efficiency and patient safety across India and beyond.
                             </p>
                           </div>
@@ -230,7 +231,7 @@ export default function Home() {
                               </div>
                               <h3 className="text-base font-semibold text-white/90">Trusted Nationwide</h3>
                             </div>
-                            <p className="text-base text-white/80 pl-11">
+                            <p className="text-base text-white/80 pl-11 font-playfair">
                               Trusted by renowned hospitals and healthcare institutions nationwide, including leading public hospitals, private healthcare groups, and government medical agencies.
                             </p>
                           </div>
@@ -244,7 +245,7 @@ export default function Home() {
                               </div>
                               <h3 className="text-base font-semibold text-white/90">Internationally Certified</h3>
                             </div>
-                            <p className="text-base text-white/80 pl-11">
+                            <p className="text-base text-white/80 pl-11 font-playfair">
                               Our rigorous adherence to international quality standards—ISO-certified, BIS-compliant, and globally recognized—ensures every Acuron® product is of unparalleled quality and reliability.
                             </p>
                           </div>
@@ -309,11 +310,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row gap-12">
               <div className="md:w-1/2">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">OUR IMPACT</h2>
-                <h3 className="text-4xl md:text-5xl font-bold text-teal-800 mb-8 font-playfair">
+                <h2 className="text-3xl font-bold text-gray-800 mb-4">OUR IMPACT</h2>
+                <h3 className="text-4xl md:text-5xl font-bold text-teal-800 mb-6">
                   Delivering essential care worldwide
                 </h3>
-                <p className="text-lg text-gray-700 mb-10 font-playfair">
+                <p className="text-lg text-gray-700 mb-8 font-playfair">
                   Through our extensive distribution network, Acuron Products ensures that healthcare 
                   providers have access to high-quality disposable medical products when and where they need them.
                 </p>
@@ -321,7 +322,7 @@ export default function Home() {
                   See how
                 </Link>
               </div>
-              <div className="md:w-1/2 rounded-full overflow-hidden relative min-h-[400px] shadow-2xl border-8 border-white flex items-center justify-center">
+              <div className="md:w-1/2 rounded-lg overflow-hidden relative min-h-[400px]">
                 <BackgroundGradientAnimation 
                   gradientBackgroundStart="rgb(5, 70, 90)" 
                   gradientBackgroundEnd="rgb(5, 50, 80)"
@@ -336,14 +337,12 @@ export default function Home() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-white text-opacity-90 text-center p-6">
                       <div className="mb-4">
-                        <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto shadow-xl">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                          </svg>
-                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
                       </div>
-                      <h4 className="text-2xl font-bold mb-4 font-playfair">Global Reach</h4>
-                      <p className="font-playfair text-lg">Serving healthcare facilities across 25+ countries with essential medical products</p>
+                      <h4 className="text-xl font-bold mb-2">Global Reach</h4>
+                      <p className="font-playfair">Serving healthcare facilities across 25+ countries with essential medical products</p>
                     </div>
                   </div>
                 </BackgroundGradientAnimation>
@@ -410,32 +409,178 @@ export default function Home() {
         </section>
 
         {/* Call to Action */}
-        <section className="relative py-24 min-h-[350px] text-white">
+        <section className="relative py-12 md:py-24 min-h-screen md:min-h-[800px]">
           <BackgroundGradientAnimation 
-            gradientBackgroundStart="rgb(15, 60, 90)" 
-            gradientBackgroundEnd="rgb(0, 40, 70)"
-            firstColor="0, 130, 180"
-            secondColor="0, 180, 170"
-            thirdColor="30, 130, 180"
-            fourthColor="60, 90, 150"
-            fifthColor="10, 90, 150"
-            pointerColor="0, 210, 200"
-            size="130%"
+            gradientBackgroundStart="rgb(10, 61, 98)" 
+            gradientBackgroundEnd="rgb(15, 70, 110)"
+            firstColor="18, 113, 255"
+            secondColor="80, 210, 255"
+            thirdColor="30, 160, 230"
+            fourthColor="20, 120, 200"
+            fifthColor="90, 180, 250"
+            pointerColor="100, 220, 255"
             blendingValue="soft-light"
+            size="200%"
             containerClassName="absolute inset-0"
           >
-            <div className="relative z-10 max-w-4xl mx-auto text-center px-8 py-12 flex flex-col justify-center h-full">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Ready to transform your medical supply chain?</h2>
-              <p className="text-xl mb-10 font-playfair">
-                Join thousands of healthcare providers who trust Acuron Products for reliable, high-quality medical supplies.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact" className="bg-white text-teal-900 hover:bg-gray-100 font-bold py-3 px-8 rounded-md inline-block transition duration-300">
-                  CONTACT SALES
-                </Link>
-                <Link href="/catalog" className="border-2 border-white text-white hover:bg-white hover:text-teal-900 font-bold py-3 px-8 rounded-md inline-block transition duration-300">
-                  VIEW CATALOG
-                </Link>
+            <div className="relative z-10 h-full flex items-start sm:items-center">
+              <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full py-3 sm:py-8 md:py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-12">
+                  {/* Left Column - Map and Company Info */}
+                  <div className="lg:col-span-2 space-y-3">
+                    {/* Company Logo and Heading */}
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                      <div>
+                        <h2 className="text-4xl font-bold text-white/95 font-sakamoto tracking-tight">Get in Touch</h2>
+                        <p className="text-white/70 text-base mt-2 font-playfair">We're here to help you</p>
+                      </div>
+                    </div>
+
+                    {/* Google Maps Integration with Dark Mode */}
+                    <div className="relative aspect-[16/9] rounded-lg overflow-hidden shadow-xl bg-white">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.2088125606095!2d77.1500147!3d28.5919339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM1JzMxLjAiTiA3N8KwMDknMDAuMSJF!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="absolute inset-0"
+                      ></iframe>
+                    </div>
+
+                    {/* Contact Information Cards */}
+                    <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
+                      <div className="bg-white/90 backdrop-blur-sm p-2 rounded-lg shadow-lg border border-gray-100 hover:border-gray-200 transition-all duration-300">
+                        <div className="flex items-start space-x-2">
+                          <div className="p-1.5 bg-gradient-to-br from-teal-50 to-blue-50 rounded-lg shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                          </div>
+                          <div className="min-w-0">
+                            <h3 className="text-gray-800 font-semibold text-sm">Visit Us</h3>
+                            <p className="text-gray-600 text-xs mt-0.5 break-words">123 Industrial Area, Phase 1, New Delhi, India</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-white/90 backdrop-blur-sm p-2 rounded-lg shadow-lg border border-gray-100 hover:border-gray-200 transition-all duration-300">
+                        <div className="flex items-start space-x-2">
+                          <div className="p-1.5 bg-gradient-to-br from-teal-50 to-blue-50 rounded-lg shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                          </div>
+                          <div className="min-w-0">
+                            <h3 className="text-gray-800 font-semibold text-sm">Email Us</h3>
+                            <p className="text-gray-600 text-xs mt-0.5 break-words">contact@acuron.com</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column - Inquiry Form */}
+                  <div className="relative mt-3 lg:mt-0 lg:col-span-3">
+                    <div className="absolute inset-0 bg-gradient-to-r from-teal-100/50 to-blue-100/50 rounded-lg transform rotate-3 scale-105 blur-xl"></div>
+                    <div className="relative bg-white/90 backdrop-blur-xl rounded-lg shadow-2xl p-8 border border-gray-100">
+                      {/* Add logo inside the form */}
+                      <div className="flex justify-start mb-10">
+                        <div className="relative w-[320px] h-28">
+                          <Image 
+                            src="/acuronog.png" 
+                            alt="Acuron Logo" 
+                            fill
+                            className="object-contain object-left"
+                            priority
+                          />
+                        </div>
+                      </div>
+                      <form className="space-y-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name*</label>
+                            <input 
+                              type="text" 
+                              className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
+                              placeholder="John Doe"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Organization*</label>
+                            <input 
+                              type="text" 
+                              className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
+                              placeholder="Company Name"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Email*</label>
+                            <input 
+                              type="email" 
+                              className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
+                              placeholder="email@example.com"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone</label>
+                            <input 
+                              type="tel" 
+                              className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
+                              placeholder="+1 (555) 000-0000"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">Product Interest</label>
+                          <select 
+                            className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 text-sm transition-colors duration-200"
+                          >
+                            <option value="" className="bg-white">Select product category</option>
+                            <option value="surgical" className="bg-white">Surgical Products</option>
+                            <option value="orthopedic" className="bg-white">Orthopedic Drapes</option>
+                            <option value="gynecology" className="bg-white">Gynecology Drapes</option>
+                            <option value="urology" className="bg-white">Urology Drapes</option>
+                            <option value="protective" className="bg-white">Protective Equipment</option>
+                            <option value="other" className="bg-white">Other</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
+                          <textarea 
+                            rows={4}
+                            className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 resize-none text-sm transition-colors duration-200"
+                            placeholder="Tell us about your requirements..."
+                          ></textarea>
+                        </div>
+
+                        <div>
+                          <button 
+                            type="submit"
+                            className="w-full bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 relative overflow-hidden group text-sm"
+                          >
+                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                            <span className="relative">Send Inquiry</span>
+                          </button>
+                          <p className="text-xs text-gray-500 text-center mt-4">
+                            By submitting this form, you agree to our{' '}
+                            <Link href="/privacy" className="text-teal-600 hover:text-teal-700 transition-colors duration-200">Privacy Policy</Link>
+                          </p>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </BackgroundGradientAnimation>
