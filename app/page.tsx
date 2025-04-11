@@ -184,11 +184,11 @@ export default function Home() {
             containerClassName="absolute inset-0"
           >
             <div className="relative z-10 flex flex-col h-full">
-              <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-10 pt-12 pb-4 flex-grow flex flex-col justify-between">
-                <div className="relative mb-6 md:mb-8">
+              <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-10 pt-8 pb-8 flex-grow flex flex-col justify-between">
+                <div className="relative mb-4 md:mb-6">
                   <div className="absolute -left-3 -top-3 w-12 h-12 bg-gradient-to-br from-blue-400/40 to-teal-300/40 rounded-full blur-lg"></div>
                   
-                  <div className="relative z-10 mb-3">
+                  <div className="relative z-10 mb-2">
                     <span className="inline-block px-3 py-1 text-xs uppercase tracking-wider font-semibold bg-white/10 backdrop-blur-sm rounded-full mb-2 border-l-2 border-accent-400">Our Mission</span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading tracking-tight text-white/95 leading-tight">
                       <span className="relative">
@@ -202,7 +202,7 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+                <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-4">
                   <div className="flex-grow md:w-2/3">
                     <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 h-full">
                       <div className="p-5 md:p-6 lg:p-8">
