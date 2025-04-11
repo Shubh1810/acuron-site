@@ -46,6 +46,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" href="/oglogo2.png" as="image" />
+        <link rel="preload" href="/main.jpeg" as="image" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className={`${inter.className} ${playfair.variable} ${roboto.variable}`}>{children}</body>
     </html>
   )

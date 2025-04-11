@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from './components/Header';
@@ -11,10 +10,16 @@ import GridBackground from './components/ui/grid-background';
 import { BackgroundGradientAnimation } from './components/ui/background-gradient-animation';
 import Metric from './components/ui/metric';
 
-
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
   // Animation on scroll functionality
   useEffect(() => {
+    // Show loading screen for at least 1.5 seconds
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     
     const observer = new IntersectionObserver((entries) => {
@@ -64,10 +69,56 @@ export default function Home() {
     counters.forEach(counter => counterObserver.observe(counter));
     
     return () => {
+      clearTimeout(loadingTimer);
       animatedElements.forEach(el => observer.unobserve(el));
       counters.forEach(counter => counterObserver.unobserve(counter));
     };
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 bg-gradient-to-b from-sky-950 via-blue-900 to-sky-900 flex items-center justify-center z-50">
+        <div className="relative w-full max-w-md px-6">
+          {/* Background glow effect */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl"></div>
+          
+          <div className="relative z-10 flex flex-col items-center">
+            {/* Logo with subtle animation */}
+            <div className="relative w-[320px] h-[180px] mb-10 animate-fade-in">
+              <Image
+                src="/oglogo2.png"
+                alt="Acuron Logo"
+                fill
+                className="object-contain scale-100 hover:scale-105 transition-transform duration-700"
+                priority
+              />
+              
+              {/* Subtle reflection effect */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-12 bg-gradient-to-t from-sky-500/10 to-transparent blur-sm"></div>
+            </div>
+            
+            {/* Elegant loading bar */}
+            <div className="relative w-full h-[2px] bg-white/10 rounded-full overflow-hidden mb-6">
+              <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-sky-400 via-blue-500 to-teal-400">
+                <div className="absolute inset-0 animate-loading-progress"></div>
+              </div>
+            </div>
+            
+            <p className="text-white/60 font-light tracking-wide text-center mb-4">
+              Preparing innovative healthcare solutions
+            </p>
+            
+            {/* Pulsing dots animation */}
+            <div className="flex justify-center space-x-2 mt-1">
+              <span className="w-2 h-2 rounded-full bg-sky-400/80 animate-pulse-delay-1"></span>
+              <span className="w-2 h-2 rounded-full bg-sky-400/80 animate-pulse-delay-2"></span>
+              <span className="w-2 h-2 rounded-full bg-sky-400/80 animate-pulse-delay-3"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -102,6 +153,7 @@ export default function Home() {
                     width={500} 
                     height={350} 
                     className="w-full h-auto relative z-10"
+                    priority
                   />
                 </div>
               </div>
@@ -139,7 +191,8 @@ export default function Home() {
                       alt={`Tender ${index + 1}`} 
                       width={200} 
                       height={200}
-                      className="object-contain max-w-full max-h-full" 
+                      className="object-contain max-w-full max-h-full"
+                      loading="lazy" 
                     />
                   </div>
                 ))}
@@ -161,6 +214,7 @@ export default function Home() {
                       width={180} 
                       height={180} 
                       className="object-contain max-w-full max-h-full"
+                      loading="lazy"
                     />
                   </div>
                 ))}

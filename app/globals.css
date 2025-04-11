@@ -90,6 +90,53 @@
   transform: translateY(0);
 }
 
+/* Loading animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes loadingProgress {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse1 {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse2 {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse3 {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.animate-loading-progress {
+  animation: loadingProgress 1.8s ease-in-out infinite;
+}
+
+.animate-pulse-delay-1 {
+  animation: pulse1 1.4s ease-in-out infinite;
+}
+
+.animate-pulse-delay-2 {
+  animation: pulse2 1.4s ease-in-out 0.2s infinite;
+}
+
+.animate-pulse-delay-3 {
+  animation: pulse3 1.4s ease-in-out 0.4s infinite;
+}
+
 /* Smooth hover transitions */
 .hover-lift {
   transition: transform 0.3s ease;
