@@ -375,7 +375,7 @@ export default function Home() {
                     <div className="relative">
                       <div className="absolute -left-3 -top-3 w-12 h-12 bg-gradient-to-br from-blue-400/40 to-teal-300/40 rounded-full blur-lg"></div>
                       <div className="relative z-10">
-                        <span className="inline-block px-3 py-1 text-xs uppercase tracking-wider font-semibold bg-white/10 backdrop-blur-sm rounded-full mb-2 border-l-2 border-accent-400">Contact Us</span>
+                        <span className="inline-block px-3 py-1 text-xs uppercase tracking-wider font-semibold bg-white/10 backdrop-blur-sm rounded-full mb-2 border-l-2 border-accent-400 text-white">Contact Us</span>
                         <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight text-white/95 leading-tight mb-2">
                           Get in Touch
                           <span className="block text-lg md:text-xl text-accent-300 mt-2 font-normal">We're here to help you</span>
@@ -433,7 +433,6 @@ export default function Home() {
 
                   {/* Right Column - Inquiry Form */}
                   <div className="relative mt-6 lg:mt-0 lg:col-span-3">
-                    <div className="absolute inset-0 bg-gradient-to-r from-teal-100/50 to-blue-100/50 rounded-2xl transform rotate-3 scale-105 blur-xl"></div>
                     <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl p-6 sm:p-8 border border-gray-100">
                       {/* Logo */}
                       <div className="flex justify-start mb-8">
