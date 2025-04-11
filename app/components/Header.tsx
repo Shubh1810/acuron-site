@@ -45,19 +45,19 @@ const Header: FC = () => {
             <nav className="hidden md:flex space-x-3 lg:space-x-4">
               {[
                 { href: '/', label: 'HOME' },
-                { href: '/healthcare', label: 'PRODUCTS', highlight: true },
+                { href: '/products', label: 'PRODUCTS' },
                 { href: '/certificates', label: 'CERTIFICATES' },
+                { href: '/events', label: 'EVENTS' },
                 { href: '/categories', label: 'CATEGORIES' },
                 { href: '/faq', label: 'FAQ' },
-                { href: '/about', label: 'ABOUT ACURON' },
               ].map((link) => (
                 <Link 
                   key={link.href} 
                   href={link.href} 
-                  className={`text-[10px] lg:text-[11px] tracking-wide font-bold ${link.highlight ? 'text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-cyan-200' : 'text-white'} hover:text-teal-300 relative group whitespace-nowrap`}
+                  className={`text-[10px] lg:text-[11px] tracking-wide font-bold text-white hover:text-teal-300 relative group whitespace-nowrap`}
                 >
                   {link.label}
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${link.highlight ? 'bg-gradient-to-r from-teal-300 to-cyan-200' : 'bg-teal-400'} group-hover:w-full transition-all duration-300`}></span>
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 group-hover:w-full transition-all duration-300`}></span>
                 </Link>
               ))}
             </nav>
@@ -89,7 +89,8 @@ const Header: FC = () => {
             
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden hover:text-teal-300 transition-colors duration-300"
+              className={`md:hidden transition-all duration-300 rounded-md p-1 ${isMobileMenuOpen ? 'bg-[#00BFFF] text-white' : 'text-white'}`}
+              aria-label="Toggle mobile menu"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -99,20 +100,20 @@ const Header: FC = () => {
         </div>
 
         {/* Mobile Navigation Menu */}
-        <div className={`md:hidden bg-[#051B20] border-t border-gray-700 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-          <nav className="px-4 py-3 space-y-3">
+        <div className={`md:hidden bg-white border-t border-gray-200 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+          <nav className="px-4 py-2 divide-y divide-gray-300">
             {[
               { href: '/', label: 'HOME' },
-              { href: '/healthcare', label: 'PRODUCTS' },
+              { href: '/products', label: 'PRODUCTS' },
               { href: '/certificates', label: 'CERTIFICATES' },
+              { href: '/events', label: 'EVENTS' },
               { href: '/categories', label: 'CATEGORIES' },
               { href: '/faq', label: 'FAQ' },
-              { href: '/about', label: 'ABOUT ACURON' },
-            ].map((link) => (
+            ].map((link, index) => (
               <Link 
                 key={link.href} 
                 href={link.href} 
-                className="block text-[11px] tracking-wide font-bold text-white hover:text-teal-300 transition-colors duration-300"
+                className="block py-3 text-[12px] tracking-wide font-bold text-gray-800 hover:text-[#00BFFF] transition-colors duration-300"
               >
                 {link.label}
               </Link>
