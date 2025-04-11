@@ -17,6 +17,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'Acuron Products India ',
   description: 'India\'s trusted manufacturer of ISO-certified PPE and medical disposable products and custom PPE and surgical kits.',
+  metadataBase: new URL('https://acuron.in'),
   keywords: 'Acuron, Primawear medical supplies, healthcare, surgical products, PPE, medical disposables, India',
   authors: [{ name: 'Acuron Products' }],
   openGraph: {

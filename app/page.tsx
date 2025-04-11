@@ -388,15 +388,18 @@ export default function Home() {
                   interactive={false}
                   size="120%"
                 >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-white text-opacity-90 text-center p-6">
-                      <div className="mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                        </svg>
-                      </div>
-                      <h4 className="text-xl font-bold mb-2">Global Reach</h4>
-                      <p className="font-playfair">Serving healthcare facilities across 25+ countries with essential medical products</p>
+                  <div className="absolute inset-0 flex items-center justify-center overflow-visible">
+                    <div className="relative" style={{ zIndex: 10 }}>
+                      <img 
+                        src="/earth.png" 
+                        alt="Global Exhibition Presence" 
+                        className="w-[110%] h-[110%] object-contain p-4 md:p-8 opacity-100 transform scale-110 hover:scale-115 transition-transform duration-1000"
+                        style={{ 
+                          filter: "drop-shadow(0px 0px 20px rgba(0, 200, 255, 0.4))",
+                          position: "relative",
+                          zIndex: 20
+                        }}
+                      />
                     </div>
                   </div>
                 </BackgroundGradientAnimation>

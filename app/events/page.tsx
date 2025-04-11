@@ -18,12 +18,12 @@ export default function EventsPage() {
     },
     {
       id: 2,
-      name: "Arab Health 2024",
+      name: "Arab Health 2025",
       location: "Dubai, UAE",
-      date: "January 29 - February 1, 2024",
+      date: "January 27-30, 2025",
       description: "The largest healthcare exhibition in the MENA region, showcasing the latest innovations in healthcare technology and services",
       boothNumber: "Za'abeel Hall 1, Z1.F30",
-      image: "/medical-1.jpg",
+      image: "/arab25.jpeg",
       category: "Exhibition"
     },
     {
@@ -163,7 +163,10 @@ export default function EventsPage() {
                 <div className="flex flex-col md:flex-row h-full">
                   <div className="md:w-2/5 aspect-video md:aspect-auto bg-[#0A2A45]/50 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#1E619E]/20 to-transparent" />
-                    <div className="absolute inset-0 bg-[url('/medical-1.jpg')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center opacity-35 group-hover:opacity-50 transition-opacity duration-300" 
+                      style={{ backgroundImage: `url(${event.image})` }}
+                    />
                     <div className="absolute top-4 right-4 bg-[#16DBBE]/20 text-[#16DBBE] text-xs font-bold py-1 px-3 rounded-full">
                       {event.category}
                     </div>
@@ -247,12 +250,11 @@ export default function EventsPage() {
               className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden border border-[#1E619E]/30"
             >
               <div className="absolute inset-0 bg-[#0A2A45]/80 flex items-center justify-center">
-                <div className="text-white text-center">
-                  <p className="text-lg mb-2">World Map Visualization</p>
-                  <p className="text-sm text-gray-300">
-                    Highlighting our exhibition presence in 20+ countries across 5 continents
-                  </p>
-                </div>
+                <img 
+                  src="/earth.png" 
+                  alt="Global Exhibition Presence" 
+                  className="w-full h-full object-contain p-4 md:p-8 opacity-80"
+                />
               </div>
             </motion.div>
           </div>
