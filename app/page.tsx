@@ -377,17 +377,15 @@ export default function Home() {
                 </Link>
               </div>
               <div className="md:w-1/2 rounded-lg overflow-hidden relative min-h-[400px]">
-                <BackgroundGradientAnimation 
-                  gradientBackgroundStart="rgb(5, 70, 90)" 
-                  gradientBackgroundEnd="rgb(5, 50, 80)"
-                  firstColor="0, 150, 170"
-                  secondColor="20, 120, 160"
-                  thirdColor="40, 80, 130"
-                  fourthColor="10, 100, 140"
-                  fifthColor="30, 90, 120"
-                  interactive={false}
-                  size="120%"
-                >
+                <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-blue-900 rounded-lg">
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 opacity-30">
+                    <div className="absolute h-2 w-2 rounded-full bg-white/90 top-[10%] left-[15%] animate-pulse"></div>
+                    <div className="absolute h-1.5 w-1.5 rounded-full bg-white/80 top-[25%] left-[35%] animate-pulse delay-150"></div>
+                    <div className="absolute h-1 w-1 rounded-full bg-white/70 top-[40%] left-[50%] animate-pulse delay-300"></div>
+                    <div className="absolute h-2 w-2 rounded-full bg-white/90 top-[60%] left-[65%] animate-pulse delay-75"></div>
+                    <div className="absolute h-1.5 w-1.5 rounded-full bg-white/80 top-[75%] left-[80%] animate-pulse delay-200"></div>
+                  </div>
                   <div className="absolute inset-0 flex items-center justify-center overflow-visible">
                     <div className="relative" style={{ zIndex: 10 }}>
                       <img 
@@ -395,14 +393,14 @@ export default function Home() {
                         alt="Global Exhibition Presence" 
                         className="w-[110%] h-[110%] object-contain p-4 md:p-8 opacity-100 transform scale-110 hover:scale-115 transition-transform duration-1000"
                         style={{ 
-                          filter: "drop-shadow(0px 0px 20px rgba(0, 200, 255, 0.4))",
+                          filter: "drop-shadow(0px 0px 30px rgba(0, 200, 255, 0.6))",
                           position: "relative",
                           zIndex: 20
                         }}
                       />
                     </div>
                   </div>
-                </BackgroundGradientAnimation>
+                </div>
               </div>
             </div>
           </div>
