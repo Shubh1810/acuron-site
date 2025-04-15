@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import Header from "../components/Header";
+import Image from "next/image";
 
 export default function EventsPage() {
   // Mock upcoming and past events data
@@ -219,7 +220,7 @@ export default function EventsPage() {
           >
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Can't make it to an event?</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Can&apos;t make it to an event?</h2>
                 <p className="text-gray-300 mb-6 md:mb-0 max-w-xl">
                   Schedule a private virtual demonstration of our medical supplies and equipment. Our team will provide a personalized presentation of our products.
                 </p>
@@ -250,10 +251,12 @@ export default function EventsPage() {
               className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden border border-[#1E619E]/30"
             >
               <div className="absolute inset-0 bg-[#0A2A45]/80 flex items-center justify-center">
-                <img 
+                <Image 
                   src="/earth.png" 
                   alt="Global Exhibition Presence" 
-                  className="w-full h-full object-contain p-4 md:p-8 opacity-80"
+                  width={800}
+                  height={600}
+                  className="object-contain p-4 md:p-8 opacity-80"
                 />
               </div>
             </motion.div>

@@ -7,15 +7,13 @@ interface MetricProps {
   label: string;
   suffix?: string;
   className?: string;
-  showDecimals?: boolean;
 }
 
 export default function Metric({ 
   value, 
   label, 
   suffix = '+', 
-  className = '',
-  showDecimals = false
+  className = ''
 }: MetricProps) {
   const [counter, setCounter] = useState(0);
   const counterRef = useRef<HTMLDivElement>(null);

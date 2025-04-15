@@ -211,7 +211,7 @@ export default function FAQPage() {
           >
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Can't find the answer you need?</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Can&apos;t find the answer you need?</h2>
                 <p className="text-gray-300 mb-6 md:mb-0 max-w-xl">
                   Our team is ready to assist with any specific questions about our products, ordering process, or technical specifications. Reach out to us directly for personalized support.
                 </p>

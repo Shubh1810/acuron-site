@@ -317,7 +317,6 @@ export default function Home() {
                             value={10000} 
                             label="Satisfied Customers" 
                             className="w-full" 
-                            showDecimals={false}
                           />
                         </div>
                         
@@ -332,7 +331,6 @@ export default function Home() {
                             value={500} 
                             label="Products" 
                             className="w-full" 
-                            showDecimals={false}
                           />
                         </div>
                         
@@ -347,7 +345,6 @@ export default function Home() {
                             value={20} 
                             label="Years of Experience" 
                             className="w-full" 
-                            showDecimals={false}
                           />
                         </div>
                       </div>
@@ -372,9 +369,12 @@ export default function Home() {
                   Through our extensive distribution network, Acuron Products ensures that healthcare 
                   providers have access to high-quality disposable medical products when and where they need them.
                 </p>
-                <Link href="/impact" className="border-2 border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white font-bold py-3 px-8 rounded-md inline-block transition duration-300">
-                  See how
-                </Link>
+                <div className="relative group inline-block">
+                  <div className="absolute -inset-0.5 rounded-md opacity-80 bg-gradient-to-r from-[#158C07] via-[#0FB36D] to-[#3BB7EB] blur-sm group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-rotate"></div>
+                  <Link href="/impact" className="relative inline-block bg-white text-gray-800 font-bold py-3 px-8 rounded-md transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                    See how
+                  </Link>
+                </div>
               </div>
               <div className="md:w-1/2 rounded-lg overflow-hidden relative min-h-[400px]">
                 <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-blue-900 rounded-lg">
@@ -388,10 +388,12 @@ export default function Home() {
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center overflow-visible">
                     <div className="relative" style={{ zIndex: 10 }}>
-                      <img 
+                      <Image 
                         src="/earth.png" 
                         alt="Global Exhibition Presence" 
-                        className="w-[110%] h-[110%] object-contain p-4 md:p-8 opacity-100 transform scale-110 hover:scale-115 transition-transform duration-1000"
+                        width={800}
+                        height={800}
+                        className="object-contain p-4 md:p-8 opacity-100 transform scale-110 hover:scale-115 transition-transform duration-1000"
                         style={{ 
                           filter: "drop-shadow(0px 0px 30px rgba(0, 200, 255, 0.6))",
                           position: "relative",
@@ -433,7 +435,7 @@ export default function Home() {
                         <span className="inline-block px-3 py-1 text-xs uppercase tracking-wider font-semibold bg-white/10 backdrop-blur-sm rounded-full mb-2 border-l-2 border-accent-400 text-white">Contact Us</span>
                         <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight text-white/95 leading-tight mb-2">
                           Get in Touch
-                          <span className="block text-lg md:text-xl text-accent-300 mt-2 font-normal">We're here to help you</span>
+                          <span className="block text-lg md:text-xl text-accent-300 mt-2 font-normal">We&apos;re here to help you</span>
                         </h2>
                       </div>
                     </div>
@@ -569,13 +571,16 @@ export default function Home() {
                         </div>
 
                         <div>
-                          <button 
-                            type="submit"
-                            className="w-full bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white font-semibold py-3.5 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 relative overflow-hidden group"
-                          >
-                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-                            <span className="relative">Send Inquiry</span>
-                          </button>
+                          <div className="relative group">
+                            <div className="absolute -inset-0.5 rounded-xl opacity-80 bg-gradient-to-r from-[#158C07] via-[#0FB36D] to-[#3BB7EB] blur-sm group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-rotate"></div>
+                            <button 
+                              type="submit"
+                              className="w-full relative bg-white text-gray-800 font-semibold py-3.5 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 overflow-hidden group"
+                            >
+                              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                              <span className="relative">Send Inquiry</span>
+                            </button>
+                          </div>
                           <p className="text-xs text-gray-500 text-center mt-4">
                             By submitting this form, you agree to our{' '}
                             <Link href="/privacy" className="text-teal-600 hover:text-teal-700 transition-colors duration-200">Privacy Policy</Link>

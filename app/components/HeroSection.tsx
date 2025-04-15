@@ -37,13 +37,14 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
           <p className="text-lg sm:text-xl mb-8 text-gray-100 font-playfair">
             {subtitle}
           </p>
-          <Link 
-            href={ctaLink}
-            className="inline-block text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
-            style={{ background: 'linear-gradient(to right, #00BFFF, #20B2AA)' }}
-          >
-            {ctaText}
-          </Link>
+          <div className="inline-block relative" style={{ background: 'linear-gradient(90deg, #158C07, #16599D)', borderRadius: '9999px', padding: '2px' }}>
+            <Link 
+              href={ctaLink}
+              className="inline-block bg-white text-[#333333] font-bold py-4 px-14 rounded-full"
+            >
+              {ctaText}
+            </Link>
+          </div>
         </div>
       </div>
 
