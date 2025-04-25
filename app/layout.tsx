@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Roboto } from 'next/font/google'
 import './globals.css'
 import CacheCleanupClient from './lib/CacheCleanupClient';
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ['latin'] })
 const playfair = Playfair_Display({ 
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body className={`${inter.className} ${playfair.variable} ${roboto.variable}`}>
         <CacheCleanupClient />
         {children}
+        <Analytics />
       </body>
     </html>
   )
