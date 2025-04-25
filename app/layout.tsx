@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Roboto } from 'next/font/google'
 import './globals.css'
+import CacheCleanupClient from './lib/CacheCleanupClient';
 
 const inter = Inter({ subsets: ['latin'] })
 const playfair = Playfair_Display({ 
@@ -53,7 +54,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${inter.className} ${playfair.variable} ${roboto.variable}`}>{children}</body>
+      <body className={`${inter.className} ${playfair.variable} ${roboto.variable}`}>
+        <CacheCleanupClient />
+        {children}
+      </body>
     </html>
   )
 } 

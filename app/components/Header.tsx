@@ -1,23 +1,41 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { FC, useState } from 'react';
+import { FC, useState, useMemo, useCallback } from 'react';
 import CountrySelector from './CountrySelector';
 
 const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Flagship blue color
+  const flagshipBlue = "#0F4679";
+
+  // Memoize navigation links to prevent unnecessary re-renders
+  const navigationLinks = useMemo(() => [
+    { href: '/', label: 'HOME' },
+    { href: '/products', label: 'PRODUCTS' },
+    { href: '/certificates', label: 'CERTIFICATES' },
+    { href: '/events', label: 'EVENTS' },
+    { href: '/categories', label: 'CATEGORIES' },
+    { href: '/faq', label: 'FAQ' },
+  ], []);
+
+  // Memoize the toggle function to prevent recreation on renders
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev);
+  }, []);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full shadow-md">
-      {/* Top Navigation Bar */}
-      <div className="bg-gradient-to-r from-[#0F4679] to-[#16599D] text-white">
+      {/* Top Navigation Bar - Changed to white background with blue text */}
+      <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end items-center space-x-6">
-          <Link href="/company" className="text-[11px] tracking-wide font-bold hover:text-sky-200 transition-colors duration-300">
+          <Link href="/company" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             OUR COMPANY
           </Link>
-          <Link href="/contact" className="text-[11px] tracking-wide font-bold hover:text-sky-200 transition-colors duration-300">
+          <Link href="/contact" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             CONTACT
           </Link>
-          <Link href="/careers" className="text-[11px] tracking-wide font-bold hover:text-sky-200 transition-colors duration-300">
+          <Link href="/careers" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             CAREERS
           </Link>
           <CountrySelector />
@@ -36,6 +54,7 @@ const Header: FC = () => {
                   width={280}
                   height={84}
                   priority
+                  sizes="(max-width: 640px) 144px, 160px"
                   className="object-contain scale-125 translate-y-0.5"
                 />
               </div>
@@ -43,14 +62,7 @@ const Header: FC = () => {
             
             {/* Main Navigation */}
             <nav className="hidden md:flex space-x-3 lg:space-x-4">
-              {[
-                { href: '/', label: 'HOME' },
-                { href: '/products', label: 'PRODUCTS' },
-                { href: '/certificates', label: 'CERTIFICATES' },
-                { href: '/events', label: 'EVENTS' },
-                { href: '/categories', label: 'CATEGORIES' },
-                { href: '/faq', label: 'FAQ' },
-              ].map((link) => (
+              {navigationLinks.map((link) => (
                 <Link 
                   key={link.href} 
                   href={link.href} 
@@ -88,7 +100,7 @@ const Header: FC = () => {
             </div>
             
             <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={toggleMobileMenu}
               className={`md:hidden transition-all duration-300 rounded-md p-1 ${isMobileMenuOpen ? 'bg-[#16599D] text-white' : 'text-white'}`}
               aria-label="Toggle mobile menu"
             >
@@ -102,18 +114,12 @@ const Header: FC = () => {
         {/* Mobile Navigation Menu */}
         <div className={`md:hidden bg-white border-t border-gray-200 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
           <nav className="px-4 py-2 divide-y divide-gray-300">
-            {[
-              { href: '/', label: 'HOME' },
-              { href: '/products', label: 'PRODUCTS' },
-              { href: '/certificates', label: 'CERTIFICATES' },
-              { href: '/events', label: 'EVENTS' },
-              { href: '/categories', label: 'CATEGORIES' },
-              { href: '/faq', label: 'FAQ' },
-            ].map((link) => (
+            {navigationLinks.map((link) => (
               <Link 
                 key={link.href} 
                 href={link.href} 
                 className="block py-3 text-[12px] tracking-wide font-bold text-gray-800 hover:text-[#16599D] transition-colors duration-300"
+                onClick={toggleMobileMenu} // Close menu when a link is clicked
               >
                 {link.label}
               </Link>
