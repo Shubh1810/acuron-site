@@ -8,7 +8,7 @@ interface Country {
   name: string;
 }
 
-// Using SVG flags from flagcdn.com
+// Using local flag images instead of external URLs
 const countries: Country[] = [
   { code: 'in', name: 'India' },
   { code: 'us', name: 'USA' },
@@ -49,7 +49,7 @@ const CountrySelector = () => {
       >
         <div className="w-5 h-3.5 overflow-hidden rounded-sm hover:opacity-80 transition-opacity duration-300">
           <Image 
-            src={`https://flagcdn.com/w40/${selectedCountry.code}.png`}
+            src={`/flags/${selectedCountry.code}.png`}
             alt={selectedCountry.name}
             width={20} 
             height={14}
@@ -74,7 +74,7 @@ const CountrySelector = () => {
               >
                 <div className="w-5 h-3.5 overflow-hidden rounded-sm mr-3">
                   <Image 
-                    src={`https://flagcdn.com/w40/${country.code}.png`}
+                    src={`/flags/${country.code}.png`}
                     alt={country.name}
                     width={20} 
                     height={14}
