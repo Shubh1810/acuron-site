@@ -408,7 +408,7 @@ export default function Home() {
         </section>
 
         {/* Call to Action */}
-        <section className="relative py-12 md:py-24 min-h-[1600px] md:min-h-[900px]">
+        <section className="relative py-12 md:py-24 min-h-[1800px] sm:min-h-[1700px] md:min-h-[900px]">
           <BackgroundGradientAnimation 
             gradientBackgroundStart="rgb(10, 61, 98)" 
             gradientBackgroundEnd="rgb(15, 70, 110)"
@@ -423,7 +423,7 @@ export default function Home() {
             containerClassName="absolute inset-0"
           >
             <div className="relative z-10 h-full flex items-start sm:items-center">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 pb-24 sm:py-8 md:py-12">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 pb-28 sm:pb-20 md:py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-12">
                   {/* Left Column - Map and Company Info */}
                   <div className="lg:col-span-2 space-y-6">
@@ -462,10 +462,12 @@ export default function Home() {
                       <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
                         <div className="flex items-start space-x-3">
                           <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-accent-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" clipRule="evenodd" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
+                            <Image
+                              src="/googlemaps.png"
+                              alt="Google Maps Icon"
+                              width={24}
+                              height={24}
+                            />
                           </div>
                           <div className="min-w-0">
                             <h3 className="text-white/90 font-semibold text-sm">Visit Us</h3>
@@ -476,9 +478,12 @@ export default function Home() {
                       <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
                         <div className="flex items-start space-x-3">
                           <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-accent-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
+                            <Image
+                              src="/gmailicon.png"
+                              alt="Gmail Icon"
+                              width={24}
+                              height={24}
+                            />
                           </div>
                           <div className="min-w-0">
                             <h3 className="text-white/90 font-semibold text-sm">Email Us</h3>
