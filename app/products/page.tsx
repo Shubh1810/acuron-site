@@ -165,11 +165,11 @@ export default function ProductsPage() {
     : products.filter(product => product.category === activeCategory);
 
   const categories = [
-    { name: "All", icon: "🏥", color: "from-blue-500 to-teal-500" },
-    { name: "PPE", icon: "🛡️", color: "from-green-500 to-emerald-500" },
-    { name: "Surgical", icon: "⚕️", color: "from-blue-600 to-cyan-500" },
-    { name: "Disposal", icon: "♻️", color: "from-purple-500 to-pink-500" },
-    { name: "Kits", icon: "📦", color: "from-orange-500 to-red-500" }
+    { name: "All", color: "from-blue-500 to-teal-500" },
+    { name: "PPE", color: "from-green-500 to-emerald-500" },
+    { name: "Surgical", color: "from-blue-600 to-cyan-500" },
+    { name: "Disposal", color: "from-purple-500 to-pink-500" },
+    { name: "Kits", color: "from-orange-500 to-red-500" }
   ];
 
   const getCategoryColor = (category: string) => {
@@ -208,8 +208,8 @@ export default function ProductsPage() {
           <div className="relative text-center mb-16 overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 -z-10">
-              <div className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-br from-[#0F4679]/10 to-[#158C07]/10 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-gradient-to-br from-[#158C07]/10 to-[#0F4679]/10 rounded-full blur-3xl"></div>
+              <div className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-br from-[#0F4679]/8 to-[#0F4679]/4 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-gradient-to-br from-[#158C07]/6 to-[#0F4679]/4 rounded-full blur-3xl"></div>
             </div>
 
             <motion.div
@@ -225,9 +225,8 @@ export default function ProductsPage() {
               </div>
 
               <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-                <span className="bg-gradient-to-r from-[#0F4679] via-[#158C07] to-[#0F4679] bg-clip-text text-transparent drop-shadow-sm">
-                  Medical Supplies
-                </span>
+                <span className="text-[#0F4679] drop-shadow-sm">Medical </span>
+                <span className="bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent drop-shadow-sm">Supplies</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed font-light">
@@ -274,8 +273,7 @@ export default function ProductsPage() {
                 <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500`} />
                 
                 {/* Content */}
-                <div className="relative flex items-center gap-3">
-                  <span className="text-2xl">{category.icon}</span>
+                <div className="relative flex items-center justify-center">
                   <span className="text-lg font-bold">{category.name}</span>
                 </div>
 
