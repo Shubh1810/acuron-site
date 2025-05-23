@@ -300,11 +300,11 @@ export default function ProductPreviewSection() {
             <div className="text-gray-600">Total Products</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#158C07] mb-2">500+</div>
+            <div className="text-3xl font-bold text-[#0F4679] mb-2">500+</div>
             <div className="text-gray-600">Hospitals Served</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#7C3AED] mb-2">ISO</div>
+            <div className="text-3xl font-bold text-[#158C07] mb-2">ISO</div>
             <div className="text-gray-600">Certified Quality</div>
           </div>
           <div className="text-center">

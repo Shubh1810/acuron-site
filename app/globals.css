@@ -109,6 +109,16 @@
   display: none;
 }
 
+/* Scrollbar hide utility class */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Add these styles to remove input focus outlines globally */
 input:focus {
   outline: none !important;

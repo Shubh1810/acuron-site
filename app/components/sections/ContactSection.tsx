@@ -22,9 +22,9 @@ export default function ContactSection() {
       >
         <div className="relative z-10 h-full flex items-start sm:items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 pb-28 sm:pb-20 md:py-12">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-12 lg:h-full">
               {/* Left Column - Map and Company Info */}
-              <div className="lg:col-span-2 space-y-6">
+              <div className="lg:col-span-2 flex flex-col space-y-6">
                 {/* Company Logo and Heading */}
                 <div className="relative">
                   <div className="absolute -left-3 -top-3 w-12 h-12 bg-gradient-to-br from-blue-400/40 to-teal-300/40 rounded-full blur-lg"></div>
@@ -55,44 +55,44 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                {/* Contact Information Cards */}
-                <div className="grid grid-cols-1 xs:grid-cols-2 gap-4">
-                  <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
-                    <div className="flex items-start space-x-3">
-                      <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
-                        <Image
-                          src="/googlemaps.png"
-                          alt="Google Maps Icon"
-                          width={24}
-                          height={24}
-                        />
+                {/* Contact Information Cards - Auto-expand to fill remaining space */}
+                <div className="flex-1 flex flex-col justify-end">
+                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 mb-4">
+                    <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
+                      <div className="flex items-start space-x-3">
+                        <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
+                          <Image
+                            src="/googlemaps.png"
+                            alt="Google Maps Icon"
+                            width={24}
+                            height={24}
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="text-white/90 font-semibold text-sm">Visit Us</h3>
+                          <p className="text-white/70 text-sm mt-1 break-words">Gala No. 112,112,112 1st Floor, B/10, Pritesh Complex, Dapoda Road, Bhiwandi - 421302, Maharashtra, India</p>
+                        </div>
                       </div>
-                      <div className="min-w-0">
-                        <h3 className="text-white/90 font-semibold text-sm">Visit Us</h3>
-                        <p className="text-white/70 text-sm mt-1 break-words">Gala No. 112,112,112 1st Floor, B/10, Pritesh Complex, Dapoda Road, Bhiwandi - 421302, Maharashtra, India</p>
+                    </div>
+                    <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
+                      <div className="flex items-start space-x-3">
+                        <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
+                          <Image
+                            src="/gmailicon.png"
+                            alt="Gmail Icon"
+                            width={24}
+                            height={24}
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="text-white/90 font-semibold text-sm">Email Us</h3>
+                          <p className="text-white/70 text-sm mt-1 break-words">sales@acuron.in</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
-                    <div className="flex items-start space-x-3">
-                      <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
-                        <Image
-                          src="/gmailicon.png"
-                          alt="Gmail Icon"
-                          width={24}
-                          height={24}
-                        />
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="text-white/90 font-semibold text-sm">Email Us</h3>
-                        <p className="text-white/70 text-sm mt-1 break-words">sales@acuron.in</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Call Us Card */}
-                <div className="mt-4">
+                  
+                  {/* Call Us Card */}
                   <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
                     <div className="flex items-start space-x-3">
                       <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
@@ -114,8 +114,8 @@ export default function ContactSection() {
               </div>
 
               {/* Right Column - Inquiry Form */}
-              <div className="relative mt-6 lg:mt-0 lg:col-span-3">
-                <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl p-6 sm:p-8 border border-gray-100">
+              <div className="relative mt-6 lg:mt-0 lg:col-span-3 flex">
+                <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl p-6 sm:p-8 border border-gray-100 w-full flex flex-col">
                   {/* Logo */}
                   <div className="flex justify-start mb-8">
                     <div className="relative w-[240px] sm:w-[280px] h-24 sm:h-28">
@@ -129,7 +129,7 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  <form className="space-y-5">
+                  <form className="space-y-5 flex-1 flex flex-col">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div className="space-y-1.5">
                         <label className="block text-sm font-medium text-gray-700">Full Name*</label>
@@ -186,16 +186,16 @@ export default function ContactSection() {
                       </select>
                     </div>
 
-                    <div className="space-y-1.5">
+                    <div className="space-y-1.5 flex-1">
                       <label className="block text-sm font-medium text-gray-700">Message</label>
                       <textarea 
                         rows={4}
-                        className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 resize-none text-sm transition-colors duration-200"
+                        className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 resize-none text-sm transition-colors duration-200 flex-1 min-h-[100px]"
                         placeholder="Tell us about your requirements..."
                       ></textarea>
                     </div>
 
-                    <div>
+                    <div className="mt-auto">
                       <div className="relative group">
                         <div className="absolute -inset-0.5 rounded-xl opacity-80 bg-gradient-to-r from-[#158C07] via-[#0FB36D] to-[#3BB7EB] blur-sm group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-rotate"></div>
                         <button 
