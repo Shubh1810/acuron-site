@@ -1,11 +1,67 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Header from "../components/Header";
 import WhiteGridBackground from "../components/ui/white-grid-background";
 import Image from "next/image";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
 import Footer from "../components/sections/Footer";
+
+// Apple-Style Product Showcase Component
+function ProductShowcase({ products }: { products: any[] }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Auto-rotate through product images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % products.length);
+    }, 2000); // Change image every 2 seconds
+
+    return () => clearInterval(interval);
+  }, [products]);
+
+  const currentProduct = products[currentImageIndex];
+
+  return (
+    <div className="mb-20">
+      <div className="w-full">
+        {/* Full Width Image Display */}
+        <div className="relative">
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="aspect-[30/10] relative overflow-hidden"
+          >
+            <Image
+              src={currentProduct?.image || "/products/3ply-pack.png"}
+              alt={currentProduct?.name || "Medical Product"}
+              fill
+              className="object-contain"
+              priority
+            />
+          </motion.div>
+        </div>
+
+        {/* Product Indicators */}
+        <div className="flex justify-center mt-8 space-x-2">
+          {products.slice(0, 8).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentImageIndex
+                  ? 'bg-gradient-to-r from-[#0F4679] to-[#158C07] scale-125'
+                  : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -202,98 +258,114 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Apple-style Category Navigation */}
           <div className="mb-6 pb-4 border-b border-gray-200">
-            <div className="flex items-center justify-center space-x-8 overflow-x-auto scrollbar-hide">
-              <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                  </svg>
+            <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+              <div className="flex items-center justify-center space-x-8 overflow-x-auto scrollbar-hide">
+                <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
+                    <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                  </div>
+                  <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">All Products</span>
                 </div>
-                <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">All Products</span>
-              </div>
 
-              <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/PPE Mask Icon.png"
-                    alt="Face Masks Icon"
-                    width={28}
-                    height={28}
-                    className="object-contain"
-                    style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
-                  />
+                <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
+                    <Image
+                      src="/PPE Mask Icon.png"
+                      alt="Face Masks Icon"
+                      width={28}
+                      height={28}
+                      className="object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Face Masks</span>
                 </div>
-                <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Face Masks</span>
-              </div>
 
-              <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/Health Icon Apron.png"
-                    alt="Coveralls Icon"
-                    width={28}
-                    height={28}
-                    className="object-contain"
-                    style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
-                  />
+                <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
+                    <Image
+                      src="/Health Icon Apron.png"
+                      alt="Coveralls Icon"
+                      width={28}
+                      height={28}
+                      className="object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Coveralls</span>
                 </div>
-                <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Coveralls</span>
-              </div>
 
-              <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/Vascular Surgery Icon.png"
-                    alt="Surgical Items Icon"
-                    width={28}
-                    height={28}
-                    className="object-contain"
-                    style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
-                  />
+                <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
+                    <Image
+                      src="/Vascular Surgery Icon.png"
+                      alt="Surgical Items Icon"
+                      width={28}
+                      height={28}
+                      className="object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Surgical Items</span>
                 </div>
-                <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Surgical Items</span>
-              </div>
 
-              <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/PPE Goggles Icon.png"
-                    alt="Goggles Icon"
-                    width={28}
-                    height={28}
-                    className="object-contain"
-                    style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
-                  />
+                <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
+                    <Image
+                      src="/PPE Goggles Icon.png"
+                      alt="Goggles Icon"
+                      width={28}
+                      height={28}
+                      className="object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Goggles</span>
                 </div>
-                <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Goggles</span>
-              </div>
 
-              <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/Outbreak Health Icon.png"
-                    alt="Disposal Bags Icon"
-                    width={28}
-                    height={28}
-                    className="object-contain"
-                    style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
-                  />
+                <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
+                    <Image
+                      src="/PPE Gloves Icon.png"
+                      alt="Gloves Icon"
+                      width={28}
+                      height={28}
+                      className="object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Gloves</span>
                 </div>
-                <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Disposal Bags</span>
-              </div>
 
-              <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/PPE Suit Icon.png"
-                    alt="Complete Kits Icon"
-                    width={28}
-                    height={28}
-                    className="object-contain"
-                    style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
-                  />
+                <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
+                    <Image
+                      src="/Outbreak Health Icon.png"
+                      alt="Disposal Bags Icon"
+                      width={28}
+                      height={28}
+                      className="object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Disposal Bags</span>
                 </div>
-                <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Complete Kits</span>
+
+                <div className="flex flex-col items-center space-y-2 min-w-[80px] group cursor-pointer">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
+                    <Image
+                      src="/PPE Suit Icon.png"
+                      alt="Complete Kits Icon"
+                      width={28}
+                      height={28}
+                      className="object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(77%) saturate(1280%) hue-rotate(192deg) brightness(94%) contrast(95%)' }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-[#0F4679] transition-colors duration-300">Complete Kits</span>
+                </div>
               </div>
             </div>
           </div>
@@ -304,7 +376,7 @@ export default function ProductsPage() {
           </div>
           
           {/* Futuristic Hero Section */}
-          <div className="relative text-center mb-16 overflow-hidden">
+          <div className="relative text-center mb-8 overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 -z-10">
               <div className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-br from-[#0F4679]/8 to-[#0F4679]/4 rounded-full blur-3xl"></div>
@@ -317,27 +389,36 @@ export default function ProductsPage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative z-10"
             >
-              {/* Floating Badge */}
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#0F4679]/10 to-[#158C07]/10 backdrop-blur-md rounded-full border border-white/30 mb-8 shadow-lg">
-                <div className="w-2 h-2 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent tracking-wider">PREMIUM MEDICAL SOLUTIONS</span>
-              </div>
+              {/* Header Layout: Logo + Badge Left, Description Right */}
+              <div className="flex justify-between items-start mb-12 px-4">
+                {/* Left Side: Logo + Premium Badge */}
+                <div className="flex flex-col items-start space-y-4">
+                  <Image
+                    src="/acprod.png"
+                    alt="Acuron Products - Premium Medical Supplies Manufacturer"
+                    width={200}
+                    height={80}
+                    className="object-contain drop-shadow-lg"
+                    priority
+                  />
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#0F4679]/10 to-[#158C07]/10 backdrop-blur-md rounded-full border border-white/30 shadow-lg">
+                    <div className="w-2 h-2 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-full animate-pulse"></div>
+                    <span className="text-sm font-semibold bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent tracking-wider">PREMIUM MEDICAL SOLUTIONS</span>
+                  </div>
+                </div>
 
-              <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-                <span className="text-[#0F4679] drop-shadow-sm">Medical </span>
-                <span className="bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent drop-shadow-sm">Supplies</span>
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed font-light">
-                Discover our comprehensive range of ISO-certified medical supplies, designed for healthcare professionals who demand excellence in every procedure.
-              </p>
-
-              {/* Glowing Divider */}
-              <div className="flex justify-center mb-16">
-                <div className="w-32 h-1 bg-gradient-to-r from-transparent via-[#158C07] to-transparent rounded-full shadow-[0_0_20px_rgba(21,140,7,0.5)]"></div>
+                {/* Right Side: Description Text */}
+                <div className="flex-1 text-right pl-12">
+                  <p className="text-xl md:text-2xl text-gray-600 leading-relaxed font-light max-w-2xl ml-auto">
+                    Discover our comprehensive range of ISO-certified medical supplies, designed for healthcare professionals who demand excellence in every procedure.
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>
+
+          {/* Apple-Style Product Showcase */}
+          <ProductShowcase products={products} />
 
           {/* Refined Filter Tabs */}
           <motion.div 
@@ -394,11 +475,11 @@ export default function ProductsPage() {
               transition={{ duration: 0.5 }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-24"
             >
-              {filteredProducts.map((product, index) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+            {filteredProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   onHoverStart={() => setHoveredProduct(product.id)}
                   onHoverEnd={() => setHoveredProduct(null)}
@@ -424,7 +505,7 @@ export default function ProductsPage() {
                   <div className={`relative overflow-hidden bg-gradient-to-br from-gray-50 to-white ${product.featured ? 'aspect-[4/5]' : 'aspect-[4/3]'}`}>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-10" />
                     
-                    <Image
+                    <Image 
                       src={hoveredProduct === product.id ? product.secondaryImage : product.image}
                       alt={product.name}
                       fill
@@ -450,12 +531,12 @@ export default function ProductsPage() {
                   {/* Content */}
                   <div className="p-8">
                     <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#0F4679] transition-colors duration-300 leading-tight">
-                      {product.name}
-                    </h3>
+                    {product.name}
+                  </h3>
                     
                     <p className="text-gray-600 mb-6 text-base leading-relaxed">
-                      {product.description}
-                    </p>
+                    {product.description}
+                  </p>
 
                     {/* Specifications */}
                     <div className="flex flex-wrap gap-2 mb-8">
@@ -472,20 +553,20 @@ export default function ProductsPage() {
                     {/* Action Buttons */}
                     <div className="flex gap-4">
                       <button className="flex-1 px-6 py-4 bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-xl transition-all duration-300 font-semibold border-2 border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-lg">
-                        Get Quote
-                      </button>
+                      Get Quote
+                    </button>
                       <button className="px-6 py-4 bg-gradient-to-r from-[#0F4679] to-[#158C07] hover:from-[#0F4679]/90 hover:to-[#158C07]/90 text-white rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105">
                         Details →
-                      </button>
+                    </button>
                     </div>
                   </div>
 
                   {/* Card Glow Effect */}
                   <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10">
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679]/20 to-[#158C07]/20 rounded-3xl blur-2xl scale-110" />
-                  </div>
-                </motion.div>
-              ))}
+                </div>
+              </motion.div>
+            ))}
             </motion.div>
           </AnimatePresence>
 
@@ -515,14 +596,14 @@ export default function ProductsPage() {
               <div className="flex flex-col sm:flex-row gap-6">
                 <button className="px-10 py-5 bg-gradient-to-r from-[#0F4679] to-[#158C07] text-white font-bold rounded-2xl transition-all duration-500 hover:shadow-2xl hover:scale-110 flex items-center gap-3 text-lg">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
                   Contact Expert
                 </button>
                 
                 <button className="px-10 py-5 bg-white/90 backdrop-blur-sm text-[#0F4679] font-bold rounded-2xl border-2 border-[#0F4679]/30 hover:border-[#0F4679]/60 transition-all duration-500 hover:shadow-xl hover:scale-105 text-lg">
                   View Catalog
-                </button>
+              </button>
               </div>
             </div>
           </motion.div>
