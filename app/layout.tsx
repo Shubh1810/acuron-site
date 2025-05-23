@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display, Roboto } from 'next/font/google'
+import { Inter, Playfair_Display, Roboto, Rubik } from 'next/font/google'
 import './globals.css'
 import CacheCleanupClient from './lib/CacheCleanupClient';
 import { Analytics } from "@vercel/analytics/react"
@@ -14,6 +14,10 @@ const roboto = Roboto({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-roboto',
+})
+const rubik = Rubik({
+  subsets: ['latin'],
+  variable: '--font-rubik',
 })
 
 export const metadata: Metadata = {
@@ -301,7 +305,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} ${playfair.variable} ${roboto.variable}`}>
+      <body className={`${inter.className} ${playfair.variable} ${roboto.variable} ${rubik.variable}`}>
         <CacheCleanupClient />
         {children}
         <Analytics />

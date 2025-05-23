@@ -35,6 +35,7 @@ module.exports = {
         playfair: ['var(--font-playfair)', 'serif'],
         sakamoto: ['Sakamoto', 'sans-serif'],
         roboto: ['var(--font-roboto)', 'Arial', 'sans-serif'],
+        rubik: ['var(--font-rubik)', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

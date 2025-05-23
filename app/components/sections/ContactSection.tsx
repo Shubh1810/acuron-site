@@ -118,13 +118,12 @@ export default function ContactSection() {
                 <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl p-6 sm:p-8 border border-gray-100">
                   {/* Logo */}
                   <div className="flex justify-start mb-8">
-                    <div className="relative w-[320px] sm:w-[400px] h-32 sm:h-36">
+                    <div className="relative w-[240px] sm:w-[280px] h-24 sm:h-28">
                       <Image 
-                        src="/acuron.png" 
+                        src="/acprod.png" 
                         alt="Acuron Logo" 
                         fill
-                        className="object-contain object-left mix-blend-multiply"
-                        style={{ filter: 'brightness(0)' }}
+                        className="object-contain object-left"
                         priority
                       />
                     </div>

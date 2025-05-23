@@ -27,14 +27,14 @@ export default function AboutSection() {
           </div>
           <div className="md:w-3/5 flex flex-col justify-center">
             <h3 className="text-5xl font-bold text-gray-800 mb-4 font-sakamoto">Why Choose Acuron?</h3>
-            <p className="text-xl text-gray-700 mb-6 font-playfair">
+            <p className="text-xl text-gray-700 mb-6 font-rubik">
               At Acuron® Products, our dedication to excellence, innovation, and superior quality positions us as a trusted partner in the healthcare industry. Our state-of-the-art manufacturing facility operates under stringent international quality standards, ensuring reliable, ISO-certified products. 
               <br/><br/>
               With a team of over 100 skilled professionals, we deliver exceptional customer service alongside cost-effective solutions tailored to meet the specific demands of intensivists, surgeons, gynecologists, neonatologists, and diverse healthcare professionals. 
               <br/><br/>
               Our robust global distribution network guarantees timely delivery, while our commitment to integrity, sustainability, and continuous improvement assures partners of our lasting reliability.
             </p>
-            <p className="text-xl text-gray-700 font-playfair">
+            <p className="text-xl text-gray-700 font-rubik">
               Choosing Acuron means choosing innovative healthcare solutions backed by proven expertise and unwavering quality.
             </p>
           </div>

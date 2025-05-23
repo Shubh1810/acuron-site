@@ -107,7 +107,7 @@ export default function MissionSection() {
                     
                     <div className="flex-1 p-2 sm:p-4 flex flex-col items-center text-center">
                       <Metric 
-                        value={500} 
+                        value={100} 
                         label="Products" 
                         className="w-full" 
                       />
@@ -121,7 +121,7 @@ export default function MissionSection() {
                     
                     <div className="flex-1 p-2 sm:p-4 flex flex-col items-center text-center">
                       <Metric 
-                        value={20} 
+                        value={15} 
                         label="Years of Experience" 
                         className="w-full" 
                       />

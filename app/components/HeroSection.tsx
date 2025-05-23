@@ -34,7 +34,7 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
             <span className="whitespace-nowrap"><ColourfulText text="Medical Supply" /></span>
             {titleParts[1]}
           </h1>
-          <p className="text-lg sm:text-xl mb-8 text-gray-100 font-playfair">
+          <p className="text-lg sm:text-xl mb-8 text-gray-100 font-rubik">
             {subtitle}
           </p>
           <div className="inline-block relative">
@@ -49,7 +49,7 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
       </div>
 
       {/* Optional overlay gradient */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#082A45] to-transparent pointer-events-none" style={{ height: '50%' }} />
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679] to-transparent pointer-events-none" style={{ height: '50%' }} />
     </div>
   );
 };

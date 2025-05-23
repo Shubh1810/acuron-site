@@ -5,7 +5,7 @@ import ScrollbarEffect from './components/ScrollbarEffect';
 import GridBackground from './components/ui/grid-background';
 import AboutSection from './components/sections/AboutSection';
 import MissionSection from './components/sections/MissionSection';
-import TestimonialsSection from './components/sections/TestimonialsSection';
+import ProductPreviewSection from './components/sections/ProductPreviewSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
 import ClientWrapper from './components/ClientWrapper';
@@ -19,14 +19,14 @@ export default function Home() {
       <main className="min-h-screen pt-[110px]">
         <HeroSection 
           title="Revolutionizing Medical Supply with Precision & Care."
-          subtitle="India's trusted manufacturer of clinically-certified PPE and medical disposable products and kits, empowering hospitals nationwide."
+          subtitle="India's trusted manufacturer of ISO-certified PPE and medical disposable products and kits, empowering hospitals nationwide."
           ctaText="EXPLORE PRODUCTS"
           ctaLink="/products"
         />
 
         <AboutSection />
         <MissionSection />
-        <TestimonialsSection />
+        <ProductPreviewSection />
         <ContactSection />
         <Footer />
       </main>
