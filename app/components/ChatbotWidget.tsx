@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'motion/react';
 export default function ChatbotWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([
     {
       type: 'bot',
@@ -14,10 +15,9 @@ export default function ChatbotWidget() {
     }
   ]);
 
-  const handleSendMessage = () => {
-    if (!message.trim()) return;
+  const handleSendMessage = async () => {
+    if (!message.trim() || isLoading) return;
 
-    // Add user message
     const userMessage = {
       type: 'user',
       content: message,
@@ -25,17 +25,56 @@ export default function ChatbotWidget() {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentMessage = message;
     setMessage('');
+    setIsLoading(true);
 
-    // Simulate bot response
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: currentMessage,
+          conversation: messages
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
+      
       const botResponse = {
         type: 'bot',
-        content: 'Thank you for your message. Our customer service team will assist you shortly. For immediate assistance, please call +91-98200-72148.',
+        content: data.reply,
         timestamp: new Date()
       };
+      
       setMessages(prev => [...prev, botResponse]);
-    }, 1000);
+    } catch (error) {
+      console.error('Chat error:', error);
+      
+      // Fallback response
+      const errorResponse = {
+        type: 'bot',
+        content: 'I apologize for the technical issue. Please contact our sales team directly at +91 98200 72148 or email sales@acuron.in for immediate assistance.',
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, errorResponse]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
   };
 
   return (
@@ -53,6 +92,9 @@ export default function ChatbotWidget() {
         >
           {/* Glow Effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#0F4679] to-[#158C07] rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-300"></div>
+          
+          {/* Online Status Dot */}
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#158C07] rounded-full border-2 border-white animate-pulse shadow-lg"></div>
           
           {/* Icon */}
           <div className="relative z-10 flex items-center justify-center h-full">
@@ -94,7 +136,20 @@ export default function ChatbotWidget() {
             {/* Header */}
             <div className="bg-gradient-to-r from-[#0F4679]/10 to-[#158C07]/10 px-6 py-4 border-b border-gray-100/50">
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-[#158C07] rounded-full animate-pulse"></div>
+                {/* Profile Picture with Online Status */}
+                <div className="relative">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md">
+                    <Image
+                      src="/image.png"
+                      alt="Acuron Assistant Profile"
+                      width={40}
+                      height={40}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  {/* Online Status Indicator */}
+                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#158C07] rounded-full border-2 border-white animate-pulse"></div>
+                </div>
                 <div>
                   <h3 className="font-rubik font-bold text-[#0F4679] text-lg">Acuron Assistant</h3>
                   <p className="text-gray-600 text-xs">Customer Service • Online</p>
@@ -123,6 +178,23 @@ export default function ChatbotWidget() {
                   </div>
                 </motion.div>
               ))}
+              
+              {/* Loading indicator */}
+              {isLoading && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex justify-start"
+                >
+                  <div className="bg-gray-100 text-gray-800 rounded-2xl rounded-bl-md px-4 py-2 text-sm font-rubik">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
             {/* Input */}
@@ -132,17 +204,23 @@ export default function ChatbotWidget() {
                   type="text"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                  onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
-                  className="flex-1 px-4 py-2 bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#0F4679]/20 text-sm font-rubik placeholder-gray-400"
+                  disabled={isLoading}
+                  className="flex-1 px-4 py-2 bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#0F4679]/20 text-sm font-rubik placeholder-gray-400 disabled:opacity-50"
                 />
                 <button
                   onClick={handleSendMessage}
-                  className="w-10 h-10 bg-[#0F4679] text-white rounded-2xl hover:bg-[#0D3A64] hover:shadow-lg transition-all duration-200 flex items-center justify-center"
+                  disabled={isLoading || !message.trim()}
+                  className="w-10 h-10 bg-[#0F4679] text-white rounded-2xl hover:bg-[#0D3A64] hover:shadow-lg transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                  </svg>
+                  {isLoading ? (
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  ) : (
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                    </svg>
+                  )}
                 </button>
               </div>
             </div>

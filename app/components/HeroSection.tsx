@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ColourfulText } from './ui/colorful-text';
 
 interface HeroSectionProps {
@@ -15,16 +14,18 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
   
   return (
     <div className="relative h-[600px] flex items-center">
-      {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full">
-        <Image
-          src="/main.jpeg"
-          alt="Acuron Products India - Surgical Wear, Medical Supplies, 3 Ply Masks, N95 Masks, Surgical Gowns, Bouffant Caps Manufacturing Facility"
-          fill
-          priority
-          className="object-cover brightness-50"  // Darkens the image for better text visibility
-        />
-      </div>
+      {/* Background Image with Parallax Effect */}
+      <div 
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: 'url(/main.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+          filter: 'brightness(0.5)' // Darkens the image for better text visibility
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
