@@ -26,7 +26,6 @@ export default function LoadingScreen({ isVisible }: LoadingScreenProps) {
               sizes="(max-width: 768px) 100vw, 320px"
               className="object-contain scale-100 hover:scale-105 transition-transform duration-700"
               priority
-              loading="eager"
             />
             
             {/* Subtle reflection effect */}

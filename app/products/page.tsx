@@ -2,11 +2,17 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import Header from "../components/Header";
-import Image from "next/image";
 import WhiteGridBackground from "../components/ui/white-grid-background";
+import Image from "next/image";
+import Breadcrumbs from "../components/ui/Breadcrumbs";
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Products' }
+  ];
 
   // Medical supplies product data with proper image paths
   const products = [
@@ -138,6 +144,9 @@ export default function ProductsPage() {
       
       <div className="pt-[90px] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 py-12">
+          {/* Breadcrumbs */}
+          <Breadcrumbs items={breadcrumbItems} />
+          
           {/* Hero section */}
           <div className="text-center mb-16">
             <motion.h1

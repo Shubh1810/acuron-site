@@ -1,0 +1,27 @@
+{
+  "name": "Acuron Products India - Medical Supplies Manufacturer",
+  "short_name": "Acuron",
+  "description": "Leading ISO-certified manufacturer of medical supplies, surgical kits, PPE equipment, and disposable healthcare products.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0F4679",
+  "orientation": "portrait-primary",
+  "categories": ["medical", "healthcare", "business"],
+  "lang": "en-IN",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/favicon-og.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-og.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+} 

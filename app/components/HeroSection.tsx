@@ -19,7 +19,7 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/main.jpeg"
-          alt="Medical Background"
+          alt="Acuron Products India - Surgical Wear, Medical Supplies, 3 Ply Masks, N95 Masks, Surgical Gowns, Bouffant Caps Manufacturing Facility"
           fill
           priority
           className="object-cover brightness-50"  // Darkens the image for better text visibility
