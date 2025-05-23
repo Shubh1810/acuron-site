@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import WhiteGridBackground from "../components/ui/white-grid-background";
 import Image from "next/image";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
+import Footer from "../components/sections/Footer";
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -429,6 +430,7 @@ export default function ProductsPage() {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

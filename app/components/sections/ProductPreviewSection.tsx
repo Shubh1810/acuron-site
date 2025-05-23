@@ -35,7 +35,7 @@ export default function ProductPreviewSection() {
       ]
     },
     {
-      name: "PPE Equipment",
+      name: "PPE",
       description: "Complete range of personal protective equipment",
       color: "from-[#158C07] to-[#0FB36D]",
       accentColor: "text-green-300",
@@ -83,7 +83,7 @@ export default function ProductPreviewSection() {
       ]
     },
     {
-      name: "Complete Kits",
+      name: "Surgical Kits",
       description: "All-in-one medical supply solutions",
       color: "from-[#DC2626] to-[#EF4444]",
       accentColor: "text-red-300",

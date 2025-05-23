@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Header from "../components/Header";
 import Image from "next/image";
 import WhiteGridBackground from "../components/ui/white-grid-background";
+import Footer from "../components/sections/Footer";
 
 export default function ServicesPage() {
   const [expandedService, setExpandedService] = useState<number | null>(null);
@@ -389,6 +390,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 } 

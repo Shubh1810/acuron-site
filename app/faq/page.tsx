@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import Header from "../components/Header";
+import Footer from "../components/sections/Footer";
 
 export default function FAQPage() {
   // FAQ data organized by categories
@@ -234,6 +235,7 @@ export default function FAQPage() {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

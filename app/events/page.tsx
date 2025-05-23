@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import Header from "../components/Header";
 import Image from "next/image";
+import Footer from "../components/sections/Footer";
 
 export default function EventsPage() {
   // Mock upcoming and past events data
@@ -263,6 +264,7 @@ export default function EventsPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 } 

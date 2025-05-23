@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import Header from "../components/Header";
+import Footer from "../components/sections/Footer";
 
 export default function CertificatesPage() {
   // Certificate data
@@ -199,6 +200,7 @@ export default function CertificatesPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
