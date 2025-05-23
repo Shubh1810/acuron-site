@@ -31,10 +31,10 @@ const Header: FC = () => {
       {/* Top Navigation Bar - Changed to white background with blue text */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end items-center space-x-6">
-          <Link href="/company" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
+          <Link href="/#about-us-section" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             OUR COMPANY
           </Link>
-          <Link href="/contact" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
+          <Link href="/#contact-us-section" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             CONTACT
           </Link>
           <Link href="/careers" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">

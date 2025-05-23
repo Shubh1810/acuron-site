@@ -177,7 +177,7 @@ export default function ProductPreviewSection() {
               }}
               className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                 activeCategory === index
-                  ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
+                  ? `bg-white text-${category.color.split(' ')[0].substring(5)} border border-${category.color.split(' ')[0].substring(5)} shadow-lg`
                   : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
               }`}
             >
@@ -248,8 +248,8 @@ export default function ProductPreviewSection() {
               <p className="text-lg text-gray-600 mb-6">{currentCategory.description}</p>
               
               <div className="flex items-center space-x-4 mb-8">
-                <div className={`px-4 py-2 bg-gradient-to-r ${currentCategory.color} rounded-lg`}>
-                  <span className="text-white font-semibold">{currentCategory.count}</span>
+                <div className={`px-4 py-2 rounded-lg bg-white border border-${currentCategory.color.split(' ')[0].substring(5)}`}>
+                  <span className={`font-semibold text-${currentCategory.color.split(' ')[0].substring(5)}`}>{currentCategory.count}</span>
                 </div>
                 <div className="text-gray-500">Available in this category</div>
               </div>
@@ -282,7 +282,7 @@ export default function ProductPreviewSection() {
             <div className="pt-6">
               <Link
                 href="/products"
-                className={`inline-flex items-center px-8 py-4 bg-gradient-to-r ${currentCategory.color} text-white font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 group`}
+                className={`inline-flex items-center px-8 py-4 font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 group bg-white border border-${currentCategory.color.split(' ')[0].substring(5)} text-${currentCategory.color.split(' ')[0].substring(5)}`}
               >
                 Explore All Products
                 <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -304,11 +304,11 @@ export default function ProductPreviewSection() {
             <div className="text-gray-600">Hospitals Served</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#158C07] mb-2">ISO</div>
+            <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent">ISO</div>
             <div className="text-gray-600">Certified Quality</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#DC2626] mb-2">24/7</div>
+            <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#0F4679] to-[#DC2626] bg-clip-text text-transparent">24/7</div>
             <div className="text-gray-600">Support Available</div>
           </div>
         </div>

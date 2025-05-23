@@ -6,7 +6,7 @@ import { BackgroundGradientAnimation } from '../ui/background-gradient-animation
 
 export default function ContactSection() {
   return (
-    <section className="relative py-12 md:py-24 min-h-[1800px] sm:min-h-[1700px] md:min-h-[900px]">
+    <section className="relative py-12 md:py-24 min-h-[1800px] sm:min-h-[1700px] md:min-h-[900px]" id="contact-us-section">
       <BackgroundGradientAnimation 
         gradientBackgroundStart="rgb(10, 61, 98)" 
         gradientBackgroundEnd="rgb(15, 70, 110)"
