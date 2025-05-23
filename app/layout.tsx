@@ -1,20 +1,32 @@
 import React from 'react';
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display, Roboto, Rubik } from 'next/font/google'
+import { Inter, Montserrat, Playfair_Display, Roboto, Rubik } from 'next/font/google'
 import './globals.css'
 import CacheCleanupClient from './lib/CacheCleanupClient';
 import { Analytics } from "@vercel/analytics/react"
+import ChatbotWidget from './components/ChatbotWidget'
 
-const inter = Inter({ subsets: ['latin'] })
-const playfair = Playfair_Display({ 
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+})
+
+const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
 })
+
 const roboto = Roboto({
-  weight: ['400', '700'],
+  weight: ['100', '300', '400', '500', '700', '900'],
   subsets: ['latin'],
   variable: '--font-roboto',
 })
+
 const rubik = Rubik({
   subsets: ['latin'],
   variable: '--font-rubik',
@@ -305,9 +317,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} ${playfair.variable} ${roboto.variable} ${rubik.variable}`}>
+      <body className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${rubik.variable} font-sans`}>
         <CacheCleanupClient />
         {children}
+        <ChatbotWidget />
         <Analytics />
       </body>
     </html>
