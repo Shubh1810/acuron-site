@@ -37,7 +37,10 @@ export default function ChatbotWidget() {
         },
         body: JSON.stringify({
           message: currentMessage,
-          conversation: messages
+          conversation: messages.map(msg => ({
+            ...msg,
+            timestamp: msg.timestamp.toISOString()
+          }))
         }),
       });
 

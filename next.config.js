@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',  // Change to 'export' for static site generation
   trailingSlash: true,  // Add trailing slashes to URLs
   images: {
     unoptimized: process.env.NODE_ENV === 'development' ? true : false,  // Enable optimization for production builds
