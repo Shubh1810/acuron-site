@@ -39,6 +39,12 @@ export const metadata: Metadata = {
   },
   description: 'Acuron Products - Leading manufacturer of surgical supplies, surgical wear, 3 ply masks, N95 masks, surgical gowns, bouffant caps, razors, and medical equipment. Wide distribution network across India with exports globally. ISO certified Primawear & Shi Mediwear quality.',
   metadataBase: new URL('https://acuron.in'),
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
   keywords: [
     // Primary Brand Keywords
     'Acuron',

@@ -13,19 +13,25 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
   const titleParts = title.split("Medical Supply");
   
   return (
-    <div className="relative h-[600px] flex items-center">
-      {/* Background Image with Parallax Effect */}
+    <div className="relative h-[600px] flex items-center overflow-hidden">
+      {/* Background Image - Optimized for mobile and production */}
       <div 
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full transform scale-105 transition-transform duration-700 ease-out"
         style={{
           backgroundImage: 'url(/main.jpeg)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed',
-          filter: 'brightness(0.5)' // Darkens the image for better text visibility
+          filter: 'brightness(0.5)',
+          willChange: 'transform'
         }}
       />
+
+      {/* Gradient overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/60" />
+
+      {/* Fallback solid background for slow connections or image load failures */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0F4679] to-[#158C07] opacity-0 transition-opacity duration-300 peer-error:opacity-100" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
@@ -49,8 +55,8 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
         </div>
       </div>
 
-      {/* Optional overlay gradient */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679] to-transparent pointer-events-none" style={{ height: '50%' }} />
+      {/* Bottom gradient overlay */}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679]/80 to-transparent pointer-events-none h-1/2" />
     </div>
   );
 };

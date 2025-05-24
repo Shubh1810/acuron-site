@@ -210,6 +210,7 @@ export default function ChatbotWidget() {
                   onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
                   disabled={isLoading}
+                  style={{ fontSize: '16px' }}
                   className="flex-1 px-4 py-2 bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#0F4679]/20 text-sm font-rubik placeholder-gray-400 disabled:opacity-50"
                 />
                 <button
