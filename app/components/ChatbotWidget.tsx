@@ -10,7 +10,7 @@ export default function ChatbotWidget() {
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      content: 'Hello! I\'m here to help you with medical supplies. How can I assist you today?',
+      content: "Hello! I am your Acuron virtual assistant, specializing in our range of medical supplies. Whether you have questions about specifications, usage, or inquiries, I'm here to support you. How can I assist you today?",
       timestamp: new Date()
     }
   ]);
