@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic'; // Ensures the route is not statically exported
+
 export async function GET() {
   console.log('[Test Env API] GET request received.');
 
