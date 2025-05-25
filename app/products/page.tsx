@@ -7,41 +7,35 @@ import Image from "next/image";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
 import Footer from "../components/sections/Footer";
 
-// Apple-Style Product Showcase Component
-function ProductShowcase({ products }: { products: any[] }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Auto-rotate through product images
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % products.length);
-    }, 2000); // Change image every 2 seconds
-
-    return () => clearInterval(interval);
-  }, [products]);
-
-  const currentProduct = products[currentImageIndex];
-
+// Professional Video Showcase Component
+function VideoShowcase() {
   return (
     <div className="mb-20">
       <div className="w-full">
-        {/* Full Width Image Display */}
-        <div className="relative">
-          <motion.div
-            key={currentImageIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="aspect-video md:aspect-[30/10] relative overflow-hidden"
+        {/* Minimal Video Display */}
+        <div className="relative border border-gray-300 mx-auto max-w-sm aspect-[3/4] md:max-w-none md:aspect-video">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback"
+            style={{ pointerEvents: 'none' }}
           >
-            <Image
-              src={currentProduct?.image || "/products/3ply-pack.png"}
-              alt={currentProduct?.name || "Medical Product"}
-              fill
-              className="object-contain"
-              priority
-            />
-          </motion.div>
+            <source src="/Indian Nurse Video.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Premium Medical Solutions Badge - Top Right */}
+          <div className="absolute top-6 right-6 z-20">
+            <div className="inline-flex items-center gap-0.5 px-1.5 py-0.5 md:gap-1.5 md:px-3 md:py-1.5 bg-gradient-to-r from-[#0F4679]/10 to-[#158C07]/10 backdrop-blur-md rounded-full border border-white/30 shadow-lg whitespace-nowrap">
+              <div className="w-0.5 h-0.5 md:w-1.5 md:h-1.5 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-full animate-pulse"></div>
+              <span className="text-[8px] md:text-xs font-semibold bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent tracking-wider">
+                PREMIUM MEDICAL SOLUTIONS
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -57,19 +51,8 @@ export default function ProductsPage() {
     { label: 'Products' }
   ];
 
-  // Medical supplies product data with proper image paths
+  // Medical supplies product data with proper image paths - Reordered
   const products = [
-    {
-      id: 1,
-      name: "3-Ply Medical Face Masks",
-      description: "High-quality disposable medical masks with bacterial filtration efficiency",
-      category: "PPE",
-      image: "/products/3ply-pack.png",
-      secondaryImage: "/products/3ply-display.png",
-      featured: true,
-      showInHero: true,
-      specs: ["99% BFE", "Fluid Resistant", "Comfortable Fit"]
-    },
     {
       id: 2,
       name: "N95 Respirator Masks",
@@ -82,6 +65,28 @@ export default function ProductsPage() {
       specs: ["NIOSH Approved", "95% Filtration", "Secure Seal"]
     },
     {
+      id: 9,
+      name: "Surgical Razors",
+      description: "Precision surgical prep razors with safety features",
+      category: "Surgical",
+      image: "/products/razor.png",
+      secondaryImage: "/products/Acuron Prep Rezor.png",
+      featured: true,
+      showInHero: true,
+      specs: ["Sterile", "Safety Guard", "Sharp Blade"]
+    },
+    {
+      id: 1,
+      name: "3-Ply Medical Face Masks",
+      description: "High-quality disposable medical masks with bacterial filtration efficiency",
+      category: "PPE",
+      image: "/products/3ply-pack.png",
+      secondaryImage: "/products/3ply-display.png",
+      featured: true,
+      showInHero: true,
+      specs: ["99% BFE", "Fluid Resistant", "Comfortable Fit"]
+    },
+    {
       id: 3,
       name: "Medical Coveralls",
       description: "Full-body protection coveralls with elastic cuffs and ankles",
@@ -91,6 +96,28 @@ export default function ProductsPage() {
       featured: false,
       showInHero: true,
       specs: ["Full Coverage", "Breathable", "Elastic Cuffs"]
+    },
+    {
+      id: 11,
+      name: "Surgical Gowns",
+      description: "Fluid-resistant surgical gowns in multiple SMS fabric weights",
+      category: "Surgical",
+      image: "/products/Product Pics Aug 27 2020.jpeg",
+      secondaryImage: "/products/Product Pics for Display July 30 2020 (2).jpg",
+      featured: true,
+      showInHero: true,
+      specs: ["SMS Material", "Fluid Resistant", "Comfortable"]
+    },
+    {
+      id: 8,
+      name: "Complete PPE Kit",
+      description: "All-in-one protection kit including mask, coverall, gloves, and more",
+      category: "Kits",
+      image: "/products/OT Premium Kit Product Pics.png",
+      secondaryImage: "/products/Product Pics for Display July 30 2020.jpg",
+      featured: true,
+      showInHero: false,
+      specs: ["Complete Set", "ISO Certified", "Premium Quality"]
     },
     {
       id: 4,
@@ -137,28 +164,6 @@ export default function ProductsPage() {
       specs: ["Powder-Free", "Nitrile", "Textured Grip"]
     },
     {
-      id: 8,
-      name: "Complete PPE Kit",
-      description: "All-in-one protection kit including mask, coverall, gloves, and more",
-      category: "Kits",
-      image: "/products/OT Premium Kit Product Pics.png",
-      secondaryImage: "/products/Product Pics for Display July 30 2020.jpg",
-      featured: true,
-      showInHero: false,
-      specs: ["Complete Set", "ISO Certified", "Premium Quality"]
-    },
-    {
-      id: 9,
-      name: "Surgical Razors",
-      description: "Precision surgical prep razors with safety features",
-      category: "Surgical",
-      image: "/products/razor.png",
-      secondaryImage: "/products/Acuron Prep Rezor.png",
-      featured: true,
-      showInHero: true,
-      specs: ["Sterile", "Safety Guard", "Sharp Blade"]
-    },
-    {
       id: 10,
       name: "Surgical Drapes (SMS)",
       description: "Sterile surgical drapes in various SMS fabric compositions",
@@ -168,17 +173,6 @@ export default function ProductsPage() {
       featured: false,
       showInHero: false,
       specs: ["SMS Fabric", "Sterile", "Fluid Barrier"]
-    },
-    {
-      id: 11,
-      name: "Surgical Gowns",
-      description: "Fluid-resistant surgical gowns in multiple SMS fabric weights",
-      category: "Surgical",
-      image: "/products/Product Pics Aug 27 2020.jpeg",
-      secondaryImage: "/products/Product Pics for Display July 30 2020 (2).jpg",
-      featured: true,
-      showInHero: true,
-      specs: ["SMS Material", "Fluid Resistant", "Comfortable"]
     },
     {
       id: 12,
@@ -215,9 +209,6 @@ export default function ProductsPage() {
     }
   ];
 
-  // Filter products for the hero showcase
-  const showcaseProducts = products.filter(product => product.showInHero);
-
   // Filter products based on active category
   const filteredProducts = activeCategory === "All" 
     ? products 
@@ -248,6 +239,36 @@ export default function ProductsPage() {
       case "Disposal": return "border-purple-500/30";
       case "Kits": return "border-orange-500/30";
       default: return "border-gray-500/30";
+    }
+  };
+
+  const getCategoryBorderActive = (category: string) => {
+    switch(category) {
+      case "PPE": return "border-green-500";
+      case "Surgical": return "border-blue-500";
+      case "Disposal": return "border-purple-500";
+      case "Kits": return "border-orange-500";
+      default: return "border-gray-500";
+    }
+  };
+
+  const getCategoryTextActive = (category: string) => {
+    switch(category) {
+      case "PPE": return "text-green-500";
+      case "Surgical": return "text-blue-500";
+      case "Disposal": return "text-purple-500";
+      case "Kits": return "text-orange-500";
+      default: return "text-gray-500";
+    }
+  };
+
+  const getCategoryGlow = (category: string) => {
+    switch(category) {
+      case "PPE": return "bg-green-500";
+      case "Surgical": return "bg-blue-500";
+      case "Disposal": return "bg-purple-500";
+      case "Kits": return "bg-orange-500";
+      default: return "bg-gray-500";
     }
   };
 
@@ -388,22 +409,16 @@ export default function ProductsPage() {
               {/* Mobile: Logo and Badge side-by-side, centered. Text below, centered. */}
               {/* Desktop: Logo and Badge side-by-side on left. Text on right. */}
               <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-12 px-4">
-                {/* Logo + Premium Badge Block */}
-                <div className="flex flex-row items-center space-x-1 md:space-x-3 mb-6 md:mb-0"> {/* Reduced space-x for mobile */}
+                {/* Logo Block - Much Larger */}
+                <div className="flex flex-row items-center mb-6 md:mb-0">
                   <Image
                     src="/acprod.png"
                     alt="Acuron Products - Premium Medical Supplies Manufacturer"
-                    width={140} // Smaller width for mobile
-                    height={56} // Smaller height for mobile
-                    className="object-contain drop-shadow-lg md:w-[175px] md:h-[70px]" // Desktop size explicitly set
+                    width={280} // Much larger width
+                    height={112} // Much larger height
+                    className="object-contain drop-shadow-lg md:w-[350px] md:h-[140px]" // Even larger on desktop
                     priority
                   />
-                  <div className="inline-flex items-center gap-1 px-2 py-1 md:gap-1.5 md:px-3 md:py-1.5 bg-gradient-to-r from-[#0F4679]/10 to-[#158C07]/10 backdrop-blur-md rounded-full border border-white/30 shadow-lg whitespace-nowrap">
-                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-full animate-pulse"></div>
-                    <span className="text-[10px] md:text-xs font-semibold bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent tracking-wider">
-                      PREMIUM MEDICAL SOLUTIONS
-                    </span>
-                  </div>
                 </div>
 
                 {/* Description Text Block */}
@@ -416,8 +431,8 @@ export default function ProductsPage() {
             </motion.div>
           </div>
 
-          {/* Apple-Style Product Showcase */}
-          <ProductShowcase products={showcaseProducts} />
+          {/* Professional Video Showcase */}
+          <VideoShowcase />
 
           {/* Refined Filter Tabs */}
           <motion.div 
@@ -433,24 +448,12 @@ export default function ProductsPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 onClick={() => setActiveCategory(category.name)}
-                className={`group relative px-8 py-4 rounded-2xl font-semibold transition-all duration-500 overflow-hidden shadow-lg ${
+                className={`group relative px-8 py-4 rounded-2xl font-semibold transition-all duration-500 overflow-hidden shadow-lg border-2 ${
                   activeCategory === category.name 
-                    ? "text-white transform scale-110 shadow-2xl" 
-                    : "text-gray-700 hover:text-white bg-white/70 backdrop-blur-sm border-2 border-gray-200/50 hover:border-transparent hover:scale-105"
+                    ? getCategoryBorderActive(category.name) + " " + getCategoryTextActive(category.name) + " bg-transparent transform scale-110 shadow-2xl" 
+                    : "text-gray-700 hover:text-gray-800 bg-transparent border-gray-300 hover:border-gray-400 hover:scale-105"
                 }`}
               >
-                {/* Active Background */}
-                {activeCategory === category.name && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className={`absolute inset-0 bg-gradient-to-r ${category.color} rounded-2xl shadow-2xl`}
-                    transition={{ type: "spring", duration: 0.8 }}
-                  />
-                )}
-                
-                {/* Hover Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500`} />
-                
                 {/* Content */}
                 <div className="relative flex items-center justify-center">
                   <span className="text-lg font-bold">{category.name}</span>
@@ -458,7 +461,7 @@ export default function ProductsPage() {
 
                 {/* Glow Effect for Active */}
                 {activeCategory === category.name && (
-                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} rounded-2xl blur-xl opacity-40 -z-10 scale-110`} />
+                  <div className={`absolute inset-0 ${getCategoryGlow(category.name)} rounded-2xl blur-xl opacity-20 -z-10 scale-110`} />
                 )}
               </motion.button>
             ))}
@@ -479,90 +482,66 @@ export default function ProductsPage() {
                 key={product.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  onHoverStart={() => setHoveredProduct(product.id)}
-                  onHoverEnd={() => setHoveredProduct(null)}
-                  className={`group relative bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden border-2 border-white/40 shadow-xl hover:shadow-2xl transition-all duration-700 hover:scale-105 ${product.featured ? 'lg:col-span-1 lg:row-span-2 bg-gradient-to-br from-white/95 to-gray-50/90' : ''}`}
-                >
-                  {/* Featured Badge */}
-                  {product.featured && (
-                    <div className="absolute top-6 left-6 z-20">
-                      <div className="px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 backdrop-blur-sm rounded-full shadow-lg">
-                        <span className="text-white text-xs font-bold tracking-wider">✨ FEATURED</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Category Badge */}
-                  <div className="absolute top-6 right-6 z-20">
-                    <div className={`px-4 py-2 bg-gradient-to-r ${getCategoryColor(product.category)} backdrop-blur-md rounded-full border-2 ${getCategoryBorder(product.category)} shadow-md`}>
-                      <span className="text-gray-800 text-xs font-bold tracking-wider">{product.category}</span>
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                onHoverStart={() => setHoveredProduct(product.id)}
+                onHoverEnd={() => setHoveredProduct(null)}
+                className="group relative"
+              >
+                {/* Featured Badge */}
+                {product.featured && (
+                  <div className="absolute top-6 left-6 z-20">
+                    <div className="px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 backdrop-blur-sm rounded-full shadow-lg">
+                      <span className="text-white text-xs font-bold tracking-wider">✨ FEATURED</span>
                     </div>
                   </div>
+                )}
 
-                  {/* Image Container */}
-                  <div className={`relative overflow-hidden bg-gradient-to-br from-gray-50 to-white ${product.featured ? 'aspect-[4/5]' : 'aspect-[4/3]'}`}>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-10" />
-                    
-                    <Image 
-                      src={hoveredProduct === product.id ? product.secondaryImage : product.image}
-                      alt={product.name}
-                      fill
-                      className="object-contain transition-all duration-700 group-hover:scale-110 p-3 sm:p-4 md:p-8"
-                    />
+                {/* Image Container - No Background Container */}
+                <div className={`relative overflow-hidden ${product.featured ? 'aspect-[4/5]' : 'aspect-[4/3]'} mb-2`}>
+                  <Image 
+                    src={hoveredProduct === product.id ? product.secondaryImage : product.image}
+                    alt={product.name}
+                    fill
+                    className="object-contain transition-all duration-700 group-hover:scale-110 p-3 sm:p-4 md:p-8"
+                  />
+                </div>
 
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F4679]/90 via-[#0F4679]/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 z-10" />
-                    
-                    {/* Quick Actions */}
-                    <div className="absolute bottom-6 left-6 right-6 z-20 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                      <div className="flex gap-3">
-                        <button className="flex-1 px-4 py-3 bg-white/95 backdrop-blur-sm rounded-xl text-gray-800 font-semibold hover:bg-white transition-colors duration-300 shadow-lg">
-                          Quick View
-                        </button>
-                        <button className="px-6 py-3 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-xl text-white font-semibold hover:shadow-xl transition-all duration-300">
-                          Quote
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#0F4679] transition-colors duration-300 leading-tight">
+                {/* Content Container - Only Around Text and Buttons */}
+                <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/40 shadow-xl hover:shadow-2xl transition-all duration-700">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#0F4679] transition-colors duration-300 leading-tight">
                     {product.name}
                   </h3>
-                    
-                    <p className="text-gray-600 mb-6 text-base leading-relaxed">
+                  
+                  <p className="text-gray-600 mb-6 text-base leading-relaxed">
                     {product.description}
                   </p>
 
-                    {/* Specifications */}
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {product.specs.map((spec, idx) => (
-                        <span 
-                          key={idx}
-                          className="px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 text-sm rounded-full font-medium border border-gray-200"
-                        >
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-4">
-                      <button className="flex-1 px-6 py-4 bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-xl transition-all duration-300 font-semibold border-2 border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-lg">
-                      Get Quote
-                    </button>
-                      <button className="px-6 py-4 bg-gradient-to-r from-[#0F4679] to-[#158C07] hover:from-[#0F4679]/90 hover:to-[#158C07]/90 text-white rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105">
-                        Details →
-                    </button>
-                    </div>
+                  {/* Specifications */}
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {product.specs.map((spec, idx) => (
+                      <span 
+                        key={idx}
+                        className="px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 text-sm rounded-full font-medium border border-gray-200"
+                      >
+                        {spec}
+                      </span>
+                    ))}
                   </div>
 
-                  {/* Card Glow Effect */}
-                  <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679]/20 to-[#158C07]/20 rounded-3xl blur-2xl scale-110" />
+                  {/* Action Buttons */}
+                  <div className="flex gap-4">
+                    <button className="flex-1 px-6 py-4 bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-xl transition-all duration-300 font-semibold border-2 border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-lg">
+                      Get Quote
+                    </button>
+                    <button className="px-6 py-4 bg-gradient-to-r from-[#0F4679] to-[#158C07] hover:from-[#0F4679]/90 hover:to-[#158C07]/90 text-white rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105">
+                      Details →
+                    </button>
+                  </div>
+                </div>
+
+                {/* Card Glow Effect */}
+                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679]/20 to-[#158C07]/20 rounded-3xl blur-2xl scale-110" />
                 </div>
               </motion.div>
             ))}

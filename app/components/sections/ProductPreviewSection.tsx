@@ -618,4 +618,4 @@ export default function ProductPreviewSection() {
       </div>
     </section>
   );
-} 
+}
