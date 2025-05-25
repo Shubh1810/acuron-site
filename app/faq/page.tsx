@@ -727,7 +727,7 @@ export default function FAQPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white to-[#78d6f5] bg-clip-text text-transparent mb-6 leading-tight tracking-tight"
+              className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-[#78d6f5] bg-clip-text text-transparent mb-4"
             >
               {content.title}
             </motion.h1>
@@ -735,7 +735,7 @@ export default function FAQPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-[#78d6f5] max-w-3xl mx-auto text-lg md:text-xl leading-relaxed font-medium"
+              className="text-[#78d6f5] max-w-2xl mx-auto text-lg"
             >
               {content.subtitle}
             </motion.p>
@@ -743,7 +743,7 @@ export default function FAQPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-24 h-1 bg-gradient-to-r from-[#1E619E] to-[#16DBBE] mx-auto mt-8"
+              className="w-24 h-1 bg-gradient-to-r from-[#1E619E] to-[#16DBBE] mx-auto mt-6"
             />
           </div>
 
@@ -758,7 +758,7 @@ export default function FAQPage() {
                 className="bg-gradient-to-br from-[#0A2A45]/80 to-[#061D33]/90 backdrop-blur-sm border border-[#1E619E]/30 rounded-xl overflow-hidden"
               >
                 <div className="p-6 border-b border-[#1E619E]/30">
-                  <h2 className="text-xl md:text-2xl font-bold text-white flex items-center tracking-tight">
+                  <h2 className="text-xl font-bold text-white flex items-center">
                     <span className="mr-3 flex-shrink-0 w-8 h-8 rounded-full bg-[#16DBBE]/20 flex items-center justify-center">
                       {categoryIndex === 0 && (
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#16DBBE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -790,12 +790,12 @@ export default function FAQPage() {
                     <div key={item.id} className="p-6">
                       <button 
                         onClick={() => toggleQuestion(item.id)}
-                        className="w-full flex justify-between items-start text-left group"
+                        className="w-full flex justify-between items-start text-left"
                       >
-                        <h3 className="text-white font-semibold pr-6 group-hover:text-[#16DBBE] transition-colors duration-300 text-base md:text-lg leading-relaxed">
+                        <h3 className="text-white font-medium pr-6 group-hover:text-[#16DBBE] transition-colors duration-300">
                           {item.question}
                         </h3>
-                        <div className={`mt-1 transition-transform duration-300 text-[#16DBBE] flex-shrink-0 ${expandedQuestions[item.id] ? 'rotate-180' : ''}`}>
+                        <div className={`mt-1 transition-transform duration-300 text-[#16DBBE] ${expandedQuestions[item.id] ? 'rotate-180' : ''}`}>
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                           </svg>
@@ -806,9 +806,9 @@ export default function FAQPage() {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           transition={{ duration: 0.3 }}
-                          className="mt-4 text-gray-300 text-sm md:text-base leading-relaxed"
+                          className="mt-4 text-gray-300 text-sm"
                         >
-                          <p className="font-normal">{item.answer}</p>
+                          <p>{item.answer}</p>
                         </motion.div>
                       )}
                     </div>
@@ -827,21 +827,21 @@ export default function FAQPage() {
           >
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight tracking-tight">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   {content.ctaTitle}
                 </h2>
-                <p className="text-gray-300 mb-6 md:mb-0 max-w-xl text-base md:text-lg leading-relaxed font-normal">
+                <p className="text-gray-300 mb-6 md:mb-0 max-w-xl">
                   {content.ctaSubtitle}
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 whitespace-nowrap">
-                <button className="px-6 py-3 bg-[#16DBBE] hover:bg-[#14c5ac] text-[#082A45] font-bold rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 text-sm md:text-base">
+                <button className="px-6 py-3 bg-[#16DBBE] hover:bg-[#14c5ac] text-[#082A45] font-bold rounded-lg transition-colors duration-300 flex items-center justify-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   {content.emailSupport}
                 </button>
-                <button className="px-6 py-3 bg-[#1E619E]/30 hover:bg-[#1E619E]/50 text-[#78d6f5] font-bold rounded-lg border border-[#1E619E]/50 transition-colors duration-300 flex items-center justify-center gap-2 text-sm md:text-base">
+                <button className="px-6 py-3 bg-[#1E619E]/30 hover:bg-[#1E619E]/50 text-[#78d6f5] font-bold rounded-lg border border-[#1E619E]/50 transition-colors duration-300 flex items-center justify-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                   </svg>

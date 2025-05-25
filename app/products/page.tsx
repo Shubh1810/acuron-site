@@ -490,8 +490,10 @@ export default function ProductsPage() {
                 {/* Featured Badge */}
                 {product.featured && (
                   <div className="absolute top-6 left-6 z-20">
-                    <div className="px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 backdrop-blur-sm rounded-full shadow-lg">
-                      <span className="text-white text-xs font-bold tracking-wider">✨ FEATURED</span>
+                    <div className="w-10 h-10 bg-gradient-to-r from-yellow-400/80 to-orange-500/80 backdrop-blur-md rounded-full shadow-xl border border-white/20 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
                     </div>
                   </div>
                 )}
@@ -533,8 +535,13 @@ export default function ProductsPage() {
                     <button className="flex-1 px-6 py-4 bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-xl transition-all duration-300 font-semibold border-2 border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-lg">
                       Get Quote
                     </button>
-                    <button className="px-6 py-4 bg-gradient-to-r from-[#0F4679] to-[#158C07] hover:from-[#0F4679]/90 hover:to-[#158C07]/90 text-white rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105">
-                      Details →
+                    <button className="relative px-6 py-4 bg-white hover:bg-gray-50 rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-xl p-[2px]">
+                        <div className="w-full h-full bg-white group-hover:bg-gray-50 rounded-[10px] transition-colors duration-300"></div>
+                      </div>
+                      <span className="relative bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent">
+                        Details →
+                      </span>
                     </button>
                   </div>
                 </div>
