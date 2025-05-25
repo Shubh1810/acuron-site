@@ -13,7 +13,7 @@ function VideoShowcase() {
     <div className="mb-20">
       <div className="w-full">
         {/* Minimal Video Display */}
-        <div className="relative border border-gray-300 mx-auto max-w-sm aspect-[3/4] md:max-w-none md:aspect-video">
+        <div className="relative mx-auto max-w-sm aspect-[3/4] md:max-w-none md:aspect-video">
           <video
             className="w-full h-full object-cover"
             autoPlay
@@ -22,7 +22,11 @@ function VideoShowcase() {
             playsInline
             disablePictureInPicture
             controlsList="nodownload nofullscreen noremoteplayback"
-            style={{ pointerEvents: 'none' }}
+            style={{ 
+              pointerEvents: 'none',
+              maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
+              WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)' 
+            }}
           >
             <source src="/Indian Nurse Video.mp4" type="video/mp4" />
           </video>
@@ -396,7 +400,7 @@ export default function ProductsPage() {
             {/* Background Elements */}
             <div className="absolute inset-0 -z-10">
               <div className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-br from-[#0F4679]/8 to-[#0F4679]/4 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-gradient-to-br from-[#158C07]/6 to-[#0F4679]/4 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-gradient-to-br from-[#3B82F6]/6 to-[#0F4679]/4 rounded-full blur-3xl"></div>
             </div>
 
             <motion.div
