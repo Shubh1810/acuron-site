@@ -1,7 +1,148 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useCountryStore } from '../../../lib/store';
 
 export default function Footer() {
+  const { selectedCountry } = useCountryStore();
+
+  // Get localized content based on selected country
+  const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
+    if (selectedCountry.useEnglishContent) {
+      return englishText;
+    }
+    return translations[selectedCountry.language] || englishText;
+  };
+
+  const productsText = getLocalizedContent('Products', {
+    de: 'Produkte',
+    fr: 'Produits',
+    ja: '製品',
+    zh: '产品',
+    pt: 'Produtos'
+  });
+
+  const connectText = getLocalizedContent('Connect', {
+    de: 'Verbinden',
+    fr: 'Se connecter',
+    ja: '接続',
+    zh: '连接',
+    pt: 'Conectar'
+  });
+
+  const surgicalProductsText = getLocalizedContent('Surgical Products', {
+    de: 'Chirurgische Produkte',
+    fr: 'Produits chirurgicaux',
+    ja: '外科用製品',
+    zh: '外科产品',
+    pt: 'Produtos Cirúrgicos'
+  });
+
+  const orthopedicDrapesText = getLocalizedContent('Orthopedic Drapes', {
+    de: 'Orthopädische Abdeckungen',
+    fr: 'Draps orthopédiques',
+    ja: '整形外科用ドレープ',
+    zh: '骨科手术巾',
+    pt: 'Campos Ortopédicos'
+  });
+
+  const gynecologyDrapesText = getLocalizedContent('Gynecology Drapes', {
+    de: 'Gynäkologie-Abdeckungen',
+    fr: 'Draps de gynécologie',
+    ja: '婦人科用ドレープ',
+    zh: '妇科手术巾',
+    pt: 'Campos de Ginecologia'
+  });
+
+  const urologyDrapesText = getLocalizedContent('Urology Drapes', {
+    de: 'Urologie-Abdeckungen',
+    fr: 'Draps d\'urologie',
+    ja: '泌尿器科用ドレープ',
+    zh: '泌尿科手术巾',
+    pt: 'Campos de Urologia'
+  });
+
+  const protectiveEquipmentText = getLocalizedContent('Protective Equipment', {
+    de: 'Schutzausrüstung',
+    fr: 'Équipement de protection',
+    ja: '保護具',
+    zh: '防护设备',
+    pt: 'Equipamento de Proteção'
+  });
+
+  const aboutUsText = getLocalizedContent('About Us', {
+    de: 'Über uns',
+    fr: 'À propos de nous',
+    ja: '私たちについて',
+    zh: '关于我们',
+    pt: 'Sobre nós'
+  });
+
+  const contactUsText = getLocalizedContent('Contact Us', {
+    de: 'Kontaktieren Sie uns',
+    fr: 'Contactez-nous',
+    ja: 'お問い合わせ',
+    zh: '联系我们',
+    pt: 'Entre em Contato'
+  });
+
+  const careersText = getLocalizedContent('Careers', {
+    de: 'Karriere',
+    fr: 'Carrières',
+    ja: 'キャリア',
+    zh: '职业',
+    pt: 'Carreiras'
+  });
+
+  const newsEventsText = getLocalizedContent('News & Events', {
+    de: 'Nachrichten & Veranstaltungen',
+    fr: 'Actualités et événements',
+    ja: 'ニュース・イベント',
+    zh: '新闻与活动',
+    pt: 'Notícias e Eventos'
+  });
+
+  const allRightsReservedText = getLocalizedContent('All rights reserved.', {
+    de: 'Alle Rechte vorbehalten.',
+    fr: 'Tous droits réservés.',
+    ja: 'すべての権利を保有しています。',
+    zh: '版权所有。',
+    pt: 'Todos os direitos reservados.'
+  });
+
+  const privacyPolicyText = getLocalizedContent('Privacy Policy', {
+    de: 'Datenschutzrichtlinie',
+    fr: 'Politique de confidentialité',
+    ja: 'プライバシーポリシー',
+    zh: '隐私政策',
+    pt: 'Política de Privacidade'
+  });
+
+  const termsOfUseText = getLocalizedContent('Terms of Use', {
+    de: 'Nutzungsbedingungen',
+    fr: 'Conditions d\'utilisation',
+    ja: '利用規約',
+    zh: '使用条款',
+    pt: 'Termos de Uso'
+  });
+
+  const cookiePolicyText = getLocalizedContent('Cookie Policy', {
+    de: 'Cookie-Richtlinie',
+    fr: 'Politique des cookies',
+    ja: 'クッキーポリシー',
+    zh: 'Cookie政策',
+    pt: 'Política de Cookies'
+  });
+
+  const sitemapText = getLocalizedContent('Sitemap', {
+    de: 'Sitemap',
+    fr: 'Plan du site',
+    ja: 'サイトマップ',
+    zh: '网站地图',
+    pt: 'Mapa do Site'
+  });
+
   return (
     <footer className="bg-gray-900 text-white py-8 md:py-16 mt-0">
       <div className="max-w-7xl mx-auto px-8">
@@ -21,24 +162,24 @@ export default function Footer() {
 
           {/* Products Column */}
           <div className="md:col-span-3">
-            <h3 className="text-xl mb-4 pb-2 border-b border-gray-700">Products</h3>
+            <h3 className="text-xl mb-4 pb-2 border-b border-gray-700">{productsText}</h3>
             <ul className="space-y-3 mt-6 text-sm">
-              <li><Link href="/products/surgical" className="hover:text-gray-300">Surgical Products</Link></li>
-              <li><Link href="/products/orthopedic-drapes" className="hover:text-gray-300">Orthopedic Drapes</Link></li>
-              <li><Link href="/products/gynecology-drapes" className="hover:text-gray-300">Gynecology Drapes</Link></li>
-              <li><Link href="/products/urology-drapes" className="hover:text-gray-300">Urology Drapes</Link></li>
-              <li><Link href="/products/protective" className="hover:text-gray-300">Protective Equipment</Link></li>
+              <li><Link href="/products/surgical" className="hover:text-gray-300">{surgicalProductsText}</Link></li>
+              <li><Link href="/products/orthopedic-drapes" className="hover:text-gray-300">{orthopedicDrapesText}</Link></li>
+              <li><Link href="/products/gynecology-drapes" className="hover:text-gray-300">{gynecologyDrapesText}</Link></li>
+              <li><Link href="/products/urology-drapes" className="hover:text-gray-300">{urologyDrapesText}</Link></li>
+              <li><Link href="/products/protective" className="hover:text-gray-300">{protectiveEquipmentText}</Link></li>
             </ul>
           </div>
 
           {/* Connect Column */}
           <div className="md:col-span-3">
-            <h3 className="text-xl mb-4 pb-2 border-b border-gray-700">Connect</h3>
+            <h3 className="text-xl mb-4 pb-2 border-b border-gray-700">{connectText}</h3>
             <ul className="space-y-3 mt-6 text-sm">
-              <li><a href="#about" className="hover:text-gray-300">About Us</a></li>
-              <li><Link href="/contact" className="hover:text-gray-300">Contact Us</Link></li>
-              <li><Link href="/careers" className="hover:text-gray-300">Careers</Link></li>
-              <li><Link href="/news" className="hover:text-gray-300">News & Events</Link></li>
+              <li><a href="#about" className="hover:text-gray-300">{aboutUsText}</a></li>
+              <li><Link href="/contact" className="hover:text-gray-300">{contactUsText}</Link></li>
+              <li><Link href="/careers" className="hover:text-gray-300">{careersText}</Link></li>
+              <li><Link href="/news" className="hover:text-gray-300">{newsEventsText}</Link></li>
             </ul>
             <div className="flex space-x-4 mt-6">
               <Link href="https://www.instagram.com/acuron/" className="hover:text-gray-300">
@@ -69,13 +210,13 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8 text-sm text-gray-400">
           <div className="flex flex-col md:flex-row justify-between">
             <div className="mb-4 md:mb-0">
-              © {new Date().getFullYear()} Acuron Products. All rights reserved.
+              © {new Date().getFullYear()} Acuron Products. {allRightsReservedText}
             </div>
             <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
-              <Link href="/privacy" className="hover:text-gray-300">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-gray-300">Terms of Use</Link>
-              <Link href="/cookies" className="hover:text-gray-300">Cookie Policy</Link>
-              <Link href="/sitemap" className="hover:text-gray-300">Sitemap</Link>
+              <Link href="/privacy" className="hover:text-gray-300">{privacyPolicyText}</Link>
+              <Link href="/terms" className="hover:text-gray-300">{termsOfUseText}</Link>
+              <Link href="/cookies" className="hover:text-gray-300">{cookiePolicyText}</Link>
+              <Link href="/sitemap" className="hover:text-gray-300">{sitemapText}</Link>
             </div>
           </div>
         </div>

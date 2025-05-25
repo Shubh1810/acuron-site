@@ -4,22 +4,119 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FC, useState, useMemo, useCallback } from 'react';
 import CountrySelector from './CountrySelector';
+import { useCountryStore } from '../../lib/store';
 
 const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { selectedCountry } = useCountryStore();
 
   // Flagship blue color
   const flagshipBlue = "#0F4679";
 
-  // Memoize navigation links to prevent unnecessary re-renders
+  // Get localized content based on selected country
+  const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
+    if (selectedCountry.useEnglishContent) {
+      return englishText;
+    }
+    return translations[selectedCountry.language] || englishText;
+  };
+
+  // Memoize navigation links with localization
   const navigationLinks = useMemo(() => [
-    { href: '/', label: 'HOME' },
-    { href: '/products', label: 'PRODUCTS' },
-    { href: '/certificates', label: 'CERTIFICATES' },
-    { href: '/events', label: 'EVENTS' },
-    { href: '/categories', label: 'CATEGORIES' },
-    { href: '/faq', label: 'FAQ' },
-  ], []);
+    { 
+      href: '/', 
+      label: getLocalizedContent('HOME', {
+        de: 'STARTSEITE',
+        fr: 'ACCUEIL',
+        ja: 'ホーム',
+        zh: '首页',
+        pt: 'INÍCIO'
+      })
+    },
+    { 
+      href: '/products', 
+      label: getLocalizedContent('PRODUCTS', {
+        de: 'PRODUKTE',
+        fr: 'PRODUITS',
+        ja: '製品',
+        zh: '产品',
+        pt: 'PRODUTOS'
+      })
+    },
+    { 
+      href: '/certificates', 
+      label: getLocalizedContent('CERTIFICATES', {
+        de: 'ZERTIFIKATE',
+        fr: 'CERTIFICATS',
+        ja: '証明書',
+        zh: '证书',
+        pt: 'CERTIFICADOS'
+      })
+    },
+    { 
+      href: '/events', 
+      label: getLocalizedContent('EVENTS', {
+        de: 'VERANSTALTUNGEN',
+        fr: 'ÉVÉNEMENTS',
+        ja: 'イベント',
+        zh: '活动',
+        pt: 'EVENTOS'
+      })
+    },
+    { 
+      href: '/categories', 
+      label: getLocalizedContent('CATEGORIES', {
+        de: 'KATEGORIEN',
+        fr: 'CATÉGORIES',
+        ja: 'カテゴリー',
+        zh: '类别',
+        pt: 'CATEGORIAS'
+      })
+    },
+    { 
+      href: '/faq', 
+      label: getLocalizedContent('FAQ', {
+        de: 'FAQ',
+        fr: 'FAQ',
+        ja: 'よくある質問',
+        zh: '常见问题',
+        pt: 'FAQ'
+      })
+    },
+  ], [selectedCountry]);
+
+  // Localized top navigation links
+  const ourCompanyText = getLocalizedContent('OUR COMPANY', {
+    de: 'UNSER UNTERNEHMEN',
+    fr: 'NOTRE ENTREPRISE',
+    ja: '会社概要',
+    zh: '我们的公司',
+    pt: 'NOSSA EMPRESA'
+  });
+
+  const contactText = getLocalizedContent('CONTACT', {
+    de: 'KONTAKT',
+    fr: 'CONTACT',
+    ja: 'お問い合わせ',
+    zh: '联系我们',
+    pt: 'CONTATO'
+  });
+
+  const careersText = getLocalizedContent('CAREERS', {
+    de: 'KARRIERE',
+    fr: 'CARRIÈRES',
+    ja: 'キャリア',
+    zh: '职业',
+    pt: 'CARREIRAS'
+  });
+
+  const searchPlaceholder = getLocalizedContent('SEARCH', {
+    de: 'SUCHEN',
+    fr: 'RECHERCHER',
+    ja: '検索',
+    zh: '搜索',
+    pt: 'PESQUISAR'
+  });
 
   // Memoize the toggle function to prevent recreation on renders
   const toggleMobileMenu = useCallback(() => {
@@ -32,13 +129,13 @@ const Header: FC = () => {
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end items-center space-x-6">
           <Link href="/#about-us-section" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
-            OUR COMPANY
+            {ourCompanyText}
           </Link>
           <Link href="/#contact-us-section" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
-            CONTACT
+            {contactText}
           </Link>
           <Link href="/careers" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
-            CAREERS
+            {careersText}
           </Link>
           <CountrySelector />
         </div>
@@ -81,7 +178,7 @@ const Header: FC = () => {
             <div className="relative group">
               <input
                 type="text"
-                placeholder="SEARCH"
+                placeholder={searchPlaceholder}
                 className="search-input border border-[#16599D] bg-[#0A3054] rounded-md py-1.5 px-3 pr-8
                          w-[140px] sm:w-[180px] lg:w-[200px]
                          shadow-[0_0_10px_rgba(22,89,157,0.3)]

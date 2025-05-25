@@ -2,27 +2,15 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { useCountryStore, countries, Country } from '../../lib/store'; // Adjusted import path
 
-interface Country {
-  code: string;
-  name: string;
-}
-
-// Using local flag images instead of external URLs
-const countries: Country[] = [
-  { code: 'in', name: 'India' },
-  { code: 'us', name: 'USA' },
-  { code: 'gb', name: 'UK' },
-  { code: 'de', name: 'Deutsche' },
-  { code: 'fr', name: 'Français' },
-  { code: 'jp', name: '日本語' },
-  { code: 'cn', name: '中国人' },
-  { code: 'br', name: 'Brazil' },
-];
+// Interface Country is now imported from store.ts
+// const countries array is now imported from store.ts
 
 const CountrySelector = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+  // Get selectedCountry and setSelectedCountry from the Zustand store
+  const { selectedCountry, setSelectedCountry } = useCountryStore();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
@@ -61,14 +49,14 @@ const CountrySelector = () => {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 animate-fade-in">
           <div className="max-h-60 overflow-y-auto">
-            {countries.map((country) => (
+            {countries.map((country: Country) => ( // Added type for country
               <button
                 key={country.code}
                 onClick={() => {
-                  setSelectedCountry(country);
+                  setSelectedCountry(country); // Update country in the store
                   setIsOpen(false);
                 }}
-                className={`flex items-center w-full px-4 py-2 text-sm text-left hover:bg-gray-100 transition-colors duration-150 ${
+                className={`flex items-center w-full px-4 py-2 text-sm text-left hover:bg-gray-100 transition-colors duration-150 ${ // Added transition
                   selectedCountry.code === country.code ? 'bg-gray-50 text-teal-700' : 'text-gray-700'
                 }`}
               >
