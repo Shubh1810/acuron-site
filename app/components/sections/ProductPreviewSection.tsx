@@ -470,7 +470,7 @@ export default function ProductPreviewSection() {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {productCategories.map((category, index) => (
             <button
               key={index}
@@ -478,10 +478,10 @@ export default function ProductPreviewSection() {
                 setActiveCategory(index);
                 setCurrentProductIndex(0);
               }}
-              className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === index
-                  ? `bg-white text-${category.color.split(' ')[0].substring(5)} border border-${category.color.split(' ')[0].substring(5)} shadow-lg`
-                  : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                  ? "bg-[#0F4679] text-white"
+                  : "text-gray-600 hover:text-[#0F4679] hover:bg-gray-100"
               }`}
             >
               {category.name}
