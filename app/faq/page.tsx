@@ -617,86 +617,86 @@ export default function FAQPage() {
             techSpecs: "Technical Specifications"
           },
           faqData: [
-            {
-              category: "Product Information",
-              questions: [
-                {
-                  id: 1,
-                  question: "What certifications do your medical products have?",
-                  answer: "Our medical products are certified according to international standards including ISO 13485:2016, CE certification, and FDA registration where applicable. All our products meet or exceed the required quality and safety standards for their respective categories. You can view our full list of certifications on our Certificates page."
-                },
-                {
-                  id: 2,
-                  question: "Are your masks and PPE appropriate for medical use?",
-                  answer: "Yes, our masks and PPE are specifically designed for medical use. Our 3-ply masks meet EN 14683 Type IIR standards with ≥98% bacterial filtration efficiency (BFE), while our N95 respirators are NIOSH-approved with 95% filtration efficiency for airborne particles. All our PPE products undergo rigorous testing to ensure they provide the required protection for healthcare professionals."
-                },
-                {
-                  id: 3,
-                  question: "What materials are used in your surgical drapes and gowns?",
-                  answer: "Our surgical drapes and gowns are made using high-quality SMS (Spunbond-Meltblown-Spunbond) fabric in various weights (from 30 to 50 gsm). This material provides an effective barrier against fluids and microorganisms while remaining comfortable and breathable. We also offer reinforced options with additional fluid-resistant layers for high-risk procedures."
-                }
-              ]
-            },
-            {
-              category: "Orders & Shipping",
-              questions: [
-                {
-                  id: 4,
-                  question: "What is the minimum order quantity (MOQ) for your products?",
-                  answer: "Our minimum order quantities vary by product type. For standard items like masks and gloves, our MOQs typically start at 10,000 units. For specialized items like surgical drapes or coveralls, MOQs may start at 1,000 units. For bulk orders or customized products, please contact our sales team for specific MOQ information."
-                },
-                {
-                  id: 5,
-                  question: "How long does shipping take and which countries do you deliver to?",
-                  answer: "We ship worldwide to over 80 countries. Standard shipping times vary by destination: 7-10 business days for Europe, 10-15 days for North America and Middle East, and 15-20 days for other regions. Express shipping options are available for urgent orders. We handle all export documentation and can recommend shipping partners for specific regions."
-                },
-                {
-                  id: 6,
-                  question: "Do you offer customized packaging or private labeling?",
-                  answer: "Yes, we offer customized packaging and private labeling services for bulk orders. This includes custom boxes, packaging inserts, and product labeling with your brand logo and information. Custom packaging requires a minimum order quantity and additional lead time, typically 2-3 weeks beyond standard production times."
-                }
-              ]
-            },
-            {
-              category: "Product Usage & Safety",
-              questions: [
-                {
-                  id: 7,
-                  question: "What is the shelf life of your medical supplies?",
-                  answer: "The shelf life varies by product type. Masks, gloves, and other disposable items typically have a 3-year shelf life when stored properly in original packaging at room temperature in dry conditions. Sterile products like surgical drapes have a shelf life of 5 years when the packaging remains intact. Each product package is clearly marked with manufacturing and expiration dates."
-                },
-                {
-                  id: 8,
-                  question: "Are your products latex-free?",
-                  answer: "Yes, all our medical supplies including gloves, masks, and other PPE are 100% latex-free to prevent allergic reactions. Our nitrile examination gloves are specifically designed to provide the same elasticity and comfort as latex while being suitable for individuals with latex allergies."
-                },
-                {
-                  id: 9,
-                  question: "How should I dispose of used medical supplies?",
-                  answer: "Used medical supplies should be disposed of according to local regulations for medical waste. Our biodegradable waste disposal bags are specifically designed for the safe containment of used medical supplies. For items potentially contaminated with infectious materials, we recommend following your facility's protocols for biohazardous waste management."
-                }
-              ]
-            },
-            {
-              category: "Technical Specifications",
-              questions: [
-                {
-                  id: 10,
-                  question: "What are the filtration specifications of your N95 respirators?",
-                  answer: "Our N95 respirators provide at least 95% filtration efficiency against non-oil-based particles and aerosols as small as 0.3 microns. They meet NIOSH 42 CFR 84 standards and feature a secure fit with adjustable nose bridges and elastic head straps. Each batch undergoes testing for filtration efficiency, breathing resistance, and fit performance."
-                },
-                {
-                  id: 11,
-                  question: "What is the fluid resistance level of your surgical gowns?",
-                  answer: "Our surgical gowns are available in multiple AAMI levels: Level 1 (minimal fluid resistance), Level 2 (low fluid resistance), Level 3 (moderate fluid resistance), and Level 4 (high fluid resistance). The Level 4 gowns provide protection against penetration by blood and body fluids under pressure and are suitable for long, fluid-intensive procedures."
-                },
-                {
-                  id: 12,
-                  question: "Are your biodegradable waste bags suitable for autoclaving?",
-                  answer: "Our standard biodegradable waste bags are not autoclave-safe as they have a melting point of approximately 90°C. However, we do offer specialized autoclave-safe waste bags made from high-temperature resistant biodegradable materials that can withstand temperatures up to 135°C, suitable for steam sterilization processes."
-                }
-              ]
-            }
+    {
+      category: "Product Information",
+      questions: [
+        {
+          id: 1,
+          question: "What certifications do your medical products have?",
+          answer: "Our medical products are certified according to international standards including ISO 13485:2016, CE certification, and FDA registration where applicable. All our products meet or exceed the required quality and safety standards for their respective categories. You can view our full list of certifications on our Certificates page."
+        },
+        {
+          id: 2,
+          question: "Are your masks and PPE appropriate for medical use?",
+          answer: "Yes, our masks and PPE are specifically designed for medical use. Our 3-ply masks meet EN 14683 Type IIR standards with ≥98% bacterial filtration efficiency (BFE), while our N95 respirators are NIOSH-approved with 95% filtration efficiency for airborne particles. All our PPE products undergo rigorous testing to ensure they provide the required protection for healthcare professionals."
+        },
+        {
+          id: 3,
+          question: "What materials are used in your surgical drapes and gowns?",
+          answer: "Our surgical drapes and gowns are made using high-quality SMS (Spunbond-Meltblown-Spunbond) fabric in various weights (from 30 to 50 gsm). This material provides an effective barrier against fluids and microorganisms while remaining comfortable and breathable. We also offer reinforced options with additional fluid-resistant layers for high-risk procedures."
+        }
+      ]
+    },
+    {
+      category: "Orders & Shipping",
+      questions: [
+        {
+          id: 4,
+          question: "What is the minimum order quantity (MOQ) for your products?",
+          answer: "Our minimum order quantities vary by product type. For standard items like masks and gloves, our MOQs typically start at 10,000 units. For specialized items like surgical drapes or coveralls, MOQs may start at 1,000 units. For bulk orders or customized products, please contact our sales team for specific MOQ information."
+        },
+        {
+          id: 5,
+          question: "How long does shipping take and which countries do you deliver to?",
+          answer: "We ship worldwide to over 80 countries. Standard shipping times vary by destination: 7-10 business days for Europe, 10-15 days for North America and Middle East, and 15-20 days for other regions. Express shipping options are available for urgent orders. We handle all export documentation and can recommend shipping partners for specific regions."
+        },
+        {
+          id: 6,
+          question: "Do you offer customized packaging or private labeling?",
+          answer: "Yes, we offer customized packaging and private labeling services for bulk orders. This includes custom boxes, packaging inserts, and product labeling with your brand logo and information. Custom packaging requires a minimum order quantity and additional lead time, typically 2-3 weeks beyond standard production times."
+        }
+      ]
+    },
+    {
+      category: "Product Usage & Safety",
+      questions: [
+        {
+          id: 7,
+          question: "What is the shelf life of your medical supplies?",
+          answer: "The shelf life varies by product type. Masks, gloves, and other disposable items typically have a 3-year shelf life when stored properly in original packaging at room temperature in dry conditions. Sterile products like surgical drapes have a shelf life of 5 years when the packaging remains intact. Each product package is clearly marked with manufacturing and expiration dates."
+        },
+        {
+          id: 8,
+          question: "Are your products latex-free?",
+          answer: "Yes, all our medical supplies including gloves, masks, and other PPE are 100% latex-free to prevent allergic reactions. Our nitrile examination gloves are specifically designed to provide the same elasticity and comfort as latex while being suitable for individuals with latex allergies."
+        },
+        {
+          id: 9,
+          question: "How should I dispose of used medical supplies?",
+          answer: "Used medical supplies should be disposed of according to local regulations for medical waste. Our biodegradable waste disposal bags are specifically designed for the safe containment of used medical supplies. For items potentially contaminated with infectious materials, we recommend following your facility's protocols for biohazardous waste management."
+        }
+      ]
+    },
+    {
+      category: "Technical Specifications",
+      questions: [
+        {
+          id: 10,
+          question: "What are the filtration specifications of your N95 respirators?",
+          answer: "Our N95 respirators provide at least 95% filtration efficiency against non-oil-based particles and aerosols as small as 0.3 microns. They meet NIOSH 42 CFR 84 standards and feature a secure fit with adjustable nose bridges and elastic head straps. Each batch undergoes testing for filtration efficiency, breathing resistance, and fit performance."
+        },
+        {
+          id: 11,
+          question: "What is the fluid resistance level of your surgical gowns?",
+          answer: "Our surgical gowns are available in multiple AAMI levels: Level 1 (minimal fluid resistance), Level 2 (low fluid resistance), Level 3 (moderate fluid resistance), and Level 4 (high fluid resistance). The Level 4 gowns provide protection against penetration by blood and body fluids under pressure and are suitable for long, fluid-intensive procedures."
+        },
+        {
+          id: 12,
+          question: "Are your biodegradable waste bags suitable for autoclaving?",
+          answer: "Our standard biodegradable waste bags are not autoclave-safe as they have a melting point of approximately 90°C. However, we do offer specialized autoclave-safe waste bags made from high-temperature resistant biodegradable materials that can withstand temperatures up to 135°C, suitable for steam sterilization processes."
+        }
+      ]
+    }
           ]
         };
     }
