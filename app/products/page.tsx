@@ -432,11 +432,10 @@ export default function ProductsPage() {
                   </p>
                 </div>
               </div>
+              {/* Professional Video Showcase moved here */}
+              <VideoShowcase /> 
             </motion.div>
           </div>
-
-          {/* Professional Video Showcase */}
-          <VideoShowcase />
 
           {/* Minimal Filter Tabs */}
           <motion.div 

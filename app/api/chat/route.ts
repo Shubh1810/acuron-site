@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     const messages = [
       {
         role: 'system' as const,
-        content: `You are a helpful customer service assistant for Acuron, a medical supplies company. 
+        content: `You are a helpful customer service assistant for Acuron, a medical supplies company.
         You help customers with:
         - Product information about medical supplies
         - Pricing inquiries

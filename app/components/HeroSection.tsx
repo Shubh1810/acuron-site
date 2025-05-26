@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ColourfulText } from './ui/colorful-text';
 import { useCountryStore } from '../../lib/store';
+import { TextGenerateEffect } from "./ui/textgenerateeffect";
 
 interface HeroSectionProps {
   title: string;
@@ -116,9 +117,7 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
               localizedTitle
             )}
           </h1>
-          <p className="text-lg sm:text-xl mb-8 text-gray-100 font-rubik">
-            {localizedSubtitle}
-          </p>
+          <TextGenerateEffect words={localizedSubtitle} className="text-lg sm:text-xl mb-8 text-gray-100 font-rubik" />
           <div className="inline-block relative">
             <Link 
               href={ctaLink}

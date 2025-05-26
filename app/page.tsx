@@ -9,6 +9,7 @@ import ProductPreviewSection from './components/sections/ProductPreviewSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
 import ClientWrapper from './components/ClientWrapper';
+import { TextGenerateEffect } from './components/ui/textgenerateeffect';
 
 export default function Home() {
   return (
