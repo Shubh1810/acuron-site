@@ -2,9 +2,37 @@
 
 import Image from 'next/image';
 import { useCountryStore } from '../../../lib/store';
+import { useEffect, useRef, useState } from 'react';
 
 export default function AboutSection() {
   const { selectedCountry } = useCountryStore();
+  const tendersRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    if (tendersRef.current) {
+      observer.observe(tendersRef.current);
+    }
+
+    return () => {
+      if (tendersRef.current) {
+        observer.unobserve(tendersRef.current);
+      }
+    };
+  }, []);
 
   // Get localized content based on selected country
   const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
@@ -121,9 +149,28 @@ export default function AboutSection() {
           </div>
         </div>
         
-        <div className="mb-1 mt-2">
+        <div 
+          ref={tendersRef}
+          className={`mb-1 mt-2 transition-all duration-800 ${
+            isVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 -translate-x-16'
+          }`}
+          style={{
+            transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
+          }}
+        >
           <div className="relative">
-            <h2 className="section-title text-3xl sm:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center">{tendersAwardedTitle}</h2>
+            <h2 className={`section-title text-3xl sm:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center transition-all duration-900 delay-100 ${
+              isVisible 
+                ? 'opacity-100 transform translate-x-0' 
+                : 'opacity-0 transform -translate-x-12'
+            }`}
+            style={{
+              transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
+            }}>
+              {tendersAwardedTitle}
+            </h2>
           </div>
         </div>
         

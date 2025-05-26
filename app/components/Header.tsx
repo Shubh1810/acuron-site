@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FC, useState, useMemo, useCallback } from 'react';
+import { Phone } from 'lucide-react';
 import CountrySelector from './CountrySelector';
 import { useCountryStore } from '../../lib/store';
 
@@ -86,20 +87,14 @@ const Header: FC = () => {
   ], [selectedCountry]);
 
   // Localized top navigation links
-  const ourCompanyText = getLocalizedContent('OUR COMPANY', {
-    de: 'UNSER UNTERNEHMEN',
-    fr: 'NOTRE ENTREPRISE',
-    ja: '会社概要',
-    zh: '我们的公司',
-    pt: 'NOSSA EMPRESA'
-  });
+  const ourCompanyText = "+91 98200 43274";
 
-  const contactText = getLocalizedContent('CONTACT', {
-    de: 'KONTAKT',
-    fr: 'CONTACT',
+  const contactText = getLocalizedContent('INQUIRE', {
+    de: 'ANFRAGE',
+    fr: 'DEMANDE',
     ja: 'お問い合わせ',
-    zh: '联系我们',
-    pt: 'CONTATO'
+    zh: '询问',
+    pt: 'INQUÉRITO'
   });
 
   const careersText = getLocalizedContent('CAREERS', {
@@ -128,13 +123,17 @@ const Header: FC = () => {
       {/* Top Navigation Bar - Changed to white background with blue text */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end items-center space-x-6">
-          <Link href="/#about-us-section" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
+          <a 
+            href="tel:+919820043274" 
+            className="flex items-center text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300"
+          >
+            <Phone size={12} className="mr-1.5" />
             {ourCompanyText}
-          </Link>
-          <Link href="/#contact-us-section" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
+          </a>
+          <Link href="/#contact-us-section" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             {contactText}
           </Link>
-          <Link href="/careers" className="text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
+          <Link href="/careers" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             {careersText}
           </Link>
           <CountrySelector />
