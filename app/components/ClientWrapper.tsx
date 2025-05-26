@@ -81,9 +81,10 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
     };
   }, [isLoading]); // Re-run animation setup when isLoading changes from true to false.
 
-  if (isLoading) {
-    return <LoadingScreen isVisible={true} />;
-  }
-
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <LoadingScreen isVisible={isLoading} />
+    </>
+  );
 } 

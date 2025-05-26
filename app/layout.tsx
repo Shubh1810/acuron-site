@@ -124,7 +124,7 @@ export const metadata: Metadata = {
     description: 'Leading manufacturer of surgical wear, 3 ply masks, N95 masks, surgical gowns, bouffant caps, and medical equipment. Wide distribution network across India with global exports. Primawear & Shi Mediwear quality.',
     images: [
       {
-        url: '/favicon-og.jpeg',
+        url: '/metalogo.JPEG',
         width: 1200,
         height: 630,
         alt: 'Acuron Products India - Surgical Wear & Medical Supplies Manufacturer',
