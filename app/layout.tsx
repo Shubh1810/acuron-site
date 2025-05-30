@@ -140,8 +140,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon-og.jpeg', sizes: '32x32', type: 'image/jpeg' },
-      { url: '/favicon-og.jpeg', sizes: '16x16', type: 'image/jpeg' }
+      { url: '/metalogo.JPEG', sizes: '32x32', type: 'image/jpeg' },
+      { url: '/metalogo.JPEG', sizes: '16x16', type: 'image/jpeg' }
     ],
     apple: [
       { url: '/favicon-og.jpeg', sizes: '180x180', type: 'image/jpeg' }
@@ -166,7 +166,7 @@ export default function RootLayout({
     name: 'Acuron Products India',
     alternateName: ['Acuron', 'Primawear', 'Shi Mediwear'],
     url: 'https://acuron.in',
-    logo: 'https://acuron.in/favicon-og.jpeg',
+    logo: 'https://acuron.in/metalogo.JPEG',
     description: 'Leading manufacturer of surgical wear, surgical supplies, 3 ply masks, N95 masks, surgical gowns, bouffant caps, razors, and medical equipment with wide distribution network across India and exports globally.',
     foundingDate: '2010',
     slogan: 'Revolutionizing Medical Supply with Precision & Care',

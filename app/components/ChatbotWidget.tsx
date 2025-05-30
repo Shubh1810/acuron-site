@@ -91,10 +91,10 @@ export default function ChatbotWidget() {
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="group relative w-16 h-16 bg-gradient-to-br from-[#0F4679] to-[#158C07] rounded-2xl shadow-2xl hover:shadow-[#0F4679]/25 transition-all duration-300 hover:scale-105 backdrop-blur-xl border border-white/10"
+          className="group relative w-16 h-16 bg-gradient-radial from-[#158C07] via-[#158C07]/90 to-[#0F6007] rounded-full shadow-2xl hover:shadow-[#158C07]/25 transition-all duration-300 hover:scale-105 backdrop-blur-xl border border-white/10"
         >
           {/* Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0F4679] to-[#158C07] rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-gradient-radial from-[#158C07] via-[#158C07]/90 to-[#0F6007] rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-300"></div>
           
           {/* Online Status Dot */}
           <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#158C07] rounded-full border-2 border-white animate-pulse shadow-lg"></div>
@@ -122,7 +122,7 @@ export default function ChatbotWidget() {
           </div>
 
           {/* Pulse Animation */}
-          <div className="absolute inset-0 rounded-2xl border-2 border-white/20 animate-ping opacity-75"></div>
+          <div className="absolute inset-0 rounded-full border-2 border-white/20 animate-ping opacity-75"></div>
         </button>
       </motion.div>
 
@@ -137,7 +137,7 @@ export default function ChatbotWidget() {
             className="fixed bottom-24 right-6 z-50 w-80 h-96 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#0F4679]/10 to-[#158C07]/10 px-6 py-4 border-b border-gray-100/50">
+            <div className="bg-gradient-to-r from-[#158C07]/10 to-[#0F6007]/10 px-6 py-4 border-b border-gray-100/50">
               <div className="flex items-center space-x-3">
                 {/* Profile Picture with Online Status */}
                 <div className="relative">
@@ -154,7 +154,7 @@ export default function ChatbotWidget() {
                   <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#158C07] rounded-full border-2 border-white animate-pulse"></div>
                 </div>
                 <div>
-                  <h3 className="font-rubik font-bold text-[#0F4679] text-lg">Acuron Assistant</h3>
+                  <h3 className="font-rubik font-bold text-[#158C07] text-lg">Acuron Assistant</h3>
                   <p className="text-gray-600 text-xs">Customer Service • Online</p>
                 </div>
               </div>
@@ -173,7 +173,7 @@ export default function ChatbotWidget() {
                   <div
                     className={`max-w-[70%] px-4 py-2 text-sm font-rubik ${
                       msg.type === 'user'
-                        ? 'bg-[#0F4679] text-white rounded-2xl rounded-br-md'
+                        ? 'bg-[#158C07] text-white rounded-2xl rounded-br-md'
                         : 'bg-gray-100 text-gray-800 rounded-2xl rounded-bl-md'
                     }`}
                   >
@@ -211,12 +211,12 @@ export default function ChatbotWidget() {
                   placeholder="Type your message..."
                   disabled={isLoading}
                   style={{ fontSize: '16px' }}
-                  className="flex-1 px-4 py-2 bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#0F4679]/20 text-sm font-rubik placeholder-gray-400 disabled:opacity-50"
+                  className="flex-1 px-4 py-2 bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#158C07]/20 text-sm font-rubik placeholder-gray-400 disabled:opacity-50"
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={isLoading || !message.trim()}
-                  className="w-10 h-10 bg-[#0F4679] text-white rounded-2xl hover:bg-[#0D3A64] hover:shadow-lg transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-10 h-10 bg-[#158C07] text-white rounded-2xl hover:bg-[#0F6007] hover:shadow-lg transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>

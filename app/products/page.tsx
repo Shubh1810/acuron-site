@@ -55,226 +55,69 @@ export default function ProductsPage() {
     { label: 'Products' }
   ];
 
-  // Medical supplies product data with proper image paths - Reordered
-  const products = [
-    {
-      id: 2,
-      name: "N95 Respirator Masks",
-      description: "NIOSH-approved respirators with 95% particle filtration efficiency",
-      category: "PPE",
-      image: "/products/n95-box.png",
-      secondaryImage: "/products/n95-banner.png",
-      featured: true,
-      showInHero: true,
-      specs: ["NIOSH Approved", "95% Filtration", "Secure Seal"]
-    },
-    {
-      id: 9,
-      name: "Surgical Razors",
-      description: "Precision surgical prep razors with safety features",
-      category: "Surgical",
-      image: "/products/razor.png",
-      secondaryImage: "/products/Acuron Prep Rezor.png",
-      featured: true,
-      showInHero: true,
-      specs: ["Sterile", "Safety Guard", "Sharp Blade"]
-    },
-    {
-      id: 1,
-      name: "3-Ply Medical Face Masks",
-      description: "High-quality disposable medical masks with bacterial filtration efficiency",
-      category: "PPE",
-      image: "/products/3ply-pack.png",
-      secondaryImage: "/products/3ply-display.png",
-      featured: true,
-      showInHero: true,
-      specs: ["99% BFE", "Fluid Resistant", "Comfortable Fit"]
-    },
-    {
-      id: 3,
-      name: "Medical Coveralls",
-      description: "Full-body protection coveralls with elastic cuffs and ankles",
-      category: "PPE",
-      image: "/products/Product Pics for Display July 3 2020 (4).jpg",
-      secondaryImage: "/products/Product Pics July 3 2020 (4).jpg",
-      featured: false,
-      showInHero: true,
-      specs: ["Full Coverage", "Breathable", "Elastic Cuffs"]
-    },
-    {
-      id: 11,
-      name: "Surgical Gowns",
-      description: "Fluid-resistant surgical gowns in multiple SMS fabric weights",
-      category: "Surgical",
-      image: "/products/Product Pics Aug 27 2020.jpeg",
-      secondaryImage: "/products/Product Pics for Display July 30 2020 (2).jpg",
-      featured: true,
-      showInHero: true,
-      specs: ["SMS Material", "Fluid Resistant", "Comfortable"]
-    },
-    {
-      id: 8,
-      name: "Complete PPE Kit",
-      description: "All-in-one protection kit including mask, coverall, gloves, and more",
-      category: "Kits",
-      image: "/products/OT Premium Kit Product Pics.png",
-      secondaryImage: "/products/Product Pics for Display July 30 2020.jpg",
-      featured: true,
-      showInHero: false,
-      specs: ["Complete Set", "ISO Certified", "Premium Quality"]
-    },
-    {
-      id: 4,
-      name: "Medical Shoe Covers",
-      description: "Fluid-resistant disposable boot covers for clinical environments",
-      category: "PPE",
-      image: "/products/Shoe Cover Box Pack.jpg",
-      secondaryImage: "/products/Product Pics for Display July 3 2020 (2).jpg",
-      featured: false,
-      showInHero: false,
-      specs: ["Fluid Resistant", "Non-Slip", "Easy Wear"]
-    },
-    {
-      id: 5,
-      name: "Medical Safety Goggles",
-      description: "Anti-fog protective eyewear with indirect ventilation",
-      category: "PPE",
-      image: "/products/Product Pics for Display July 3 2020 (3).jpg",
-      secondaryImage: "/products/Product Pics July 3 2020 (3).jpg",
-      featured: false,
-      showInHero: false,
-      specs: ["Anti-Fog", "UV Protection", "Adjustable"]
-    },
-    {
-      id: 6,
-      name: "Biodegradable Waste Disposal Bags",
-      description: "Eco-friendly medical waste bags with high tensile strength",
-      category: "Disposal",
-      image: "/products/Product Pics July 3 2020 (6).jpg",
-      secondaryImage: "/products/Product Pics for Display July 3 2020 (6).jpg",
-      featured: false,
-      showInHero: false,
-      specs: ["Eco-Friendly", "High Strength", "Leak Proof"]
-    },
-    {
-      id: 7,
-      name: "Medical Examination Gloves",
-      description: "Powder-free nitrile gloves for clinical and laboratory use",
-      category: "PPE",
-      image: "/products/Product Pics July 3 2020 (7).jpg",
-      secondaryImage: "/products/Product Pics for Display July 3 2020 (7).jpg",
-      featured: false,
-      showInHero: false,
-      specs: ["Powder-Free", "Nitrile", "Textured Grip"]
-    },
-    {
-      id: 10,
-      name: "Surgical Drapes (SMS)",
-      description: "Sterile surgical drapes in various SMS fabric compositions",
-      category: "Surgical",
-      image: "/products/Product Pics July 3 2020 (5).jpg",
-      secondaryImage: "/products/Product Pics for Display July 3 2020 (5).jpg",
-      featured: false,
-      showInHero: false,
-      specs: ["SMS Fabric", "Sterile", "Fluid Barrier"]
-    },
-    {
-      id: 12,
-      name: "Bouffant Caps",
-      description: "Lightweight, breathable caps with elastic band for secure fit",
-      category: "PPE",
-      image: "/products/cap-box.jpg",
-      secondaryImage: "/products/cap-model.png",
-      featured: false,
-      showInHero: false,
-      specs: ["Lightweight", "Breathable", "Secure Fit"]
-    },
-    {
-      id: 13,
-      name: "Kids 3-Ply Masks",
-      description: "Specially designed 3-ply masks for children with fun designs",
-      category: "PPE",
-      image: "/products/kids-3ply.png",
-      secondaryImage: "/products/3ply-laces.jpg",
-      featured: false,
-      showInHero: false,
-      specs: ["Child-Safe", "Fun Designs", "Comfortable"]
-    },
-    {
-      id: 14,
-      name: "Surgeon Caps",
-      description: "High-quality surgeon caps with tie-back for secure fit",
-      category: "Surgical",
-      image: "/products/Surgeon Cap Box Pack.jpg",
-      secondaryImage: "/products/Surgeon Cap Product Pic.png",
-      featured: false,
-      showInHero: false,
-      specs: ["Tie-Back", "Sterile", "Comfortable"]
-    }
+  // New extensive product data
+  const allProducts = [
+    // Protective Apparel
+    { id: 101, name: "Surgical Gown", description: "Standard nonwoven surgical gown for basic protection.", category: "Protective Apparel", image: "/products/Product Pics Aug 27 2020.jpeg", secondaryImage: "/products/Product Pics for Display July 30 2020 (2).jpg", featured: true, specs: ["Nonwoven Fabric", "Fluid Resistant", "Comfortable Fit"] },
+    { id: 102, name: "Patient Gown", description: "Comfortable and dignifying patient gowns.", category: "Protective Apparel", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Soft Fabric", "Easy Access", "Disposable"] },
+    { id: 103, name: "Plastic Apron", description: "Waterproof plastic aprons for various medical applications.", category: "Protective Apparel", image: "/products/plastic-apron.jpg", secondaryImage: "/products/plastic-apron.jpg", featured: false, specs: ["Waterproof LDPE", "Disposable", "Hygienic"] },
+    { id: 104, name: "Coverall", description: "Nonwoven labcoats for laboratory and general use.", category: "Protective Apparel", image: "/products/coverall.jpg", secondaryImage: "/products/coverall-2.jpg", featured: false, specs: ["Nonwoven Polypropylene", "Splash Resistant", "Knee-Length"] },
+
+    // Masks & Headwear
+    { id: 201, name: "3 Ply Face Mask - Tie/Lace", description: "Standard 3-ply face mask with tie/lace closure.", category: "Masks & Headwear", image: "/products/3ply-pack.png", secondaryImage: "/products/3ply-display.png", featured: true, specs: ["Tie/Lace Closure", "High BFE", "Comfortable"] },
+    { id: 202, name: "N95/FFP2 Protective Face Mask - Earloop", description: "N95/FFP2 respirator mask with earloops.", category: "Masks & Headwear", image: "/products/n95-box.png", secondaryImage: "/products/n95-banner.png", featured: false, specs: ["N95/FFP2 Standard", "High Filtration", "Earloop"] },
+    { id: 203, name: "Bouffant Cap", description: "Standard 18-inch bouffant caps for hair coverage.", category: "Masks & Headwear", image: "/products/cap-box.jpg", secondaryImage: "/products/cap-model.png", featured: false, specs: ["18 Inch Diameter", "Nonwoven", "Elasticated"] },
+    { id: 204, name: "Surgeon Cap", description: "Traditional surgeon caps for operating room use.", category: "Masks & Headwear", image: "/products/surgeon-cap.png", secondaryImage: "/products/surgeon-cap-2.png", featured: false, specs: ["Tie-back Design", "Cotton/Nonwoven", "Breathable"] },
+
+    // Shoe & Leg Protection
+    { id: 301, name: "Shoe Cover", description: "Disposable plastic (LDPE) shoe covers.", category: "Shoe & Leg Protection", image: "/products/Shoe Cover Box Pack.jpg", secondaryImage: "/products/Product Pics for Display July 3 2020 (2).jpg", featured: false, specs: ["LDPE Material", "Water Resistant", "Anti-Slip Option"] },
+    { id: 302, name: "PE Shoe Leggings", description: "Polyethylene shoe leggings for extended leg protection.", category: "Shoe & Leg Protection", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Polyethylene", "Knee-High", "Waterproof"] },
+
+    // Drapes, Linens & Underpads
+    { id: 401, name: "Bedsheet", description: "Disposable nonwoven bedsheets for hygiene.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Hygienic", "Various Sizes"] },
+    { id: 402, name: "Pillow Cover", description: "Disposable nonwoven pillow covers.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Soft", "Disposable"] },
+    { id: 403, name: "Underpads", description: "Absorbent underpads for patient care.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["High Absorbency", "Waterproof Backing", "Multiple Sizes"] },
+    { id: 404, name: "Sterilization Wraps", description: "SMS sterilization wraps for medical instruments.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["35gsm SMS", "Bacterial Barrier", "Various Sizes"] },
+    { id: 405, name: "Poly Drape", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
+    { id: 406, name: "Plain Sheet", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
+    { id: 407, name: "Minor Drape Set", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
+
+
+    // Medical Kits
+    { id: 501, name: "PPE Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/OT Premium Kit Product Pics.png", secondaryImage: "/products/Product Pics for Display July 30 2020.jpg", featured: true, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
+    { id: 502, name: "Surgeon's OT Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/OT Premium Kit Product Pics.png", secondaryImage: "/products/Product Pics for Display July 30 2020.jpg", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
+    { id: 503, name: "Delivery Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/OT Premium Kit Product Pics.png", secondaryImage: "/products/Product Pics for Display July 30 2020.jpg", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
+    { id: 504, name: "OT Premium Kit", description: "Comprehensive kit for surgeons in the operating theatre.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["OT Essentials", "Sterile Components", "Convenient Pack"] },
+    { id: 505, name: "HIV | AIDS Protection kit", description: "Ultra delivery kit for childbirth procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Comprehensive", "Sterile", "For Safe Delivery"] },
+    { id: 506, name: "Dental Kit - Premium", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
+    { id: 507, name: "Disposable 'Z' Kit", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
+    { id: 508, name: "Onco Plus (Chemo Kit)", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
+
+    // General Medical & Surgical Disposables
+    { id: 601, name: "Skin Blade / Prep Razor", description: "Precision surgical prep razors with safety features.", category: "General Medical & Surgical Disposables", image: "/products/razor.png", secondaryImage: "/products/razor-box.png", featured: false, specs: ["Sterile", "Safety Guard", "Sharp Blade"] },
+    { id: 602, name: "C Arm Cover (Poly)", description: "Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Polyethylene", "Sterile", "Equipment Protection"] },
+    { id: 603, name: "Nitrile Gloves", description: "Non-Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Non-Polyethylene", "Sterile", "Equipment Protection"] },
+    { id: 604, name: "Bio-degradable Disposal Bag", description: "Non-Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Non-Polyethylene", "Sterile", "Equipment Protection"] },
   ];
 
-  // Filter products based on active category
-  const filteredProducts = activeCategory === "All" 
-    ? products 
-    : products.filter(product => product.category === activeCategory);
+  const featuredProducts = allProducts.filter(product => product.featured);
+  const nonFeaturedProducts = allProducts.filter(product => !product.featured);
 
+  // New categories for filtering
   const categories = [
-    { name: "All", color: "from-blue-500 to-teal-500" },
-    { name: "PPE", color: "from-green-500 to-emerald-500" },
-    { name: "Surgical", color: "from-blue-600 to-cyan-500" },
-    { name: "Disposal", color: "from-purple-500 to-pink-500" },
-    { name: "Kits", color: "from-orange-500 to-red-500" }
+    { name: "All" },
+    { name: "Protective Apparel" },
+    { name: "Masks & Headwear" },
+    { name: "Shoe & Leg Protection" },
+    { name: "Drapes, Linens & Underpads" },
+    { name: "Medical Kits" },
+    { name: "General Medical & Surgical Disposables" }
   ];
 
-  const getCategoryColor = (category: string) => {
-    switch(category) {
-      case "PPE": return "from-green-500/20 to-emerald-500/20";
-      case "Surgical": return "from-blue-600/20 to-cyan-500/20";
-      case "Disposal": return "from-purple-500/20 to-pink-500/20";
-      case "Kits": return "from-orange-500/20 to-red-500/20";
-      default: return "from-gray-500/20 to-gray-600/20";
-    }
-  };
-
-  const getCategoryBorder = (category: string) => {
-    switch(category) {
-      case "PPE": return "border-green-500/30";
-      case "Surgical": return "border-blue-500/30";
-      case "Disposal": return "border-purple-500/30";
-      case "Kits": return "border-orange-500/30";
-      default: return "border-gray-500/30";
-    }
-  };
-
-  const getCategoryBorderActive = (category: string) => {
-    switch(category) {
-      case "PPE": return "border-green-500";
-      case "Surgical": return "border-blue-500";
-      case "Disposal": return "border-purple-500";
-      case "Kits": return "border-orange-500";
-      default: return "border-gray-500";
-    }
-  };
-
-  const getCategoryTextActive = (category: string) => {
-    switch(category) {
-      case "PPE": return "text-green-500";
-      case "Surgical": return "text-blue-500";
-      case "Disposal": return "text-purple-500";
-      case "Kits": return "text-orange-500";
-      default: return "text-gray-500";
-    }
-  };
-
-  const getCategoryGlow = (category: string) => {
-    switch(category) {
-      case "PPE": return "bg-green-500";
-      case "Surgical": return "bg-blue-500";
-      case "Disposal": return "bg-purple-500";
-      case "Kits": return "bg-orange-500";
-      default: return "bg-gray-500";
-    }
-  };
+  // Filter products based on active category (excluding featured products from this filter)
+  const filteredMiniProducts = activeCategory === "All"
+    ? nonFeaturedProducts
+    : nonFeaturedProducts.filter(product => product.category === activeCategory);
 
   return (
     <>
@@ -426,7 +269,7 @@ export default function ProductsPage() {
                 </div>
 
                 {/* Description Text Block */}
-                <div className="w-full text-center md:flex-1 md:text-right md:pl-12">
+                <div className="w-full text-center md:flex-1 md:text-right md:pl-12 mt-0 md:mt-6">
                   <p className="text-sm md:text-xl text-gray-600 leading-relaxed font-light max-w-2xl mx-auto md:ml-auto md:mr-0">
                     Discover our comprehensive range of ISO-certified medical supplies, designed for healthcare professionals who demand excellence in every procedure.
                   </p>
@@ -437,42 +280,9 @@ export default function ProductsPage() {
             </motion.div>
           </div>
 
-          {/* Minimal Filter Tabs */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-2 mb-20"
-          >
-            {categories.map((category, index) => (
-              <motion.button
-                key={category.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                onClick={() => setActiveCategory(category.name)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  activeCategory === category.name 
-                    ? "bg-[#0F4679] text-white" 
-                    : "text-gray-600 hover:text-[#0F4679] hover:bg-gray-50"
-                }`}
-              >
-                {category.name}
-              </motion.button>
-            ))}
-          </motion.div>
-
-          {/* Products Grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-24"
-            >
-            {filteredProducts.map((product, index) => (
+          {/* Static Large Featured Product Cards (Disconnected from filters) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-24">
+            {featuredProducts.map((product, index) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -480,65 +290,25 @@ export default function ProductsPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onHoverStart={() => setHoveredProduct(product.id)}
                 onHoverEnd={() => setHoveredProduct(null)}
-                className="group relative"
+                className="group relative" // This is the large card structure
               >
-                {/* Featured Badge */}
-                {product.featured && (
-                  <div className="absolute top-6 left-6 z-20">
-                    <div className="w-10 h-10 bg-gradient-to-r from-yellow-400/80 to-orange-500/80 backdrop-blur-md rounded-full shadow-xl border border-white/20 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-white drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
-                    </div>
-                  </div>
-                )}
-
-                {/* Image Container - No Background Container */}
-                <div className={`relative overflow-hidden ${product.featured ? 'aspect-[4/5]' : 'aspect-[4/3]'} mb-2`}>
+                <div className={`relative overflow-hidden aspect-[4/5] mb-2`}>
                   <Image 
-                    src={hoveredProduct === product.id ? product.secondaryImage : product.image}
+                    src={hoveredProduct === product.id && product.secondaryImage ? product.secondaryImage : product.image}
                     alt={product.name}
                     fill
-                    className="object-contain transition-all duration-700 group-hover:scale-110 p-3 sm:p-4 md:p-8"
+                    className="object-contain transition-all duration-700 group-hover:scale-110 p-3 sm:p-4 md:p-8" // Added padding
                   />
                 </div>
-
-                {/* Content Container - Only Around Text and Buttons */}
                 <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/40 shadow-xl hover:shadow-2xl transition-all duration-700">
                   <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#0F4679] transition-colors duration-300 leading-tight">
                     {product.name}
                   </h3>
                   
-                  <p className="text-gray-600 mb-6 text-base leading-relaxed">
-                    {product.description}
-                  </p>
-
-                  {/* Specifications */}
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {product.specs.map((spec, idx) => (
-                      <span 
-                        key={idx}
-                        className="px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 text-sm rounded-full font-medium border border-gray-200"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-4">
-                    <button className="flex-1 px-6 py-4 bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-xl transition-all duration-300 font-semibold border-2 border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-lg">
-                      Get Quote
-                    </button>
-                    <button className="relative px-6 py-4 bg-white hover:bg-gray-50 rounded-xl transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group">
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-xl p-[2px]">
-                        <div className="w-full h-full bg-white group-hover:bg-gray-50 rounded-[10px] transition-colors duration-300"></div>
-                      </div>
-                      <span className="relative bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent">
-                        Details →
-                      </span>
-                    </button>
-                  </div>
+                  {/* Action Button */}
+                  <button className="w-full px-6 py-4 bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-xl transition-all duration-300 font-semibold border-2 border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-lg">
+                    Get Quote
+                  </button>
                 </div>
 
                 {/* Card Glow Effect */}
@@ -547,14 +317,129 @@ export default function ProductsPage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* New Filter Tabs */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-wrap justify-center gap-2 mb-12 md:mb-20" // Increased bottom margin
+          >
+            {categories.map((category, index) => (
+              <motion.button
+                key={category.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }} // Faster stagger
+                onClick={() => setActiveCategory(category.name)}
+                className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 border-2 ${
+                  activeCategory === category.name 
+                    ? "bg-[#0F4679] text-white border-[#0F4679]"
+                    : "text-gray-700 bg-white border-gray-300 hover:text-[#0F4679] hover:border-[#0F4679] hover:bg-gray-50"
+                }`}
+              >
+                {category.name}
+              </motion.button>
+            ))}
+          </motion.div>
+
+          {/* Main Product Grid (Mini Replicas - Filterable) */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory} // Ensure this key changes for AnimatePresence to work
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }} // Faster transition
+              className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10 mb-24" // Adjusted gap and columns
+            >
+              {filteredMiniProducts.map((product, index) => (
+              <motion.div
+                  key={product.id} // Use product.id for unique key
+                  initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }} // Staggered animation for cards
+                onHoverStart={() => setHoveredProduct(product.id)}
+                onHoverEnd={() => setHoveredProduct(null)}
+                  className="group relative flex flex-col h-full" // Added flex-col and h-full for consistent card height
+                >
+                  {/* No featured badge for mini cards, or add if logic is needed */}
+                  {/* Image Container - Smaller */}
+                  <div className="relative overflow-hidden aspect-[4/3] mb-2 bg-gray-50 rounded-xl"> {/* Adjusted aspect ratio & bg */}
+                  <Image 
+                      src={hoveredProduct === product.id && product.secondaryImage ? product.secondaryImage : product.image}
+                    alt={product.name}
+                    fill
+                      className="object-contain transition-all duration-500 group-hover:scale-105 p-4" // Added padding
+                  />
+                </div>
+
+                  {/* Content Container - Scaled Down Replica */}
+                  <div className="flex flex-col flex-grow bg-white/80 backdrop-blur-lg rounded-2xl p-5 border border-gray-200/80 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-[#0F4679] transition-colors duration-300 leading-tight"> {/* Smaller text */}
+                    {product.name}
+                  </h3>
+                    <p className="text-gray-600 mb-3 text-xs leading-relaxed line-clamp-3 flex-grow"> {/* Smaller text, line-clamp */}
+                    {product.description}
+                  </p>
+
+                    {/* Specifications - อาจจะซ่อนบางส่วนหรือทำให้เล็กลง */}
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {product.specs.slice(0, 2).map((spec, idx) => ( // Show fewer specs or make them smaller
+                      <span 
+                        key={idx}
+                          className="px-2 py-0.5 bg-gray-100 text-gray-700 text-[10px] rounded-full font-medium border border-gray-200"
+                      >
+                        {spec}
+                      </span>
+                    ))}
+                      {product.specs.length > 2 && (
+                         <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-[10px] rounded-full font-medium border border-gray-200">
+                           +{product.specs.length - 2} more
+                         </span>
+                      )}
+                  </div>
+
+                    {/* Action Buttons - Smaller */}
+                    <div className="mt-auto flex flex-col sm:flex-row gap-2"> {/* mt-auto pushes to bottom */}
+                      <button className="flex-1 px-3 py-2 text-xs bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-lg transition-all duration-300 font-semibold border border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-md">
+                      Get Quote
+                    </button>
+                      <button className="relative flex-1 px-3 py-2 text-xs bg-white hover:bg-gray-50 rounded-lg transition-all duration-300 font-semibold shadow-md hover:shadow-lg hover:scale-105 overflow-hidden group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-lg p-px">
+                          <div className="w-full h-full bg-white group-hover:bg-gray-50 rounded-[7px] transition-colors duration-300"></div>
+                      </div>
+                      <span className="relative bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent">
+                        Details →
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                  {/* Optional: Card Glow Effect - can be distracting on small cards */}
+              </motion.div>
+            ))}
+               {filteredMiniProducts.length === 0 && activeCategory !== "All" && (
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{duration: 0.3}}
+                    className="col-span-full text-center py-12"
+                >
+                    <Image src="/placeholder.png" alt="No products found" width={128} height={128} className="mx-auto mb-4 opacity-50" />
+                    <p className="text-gray-600 text-lg">No products found in "{activeCategory}".</p>
+                    <p className="text-gray-500 text-sm">Try selecting another category or "All" to see all available products.</p>
+                </motion.div>
+            )}
             </motion.div>
           </AnimatePresence>
+
 
           {/* Enhanced CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: filteredMiniProducts.length > 0 ? 0.4 : 0.1 }} // Adjust delay based on product loading
             className="relative overflow-hidden bg-white rounded-3xl p-12 md:p-16 border border-gray-200 shadow-lg"
           >
             {/* Simple Background Pattern */}
