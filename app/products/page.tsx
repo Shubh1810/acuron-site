@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Header from "../components/Header";
 import WhiteGridBackground from "../components/ui/white-grid-background";
@@ -49,6 +49,8 @@ function VideoShowcase() {
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const scrollableNavRef = useRef<HTMLDivElement>(null);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -59,7 +61,7 @@ export default function ProductsPage() {
   const allProducts = [
     // Protective Apparel
     { id: 101, name: "Surgical Gowns", description: "Standard nonwoven surgical gown for basic protection.", category: "Protective Apparel", image: "/products/surgical-gown.jpeg", secondaryImage: "/products/surgical-gown.jpg", featured: false, specs: ["Nonwoven Fabric", "Fluid Resistant", "Comfortable Fit"] },
-    { id: 102, name: "Patient Gowns", description: "Comfortable and dignifying patient gowns.", category: "Protective Apparel", image: "/products/patient-gown.jpeg", secondaryImage: "/products/patient-gown-2.jpg", featured: false, specs: ["Soft Fabric", "Easy Access", "Disposable"] },
+    { id: 102, name: "Patient Gowns", description: "Comfortable and dignifying patient gowns.", category: "Protective Apparel", image: "/products/patgown.jpeg", secondaryImage: "/products/patient-gown-2.jpg", featured: false, specs: ["Soft Fabric", "Easy Access", "Disposable"] },
     { id: 103, name: "Plastic Aprons", description: "Waterproof plastic aprons for various medical applications.", category: "Protective Apparel", image: "/products/plastic-ap.jpg", secondaryImage: "/products/plastic-apron.jpg", featured: false, specs: ["Waterproof LDPE", "Disposable", "Hygienic"] },
     { id: 104, name: "Medical Coveralls", description: "Nonwoven labcoats for laboratory and general use.", category: "Protective Apparel", image: "/products/medcoverall.jpg", secondaryImage: "/products/coverall-2.jpg", featured: false, specs: ["Nonwoven Polypropylene", "Splash Resistant", "Knee-Length"] },
 
@@ -119,6 +121,33 @@ export default function ProductsPage() {
     ? nonFeaturedProducts
     : nonFeaturedProducts.filter(product => product.category === activeCategory);
 
+  // Effect to handle scroll indicator visibility
+  useEffect(() => {
+    const navElement = scrollableNavRef.current;
+
+    const checkScroll = () => {
+      if (navElement) {
+        const canScroll = navElement.scrollWidth > navElement.clientWidth;
+        const isScrolledToEnd = navElement.scrollLeft + navElement.clientWidth >= navElement.scrollWidth - 5; // 5px tolerance
+        setShowScrollIndicator(canScroll && !isScrolledToEnd);
+      }
+    };
+
+    if (navElement) {
+      // Initial check
+      checkScroll();
+      navElement.addEventListener('scroll', checkScroll, { passive: true });
+    }
+    window.addEventListener('resize', checkScroll, { passive: true });
+
+    return () => {
+      if (navElement) {
+        navElement.removeEventListener('scroll', checkScroll);
+      }
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, []); // Runs on mount and unmount
+
   return (
     <>
       <WhiteGridBackground />
@@ -128,8 +157,8 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Apple-style Category Navigation */}
           <div className="mb-6 pb-4 border-b border-gray-200">
-            <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-3 md:p-6 border border-gray-100">
-              <div className="flex items-center justify-start sm:justify-center space-x-2 sm:space-x-4 md:space-x-8 overflow-x-auto scrollbar-hide">
+            <div className="relative bg-white shadow-lg p-2 sm:p-3 md:p-6 border border-gray-100 overflow-hidden">
+              <div ref={scrollableNavRef} className="flex items-center justify-start sm:justify-center space-x-2 sm:space-x-4 md:space-x-8 overflow-x-auto scrollbar-hide">
                 <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
                   <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,6 +259,13 @@ export default function ProductsPage() {
                   <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Complete Kits</span>
                 </div>
               </div>
+
+              {/* Neon Glow Right Edge - Mobile Only */}
+              {showScrollIndicator && (
+                <div className="absolute top-0 right-0 h-full w-1.5 md:hidden pointer-events-none z-10 flex items-center">
+                  <div className="w-full h-full bg-gradient-to-b from-[#0F4679]/70 via-[#3B82F6]/40 to-[#158C07]/30 opacity-80 blur-[6px] shadow-[0_0_8px_2px_#0F4679] animate-pulse"></div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -411,11 +447,11 @@ export default function ProductsPage() {
                       <button className="relative flex-1 px-3 py-2 text-xs bg-white hover:bg-[#0F4679] rounded-lg transition-all duration-300 font-semibold shadow-md hover:shadow-lg hover:scale-105 overflow-hidden group">
                         <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-lg p-px">
                           <div className="w-full h-full bg-white group-hover:bg-[#0F4679] rounded-[7px] transition-all duration-300"></div>
-                        </div>
+                      </div>
                         <span className="relative bg-gradient-to-r from-[#0F4679] to-[#158C07] group-hover:text-white bg-clip-text text-transparent transition-all duration-300">
-                          Details →
-                        </span>
-                      </button>
+                        Details →
+                      </span>
+                    </button>
                   </div>
                 </div>
               </motion.div>
