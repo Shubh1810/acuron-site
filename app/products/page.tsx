@@ -10,7 +10,7 @@ import Footer from "../components/sections/Footer";
 // Professional Video Showcase Component
 function VideoShowcase() {
   return (
-    <div className="mb-20">
+    <div className="mb-0">
       <div className="w-full">
         {/* Minimal Video Display */}
         <div className="relative mx-auto max-w-sm aspect-[3/4] md:max-w-none md:aspect-video">
@@ -58,37 +58,35 @@ export default function ProductsPage() {
   // New extensive product data
   const allProducts = [
     // Protective Apparel
-    { id: 101, name: "Surgical Gown", description: "Standard nonwoven surgical gown for basic protection.", category: "Protective Apparel", image: "/products/Product Pics Aug 27 2020.jpeg", secondaryImage: "/products/Product Pics for Display July 30 2020 (2).jpg", featured: false, specs: ["Nonwoven Fabric", "Fluid Resistant", "Comfortable Fit"] },
-    { id: 102, name: "Surgical Gown", description: "Standard nonwoven surgical gown for basic protection.", category: "Protective Apparel", image: "/products/Product Pics Aug 27 2020.jpeg", secondaryImage: "/products/Product Pics for Display July 30 2020 (2).jpg", featured: false, specs: ["Nonwoven Fabric", "Fluid Resistant", "Comfortable Fit"] },
-    { id: 103, name: "Patient Gown", description: "Comfortable and dignifying patient gowns.", category: "Protective Apparel", image: "/products/gown.jpg", secondaryImage: "/products/gown-2.jpg", featured: false, specs: ["Soft Fabric", "Easy Access", "Disposable"] },
-    { id: 104, name: "Plastic Apron", description: "Waterproof plastic aprons for various medical applications.", category: "Protective Apparel", image: "/products/plastic-apron.jpg", secondaryImage: "/products/plastic-apron.jpg", featured: false, specs: ["Waterproof LDPE", "Disposable", "Hygienic"] },
-    { id: 105, name: "Medical Coverall", description: "Nonwoven labcoats for laboratory and general use.", category: "Protective Apparel", image: "/products/coverall.jpg", secondaryImage: "/products/coverall-2.jpg", featured: false, specs: ["Nonwoven Polypropylene", "Splash Resistant", "Knee-Length"] },
+    { id: 101, name: "Surgical Gown", description: "Standard nonwoven surgical gown for basic protection.", category: "Protective Apparel", image: "/products/surgical-gown2.png", secondaryImage: "/products/surgical-gown.jpg", featured: false, specs: ["Nonwoven Fabric", "Fluid Resistant", "Comfortable Fit"] },
+    { id: 102, name: "Patient Gown", description: "Comfortable and dignifying patient gowns.", category: "Protective Apparel", image: "/products/patient-gown.jpeg", secondaryImage: "/products/patient-gown-2.jpg", featured: false, specs: ["Soft Fabric", "Easy Access", "Disposable"] },
+    { id: 103, name: "Plastic Apron", description: "Waterproof plastic aprons for various medical applications.", category: "Protective Apparel", image: "/products/plastic-apron.jpg", secondaryImage: "/products/plastic-apron.jpg", featured: false, specs: ["Waterproof LDPE", "Disposable", "Hygienic"] },
+    { id: 104, name: "Medical Coverall", description: "Nonwoven labcoats for laboratory and general use.", category: "Protective Apparel", image: "/products/coverall.jpg", secondaryImage: "/products/coverall-2.jpg", featured: false, specs: ["Nonwoven Polypropylene", "Splash Resistant", "Knee-Length"] },
 
     // Masks & Headwear
     { id: 201, name: "3 Ply Face Mask - Tie/Lace", description: "Standard 3-ply face mask with tie/lace closure.", category: "Masks & Headwear", image: "/products/3ply-pack.png", secondaryImage: "/products/3ply-display.png", featured: false, specs: ["Tie/Lace Closure", "High BFE", "Comfortable"] },
     { id: 202, name: "N95/FFP2 Protective Face Mask - Earloop", description: "N95/FFP2 respirator mask with earloops.", category: "Masks & Headwear", image: "/products/n95-box.png", secondaryImage: "/products/n95-banner.png", featured: false, specs: ["N95/FFP2 Standard", "High Filtration", "Earloop"] },
-    { id: 203, name: "Bouffant Cap", description: "Standard 18-inch bouffant caps for hair coverage.", category: "Masks & Headwear", image: "/products/cap-box.jpg", secondaryImage: "/products/cap-model.png", featured: false, specs: ["18 Inch Diameter", "Nonwoven", "Elasticated"] },
+    { id: 203, name: "Bouffant Cap", description: "Standard 18-inch bouffant caps for hair coverage.", category: "Masks & Headwear", image: "/products/cap.jpeg", secondaryImage: "/products/cap-model.png", featured: false, specs: ["18 Inch Diameter", "Nonwoven", "Elasticated"] },
     { id: 204, name: "Surgeon Cap", description: "Traditional surgeon caps for operating room use.", category: "Masks & Headwear", image: "/products/surgeon-cap.png", secondaryImage: "/products/surgeon-cap-2.png", featured: false, specs: ["Tie-back Design", "Cotton/Nonwoven", "Breathable"] },
 
     // Shoe & Leg Protection
-    { id: 301, name: "Shoe Cover", description: "Disposable plastic (LDPE) shoe covers.", category: "Shoe & Leg Protection", image: "/products/Shoe Cover Box Pack.jpg", secondaryImage: "/products/Product Pics for Display July 3 2020 (2).jpg", featured: false, specs: ["LDPE Material", "Water Resistant", "Anti-Slip Option"] },
-    { id: 302, name: "PE Shoe Leggings", description: "Polyethylene shoe leggings for extended leg protection.", category: "Shoe & Leg Protection", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Polyethylene", "Knee-High", "Waterproof"] },
+    { id: 301, name: "Shoe Cover", description: "Disposable plastic (LDPE) shoe covers.", category: "Shoe & Leg Protection", image: "/products/shoecover.avif", secondaryImage: "/products/shoecover-white.avif", featured: false, specs: ["LDPE Material", "Water Resistant", "Anti-Slip Option"] },
+    { id: 302, name: "PE Shoe Leggings", description: "Polyethylene shoe leggings for extended leg protection.", category: "Shoe & Leg Protection", image: "/products/pe-shoecover.webp", secondaryImage: "/products/pe-shoecover.webp", featured: false, specs: ["Polyethylene", "Knee-High", "Waterproof"] },
 
     // Drapes, Linens & Underpads
-    { id: 401, name: "Bedsheet", description: "Disposable nonwoven bedsheets for hygiene.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Hygienic", "Various Sizes"] },
-    { id: 402, name: "Pillow Cover", description: "Disposable nonwoven pillow covers.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Soft", "Disposable"] },
-    { id: 403, name: "Underpads", description: "Absorbent underpads for patient care.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["High Absorbency", "Waterproof Backing", "Multiple Sizes"] },
-    { id: 404, name: "Sterilization Wraps", description: "SMS sterilization wraps for medical instruments.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["35gsm SMS", "Bacterial Barrier", "Various Sizes"] },
-    { id: 405, name: "Poly Drape", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
-    { id: 406, name: "Plain Sheet", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
-    { id: 407, name: "Minor Drape Set", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
+    { id: 401, name: "Bedsheet & Pillow cover", description: "Disposable nonwoven bedsheets and pillow covers for hygiene.", category: "Drapes, Linens & Underpads", image: "/products/bed-sheet.webp", secondaryImage: "/products/bed-sheet.webp", featured: false, specs: ["Nonwoven Fabric", "Hygienic", "Various Sizes"] },
+    { id: 403, name: "Underpads", description: "Absorbent underpads for patient care.", category: "Drapes, Linens & Underpads", image: "/products/underpads.jpg", secondaryImage: "/products/underpads.jpg", featured: false, specs: ["High Absorbency", "Waterproof Backing", "Multiple Sizes"] },
+    { id: 404, name: "Sterilization Wraps", description: "SMS sterilization wraps for medical instruments.", category: "Drapes, Linens & Underpads", image: "/products/sterile-wrap.avif", secondaryImage: "/products/sterilization-wraps.jpg", featured: false, specs: ["35gsm SMS", "Bacterial Barrier", "Various Sizes"] },
+    { id: 405, name: "Poly Drape", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/poly-drape.jpeg", secondaryImage: "/products/poly-drape.jpg", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
+    { id: 406, name: "Plain Sheet", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/plain-sheet.jpg", secondaryImage: "/products/plain-sheet.jpg", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
+    { id: 407, name: "Minor Drape Set", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/minor-drape.jpg", secondaryImage: "/products/minor-drape.jpg", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
 
 
     // Medical Kits
     { id: 501, name: "PPE Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/OT Premium Kit Product Pics.png", secondaryImage: "/products/Product Pics for Display July 30 2020.jpg", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
     { id: 502, name: "Surgeon's OT Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/OT Premium Kit Product Pics.png", secondaryImage: "/products/Product Pics for Display July 30 2020.jpg", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
     { id: 503, name: "Delivery Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/OT Premium Kit Product Pics.png", secondaryImage: "/products/Product Pics for Display July 30 2020.jpg", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
-    { id: 504, name: "OT Premium Kit", description: "Comprehensive kit for surgeons in the operating theatre.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["OT Essentials", "Sterile Components", "Convenient Pack"] },
+    { id: 504, name: "OT Premium Kit", description: "Comprehensive kit for surgeons in the operating theatre.", category: "Medical Kits", image: "/products/ot-premium-kit.jpg", secondaryImage: "/placeholder.png", featured: false, specs: ["OT Essentials", "Sterile Components", "Convenient Pack"] },
     { id: 505, name: "HIV | AIDS Protection kit", description: "Ultra delivery kit for childbirth procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Comprehensive", "Sterile", "For Safe Delivery"] },
     { id: 506, name: "Dental Kit - Premium", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
     { id: 507, name: "Disposable 'Z' Kit", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
@@ -96,9 +94,9 @@ export default function ProductsPage() {
 
     // General Medical & Surgical Disposables
     { id: 601, name: "Skin Blade / Prep Razor", description: "Precision surgical prep razors with safety features.", category: "General Medical & Surgical Disposables", image: "/products/razor.png", secondaryImage: "/products/razor-box.png", featured: false, specs: ["Sterile", "Safety Guard", "Sharp Blade"] },
-    { id: 602, name: "C Arm Cover (Poly)", description: "Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Polyethylene", "Sterile", "Equipment Protection"] },
-    { id: 603, name: "Nitrile Gloves", description: "Non-Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Non-Polyethylene", "Sterile", "Equipment Protection"] },
-    { id: 604, name: "Bio-degradable Disposal Bag", description: "Non-Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Non-Polyethylene", "Sterile", "Equipment Protection"] },
+    { id: 602, name: "C Arm Cover (Poly)", description: "Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/products/arm-cover.avif", secondaryImage: "/products/arm-cover.avif", featured: false, specs: ["Polyethylene", "Sterile", "Equipment Protection"] },
+    { id: 603, name: "Nitrile Gloves", description: "Non-Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/products/nitrile-gloves.jpg", secondaryImage: "/products/nitrile-gloves.jpg", featured: false, specs: ["Non-Polyethylene", "Sterile", "Equipment Protection"] },
+    { id: 604, name: "Bio-degradable Disposal Bag", description: "Non-Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/products/waste-bag.avif", secondaryImage: "/products/waste-bag.avif", featured: false, specs: ["Non-Polyethylene", "Sterile", "Equipment Protection"] },
   ];
 
   const featuredProducts = allProducts.filter(product => product.featured);
@@ -176,7 +174,7 @@ export default function ProductsPage() {
                       className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
                     />
                   </div>
-                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Surgical Items</span>
+                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Surgical Drapes</span>
                 </div>
 
                 <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
