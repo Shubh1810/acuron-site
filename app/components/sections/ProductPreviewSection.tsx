@@ -447,24 +447,33 @@ export default function ProductPreviewSection() {
   const currentProduct = currentCategory.products[currentProductIndex];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#0F4679] rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#158C07] rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="relative inline-block">
+        <div className="text-center mb-12">
+          <div className="relative inline-block mb-5">
             <div className="absolute -left-2 -top-2 w-20 h-8 bg-gradient-to-br from-[#158C07]/40 to-[#0F4679]/40 rounded-full blur-lg"></div>
-            <span className="relative inline-block px-3 py-1 text-xs uppercase tracking-wider font-semibold bg-white backdrop-blur-sm rounded-full mb-6 border-l-4 border-[#158C07] text-black shadow-lg">{productsText}</span>
+            <span className="relative inline-block px-4 py-2 text-sm uppercase tracking-wider font-semibold bg-white backdrop-blur-sm rounded-full border-l-4 border-[#158C07] text-black shadow-lg">
+              {productsText}
+            </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 mt-6">
-            {discoverTitle.split(' ').slice(0, 2).join(' ')} <span className="bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent">{discoverTitle.split(' ').slice(2).join(' ')}</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5 leading-tight">
+            <span className="relative">
+              {discoverTitle.split(' ').slice(0, 2).join(' ')}
+              <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-[#0F4679] to-transparent"></span>
+            </span>
+            {' '}
+            <span className="bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent">
+              {discoverTitle.split(' ').slice(2).join(' ')}
+            </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             {exploreDescription}
           </p>
         </div>
@@ -478,10 +487,10 @@ export default function ProductPreviewSection() {
                 setActiveCategory(index);
                 setCurrentProductIndex(0);
               }}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === index
-                  ? "bg-[#0F4679] text-white"
-                  : "text-gray-600 hover:text-[#0F4679] hover:bg-gray-100"
+                  ? "bg-[#0F4679] text-white shadow-lg"
+                  : "text-gray-600 hover:text-[#0F4679] hover:bg-gray-100 border border-gray-200"
               }`}
             >
               {category.name}
@@ -508,15 +517,17 @@ export default function ProductPreviewSection() {
                 
                 {/* Product badge */}
                 <div className="absolute top-4 left-4 z-20">
-                  <div className={`px-3 py-1 bg-gradient-to-r ${getGlassColor(activeCategory)} backdrop-blur-md rounded-full border border-white/30 shadow-lg`}>
-                    <span className="text-white text-xs font-semibold drop-shadow-sm">{currentCategory.name}</span>
+                  <div className={`px-3 py-1.5 bg-gradient-to-r ${getGlassColor(activeCategory)} backdrop-blur-md rounded-full border border-white/30 shadow-lg`}>
+                    <span className="text-white text-sm font-semibold drop-shadow-sm">
+                      {currentCategory.name}
+                    </span>
                   </div>
                 </div>
 
                 {/* Product counter */}
                 <div className="absolute bottom-4 right-4 z-20">
-                  <div className="bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
-                    <span className="text-white text-xs">
+                  <div className="bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5">
+                    <span className="text-white text-sm">
                       {currentProductIndex + 1} / {currentCategory.products.length}
                     </span>
                   </div>
@@ -524,11 +535,15 @@ export default function ProductPreviewSection() {
               </div>
 
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">{currentProduct.name}</h3>
-                <p className="text-gray-600 mb-4">{currentProduct.description}</p>
+                <h3 className="text-xl font-bold text-gray-800 mb-2 leading-tight">
+                  {currentProduct.name}
+                </h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  {currentProduct.description}
+                </p>
                 
                 {/* Product indicators */}
-                <div className="flex space-x-2 mb-4">
+                <div className="flex space-x-2 mb-2">
                   {currentCategory.products.map((_, index) => (
                     <div
                       key={index}
@@ -545,36 +560,48 @@ export default function ProductPreviewSection() {
           </div>
 
           {/* Category Details */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-4">{currentCategory.name}</h3>
-              <p className="text-lg text-gray-600 mb-6">{currentCategory.description}</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3 leading-tight">
+                {currentCategory.name}
+              </h3>
+              <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+                {currentCategory.description}
+              </p>
               
-              <div className="flex items-center space-x-4 mb-8">
-                <div className={`px-4 py-2 rounded-lg bg-white border border-${currentCategory.color.split(' ')[0].substring(5)}`}>
-                  <span className={`font-semibold text-${currentCategory.color.split(' ')[0].substring(5)}`}>{currentCategory.count}</span>
+              <div className="flex items-center space-x-4 mb-6">
+                <div className={`px-4 py-2 rounded-lg bg-white border-2 border-[#0F4679] shadow-sm`}>
+                  <span className={`font-semibold text-[#0F4679] text-base`}>
+                    {currentCategory.count}
+                  </span>
                 </div>
-                <div className="text-gray-500">{availableInCategoryText}</div>
+                <div className="text-gray-500 text-sm leading-relaxed">
+                  {availableInCategoryText}
+                </div>
               </div>
             </div>
 
             {/* Product list */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               {currentCategory.products.map((product, index) => (
                 <div
                   key={index}
                   className={`p-4 rounded-xl border transition-all duration-300 cursor-pointer ${
                     index === currentProductIndex
-                      ? 'border-gray-300 bg-gray-50 transform scale-102'
-                      : 'border-gray-100 hover:border-gray-200'
+                      ? 'border-gray-300 bg-gray-50 transform scale-102 shadow-md'
+                      : 'border-gray-100 hover:border-gray-200 hover:shadow-sm'
                   }`}
                   onClick={() => setCurrentProductIndex(index)}
                 >
-                  <div className="flex items-center space-x-4">
-                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${currentCategory.color}`}></div>
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${currentCategory.color} shrink-0`}></div>
                     <div>
-                      <h4 className="font-semibold text-gray-800">{product.name}</h4>
-                      <p className="text-sm text-gray-500">{product.description}</p>
+                      <h4 className="font-semibold text-gray-800 text-base leading-tight">
+                        {product.name}
+                      </h4>
+                      <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+                        {product.description}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -585,7 +612,7 @@ export default function ProductPreviewSection() {
             <div className="pt-6">
               <Link
                 href="/products"
-                className={`inline-flex items-center px-8 py-4 font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 group bg-white border border-${currentCategory.color.split(' ')[0].substring(5)} text-${currentCategory.color.split(' ')[0].substring(5)}`}
+                className={`inline-flex items-center px-6 py-3 font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 group bg-white border-2 border-[#0F4679] text-[#0F4679] hover:bg-[#0F4679] hover:text-white`}
               >
                 {exploreAllProductsText}
                 <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -597,22 +624,22 @@ export default function ProductPreviewSection() {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-[#0F4679] mb-2">165+</div>
-            <div className="text-gray-600">{totalProductsText}</div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <div className="text-center space-y-1">
+            <div className="text-2xl md:text-3xl font-bold text-[#0F4679] leading-tight">165+</div>
+            <div className="text-gray-600 text-xs md:text-sm leading-relaxed">{totalProductsText}</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-[#0F4679] mb-2">500+</div>
-            <div className="text-gray-600">{hospitalsServedText}</div>
+          <div className="text-center space-y-1">
+            <div className="text-2xl md:text-3xl font-bold text-[#0F4679] leading-tight">500+</div>
+            <div className="text-gray-600 text-xs md:text-sm leading-relaxed">{hospitalsServedText}</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent">ISO</div>
-            <div className="text-gray-600">{certifiedQualityText}</div>
+          <div className="text-center space-y-1">
+            <div className="text-2xl md:text-3xl font-bold leading-tight bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent">ISO</div>
+            <div className="text-gray-600 text-xs md:text-sm leading-relaxed">{certifiedQualityText}</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#0F4679] to-[#DC2626] bg-clip-text text-transparent">24/7</div>
-            <div className="text-gray-600">{supportAvailableText}</div>
+          <div className="text-center space-y-1">
+            <div className="text-2xl md:text-3xl font-bold leading-tight bg-gradient-to-r from-[#0F4679] to-[#DC2626] bg-clip-text text-transparent">24/7</div>
+            <div className="text-gray-600 text-xs md:text-sm leading-relaxed">{supportAvailableText}</div>
           </div>
         </div>
       </div>

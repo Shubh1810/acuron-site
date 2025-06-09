@@ -66,7 +66,7 @@ export default function MissionSection() {
     {
       de: 'Vertraut von renommierten Krankenhäusern und Gesundheitseinrichtungen landesweit, einschließlich führender öffentlicher Krankenhäuser, privater Gesundheitsgruppen und staatlicher Medizinbehörden.',
       fr: 'Fait confiance par des hôpitaux renommés et des institutions de santé à l\'échelle nationale, y compris les principaux hôpitaux publics, les groupes de santé privés et les agences médicales gouvernementales.',
-      ja: '全国の著名な病院や医療機関から信頼されており、主要な公立病院、民間医療グループ、政府医療機関が含まれます。',
+      ja: '全国の著名な病院や medical機関から信頼されており、主要な公立病院、民間医療グループ、政府医療機関が含まれます。',
       zh: '受到全国知名医院和医疗机构的信赖，包括领先的公立医院、私人医疗集团和政府医疗机构。',
       pt: 'Confiável por hospitais renomados e instituições de saúde em todo o país, incluindo principais hospitais públicos, grupos de saúde privados e agências médicas governamentais.'
     }
@@ -124,7 +124,7 @@ export default function MissionSection() {
   });
 
   return (
-    <section className="relative py-0 min-h-[1100px] md:min-h-[800px] text-white">
+    <section className="relative py-16 min-h-[700px] md:min-h-[650px] text-white">
       <BackgroundGradientAnimation 
         gradientBackgroundStart="rgb(10, 61, 98)" 
         gradientBackgroundEnd="rgb(15, 70, 110)"
@@ -139,65 +139,78 @@ export default function MissionSection() {
         containerClassName="absolute inset-0"
       >
         <div className="relative z-10 flex flex-col h-full">
-          <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-10 pt-8 pb-8 flex-grow flex flex-col justify-between">
-            <div className="relative mb-4 md:mb-6">
+          <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-10 py-10 flex-grow flex flex-col justify-between">
+            {/* Header Section */}
+            <div className="relative mb-6">
               <div className="absolute -left-3 -top-3 w-12 h-12 bg-gradient-to-br from-blue-400/40 to-teal-300/40 rounded-full blur-lg"></div>
               
-              <div className="relative z-10 mb-2">
-                <span className="inline-block px-3 py-1 text-xs uppercase tracking-wider font-semibold bg-white/10 backdrop-blur-sm rounded-full mb-2 border-l-2 border-accent-400">{ourMissionText}</span>
+              <div className="relative z-10">
+                <span className="inline-block px-4 py-2 text-xs uppercase tracking-wider font-semibold bg-white/10 backdrop-blur-sm rounded-full mb-3 border-l-2 border-accent-400 text-white">
+                  {ourMissionText}
+                </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading tracking-tight text-white/95 leading-tight">
                   <span className="relative">
                     {missionTitle.split(':')[0]}
                     <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-accent-400 to-transparent"></span>
                   </span>
-                  <br /> {missionTitle.split(':')[1]}
+                  <br className="mt-2" /> 
+                  <span className="text-accent-300">
+                    {missionTitle.split(':')[1]}
+                  </span>
                 </h2>
               </div>
             </div>
             
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-4">
+            {/* Content Section */}
+            <div className="flex flex-col md:flex-row gap-6 mb-6">
               <div className="flex-grow md:w-2/3">
                 <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 h-full">
-                  <div className="p-5 md:p-6 lg:p-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-                      <div>
-                        <div className="flex items-center mb-2">
-                          <div className="w-8 h-8 flex items-center justify-center rounded-full bg-accent-400/20 mr-3">
+                  <div className="p-6 md:p-7">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-3">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 flex items-center justify-center rounded-full bg-accent-400/20 shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-accent-300" viewBox="0 0 20 20" fill="currentColor">
                               <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
                             </svg>
                           </div>
-                          <h3 className="text-base font-semibold text-white/90">{innovationTitle}</h3>
+                          <h3 className="text-base font-semibold text-white/90 leading-tight">
+                            {innovationTitle}
+                          </h3>
                         </div>
-                        <p className="text-base text-white/80 pl-11 font-playfair">
+                        <p className="text-sm text-white/80 font-playfair leading-relaxed">
                           {innovationDesc}
                         </p>
                       </div>
                       
-                      <div>
-                        <div className="flex items-center mb-2">
-                          <div className="w-8 h-8 flex items-center justify-center rounded-full bg-accent-400/20 mr-3">
+                      <div className="space-y-3">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 flex items-center justify-center rounded-full bg-accent-400/20 shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-accent-300" viewBox="0 0 20 20" fill="currentColor">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           </div>
-                          <h3 className="text-base font-semibold text-white/90">{trustedTitle}</h3>
+                          <h3 className="text-base font-semibold text-white/90 leading-tight">
+                            {trustedTitle}
+                          </h3>
                         </div>
-                        <p className="text-base text-white/80 pl-11 font-playfair">
+                        <p className="text-sm text-white/80 font-playfair leading-relaxed">
                           {trustedDesc}
                         </p>
                       </div>
                       
-                      <div className="md:col-span-2">
-                        <div className="flex items-center mb-2">
-                          <div className="w-8 h-8 flex items-center justify-center rounded-full bg-accent-400/20 mr-3">
+                      <div className="md:col-span-2 space-y-3">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 flex items-center justify-center rounded-full bg-accent-400/20 shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-accent-300" viewBox="0 0 20 20" fill="currentColor">
                               <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
                           </div>
-                          <h3 className="text-base font-semibold text-white/90">{certifiedTitle}</h3>
+                          <h3 className="text-base font-semibold text-white/90 leading-tight">
+                            {certifiedTitle}
+                          </h3>
                         </div>
-                        <p className="text-base text-white/80 pl-11 font-playfair">
+                        <p className="text-sm text-white/80 font-playfair leading-relaxed">
                           {certifiedDesc}
                         </p>
                       </div>
@@ -206,11 +219,14 @@ export default function MissionSection() {
                 </div>
               </div>
               
+              {/* Impact Metrics */}
               <div className="md:w-1/3">
                 <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 h-full p-5">
-                  <h3 className="text-base font-semibold text-white/90 mb-4 text-center">{ourImpactText}</h3>
-                  <div className="flex flex-row sm:flex-col">
-                    <div className="flex-1 p-2 sm:p-4 flex flex-col items-center text-center">
+                  <h3 className="text-base font-semibold text-white/90 mb-5 text-center">
+                    {ourImpactText}
+                  </h3>
+                  <div className="flex flex-row sm:flex-col space-x-2 sm:space-x-0 sm:space-y-5">
+                    <div className="flex-1 flex flex-col items-center text-center">
                       <Metric 
                         value={10000} 
                         label={satisfiedCustomersText} 
@@ -218,13 +234,13 @@ export default function MissionSection() {
                       />
                     </div>
                     
-                    {/* Mobile vertical divider, Desktop horizontal divider */}
+                    {/* Divider */}
                     <div className="flex items-center justify-center">
-                      <div className="hidden sm:block w-full h-px bg-white/10 my-2"></div>
-                      <div className="block sm:hidden h-12 w-px bg-white/10 mx-1"></div>
+                      <div className="hidden sm:block w-full h-px bg-white/10 my-0"></div>
+                      <div className="block sm:hidden h-12 w-px bg-white/10 mx-0"></div>
                     </div>
                     
-                    <div className="flex-1 p-2 sm:p-4 flex flex-col items-center text-center">
+                    <div className="flex-1 flex flex-col items-center text-center">
                       <Metric 
                         value={100} 
                         label={productsText} 
@@ -232,13 +248,13 @@ export default function MissionSection() {
                       />
                     </div>
                     
-                    {/* Mobile vertical divider, Desktop horizontal divider */}
+                    {/* Divider */}
                     <div className="flex items-center justify-center">
-                      <div className="hidden sm:block w-full h-px bg-white/10 my-2"></div>
-                      <div className="block sm:hidden h-12 w-px bg-white/10 mx-1"></div>
+                      <div className="hidden sm:block w-full h-px bg-white/10 my-0"></div>
+                      <div className="block sm:hidden h-12 w-px bg-white/10 mx-0"></div>
                     </div>
                     
-                    <div className="flex-1 p-2 sm:p-4 flex flex-col items-center text-center">
+                    <div className="flex-1 flex flex-col items-center text-center">
                       <Metric 
                         value={15} 
                         label={yearsExperienceText} 

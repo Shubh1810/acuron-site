@@ -111,11 +111,14 @@ export default function AboutSection() {
   });
 
   return (
-    <section className="py-16 px-8 bg-white" id="about-us-section">
+    <section className="py-16 px-6 bg-white" id="about-us-section">
       <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="flex justify-center mb-12">
           <div className="relative">
-            <h2 className="section-title text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent">{aboutUsTitle}</h2>
+            <h2 className="section-title text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+              {aboutUsTitle}
+            </h2>
           </div>
         </div>
         
@@ -135,23 +138,30 @@ export default function AboutSection() {
             </div>
           </div>
           <div className="md:w-3/5 flex flex-col justify-center">
-            <h3 className="text-5xl font-bold text-gray-800 mb-4 font-sakamoto">{whyChooseTitle}</h3>
-            <p className="text-xl text-gray-700 mb-6 font-rubik">
-              {aboutParagraph1}
-              <br/><br/>
-              {aboutParagraph2}
-              <br/><br/>
-              {aboutParagraph3}
-            </p>
-            <p className="text-xl text-gray-700 font-rubik">
-              {aboutParagraph4}
-            </p>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5 font-sakamoto leading-tight">
+              {whyChooseTitle}
+            </h3>
+            <div className="space-y-5">
+              <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed">
+                {aboutParagraph1}
+              </p>
+              <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed">
+                {aboutParagraph2}
+              </p>
+              <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed">
+                {aboutParagraph3}
+              </p>
+              <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed font-medium">
+                {aboutParagraph4}
+              </p>
+            </div>
           </div>
         </div>
         
+        {/* Tenders Section */}
         <div 
           ref={tendersRef}
-          className={`mb-1 mt-2 transition-all duration-800 ${
+          className={`mb-6 mt-6 transition-all duration-800 ${
             isVisible 
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 -translate-x-16'
@@ -160,8 +170,8 @@ export default function AboutSection() {
             transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
           }}
         >
-          <div className="relative">
-            <h2 className={`section-title text-3xl sm:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center transition-all duration-900 delay-100 ${
+          <div className="relative mb-10">
+            <h2 className={`section-title text-3xl sm:text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center leading-tight transition-all duration-900 delay-100 ${
               isVisible 
                 ? 'opacity-100 transform translate-x-0' 
                 : 'opacity-0 transform -translate-x-12'
@@ -174,8 +184,8 @@ export default function AboutSection() {
           </div>
         </div>
         
-        {/* Mobile view (horizontal scroll) */}
-        <div className="sm:hidden w-full p-4">
+        {/* Mobile view (grid layout) */}
+        <div className="sm:hidden w-full p-2">
           <div className="flex flex-wrap justify-center" role="region" aria-label="Tender logos">
             {Array.from({ length: 11 }).map((_, index) => (
               <div 
@@ -185,8 +195,8 @@ export default function AboutSection() {
                 <Image 
                   src={`/tender${index + 1}.png`} 
                   alt={`Tender ${index + 1}`} 
-                  width={200} 
-                  height={200}
+                  width={120} 
+                  height={120}
                   className="object-contain max-w-full max-h-full"
                   loading="lazy" 
                 />
@@ -196,7 +206,7 @@ export default function AboutSection() {
         </div>
         
         {/* Desktop view (overlapping icons) */}
-        <div className="relative w-full overflow-x-auto hidden sm:block py-4">
+        <div className="relative w-full overflow-x-auto hidden sm:block py-6">
           <div className="flex flex-nowrap min-w-max justify-center pb-4 px-8" role="region" aria-label="Tender logos">
             {Array.from({ length: 11 }).map((_, index) => (
               <div 
@@ -207,8 +217,8 @@ export default function AboutSection() {
                 <Image 
                   src={`/tender${index + 1}.png`} 
                   alt={`Tender ${index + 1}`} 
-                  width={180} 
-                  height={180} 
+                  width={160} 
+                  height={160} 
                   className="object-contain max-w-full max-h-full"
                   loading="lazy"
                 />
