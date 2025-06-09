@@ -478,24 +478,41 @@ export default function ProductPreviewSection() {
           </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {productCategories.map((category, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setActiveCategory(index);
-                setCurrentProductIndex(0);
-              }}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
-                activeCategory === index
-                  ? "bg-[#0F4679] text-white shadow-lg"
-                  : "text-gray-600 hover:text-[#0F4679] hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              {category.name}
-            </button>
-          ))}
+        {/* Category Filter - Apple-like Design */}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex p-1 bg-gray-100/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-sm">
+            {productCategories.map((category, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setActiveCategory(index);
+                  setCurrentProductIndex(0);
+                }}
+                className={`relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ease-out ${
+                  activeCategory === index
+                    ? "text-white shadow-sm"
+                    : "text-gray-600 hover:text-gray-800"
+                }`}
+              >
+                {/* Active background */}
+                {activeCategory === index && (
+                  <div 
+                    className="absolute inset-0 rounded-xl shadow-sm transition-all duration-300"
+                    style={{
+                      background: index === 0 ? '#0F4679' : 
+                                 index === 1 ? '#158C07' : 
+                                 index === 2 ? '#7C3AED' : '#DC2626'
+                    }}
+                  />
+                )}
+                
+                {/* Button text */}
+                <span className="relative z-10 whitespace-nowrap">
+                  {category.name}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Main Product Showcase */}
