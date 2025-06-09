@@ -7,7 +7,9 @@ import { useEffect, useRef, useState } from 'react';
 export default function AboutSection() {
   const { selectedCountry } = useCountryStore();
   const tendersRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [glowProgress, setGlowProgress] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,6 +34,36 @@ export default function AboutSection() {
         observer.unobserve(tendersRef.current);
       }
     };
+  }, []);
+
+  // Scroll-based glow animation for image
+  useEffect(() => {
+    const handleScroll = () => {
+      if (imageRef.current) {
+        const rect = imageRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const elementTop = rect.top;
+        const elementHeight = rect.height;
+        
+        // Calculate progress based on element's position in viewport
+        const startTrigger = windowHeight * 0.8; // Start when element is 80% in view
+        const endTrigger = windowHeight * 0.2;   // Complete when element is 20% from top
+        
+        if (elementTop <= startTrigger && elementTop >= endTrigger) {
+          const progress = (startTrigger - elementTop) / (startTrigger - endTrigger);
+          setGlowProgress(Math.min(Math.max(progress, 0), 1));
+        } else if (elementTop < endTrigger) {
+          setGlowProgress(1);
+        } else {
+          setGlowProgress(0);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Get localized content based on selected country
@@ -124,20 +156,62 @@ export default function AboutSection() {
         
         {/* Founders Image and About Text */}
         <div className="flex flex-col md:flex-row gap-10 mb-16">
-          <div className="md:w-2/5 relative">
-            <div className="absolute inset-0 bg-sky-400/50 rounded-full blur-3xl transform scale-125 animate-pulse"></div>
-            <div className="relative">
+          <div className="md:w-1/2 relative" ref={imageRef}>
+            {/* Liquid Blue-Green Glow Effect */}
+            <div 
+              className="absolute inset-0 pointer-events-none rounded-lg overflow-hidden"
+              style={{
+                background: `linear-gradient(135deg, 
+                  rgba(6, 182, 212, ${0.3 * glowProgress}) 0%, 
+                  rgba(59, 130, 246, ${0.4 * glowProgress}) 25%,
+                  rgba(16, 185, 129, ${0.3 * glowProgress}) 50%,
+                  rgba(34, 197, 94, ${0.2 * glowProgress}) 75%,
+                  rgba(14, 165, 233, ${0.3 * glowProgress}) 100%)`,
+                filter: `blur(${4 + glowProgress * 6}px)`,
+                opacity: glowProgress,
+                transition: 'all 0.2s ease-out',
+                transform: `scale(${1 + glowProgress * 0.02})`
+              }}
+            ></div>
+            
+            {/* Subtle Edge Glow */}
+            <div 
+              className="absolute inset-0 pointer-events-none rounded-lg"
+              style={{
+                boxShadow: `
+                  0 0 ${glowProgress * 15}px rgba(6, 182, 212, ${glowProgress * 0.2}),
+                  0 0 ${glowProgress * 30}px rgba(59, 130, 246, ${glowProgress * 0.15}),
+                  0 0 ${glowProgress * 45}px rgba(16, 185, 129, ${glowProgress * 0.1})
+                `,
+                opacity: glowProgress,
+                transition: 'all 0.2s ease-out'
+              }}
+            ></div>
+            
+            <div className="relative h-96 md:h-[500px] overflow-hidden rounded-lg">
               <Image 
-                src="/group-ac.png" 
+                src="/about-us.JPEG" 
                 alt="Acuron Products India founders and leadership team showcasing medical supplies manufacturing expertise" 
                 width={500} 
-                height={350} 
-                className="w-full h-auto relative z-10"
+                height={500} 
+                className="w-full h-full relative z-10 border-transparent rounded-lg object-cover object-top"
+                style={{
+                  maskImage: `
+                    linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+                    linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)
+                  `,
+                  WebkitMaskImage: `
+                    linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+                    linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)
+                  `,
+                  maskComposite: 'intersect',
+                  WebkitMaskComposite: 'source-in'
+                }}
                 priority
               />
             </div>
           </div>
-          <div className="md:w-3/5 flex flex-col justify-center">
+          <div className="md:w-1/2 flex flex-col justify-center">
             <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5 font-sakamoto leading-tight">
               {whyChooseTitle}
             </h3>

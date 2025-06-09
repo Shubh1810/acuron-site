@@ -102,7 +102,7 @@ export default function Metric({
 
   return (
     <div className={`flex flex-col items-center ${className}`} ref={counterRef}>
-      <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-300 via-lime-300 to-emerald-300 bg-clip-text text-transparent mb-1">
+      <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent mb-1">
         {counter}
         {suffix}
       </div>
