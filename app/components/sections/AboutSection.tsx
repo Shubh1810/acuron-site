@@ -157,37 +157,6 @@ export default function AboutSection() {
         {/* Founders Image and About Text */}
         <div className="flex flex-col md:flex-row gap-10 mb-16">
           <div className="md:w-1/2 relative" ref={imageRef}>
-            {/* Liquid Blue-Green Glow Effect */}
-            <div 
-              className="absolute inset-0 pointer-events-none rounded-lg overflow-hidden"
-              style={{
-                background: `linear-gradient(135deg, 
-                  rgba(6, 182, 212, ${0.3 * glowProgress}) 0%, 
-                  rgba(59, 130, 246, ${0.4 * glowProgress}) 25%,
-                  rgba(16, 185, 129, ${0.3 * glowProgress}) 50%,
-                  rgba(34, 197, 94, ${0.2 * glowProgress}) 75%,
-                  rgba(14, 165, 233, ${0.3 * glowProgress}) 100%)`,
-                filter: `blur(${4 + glowProgress * 6}px)`,
-                opacity: glowProgress,
-                transition: 'all 0.2s ease-out',
-                transform: `scale(${1 + glowProgress * 0.02})`
-              }}
-            ></div>
-            
-            {/* Subtle Edge Glow */}
-            <div 
-              className="absolute inset-0 pointer-events-none rounded-lg"
-              style={{
-                boxShadow: `
-                  0 0 ${glowProgress * 15}px rgba(6, 182, 212, ${glowProgress * 0.2}),
-                  0 0 ${glowProgress * 30}px rgba(59, 130, 246, ${glowProgress * 0.15}),
-                  0 0 ${glowProgress * 45}px rgba(16, 185, 129, ${glowProgress * 0.1})
-                `,
-                opacity: glowProgress,
-                transition: 'all 0.2s ease-out'
-              }}
-            ></div>
-            
             <div className="relative h-96 md:h-[500px] overflow-hidden rounded-lg">
               <Image 
                 src="/about-us.JPEG" 
