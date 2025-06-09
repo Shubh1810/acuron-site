@@ -18,30 +18,30 @@ export default function ProductPreviewSection() {
     return translations[selectedCountry.language] || englishText;
   };
 
-  const productsText = getLocalizedContent('PRODUCTS', {
-    de: 'PRODUKTE',
-    fr: 'PRODUITS',
-    ja: '製品',
-    zh: '产品',
-    pt: 'PRODUTOS'
+  const productsText = getLocalizedContent('SPECIALIZED KITS', {
+    de: 'SPEZIALKITS',
+    fr: 'KITS SPÉCIALISÉS',
+    ja: '専門キット',
+    zh: '专业套件',
+    pt: 'KITS ESPECIALIZADOS'
   });
 
-  const discoverTitle = getLocalizedContent('Discover Our Medical Solutions', {
-    de: 'Entdecken Sie unsere medizinischen Lösungen',
-    fr: 'Découvrez nos solutions médicales',
-    ja: '私たちの医療ソリューションを発見',
-    zh: '发现我们的医疗解决方案',
-    pt: 'Descubra nossas soluções médicas'
+  const discoverTitle = getLocalizedContent('Discover Our Custom Medical Kit Solutions', {
+    de: 'Entdecken Sie unsere kompletten medizinischen Kit-Lösungen',
+    fr: 'Découvrez nos solutions complètes de kits médicaux',
+    ja: '私たちの完全な医療キットソリューションを発見',
+    zh: '发现我们完整的医疗套件解决方案',
+    pt: 'Descubra nossas soluções completas de kits médicos'
   });
 
   const exploreDescription = getLocalizedContent(
-    'Explore our comprehensive range of surgical wear, PPE equipment, and medical supplies trusted by healthcare professionals worldwide.',
+    'Explore our specialized medical kits designed for specific procedures - from PPE protection to chemotherapy safety, HIV care, and delivery room solutions.',
     {
-      de: 'Entdecken Sie unser umfassendes Sortiment an chirurgischer Kleidung, PSA-Ausrüstung und medizinischen Hilfsmitteln, denen Gesundheitsfachkräfte weltweit vertrauen.',
-      fr: 'Explorez notre gamme complète de vêtements chirurgicaux, d\'équipements EPI et de fournitures médicales auxquels font confiance les professionnels de la santé du monde entier.',
-      ja: '世界中の医療従事者に信頼されている外科用ウェア、PPE機器、医療用品の包括的な範囲をご覧ください。',
-      zh: '探索我们全面的外科服装、个人防护设备和医疗用品系列，受到全球医疗保健专业人员的信赖。',
-      pt: 'Explore nossa gama abrangente de roupas cirúrgicas, equipamentos de EPI e suprimentos médicos confiáveis por profissionais de saúde em todo o mundo.'
+      de: 'Entdecken Sie unsere spezialisierten medizinischen Kits für spezifische Verfahren - von PPE-Schutz bis hin zu Chemotherapie-Sicherheit, HIV-Pflege und Kreißsaal-Lösungen.',
+      fr: 'Explorez nos kits médicaux spécialisés conçus pour des procédures spécifiques - de la protection EPI à la sécurité en chimiothérapie, aux soins VIH et aux solutions de salle d\'accouchement.',
+      ja: '特定の手順用に設計された当社の専門医療キットをご覧ください - PPE保護から化学療法安全性、HIV治療、分娩室ソリューションまで。',
+      zh: '探索我们为特定程序设计的专业医疗套件 - 从PPE防护到化疗安全、HIV护理和产房解决方案。',
+      pt: 'Explore nossos kits médicos especializados projetados para procedimentos específicos - desde proteção EPI até segurança em quimioterapia, cuidados com HIV e soluções para sala de parto.'
     }
   );
 
@@ -85,273 +85,39 @@ export default function ProductPreviewSection() {
     pt: 'Suporte Disponível'
   });
 
-  const availableInCategoryText = getLocalizedContent('Available in this category', {
-    de: 'Verfügbar in dieser Kategorie',
-    fr: 'Disponible dans cette catégorie',
-    ja: 'このカテゴリで利用可能',
-    zh: '此类别中可用',
-    pt: 'Disponível nesta categoria'
+  const availableInCategoryText = getLocalizedContent('Available kit variations', {
+    de: 'Verfügbare Kit-Varianten',
+    fr: 'Variations de kits disponibles',
+    ja: '利用可能なキットバリエーション',
+    zh: '可用的套件变化',
+    pt: 'Variações de kits disponíveis'
   });
 
-  // Product categories with rotating products
+  // Product categories with rotating products - Specialized Kits
   const getProductCategories = () => [
     {
-      name: getLocalizedContent("Surgical Wear", {
-        de: "Chirurgische Kleidung",
-        fr: "Vêtements chirurgicaux",
-        ja: "外科用ウェア",
-        zh: "外科服装",
-        pt: "Roupas Cirúrgicas"
+      name: getLocalizedContent("PPE Kits", {
+        de: "PSA-Kits",
+        fr: "Kits EPI",
+        ja: "PPEキット",
+        zh: "PPE套件",
+        pt: "Kits EPI"
       }),
-      description: getLocalizedContent("Premium surgical gowns, drapes, and protective clothing", {
-        de: "Premium-Operationskittel, Abdeckungen und Schutzkleidung",
-        fr: "Blouses chirurgicales, draps et vêtements de protection haut de gamme",
-        ja: "プレミアム手術用ガウン、ドレープ、保護服",
-        zh: "优质手术服、手术巾和防护服",
-        pt: "Aventais cirúrgicos premium, campos e roupas de proteção"
+      description: getLocalizedContent("Complete personal protective equipment solutions", {
+        de: "Komplette Lösungen für persönliche Schutzausrüstung",
+        fr: "Solutions complètes d'équipements de protection individuelle",
+        ja: "完全な個人用保護具ソリューション",
+        zh: "完整的个人防护设备解决方案",
+        pt: "Soluções completas de equipamentos de proteção individual"
       }),
       color: "from-[#0F4679] to-[#1E5A8D]",
       accentColor: "text-blue-300",
-      count: getLocalizedContent("45+ Products", {
-        de: "45+ Produkte",
-        fr: "45+ Produits",
-        ja: "45+製品",
-        zh: "45+产品",
-        pt: "45+ Produtos"
-      }),
-      products: [
-        {
-          name: getLocalizedContent("Surgical Gowns", {
-            de: "Operationskittel",
-            fr: "Blouses chirurgicales",
-            ja: "手術用ガウン",
-            zh: "手术服",
-            pt: "Aventais Cirúrgicos"
-          }),
-          image: "/products/Product Pics Aug 27 2020.jpeg",
-          description: getLocalizedContent("Sterile, fluid-resistant surgical gowns", {
-            de: "Sterile, flüssigkeitsresistente Operationskittel",
-            fr: "Blouses chirurgicales stériles et résistantes aux fluides",
-            ja: "無菌、液体耐性手術用ガウン",
-            zh: "无菌、防液体手术服",
-            pt: "Aventais cirúrgicos estéreis e resistentes a fluidos"
-          })
-        },
-        {
-          name: getLocalizedContent("Surgical Drapes", {
-            de: "Chirurgische Abdeckungen",
-            fr: "Draps chirurgicaux",
-            ja: "手術用ドレープ",
-            zh: "手术巾",
-            pt: "Campos Cirúrgicos"
-          }),
-          image: "/products/Product Pics July 3 2020 (5).jpg",
-          description: getLocalizedContent("SMS surgical drapes for all procedures", {
-            de: "SMS-Operationsabdeckungen für alle Eingriffe",
-            fr: "Draps chirurgicaux SMS pour toutes les procédures",
-            ja: "すべての手術用SMSドレープ",
-            zh: "适用于所有手术的SMS手术巾",
-            pt: "Campos cirúrgicos SMS para todos os procedimentos"
-          })
-        },
-        {
-          name: getLocalizedContent("Surgical Razors", {
-            de: "Chirurgische Rasierer",
-            fr: "Rasoirs chirurgicaux",
-            ja: "手術用カミソリ",
-            zh: "手术剃刀",
-            pt: "Lâminas Cirúrgicas"
-          }),
-          image: "/products/razor.png",
-          description: getLocalizedContent("Precision surgical prep razors", {
-            de: "Präzisions-Operationsvorbereitungsrasierer",
-            fr: "Rasoirs de préparation chirurgicale de précision",
-            ja: "精密手術準備用カミソリ",
-            zh: "精密手术准备剃刀",
-            pt: "Lâminas de preparação cirúrgica de precisão"
-          })
-        }
-      ]
-    },
-    {
-      name: getLocalizedContent("PPE", {
-        de: "PSA",
-        fr: "EPI",
-        ja: "PPE",
-        zh: "个人防护设备",
-        pt: "EPI"
-      }),
-      description: getLocalizedContent("Complete range of personal protective equipment", {
-        de: "Komplettes Sortiment an persönlicher Schutzausrüstung",
-        fr: "Gamme complète d'équipements de protection individuelle",
-        ja: "個人用保護具の完全な範囲",
-        zh: "完整的个人防护设备系列",
-        pt: "Gama completa de equipamentos de proteção individual"
-      }),
-      color: "from-[#158C07] to-[#0FB36D]",
-      accentColor: "text-green-300",
-      count: getLocalizedContent("60+ Products", {
-        de: "60+ Produkte",
-        fr: "60+ Produits",
-        ja: "60+製品",
-        zh: "60+产品",
-        pt: "60+ Produtos"
-      }),
-      products: [
-        {
-          name: getLocalizedContent("3-Ply Masks", {
-            de: "3-lagige Masken",
-            fr: "Masques 3 plis",
-            ja: "3層マスク",
-            zh: "三层口罩",
-            pt: "Máscaras 3 Camadas"
-          }),
-          image: "/products/3ply-pack.png",
-          description: getLocalizedContent("High-quality 3-ply medical face masks", {
-            de: "Hochwertige 3-lagige medizinische Gesichtsmasken",
-            fr: "Masques médicaux 3 plis de haute qualité",
-            ja: "高品質3層医療用フェイスマスク",
-            zh: "高质量三层医用口罩",
-            pt: "Máscaras faciais médicas de 3 camadas de alta qualidade"
-          })
-        },
-        {
-          name: getLocalizedContent("N95 Masks", {
-            de: "N95-Masken",
-            fr: "Masques N95",
-            ja: "N95マスク",
-            zh: "N95口罩",
-            pt: "Máscaras N95"
-          }),
-          image: "/products/n95-box.png",
-          description: getLocalizedContent("NIOSH-approved N95 respirators", {
-            de: "NIOSH-zugelassene N95-Atemschutzmasken",
-            fr: "Respirateurs N95 approuvés par NIOSH",
-            ja: "NIOSH承認N95レスピレーター",
-            zh: "NIOSH认证的N95呼吸器",
-            pt: "Respiradores N95 aprovados pelo NIOSH"
-          })
-        },
-        {
-          name: getLocalizedContent("Medical Coveralls", {
-            de: "Medizinische Overalls",
-            fr: "Combinaisons médicales",
-            ja: "医療用つなぎ",
-            zh: "医用连体服",
-            pt: "Macacões Médicos"
-          }),
-          image: "/products/Product Pics for Display July 3 2020 (4).jpg",
-          description: getLocalizedContent("Full-body protection coveralls", {
-            de: "Ganzkörper-Schutzoveralls",
-            fr: "Combinaisons de protection intégrale",
-            ja: "全身保護つなぎ",
-            zh: "全身防护连体服",
-            pt: "Macacões de proteção corporal completa"
-          })
-        }
-      ]
-    },
-    {
-      name: getLocalizedContent("Medical Equipment", {
-        de: "Medizinische Ausrüstung",
-        fr: "Équipement médical",
-        ja: "医療機器",
-        zh: "医疗设备",
-        pt: "Equipamento Médico"
-      }),
-      description: getLocalizedContent("Essential medical devices and instruments", {
-        de: "Wesentliche medizinische Geräte und Instrumente",
-        fr: "Dispositifs et instruments médicaux essentiels",
-        ja: "必要不可欠な医療機器と器具",
-        zh: "基本医疗设备和器械",
-        pt: "Dispositivos e instrumentos médicos essenciais"
-      }),
-      color: "from-[#7C3AED] to-[#A855F7]",
-      accentColor: "text-purple-300",
-      count: getLocalizedContent("35+ Products", {
-        de: "35+ Produkte",
-        fr: "35+ Produits",
-        ja: "35+製品",
-        zh: "35+产品",
-        pt: "35+ Produtos"
-      }),
-      products: [
-        {
-          name: getLocalizedContent("Bouffant Caps", {
-            de: "Bouffant-Kappen",
-            fr: "Bonnets bouffants",
-            ja: "ブーファントキャップ",
-            zh: "蓬松帽",
-            pt: "Toucas Bouffant"
-          }),
-          image: "/products/cap-box.jpg",
-          description: getLocalizedContent("Lightweight surgical caps", {
-            de: "Leichte Operationshauben",
-            fr: "Bonnets chirurgicaux légers",
-            ja: "軽量手術用キャップ",
-            zh: "轻便手术帽",
-            pt: "Toucas cirúrgicas leves"
-          })
-        },
-        {
-          name: getLocalizedContent("Medical Gloves", {
-            de: "Medizinische Handschuhe",
-            fr: "Gants médicaux",
-            ja: "医療用手袋",
-            zh: "医用手套",
-            pt: "Luvas Médicas"
-          }),
-          image: "/products/Product Pics July 3 2020 (7).jpg",
-          description: getLocalizedContent("Powder-free examination gloves", {
-            de: "Puderfreie Untersuchungshandschuhe",
-            fr: "Gants d'examen sans poudre",
-            ja: "パウダーフリー検査用手袋",
-            zh: "无粉检查手套",
-            pt: "Luvas de exame sem pó"
-          })
-        },
-        {
-          name: getLocalizedContent("Safety Goggles", {
-            de: "Schutzbrille",
-            fr: "Lunettes de sécurité",
-            ja: "安全ゴーグル",
-            zh: "安全护目镜",
-            pt: "Óculos de Segurança"
-          }),
-          image: "/products/Product Pics for Display July 3 2020 (3).jpg",
-          description: getLocalizedContent("Anti-fog protective eyewear", {
-            de: "Antibeschlag-Schutzbrille",
-            fr: "Lunettes de protection anti-buée",
-            ja: "曇り止め保護眼鏡",
-            zh: "防雾护目镜",
-            pt: "Óculos de proteção antiembaçante"
-          })
-        }
-      ]
-    },
-    {
-      name: getLocalizedContent("Surgical Kits", {
-        de: "Chirurgische Kits",
-        fr: "Kits chirurgicaux",
-        ja: "手術キット",
-        zh: "手术套件",
-        pt: "Kits Cirúrgicos"
-      }),
-      description: getLocalizedContent("All-in-one medical supply solutions", {
-        de: "All-in-One-Lösungen für medizinische Versorgung",
-        fr: "Solutions d'approvisionnement médical tout-en-un",
-        ja: "オールインワン医療用品ソリューション",
-        zh: "一体化医疗用品解决方案",
-        pt: "Soluções médicas tudo-em-um"
-      }),
-      color: "from-[#DC2626] to-[#EF4444]",
-      accentColor: "text-red-300",
-      count: getLocalizedContent("25+ Products", {
-        de: "25+ Produkte",
-        fr: "25+ Produits",
-        ja: "25+製品",
-        zh: "25+产品",
-        pt: "25+ Produtos"
+      count: getLocalizedContent("15+ Kits", {
+        de: "15+ Kits",
+        fr: "15+ Kits",
+        ja: "15+キット",
+        zh: "15+套件",
+        pt: "15+ Kits"
       }),
       products: [
         {
@@ -363,46 +129,280 @@ export default function ProductPreviewSection() {
             pt: "Kit EPI Premium"
           }),
           image: "/products/OT Premium Kit Product Pics.png",
-          description: getLocalizedContent("Complete protection kit", {
-            de: "Komplettes Schutzkit",
-            fr: "Kit de protection complet",
-            ja: "完全保護キット",
-            zh: "完整保护套件",
-            pt: "Kit de proteção completo"
+          description: getLocalizedContent("Complete protection with gown, mask, gloves, and face shield", {
+            de: "Vollständiger Schutz mit Kittel, Maske, Handschuhen und Gesichtsschutz",
+            fr: "Protection complète avec blouse, masque, gants et visière",
+            ja: "ガウン、マスク、手袋、フェイスシールドによる完全保護",
+            zh: "带有手术服、口罩、手套和面罩的完整保护",
+            pt: "Proteção completa com avental, máscara, luvas e protetor facial"
           })
         },
         {
-          name: getLocalizedContent("Surgical Kit", {
-            de: "Chirurgisches Kit",
-            fr: "Kit chirurgical",
-            ja: "手術キット",
-            zh: "手术套件",
-            pt: "Kit Cirúrgico"
+          name: getLocalizedContent("Basic PPE Kit", {
+            de: "Basis-PSA-Kit",
+            fr: "Kit EPI Basique",
+            ja: "ベーシックPPEキット",
+            zh: "基础PPE套件",
+            pt: "Kit EPI Básico"
+          }),
+          image: "/products/3ply-pack.png",
+          description: getLocalizedContent("Essential protection kit with mask and gloves", {
+            de: "Wesentliches Schutzkit mit Maske und Handschuhen",
+            fr: "Kit de protection essentiel avec masque et gants",
+            ja: "マスクと手袋による基本保護キット",
+            zh: "带有口罩和手套的基本防护套件",
+            pt: "Kit de proteção essencial com máscara e luvas"
+          })
+        },
+        {
+          name: getLocalizedContent("N95 Protection Kit", {
+            de: "N95-Schutzkit",
+            fr: "Kit de Protection N95",
+            ja: "N95保護キット",
+            zh: "N95防护套件",
+            pt: "Kit de Proteção N95"
+          }),
+          image: "/products/n95-box.png",
+          description: getLocalizedContent("High-filtration respiratory protection kit", {
+            de: "Hochfiltrierendes Atemschutzkit",
+            fr: "Kit de protection respiratoire haute filtration",
+            ja: "高濾過呼吸保護キット",
+            zh: "高过滤呼吸防护套件",
+            pt: "Kit de proteção respiratória de alta filtração"
+          })
+        }
+      ]
+    },
+    {
+      name: getLocalizedContent("HIV/AIDS Kits", {
+        de: "HIV/AIDS-Kits",
+        fr: "Kits VIH/SIDA",
+        ja: "HIV/AIDSキット",
+        zh: "HIV/AIDS套件",
+        pt: "Kits HIV/AIDS"
+      }),
+      description: getLocalizedContent("Specialized protection for HIV/AIDS care procedures", {
+        de: "Spezialisierter Schutz für HIV/AIDS-Pflegeverfahren",
+        fr: "Protection spécialisée pour les procédures de soins VIH/SIDA",
+        ja: "HIV/AIDS治療手順の専門保護",
+        zh: "HIV/AIDS护理程序的专业保护",
+        pt: "Proteção especializada para procedimentos de cuidados com HIV/AIDS"
+      }),
+      color: "from-[#158C07] to-[#0FB36D]",
+      accentColor: "text-green-300",
+      count: getLocalizedContent("8+ Kits", {
+        de: "8+ Kits",
+        fr: "8+ Kits",
+        ja: "8+キット",
+        zh: "8+套件",
+        pt: "8+ Kits"
+      }),
+      products: [
+        {
+          name: getLocalizedContent("HIV Care Protection Kit", {
+            de: "HIV-Pflege-Schutzkit",
+            fr: "Kit de Protection Soins VIH",
+            ja: "HIV治療保護キット",
+            zh: "HIV护理保护套件",
+            pt: "Kit de Proteção para Cuidados HIV"
+          }),
+          image: "/products/Product Pics for Display July 3 2020 (4).jpg",
+          description: getLocalizedContent("Enhanced protection for HIV patient care", {
+            de: "Verstärkter Schutz für die HIV-Patientenversorgung",
+            fr: "Protection renforcée pour les soins aux patients VIH",
+            ja: "HIV患者ケアの強化された保護",
+            zh: "HIV患者护理的增强保护",
+            pt: "Proteção aprimorada para cuidados de pacientes HIV"
+          })
+        },
+        {
+          name: getLocalizedContent("Blood Safety Kit", {
+            de: "Blutsicherheitskit",
+            fr: "Kit de Sécurité Sanguine",
+            ja: "血液安全キット",
+            zh: "血液安全套件",
+            pt: "Kit de Segurança Sanguínea"
+          }),
+          image: "/products/Product Pics July 3 2020 (7).jpg",
+          description: getLocalizedContent("Specialized protection for blood handling procedures", {
+            de: "Spezialisierter Schutz für Bluthandhabungsverfahren",
+            fr: "Protection spécialisée pour les procédures de manipulation du sang",
+            ja: "血液取扱手順の専門保護",
+            zh: "血液处理程序的专业保护",
+            pt: "Proteção especializada para procedimentos de manuseio de sangue"
+          })
+        },
+        {
+          name: getLocalizedContent("Infectious Disease Kit", {
+            de: "Infektionskrankheiten-Kit",
+            fr: "Kit Maladies Infectieuses",
+            ja: "感染症キット",
+            zh: "传染病套件",
+            pt: "Kit de Doenças Infecciosas"
+          }),
+          image: "/products/Product Pics for Display July 3 2020 (3).jpg",
+          description: getLocalizedContent("Comprehensive protection against infectious diseases", {
+            de: "Umfassender Schutz gegen Infektionskrankheiten",
+            fr: "Protection complète contre les maladies infectieuses",
+            ja: "感染症に対する包括的保護",
+            zh: "针对传染病的全面保护",
+            pt: "Proteção abrangente contra doenças infecciosas"
+          })
+        }
+      ]
+    },
+    {
+      name: getLocalizedContent("Chemo Kits", {
+        de: "Chemo-Kits",
+        fr: "Kits Chimio",
+        ja: "化学療法キット",
+        zh: "化疗套件",
+        pt: "Kits Quimio"
+      }),
+      description: getLocalizedContent("Specialized protection for chemotherapy procedures", {
+        de: "Spezialisierter Schutz für Chemotherapie-Verfahren",
+        fr: "Protection spécialisée pour les procédures de chimiothérapie",
+        ja: "化学療法手順の専門保護",
+        zh: "化疗程序的专业保护",
+        pt: "Proteção especializada para procedimentos de quimioterapia"
+      }),
+      color: "from-[#7C3AED] to-[#A855F7]",
+      accentColor: "text-purple-300",
+      count: getLocalizedContent("12+ Kits", {
+        de: "12+ Kits",
+        fr: "12+ Kits",
+        ja: "12+キット",
+        zh: "12+套件",
+        pt: "12+ Kits"
+      }),
+      products: [
+        {
+          name: getLocalizedContent("Chemotherapy Protection Kit", {
+            de: "Chemotherapie-Schutzkit",
+            fr: "Kit de Protection Chimiothérapie",
+            ja: "化学療法保護キット",
+            zh: "化疗保护套件",
+            pt: "Kit de Proteção Quimioterapia"
+          }),
+          image: "/products/Product Pics Aug 27 2020.jpeg",
+          description: getLocalizedContent("Specialized gowns and gloves for chemo handling", {
+            de: "Spezialisierte Kittel und Handschuhe für Chemo-Handhabung",
+            fr: "Blouses et gants spécialisés pour la manipulation de chimio",
+            ja: "化学療法取扱いの専門ガウンと手袋",
+            zh: "用于化疗处理的专业手术服和手套",
+            pt: "Aventais e luvas especializados para manuseio de quimio"
+          })
+        },
+        {
+          name: getLocalizedContent("Cytotoxic Drug Kit", {
+            de: "Zytotoxisches Medikamenten-Kit",
+            fr: "Kit Médicaments Cytotoxiques",
+            ja: "細胞毒性薬物キット",
+            zh: "细胞毒性药物套件",
+            pt: "Kit de Drogas Citotóxicas"
+          }),
+          image: "/products/cap-box.jpg",
+          description: getLocalizedContent("Complete protection for cytotoxic drug preparation", {
+            de: "Vollständiger Schutz für die Zubereitung zytotoxischer Medikamente",
+            fr: "Protection complète pour la préparation de médicaments cytotoxiques",
+            ja: "細胞毒性薬物調製の完全保護",
+            zh: "细胞毒性药物制备的完整保护",
+            pt: "Proteção completa para preparação de drogas citotóxicas"
+          })
+        },
+        {
+          name: getLocalizedContent("Oncology Care Kit", {
+            de: "Onkologie-Pflegekit",
+            fr: "Kit de Soins Oncologiques",
+            ja: "腫瘍ケアキット",
+            zh: "肿瘤护理套件",
+            pt: "Kit de Cuidados Oncológicos"
+          }),
+          image: "/products/Product Pics July 3 2020 (5).jpg",
+          description: getLocalizedContent("Comprehensive protection for oncology procedures", {
+            de: "Umfassender Schutz für onkologische Verfahren",
+            fr: "Protection complète pour les procédures oncologiques",
+            ja: "腫瘍学手順の包括的保護",
+            zh: "肿瘤学程序的全面保护",
+            pt: "Proteção abrangente para procedimentos oncológicos"
+          })
+        }
+      ]
+    },
+    {
+      name: getLocalizedContent("Delivery Kits", {
+        de: "Entbindungs-Kits",
+        fr: "Kits d'Accouchement",
+        ja: "分娩キット",
+        zh: "分娩套件",
+        pt: "Kits de Parto"
+      }),
+      description: getLocalizedContent("Complete sterile solutions for delivery procedures", {
+        de: "Vollständige sterile Lösungen für Entbindungsverfahren",
+        fr: "Solutions stériles complètes pour les procédures d'accouchement",
+        ja: "分娩手順の完全無菌ソリューション",
+        zh: "分娩程序的完整无菌解决方案",
+        pt: "Soluções estéreis completas para procedimentos de parto"
+      }),
+      color: "from-[#DC2626] to-[#EF4444]",
+      accentColor: "text-red-300",
+      count: getLocalizedContent("10+ Kits", {
+        de: "10+ Kits",
+        fr: "10+ Kits",
+        ja: "10+キット",
+        zh: "10+套件",
+        pt: "10+ Kits"
+      }),
+      products: [
+        {
+          name: getLocalizedContent("Maternity Delivery Kit", {
+            de: "Geburtshilfe-Kit",
+            fr: "Kit d'Accouchement Maternité",
+            ja: "産科分娩キット",
+            zh: "产科分娩套件",
+            pt: "Kit de Parto Maternidade"
           }),
           image: "/products/Surgeon Cap Box Pack.jpg",
-          description: getLocalizedContent("Comprehensive surgical supplies", {
-            de: "Umfassende chirurgische Versorgung",
-            fr: "Fournitures chirurgicales complètes",
-            ja: "包括的な手術用品",
-            zh: "全面的手术用品",
-            pt: "Suprimentos cirúrgicos abrangentes"
+          description: getLocalizedContent("Complete sterile kit for normal delivery", {
+            de: "Vollständiges steriles Kit für normale Entbindung",
+            fr: "Kit stérile complet pour accouchement normal",
+            ja: "正常分娩用完全無菌キット",
+            zh: "正常分娩的完整无菌套件",
+            pt: "Kit estéril completo para parto normal"
           })
         },
         {
-          name: getLocalizedContent("Shoe Covers", {
-            de: "Schuhüberzieher",
-            fr: "Couvre-chaussures",
-            ja: "シューズカバー",
-            zh: "鞋套",
-            pt: "Protetores de Sapatos"
+          name: getLocalizedContent("C-Section Kit", {
+            de: "Kaiserschnitt-Kit",
+            fr: "Kit Césarienne",
+            ja: "帝王切開キット",
+            zh: "剖腹产套件",
+            pt: "Kit Cesariana"
+          }),
+          image: "/products/razor.png",
+          description: getLocalizedContent("Specialized surgical kit for cesarean delivery", {
+            de: "Spezialisiertes chirurgisches Kit für Kaiserschnitt-Entbindung",
+            fr: "Kit chirurgical spécialisé pour accouchement par césarienne",
+            ja: "帝王切開分娩の専門外科キット",
+            zh: "剖腹产分娩的专业手术套件",
+            pt: "Kit cirúrgico especializado para parto cesariano"
+          })
+        },
+        {
+          name: getLocalizedContent("Emergency Delivery Kit", {
+            de: "Notfall-Entbindungskit",
+            fr: "Kit d'Accouchement d'Urgence",
+            ja: "緊急分娩キット",
+            zh: "紧急分娩套件",
+            pt: "Kit de Parto de Emergência"
           }),
           image: "/products/Shoe Cover Box Pack.jpg",
-          description: getLocalizedContent("Disposable protective shoe covers", {
-            de: "Einweg-Schutzschuhüberzieher",
-            fr: "Couvre-chaussures de protection jetables",
-            ja: "使い捨て保護シューズカバー",
-            zh: "一次性防护鞋套",
-            pt: "Protetores de sapatos descartáveis"
+          description: getLocalizedContent("Portable kit for emergency deliveries", {
+            de: "Tragbares Kit für Notfall-Entbindungen",
+            fr: "Kit portable pour accouchements d'urgence",
+            ja: "緊急分娩用ポータブルキット",
+            zh: "紧急分娩便携套件",
+            pt: "Kit portátil para partos de emergência"
           })
         }
       ]
@@ -454,7 +454,7 @@ export default function ProductPreviewSection() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#158C07] rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-10 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="relative inline-block mb-5">
@@ -499,107 +499,48 @@ export default function ProductPreviewSection() {
         </div>
 
         {/* Main Product Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Product Image & Info */}
-          <div className="relative">
-            <div className={`absolute inset-0 bg-gradient-to-br ${currentCategory.color} rounded-3xl transform rotate-6 scale-105 opacity-10`}></div>
-            
-            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-              <div className="aspect-[4/3] relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
-                <Image
-                  src={currentProduct.image}
-                  alt={`${currentProduct.name} - Acuron Products surgical wear, medical supplies, 3 ply masks, N95 masks, bouffant caps`}
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                
-                {/* Product badge */}
-                <div className="absolute top-4 left-4 z-20">
-                  <div className={`px-3 py-1.5 bg-gradient-to-r ${getGlassColor(activeCategory)} backdrop-blur-md rounded-full border border-white/30 shadow-lg`}>
-                    <span className="text-white text-sm font-semibold drop-shadow-sm">
-                      {currentCategory.name}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Product counter */}
-                <div className="absolute bottom-4 right-4 z-20">
-                  <div className="bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5">
-                    <span className="text-white text-sm">
-                      {currentProductIndex + 1} / {currentCategory.products.length}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-2 leading-tight">
-                  {currentProduct.name}
-                </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {currentProduct.description}
-                </p>
-                
-                {/* Product indicators */}
-                <div className="flex space-x-2 mb-2">
-                  {currentCategory.products.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        index === currentProductIndex
-                          ? `bg-gradient-to-r ${currentCategory.color} w-8`
-                          : 'bg-gray-200 w-2'
-                      }`}
-                    ></div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div className="flex flex-col items-center mb-16">
           {/* Category Details */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3 leading-tight">
+          <div className="w-full max-w-4xl mx-auto space-y-6">
+            <div className="text-center">
+              <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 leading-tight">
                 {currentCategory.name}
               </h3>
-              <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
                 {currentCategory.description}
               </p>
               
-              <div className="flex items-center space-x-4 mb-6">
-                <div className={`px-4 py-2 rounded-lg bg-white border-2 border-[#0F4679] shadow-sm`}>
-                  <span className={`font-semibold text-[#0F4679] text-base`}>
+              <div className="flex items-center justify-center space-x-6 mb-8">
+                <div className={`px-6 py-3 rounded-lg bg-white border-2 border-[#0F4679] shadow-sm`}>
+                  <span className={`font-semibold text-[#0F4679] text-lg`}>
                     {currentCategory.count}
                   </span>
                 </div>
-                <div className="text-gray-500 text-sm leading-relaxed">
+                <div className="text-gray-500 text-base leading-relaxed">
                   {availableInCategoryText}
                 </div>
               </div>
             </div>
 
-            {/* Product list */}
-            <div className="space-y-3">
+            {/* Product list - Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {currentCategory.products.map((product, index) => (
                 <div
                   key={index}
-                  className={`p-4 rounded-xl border transition-all duration-300 cursor-pointer ${
+                  className={`p-6 rounded-xl border transition-all duration-300 cursor-pointer ${
                     index === currentProductIndex
-                      ? 'border-gray-300 bg-gray-50 transform scale-102 shadow-md'
-                      : 'border-gray-100 hover:border-gray-200 hover:shadow-sm'
+                      ? 'border-gray-300 bg-gray-50 transform scale-105 shadow-lg'
+                      : 'border-gray-100 hover:border-gray-200 hover:shadow-md'
                   }`}
                   onClick={() => setCurrentProductIndex(index)}
                 >
-                  <div className="flex items-center space-x-3">
-                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${currentCategory.color} shrink-0`}></div>
+                  <div className="text-center space-y-4">
+                    <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${currentCategory.color} mx-auto`}></div>
                     <div>
-                      <h4 className="font-semibold text-gray-800 text-base leading-tight">
+                      <h4 className="font-semibold text-gray-800 text-lg leading-tight mb-2">
                         {product.name}
                       </h4>
-                      <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+                      <p className="text-sm text-gray-500 leading-relaxed">
                         {product.description}
                       </p>
                     </div>
@@ -608,11 +549,25 @@ export default function ProductPreviewSection() {
               ))}
             </div>
 
+            {/* Product indicators */}
+            <div className="flex justify-center space-x-2 mb-8">
+              {currentCategory.products.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentProductIndex
+                      ? `bg-gradient-to-r ${currentCategory.color} w-8`
+                      : 'bg-gray-200 w-2'
+                  }`}
+                ></div>
+              ))}
+            </div>
+
             {/* CTA Button */}
-            <div className="pt-6">
+            <div className="text-center">
               <Link
                 href="/products"
-                className={`inline-flex items-center px-6 py-3 font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 group bg-white border-2 border-[#0F4679] text-[#0F4679] hover:bg-[#0F4679] hover:text-white`}
+                className={`inline-flex items-center px-8 py-4 font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 group bg-white border-2 border-[#0F4679] text-[#0F4679] hover:bg-[#0F4679] hover:text-white`}
               >
                 {exploreAllProductsText}
                 <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

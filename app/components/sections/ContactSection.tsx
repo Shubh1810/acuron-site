@@ -169,7 +169,7 @@ export default function ContactSection() {
   });
 
   return (
-    <section className="relative py-16 min-h-[1100px] sm:min-h-[950px] md:min-h-[850px]" id="contact-us-section">
+    <section className="relative py-16 min-h-[1700px] sm:min-h-[1500px] md:min-h-[850px]" id="contact-us-section">
       <BackgroundGradientAnimation 
         gradientBackgroundStart="rgb(10, 61, 98)" 
         gradientBackgroundEnd="rgb(15, 70, 110)"
@@ -197,7 +197,7 @@ export default function ContactSection() {
                     </span>
                     <h2 className="text-2xl md:text-3xl font-bold font-heading tracking-tight text-white/95 leading-tight mb-2">
                       <span className="relative">
-                        {getInTouchText}
+                      {getInTouchText}
                         <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-accent-400 to-transparent"></span>
                       </span>
                     </h2>
@@ -295,7 +295,7 @@ export default function ContactSection() {
                 <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl p-6 border border-gray-100 w-full flex flex-col">
                   {/* Logo */}
                   <div className="flex justify-start mb-6">
-                    <div className="relative w-[240px] h-24">
+                    <div className="relative w-[240px] h-20">
                       <Image 
                         src="/acprod.png" 
                         alt="Acuron Logo" 

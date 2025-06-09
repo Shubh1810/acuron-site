@@ -124,7 +124,7 @@ export default function MissionSection() {
   });
 
   return (
-    <section className="relative py-16 min-h-[700px] md:min-h-[650px] text-white">
+    <section className="relative py-16 min-h-[1000px] sm:min-h-[900px] md:min-h-[650px] text-white">
       <BackgroundGradientAnimation 
         gradientBackgroundStart="rgb(10, 61, 98)" 
         gradientBackgroundEnd="rgb(15, 70, 110)"

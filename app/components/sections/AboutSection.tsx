@@ -143,17 +143,17 @@ export default function AboutSection() {
             </h3>
             <div className="space-y-5">
               <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed">
-                {aboutParagraph1}
+              {aboutParagraph1}
               </p>
               <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed">
-                {aboutParagraph2}
+              {aboutParagraph2}
               </p>
               <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed">
-                {aboutParagraph3}
-              </p>
+              {aboutParagraph3}
+            </p>
               <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed font-medium">
-                {aboutParagraph4}
-              </p>
+              {aboutParagraph4}
+            </p>
             </div>
           </div>
         </div>
