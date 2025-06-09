@@ -61,7 +61,7 @@ export default function ProductsPage() {
   const allProducts = [
     // Protective Apparel
     { id: 101, name: "Surgical Gowns", description: "Standard nonwoven surgical gown for basic protection.", category: "Protective Apparel", image: "/products/surgical-gown.jpeg", secondaryImage: "/products/surgical-gown.jpg", featured: false, specs: ["Nonwoven Fabric", "Fluid Resistant", "Comfortable Fit"] },
-    { id: 102, name: "Patient Gowns", description: "Comfortable and dignifying patient gowns.", category: "Protective Apparel", image: "/products/patgown.JPEG", secondaryImage: "/products/patient-gown-2.jpg", featured: false, specs: ["Soft Fabric", "Easy Access", "Disposable"] },
+    { id: 102, name: "Patient Gowns", description: "Comfortable and dignifying patient gowns.", category: "Protective Apparel", image: "/products/patgown.JPEG", secondaryImage: "/products/patgown.JPEG", featured: false, specs: ["Soft Fabric", "Easy Access", "Disposable"] },
     { id: 103, name: "Plastic Aprons", description: "Waterproof plastic aprons for various medical applications.", category: "Protective Apparel", image: "/products/plastic-ap.jpg", secondaryImage: "/products/plastic-apron.jpg", featured: false, specs: ["Waterproof LDPE", "Disposable", "Hygienic"] },
     { id: 104, name: "Medical Coveralls", description: "Nonwoven labcoats for laboratory and general use.", category: "Protective Apparel", image: "/products/medcoverall.jpg", secondaryImage: "/products/coverall-2.jpg", featured: false, specs: ["Nonwoven Polypropylene", "Splash Resistant", "Knee-Length"] },
 
