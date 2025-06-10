@@ -31,44 +31,52 @@ export default function Footer() {
     pt: 'Conectar'
   });
 
-  const surgicalProductsText = getLocalizedContent('Surgical Products', {
-    de: 'Chirurgische Produkte',
-    fr: 'Produits chirurgicaux',
-    ja: '外科用製品',
-    zh: '外科产品',
-    pt: 'Produtos Cirúrgicos'
+  const protectiveApparelText = getLocalizedContent('Protective Apparel', {
+    de: 'Schutzkleidung',
+    fr: 'Vêtements de protection',
+    ja: '保護服',
+    zh: '防护服装',
+    pt: 'Vestuário de Proteção'
   });
 
-  const orthopedicDrapesText = getLocalizedContent('Orthopedic Drapes', {
-    de: 'Orthopädische Abdeckungen',
-    fr: 'Draps orthopédiques',
-    ja: '整形外科用ドレープ',
-    zh: '骨科手术巾',
-    pt: 'Campos Ortopédicos'
+  const masksHeadwearText = getLocalizedContent('Masks & Headwear', {
+    de: 'Masken & Kopfbedeckung',
+    fr: 'Masques et couvre-chefs',
+    ja: 'マスク・帽子',
+    zh: '口罩和头饰',
+    pt: 'Máscaras e Tocas'
   });
 
-  const gynecologyDrapesText = getLocalizedContent('Gynecology Drapes', {
-    de: 'Gynäkologie-Abdeckungen',
-    fr: 'Draps de gynécologie',
-    ja: '婦人科用ドレープ',
-    zh: '妇科手术巾',
-    pt: 'Campos de Ginecologia'
+  const shoeLegProtectionText = getLocalizedContent('Shoe & Leg Protection', {
+    de: 'Schuh- & Beinschutz',
+    fr: 'Protection chaussures et jambes',
+    ja: '靴・脚保護',
+    zh: '鞋套和腿部保护',
+    pt: 'Proteção para Pés e Pernas'
   });
 
-  const urologyDrapesText = getLocalizedContent('Urology Drapes', {
-    de: 'Urologie-Abdeckungen',
-    fr: 'Draps d\'urologie',
-    ja: '泌尿器科用ドレープ',
-    zh: '泌尿科手术巾',
-    pt: 'Campos de Urologia'
+  const drapesLinensText = getLocalizedContent('Drapes, Linens & Underpads', {
+    de: 'Abdeckungen, Bettwäsche & Unterlagen',
+    fr: 'Draps, linge et alèses',
+    ja: 'ドレープ・リネン・アンダーパッド',
+    zh: '手术巾、床单和护垫',
+    pt: 'Campos, Roupas de Cama e Protetores'
   });
 
-  const protectiveEquipmentText = getLocalizedContent('Protective Equipment', {
-    de: 'Schutzausrüstung',
-    fr: 'Équipement de protection',
-    ja: '保護具',
-    zh: '防护设备',
-    pt: 'Equipamento de Proteção'
+  const medicalKitsText = getLocalizedContent('Medical Kits', {
+    de: 'Medizinische Kits',
+    fr: 'Kits médicaux',
+    ja: '医療キット',
+    zh: '医疗套件',
+    pt: 'Kits Médicos'
+  });
+
+  const generalMedicalText = getLocalizedContent('General Medical & Surgical Disposables', {
+    de: 'Allgemeine medizinische & chirurgische Einwegartikel',
+    fr: 'Dispositifs médicaux et chirurgicaux généraux',
+    ja: '一般医療・外科用使い捨て用品',
+    zh: '一般医疗和外科一次性用品',
+    pt: 'Descartáveis Médicos e Cirúrgicos Gerais'
   });
 
   const aboutUsText = getLocalizedContent('About Us', {
@@ -164,11 +172,12 @@ export default function Footer() {
           <div className="md:col-span-3">
             <h3 className="text-xl mb-4 pb-2 border-b border-gray-700">{productsText}</h3>
             <ul className="space-y-3 mt-6 text-sm">
-              <li><Link href="/products/surgical" className="hover:text-gray-300">{surgicalProductsText}</Link></li>
-              <li><Link href="/products/orthopedic-drapes" className="hover:text-gray-300">{orthopedicDrapesText}</Link></li>
-              <li><Link href="/products/gynecology-drapes" className="hover:text-gray-300">{gynecologyDrapesText}</Link></li>
-              <li><Link href="/products/urology-drapes" className="hover:text-gray-300">{urologyDrapesText}</Link></li>
-              <li><Link href="/products/protective" className="hover:text-gray-300">{protectiveEquipmentText}</Link></li>
+              <li><Link href="/products" className="hover:text-gray-300">{protectiveApparelText}</Link></li>
+              <li><Link href="/products" className="hover:text-gray-300">{masksHeadwearText}</Link></li>
+              <li><Link href="/products" className="hover:text-gray-300">{shoeLegProtectionText}</Link></li>
+              <li><Link href="/products" className="hover:text-gray-300">{drapesLinensText}</Link></li>
+              <li><Link href="/products" className="hover:text-gray-300">{medicalKitsText}</Link></li>
+              <li><Link href="/products" className="hover:text-gray-300">{generalMedicalText}</Link></li>
             </ul>
           </div>
 
@@ -176,10 +185,10 @@ export default function Footer() {
           <div className="md:col-span-3">
             <h3 className="text-xl mb-4 pb-2 border-b border-gray-700">{connectText}</h3>
             <ul className="space-y-3 mt-6 text-sm">
-              <li><a href="#about" className="hover:text-gray-300">{aboutUsText}</a></li>
-              <li><Link href="/contact" className="hover:text-gray-300">{contactUsText}</Link></li>
+              <li><Link href="/#about-us-section" className="hover:text-gray-300">{aboutUsText}</Link></li>
+              <li><Link href="/#contact-us-section" className="hover:text-gray-300">{contactUsText}</Link></li>
               <li><Link href="/careers" className="hover:text-gray-300">{careersText}</Link></li>
-              <li><Link href="/news" className="hover:text-gray-300">{newsEventsText}</Link></li>
+              <li><Link href="/events" className="hover:text-gray-300">{newsEventsText}</Link></li>
             </ul>
             <div className="flex space-x-4 mt-6">
               <Link href="https://www.instagram.com/acuron/" className="hover:text-gray-300">

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FC, useState, useMemo, useCallback } from 'react';
-import { Phone } from 'lucide-react';
+import { Download } from 'lucide-react';
 import CountrySelector from './CountrySelector';
 import { useCountryStore } from '../../lib/store';
 
@@ -105,6 +105,14 @@ const Header: FC = () => {
     pt: 'CARREIRAS'
   });
 
+  const catalogText = getLocalizedContent('CATALOG', {
+    de: 'KATALOG',
+    fr: 'CATALOGUE',
+    ja: 'カタログ',
+    zh: '目录',
+    pt: 'CATÁLOGO'
+  });
+
   const searchPlaceholder = getLocalizedContent('SEARCH', {
     de: 'SUCHEN',
     fr: 'RECHERCHER',
@@ -112,6 +120,17 @@ const Header: FC = () => {
     zh: '搜索',
     pt: 'PESQUISAR'
   });
+
+  // Function to handle catalog download
+  const handleCatalogDownload = () => {
+    // Create a link element to trigger download
+    const link = document.createElement('a');
+    link.href = '/catalog/acuron-catalog.pdf'; // Path to your catalog file
+    link.download = 'Acuron-Medical-Catalog.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Memoize the toggle function to prevent recreation on renders
   const toggleMobileMenu = useCallback(() => {
@@ -123,13 +142,17 @@ const Header: FC = () => {
       {/* Top Navigation Bar - Changed to white background with blue text */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end items-center space-x-6">
-          <a 
-            href="tel:+919820043274" 
-            className="flex items-center text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300"
+          <button 
+            onClick={handleCatalogDownload}
+            className="flex items-center text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300 bg-transparent border-none p-0 cursor-pointer"
+            title="Download Catalog"
           >
-            <Phone size={12} className="mr-1.5" />
+            <Download size={12} className="mr-1.5" />
+            {catalogText}
+          </button>
+          <span className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679]">
             {ourCompanyText}
-          </a>
+          </span>
           <Link href="/#contact-us-section" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             {contactText}
           </Link>

@@ -204,7 +204,7 @@ export default function AboutSection() {
         {/* Tenders Section */}
         <div 
           ref={tendersRef}
-          className={`mb-6 mt-6 transition-all duration-800 ${
+          className={`mb-1 mt-1 sm:mb-2 sm:mt-2 transition-all duration-800 ${
             isVisible 
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 -translate-x-16'
@@ -213,7 +213,7 @@ export default function AboutSection() {
             transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
           }}
         >
-          <div className="relative mb-10">
+          <div className="relative mb-2 sm:mb-4">
             <h2 className={`section-title text-3xl sm:text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center leading-tight transition-all duration-900 delay-100 ${
               isVisible 
                 ? 'opacity-100 transform translate-x-0' 
@@ -227,48 +227,54 @@ export default function AboutSection() {
           </div>
         </div>
         
-        {/* Mobile view (grid layout) */}
-        <div className="sm:hidden w-full p-2">
-          <div className="flex flex-wrap justify-center" role="region" aria-label="Tender logos">
-            {Array.from({ length: 11 }).map((_, index) => (
-              <div 
-                key={index} 
-                className={`relative p-2 ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-[16.666%] ${index >= 6 ? 'w-[20%]' : ''} flex items-center justify-center`}
-              >
-                <Image 
-                  src={`/tender${index + 1}.png`} 
-                  alt={`Tender ${index + 1}`} 
-                  width={120} 
-                  height={120}
-                  className="object-contain max-w-full max-h-full"
-                  loading="lazy" 
-                />
-              </div>
-            ))}
+        {/* Infinite Carousel Tender Logos */}
+        <div className="relative w-full overflow-hidden h-40 sm:h-52 lg:h-64 xl:h-80">
+          <div 
+            className="flex hover:pause-animation"
+            style={{
+              animation: 'carousel-scroll 40s linear infinite',
+              width: 'max-content'
+            }}
+            role="region" 
+            aria-label="Tender logos"
+          >
+            {/* Render logos twice for seamless infinite loop */}
+            {[...Array(2)].map((_, setIndex) => 
+              Array.from({ length: 11 }).map((_, index) => (
+                                  <div 
+                    key={`set-${setIndex}-${index}`} 
+                    className="relative flex-shrink-0 mx-8 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64 xl:w-80 xl:h-80 flex items-center justify-center"
+                  >
+                  <Image 
+                    src={`/tender${index + 1}.png`} 
+                    alt={`Tender ${index + 1}`} 
+                    width={400} 
+                    height={400}
+                    className="object-contain max-w-full max-h-full"
+                    loading="lazy"
+                  />
+                </div>
+              ))
+            ).flat()}
           </div>
         </div>
         
-        {/* Desktop view (overlapping icons) */}
-        <div className="relative w-full overflow-x-auto hidden sm:block py-6">
-          <div className="flex flex-nowrap min-w-max justify-center pb-4 px-8" role="region" aria-label="Tender logos">
-            {Array.from({ length: 11 }).map((_, index) => (
-              <div 
-                key={index} 
-                className={`relative flex-shrink-0 ${index % 2 === 0 ? 'drop-shadow-md' : 'drop-shadow-xl'} hover:drop-shadow-2xl hover:scale-110 hover:z-10 transition-all duration-300 p-0 border-0 w-32 md:w-40 h-32 md:h-40 flex items-center justify-center`}
-                style={{ marginLeft: index === 0 ? '0' : '-50px' }}
-              >
-                <Image 
-                  src={`/tender${index + 1}.png`} 
-                  alt={`Tender ${index + 1}`} 
-                  width={160} 
-                  height={160} 
-                  className="object-contain max-w-full max-h-full"
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* CSS for carousel animation */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            @keyframes carousel-scroll {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(-50%);
+              }
+            }
+            .hover\\:pause-animation:hover {
+              animation-play-state: paused !important;
+            }
+          `
+        }} />
       </div>
     </section>
   );

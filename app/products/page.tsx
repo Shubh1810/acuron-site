@@ -418,11 +418,11 @@ export default function ProductsPage() {
                     <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-[#0F4679] transition-colors duration-300 leading-tight">
                     {product.name}
                   </h3>
-                    <p className="text-gray-600 mb-3 text-xs leading-relaxed line-clamp-3 flex-grow">
+                    <p className="text-gray-600 mb-3 text-xs leading-relaxed line-clamp-3 flex-grow hidden sm:block">
                     {product.description}
                   </p>
 
-                    {/* Specifications - อาจจะซ่อนบางส่วนหรือทำให้เล็กลง */}
+                    {/* Specifications - Always visible */}
                     <div className="flex flex-wrap gap-1 mb-4">
                       {product.specs.slice(0, 2).map((spec, idx) => ( // Show fewer specs or make them smaller
                       <span 
