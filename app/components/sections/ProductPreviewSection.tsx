@@ -480,7 +480,7 @@ export default function ProductPreviewSection() {
 
         {/* Category Filter - Apple-like Design */}
         <div className="flex justify-center mb-12">
-          <div className="inline-flex p-1 bg-gray-100/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-sm">
+          <div className="inline-flex p-0.5 sm:p-1 bg-gray-100/60 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-gray-200/50 shadow-sm">
             {productCategories.map((category, index) => (
               <button
                 key={index}
@@ -488,7 +488,7 @@ export default function ProductPreviewSection() {
                   setActiveCategory(index);
                   setCurrentProductIndex(0);
                 }}
-                className={`relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ease-out ${
+                className={`relative px-2 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg sm:rounded-xl transition-all duration-300 ease-out ${
                   activeCategory === index
                     ? "text-white shadow-sm"
                     : "text-gray-600 hover:text-gray-800"
@@ -497,7 +497,7 @@ export default function ProductPreviewSection() {
                 {/* Active background */}
                 {activeCategory === index && (
                   <div 
-                    className="absolute inset-0 rounded-xl shadow-sm transition-all duration-300"
+                    className="absolute inset-0 rounded-lg sm:rounded-xl shadow-sm transition-all duration-300"
                     style={{
                       background: index === 0 ? '#0F4679' : 
                                  index === 1 ? '#158C07' : 

@@ -5,10 +5,12 @@ import Image from 'next/image';
 import { FC, useState, useMemo, useCallback } from 'react';
 import { Download } from 'lucide-react';
 import CountrySelector from './CountrySelector';
+import NewsletterModal from './NewsletterModal';
 import { useCountryStore } from '../../lib/store';
 
 const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const { selectedCountry } = useCountryStore();
 
   // Flagship blue color
@@ -121,15 +123,20 @@ const Header: FC = () => {
     pt: 'PESQUISAR'
   });
 
-  // Function to handle catalog download
+  // Function to handle catalog download - opens newsletter modal first
   const handleCatalogDownload = () => {
-    // Create a link element to trigger download
+    setIsNewsletterModalOpen(true);
+  };
+
+  // Function to actually download after newsletter signup
+  const handleActualDownload = () => {
     const link = document.createElement('a');
     link.href = '/catalog/acuron-catalog.pdf'; // Path to your catalog file
     link.download = 'Acuron-Medical-Catalog.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    setIsNewsletterModalOpen(false);
   };
 
   // Memoize the toggle function to prevent recreation on renders
@@ -141,18 +148,13 @@ const Header: FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 w-full shadow-md">
       {/* Top Navigation Bar - Changed to white background with blue text */}
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end items-center space-x-6">
-          <button 
-            onClick={handleCatalogDownload}
-            className="flex items-center text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300 bg-transparent border-none p-0 cursor-pointer"
-            title="Download Catalog"
+        <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end items-center space-x-3 sm:space-x-6">
+          <a 
+            href="tel:+919820043274" 
+            className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300 cursor-pointer"
           >
-            <Download size={12} className="mr-1.5" />
-            {catalogText}
-          </button>
-          <span className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679]">
             {ourCompanyText}
-          </span>
+          </a>
           <Link href="/#contact-us-section" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             {contactText}
           </Link>
@@ -196,13 +198,23 @@ const Header: FC = () => {
             </nav>
           </div>
           
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            {/* Catalog Button */}
+            <button 
+              onClick={handleCatalogDownload}
+              className="hidden sm:flex items-center text-[10px] lg:text-[11px] tracking-wide font-bold text-white hover:text-sky-200 transition-colors duration-300 bg-transparent border-none p-0 cursor-pointer"
+              title="Download Catalog"
+            >
+              <Download size={14} className="mr-1.5" />
+              {catalogText}
+            </button>
+
             <div className="relative group">
               <input
                 type="text"
                 placeholder={searchPlaceholder}
                 className="search-input border border-[#16599D] bg-[#0A3054] rounded-md py-1.5 px-3 pr-8
-                         w-[140px] sm:w-[180px] lg:w-[200px]
+                         w-[120px] sm:w-[140px] lg:w-[180px]
                          shadow-[0_0_10px_rgba(22,89,157,0.3)]
                          transition-all duration-300 text-[11px] tracking-wide text-white
                          placeholder-white cursor-text"
@@ -219,6 +231,15 @@ const Header: FC = () => {
                 </svg>
               </button>
             </div>
+
+            {/* Mobile Catalog Button */}
+            <button 
+              onClick={handleCatalogDownload}
+              className="sm:hidden flex items-center justify-center w-8 h-8 text-white hover:text-sky-200 transition-colors duration-300"
+              title="Download Catalog"
+            >
+              <Download size={16} />
+            </button>
             
             <button 
               onClick={toggleMobileMenu}
@@ -248,6 +269,13 @@ const Header: FC = () => {
           </nav>
         </div>
       </div>
+
+      {/* Newsletter Modal */}
+      <NewsletterModal 
+        isOpen={isNewsletterModalOpen}
+        onClose={() => setIsNewsletterModalOpen(false)}
+        onSuccess={handleActualDownload}
+      />
     </header>
   );
 };

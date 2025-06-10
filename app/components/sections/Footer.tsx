@@ -47,7 +47,7 @@ export default function Footer() {
     pt: 'Máscaras e Tocas'
   });
 
-  const shoeLegProtectionText = getLocalizedContent('Shoe & Leg Protection', {
+  const shoeLegProtectionText = getLocalizedContent('Shoe Protection', {
     de: 'Schuh- & Beinschutz',
     fr: 'Protection chaussures et jambes',
     ja: '靴・脚保護',
@@ -71,7 +71,7 @@ export default function Footer() {
     pt: 'Kits Médicos'
   });
 
-  const generalMedicalText = getLocalizedContent('General Medical & Surgical Disposables', {
+  const generalMedicalText = getLocalizedContent('General Medical Disposables', {
     de: 'Allgemeine medizinische & chirurgische Einwegartikel',
     fr: 'Dispositifs médicaux et chirurgicaux généraux',
     ja: '一般医療・外科用使い捨て用品',
