@@ -243,7 +243,7 @@ export default function AboutSection() {
               Array.from({ length: 11 }).map((_, index) => (
                                   <div 
                     key={`set-${setIndex}-${index}`} 
-                    className="relative flex-shrink-0 mx-8 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64 xl:w-80 xl:h-80 flex items-center justify-center"
+                    className="relative flex-shrink-0 mx-0 sm:mx-3 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64 xl:w-80 xl:h-80 flex items-center justify-center"
                   >
                   <Image 
                     src={`/tender${index + 1}.png`} 
