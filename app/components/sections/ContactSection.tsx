@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BackgroundGradientAnimation } from '../ui/background-gradient-animation';
@@ -7,6 +8,16 @@ import { useCountryStore } from '../../../lib/store';
 
 export default function ContactSection() {
   const { selectedCountry } = useCountryStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    organization: '',
+    email: '',
+    phone: '',
+    productInterest: '',
+    message: ''
+  });
 
   // Get localized content based on selected country
   const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
@@ -168,6 +179,70 @@ export default function ContactSection() {
     pt: 'Política de Privacidade'
   });
 
+  const successMessage = getLocalizedContent('Thank you! Your inquiry has been submitted successfully. We will contact you soon.', {
+    de: 'Vielen Dank! Ihre Anfrage wurde erfolgreich übermittelt. Wir werden Sie bald kontaktieren.',
+    fr: 'Merci ! Votre demande a été soumise avec succès. Nous vous contacterons bientôt.',
+    ja: 'ありがとうございます！お問い合わせが正常に送信されました。間もなくご連絡いたします。',
+    zh: '谢谢！您的询问已成功提交。我们将很快与您联系。',
+    pt: 'Obrigado! Sua consulta foi enviada com sucesso. Entraremos em contato em breve.'
+  });
+
+  const errorMessage = getLocalizedContent('Sorry, there was an error submitting your inquiry. Please try again or contact us directly.', {
+    de: 'Entschuldigung, beim Übermitteln Ihrer Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.',
+    fr: 'Désolé, une erreur s\'est produite lors de la soumission de votre demande. Veuillez réessayer ou nous contacter directement.',
+    ja: '申し訳ございませんが、お問い合わせの送信中にエラーが発生しました。もう一度お試しいただくか、直接お問い合わせください。',
+    zh: '抱歉，提交您的询问时出现错误。请重试或直接联系我们。',
+    pt: 'Desculpe, houve um erro ao enviar sua consulta. Tente novamente ou entre em contato conosco diretamente.'
+  });
+
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          organization: '',
+          email: '',
+          phone: '',
+          productInterest: '',
+          message: ''
+        });
+        console.log('📧 Form submitted successfully:', result);
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
+    } catch (error) {
+      console.error('❌ Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative py-16 min-h-[1700px] sm:min-h-[1500px] md:min-h-[850px]" id="contact-us-section">
       <BackgroundGradientAnimation 
@@ -306,14 +381,17 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  <form className="space-y-5 flex-1 flex flex-col">
+                  <form onSubmit={handleSubmit} className="space-y-5 flex-1 flex flex-col">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div className="space-y-1.5">
                         <label className="block text-sm font-medium text-gray-700 leading-tight">
                           {fullNameText}
                         </label>
                         <input 
-                          type="text" 
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
                           placeholder={enterNamePlaceholder}
                           required
@@ -324,7 +402,10 @@ export default function ContactSection() {
                           {organizationText}
                         </label>
                         <input 
-                          type="text" 
+                          type="text"
+                          name="organization"
+                          value={formData.organization}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
                           placeholder={companyNamePlaceholder}
                           required
@@ -338,7 +419,10 @@ export default function ContactSection() {
                           {emailText}
                         </label>
                         <input 
-                          type="email" 
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
                           placeholder="email@example.com"
                           required
@@ -346,10 +430,13 @@ export default function ContactSection() {
                       </div>
                       <div className="space-y-1.5">
                         <label className="block text-sm font-medium text-gray-700 leading-tight">
-                          {phoneText}
+                          {phoneText} (Optional)
                         </label>
                         <input 
-                          type="tel" 
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
                           placeholder="+1 (555) 000-0000"
                         />
@@ -358,9 +445,12 @@ export default function ContactSection() {
 
                     <div className="space-y-1.5">
                       <label className="block text-sm font-medium text-gray-700 leading-tight">
-                        {productInterestText}
+                        {productInterestText} (Optional)
                       </label>
                       <select 
+                        name="productInterest"
+                        value={formData.productInterest}
+                        onChange={handleInputChange}
                         className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 text-sm transition-colors duration-200"
                       >
                         <option value="" className="bg-white">{selectProductPlaceholder}</option>
@@ -375,9 +465,12 @@ export default function ContactSection() {
 
                     <div className="space-y-1.5 flex-1">
                       <label className="block text-sm font-medium text-gray-700 leading-tight">
-                        {messageText}
+                        {messageText} (Optional)
                       </label>
                       <textarea 
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         rows={4}
                         className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 resize-none text-sm transition-colors duration-200 flex-1 min-h-[100px]"
                         placeholder={messagePlaceholder}
@@ -385,14 +478,40 @@ export default function ContactSection() {
                     </div>
 
                     <div className="mt-auto pt-4">
+                      {/* Status Messages */}
+                      {submitStatus === 'success' && (
+                        <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-xl text-green-800 text-sm text-center">
+                          ✅ {successMessage}
+                        </div>
+                      )}
+                      
+                      {submitStatus === 'error' && (
+                        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm text-center">
+                          ❌ {errorMessage}
+                        </div>
+                      )}
+
                       <div className="relative group">
                         <div className="absolute -inset-0.5 rounded-xl opacity-80 bg-gradient-to-r from-[#158C07] via-[#0FB36D] to-[#3BB7EB] blur-sm group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-rotate"></div>
                         <button 
                           type="submit"
-                          className="w-full relative bg-white text-gray-800 font-semibold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 overflow-hidden group"
+                          disabled={isSubmitting}
+                          className="w-full relative bg-white text-gray-800 font-semibold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 overflow-hidden group disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                         >
                           <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-                          <span className="relative text-sm">{sendInquiryText}</span>
+                          <span className="relative text-sm flex items-center justify-center">
+                            {isSubmitting ? (
+                              <>
+                                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Sending...
+                              </>
+                            ) : (
+                              sendInquiryText
+                            )}
+                          </span>
                         </button>
                       </div>
                       <p className="text-xs text-gray-500 text-center mt-4 leading-relaxed">

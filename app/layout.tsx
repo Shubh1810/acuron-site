@@ -5,6 +5,7 @@ import './globals.css'
 import CacheCleanupClient from './lib/CacheCleanupClient';
 import { Analytics } from "@vercel/analytics/react"
 import ChatbotWidget from './components/ChatbotWidget'
+import CookieBanner from './components/CookieBanner'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -321,6 +322,7 @@ export default function RootLayout({
         <CacheCleanupClient />
         {children}
         <ChatbotWidget />
+        <CookieBanner />
         <Analytics />
       </body>
     </html>

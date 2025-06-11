@@ -11,6 +11,7 @@ import { useCountryStore } from '../../lib/store';
 const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
+  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const { selectedCountry } = useCountryStore();
 
   // Flagship blue color
@@ -37,16 +38,6 @@ const Header: FC = () => {
       })
     },
     { 
-      href: '/products', 
-      label: getLocalizedContent('PRODUCTS', {
-        de: 'PRODUKTE',
-        fr: 'PRODUITS',
-        ja: '製品',
-        zh: '产品',
-        pt: 'PRODUTOS'
-      })
-    },
-    { 
       href: '/certificates', 
       label: getLocalizedContent('CERTIFICATES', {
         de: 'ZERTIFIKATE',
@@ -67,16 +58,6 @@ const Header: FC = () => {
       })
     },
     { 
-      href: '/categories', 
-      label: getLocalizedContent('CATEGORIES', {
-        de: 'KATEGORIEN',
-        fr: 'CATÉGORIES',
-        ja: 'カテゴリー',
-        zh: '类别',
-        pt: 'CATEGORIAS'
-      })
-    },
-    { 
       href: '/faq', 
       label: getLocalizedContent('FAQ', {
         de: 'FAQ',
@@ -87,6 +68,86 @@ const Header: FC = () => {
       })
     },
   ], [selectedCountry]);
+
+  // Products dropdown categories
+  const productCategories = useMemo(() => [
+    {
+      label: getLocalizedContent('Protective Apparel', {
+        de: 'Schutzkleidung',
+        fr: 'Vêtements de protection',
+        ja: '保護服',
+        zh: '防护服',
+        pt: 'Vestuário de Proteção'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('Masks & Headwear', {
+        de: 'Masken & Kopfbedeckungen',
+        fr: 'Masques et couvre-chefs',
+        ja: 'マスク・帽子',
+        zh: '口罩和头饰',
+        pt: 'Máscaras e Chapéus'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('Shoe & Leg Protection', {
+        de: 'Schuh- & Beinschutz',
+        fr: 'Protection des chaussures et jambes',
+        ja: '靴・脚保護',
+        zh: '鞋套和腿部保护',
+        pt: 'Proteção de Sapatos e Pernas'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('Drapes Linens & Underpads', {
+        de: 'Tücher, Bettwäsche & Unterlagen',
+        fr: 'Draps, linge et alèses',
+        ja: 'ドレープ・リネン・パッド',
+        zh: '手术巾、床单和护垫',
+        pt: 'Campos, Roupas de Cama e Forrações'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('Medical Kits', {
+        de: 'Medizinische Kits',
+        fr: 'Kits médicaux',
+        ja: '医療キット',
+        zh: '医疗套件',
+        pt: 'Kits Médicos'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('General Medical & Surgical Disposables', {
+        de: 'Allgemeine medizinische & chirurgische Einwegartikel',
+        fr: 'Jetables médicaux et chirurgicaux généraux',
+        ja: '一般医療・外科用使い捨て用品',
+        zh: '一般医疗和手术一次性用品',
+        pt: 'Descartáveis Médicos e Cirúrgicos Gerais'
+      }),
+      href: '/products'
+    }
+  ], [selectedCountry]);
+
+  const productsText = getLocalizedContent('PRODUCTS', {
+    de: 'PRODUKTE',
+    fr: 'PRODUITS',
+    ja: '製品',
+    zh: '产品',
+    pt: 'PRODUTOS'
+  });
+
+  const viewAllProductsText = getLocalizedContent('View All Products', {
+    de: 'Alle Produkte anzeigen',
+    fr: 'Voir tous les produits',
+    ja: 'すべての製品を見る',
+    zh: '查看所有产品',
+    pt: 'Ver Todos os Produtos'
+  });
 
   // Localized top navigation links
   const ourCompanyText = "+91 98200 43274";
@@ -185,14 +246,108 @@ const Header: FC = () => {
             
             {/* Main Navigation */}
             <nav className="hidden md:flex space-x-3 lg:space-x-4">
-              {navigationLinks.map((link) => (
+              {/* HOME Link */}
+              <Link 
+                href="/" 
+                className="text-[10px] lg:text-[11px] tracking-wide font-bold text-white hover:text-sky-200 relative group whitespace-nowrap"
+              >
+                {navigationLinks[0].label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-300 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+
+              {/* Products Dropdown */}
+              <div 
+                className="relative group"
+                onMouseEnter={() => setIsProductsDropdownOpen(true)}
+                onMouseLeave={() => setIsProductsDropdownOpen(false)}
+              >
+                <Link 
+                  href="/products"
+                  className="flex items-center text-[10px] lg:text-[11px] tracking-wide font-bold text-white hover:text-sky-200 relative group whitespace-nowrap"
+                >
+                  {productsText}
+                  <svg 
+                    className={`ml-1 w-3 h-3 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-300 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+                
+                {/* Apple-style Liquid Glass Dropdown Menu */}
+                <div 
+                  className={`absolute top-full left-0 mt-2 w-80 z-50 transition-all duration-500 ease-out transform-gpu ${
+                    isProductsDropdownOpen 
+                      ? 'opacity-100 translate-y-0 visible scale-100' 
+                      : 'opacity-0 -translate-y-4 invisible scale-95'
+                  }`}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.85)',
+                    backdropFilter: 'blur(20px) saturate(180%)',
+                    WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                    borderRadius: '20px',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    boxShadow: `
+                      0 32px 64px -12px rgba(0, 0, 0, 0.15),
+                      0 0 0 1px rgba(255, 255, 255, 0.05),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                      inset 0 -1px 0 rgba(0, 0, 0, 0.05)
+                    `,
+                    transformOrigin: 'top center'
+                  }}
+                >
+                  <div className="p-2">
+                    {productCategories.map((category, index) => (
+                      <Link
+                        key={index}
+                        href={category.href}
+                        className="group flex items-center px-4 py-3.5 text-sm font-medium text-gray-800 rounded-xl transition-all duration-300 hover:bg-white/60 hover:backdrop-blur-xl hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+                        onClick={() => setIsProductsDropdownOpen(false)}
+                        style={{
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                      >
+                        <div className="flex items-center w-full">
+                          <div className="w-2.5 h-2.5 rounded-full mr-3 bg-gradient-to-r from-blue-500 to-blue-600 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <span className="group-hover:translate-x-1 transition-transform duration-300">{category.label}</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                  
+                  {/* View All Products Link with Glass Effect */}
+                  <div 
+                    className="border-t border-white/20 m-2 mt-0 rounded-b-xl overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.1) 100%)'
+                    }}
+                  >
+                    <Link
+                      href="/products"
+                      className="flex items-center justify-center px-4 py-4 text-sm font-bold text-blue-700 hover:text-blue-800 transition-all duration-300 hover:bg-white/40 group"
+                      onClick={() => setIsProductsDropdownOpen(false)}
+                    >
+                      <span className="group-hover:scale-105 transition-transform duration-300">{viewAllProductsText}</span>
+                      <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Other Navigation Links */}
+              {navigationLinks.slice(1).map((link) => (
                 <Link 
                   key={link.href} 
                   href={link.href} 
-                  className={`text-[10px] lg:text-[11px] tracking-wide font-bold text-white hover:text-sky-200 relative group whitespace-nowrap`}
+                  className="text-[10px] lg:text-[11px] tracking-wide font-bold text-white hover:text-sky-200 relative group whitespace-nowrap"
                 >
                   {link.label}
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-300 group-hover:w-full transition-all duration-300`}></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-300 group-hover:w-full transition-all duration-300"></span>
                 </Link>
               ))}
             </nav>
