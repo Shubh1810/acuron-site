@@ -68,8 +68,8 @@ export default function ProductsPage() {
     // Masks & Headwear
     { id: 201, name: "3 Ply Face Masks", description: "Standard 3-ply face mask with tie/lace closure.", category: "Masks & Headwear", image: "/products/3ply-pack.png", secondaryImage: "/products/3ply-display.png", featured: false, specs: ["Tie/Lace Closure", "High BFE", "Comfortable"] },
     { id: 202, name: "N95/FFP2 Protective Face Masks", description: "N95/FFP2 respirator mask with earloops.", category: "Masks & Headwear", image: "/products/n95-box.png", secondaryImage: "/products/n95-banner.png", featured: false, specs: ["N95/FFP2 Standard", "High Filtration", "Earloop"] },
-    { id: 203, name: "Bouffant Caps", description: "Standard 18-inch bouffant caps for hair coverage.", category: "Masks & Headwear", image: "/products/cap.jpeg", secondaryImage: "/products/cap-model.png", featured: false, specs: ["18 Inch Diameter", "Nonwoven", "Elasticated"] },
-    { id: 204, name: "Surgeon Caps", description: "Traditional surgeon caps for operating room use.", category: "Masks & Headwear", image: "/products/surgeon-cap.png", secondaryImage: "/products/surgeon-cap-2.png", featured: false, specs: ["Tie-back Design", "Cotton/Nonwoven", "Breathable"] },
+    { id: 203, name: "Bouffant Caps", description: "Standard 18-inch bouffant caps for hair coverage.", category: "Masks & Headwear", image: "/products/cap.jpeg", secondaryImage: "/products/cap.jpeg", featured: false, specs: ["18 Inch Diameter", "Nonwoven", "Elasticated"] },
+    { id: 204, name: "Surgeon Caps", description: "Traditional surgeon caps for operating room use.", category: "Masks & Headwear", image: "/products/surgeon-cap.png", secondaryImage: "/products/surgeon-cap.png", featured: false, specs: ["Tie-back Design", "Cotton/Nonwoven", "Breathable"] },
     { id: 205, name: "Goggles", description: "Protective goggles for eye safety.", category: "Masks & Headwear", image: "/products/goggles.jpeg", secondaryImage: "/products/goggles.jpg", featured: false, specs: ["Polycarbonate Lens", "Anti-Fog Coating", "Adjustable Headband"] },
 
     // Shoe & Leg Protection
@@ -79,21 +79,21 @@ export default function ProductsPage() {
     // Drapes, Linens & Underpads
     { id: 401, name: "Bedsheets & Pillow Covers", description: "Disposable nonwoven bedsheets and pillow covers for hygiene.", category: "Drapes, Linens & Underpads", image: "/products/bed-sheet.webp", secondaryImage: "/products/bed-sheet.webp", featured: false, specs: ["Nonwoven Fabric", "Hygienic", "Various Sizes"] },
     { id: 403, name: "Underpads", description: "Absorbent underpads for patient care.", category: "Drapes, Linens & Underpads", image: "/products/underpads.jpg", secondaryImage: "/products/underpads.jpg", featured: false, specs: ["High Absorbency", "Waterproof Backing", "Multiple Sizes"] },
-    { id: 404, name: "Sterilization Wraps", description: "SMS sterilization wraps for medical instruments.", category: "Drapes, Linens & Underpads", image: "/products/sterile-wrap.avif", secondaryImage: "/products/sterilization-wraps.jpg", featured: false, specs: ["35gsm SMS", "Bacterial Barrier", "Various Sizes"] },
-    { id: 405, name: "Poly Drapes", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/poly-drape.jpeg", secondaryImage: "/products/poly-drape.jpg", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
+    { id: 404, name: "Sterilization Wraps", description: "SMS sterilization wraps for medical instruments.", category: "Drapes, Linens & Underpads", image: "/products/sterile-wrap.avif", secondaryImage: "/products/sterile-wrap.avif", featured: false, specs: ["35gsm SMS", "Bacterial Barrier", "Various Sizes"] },
+    { id: 405, name: "Poly Drapes", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/poly-drape.jpeg", secondaryImage: "/products/poly-drape.jpeg", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
     { id: 406, name: "Plain Sheets", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/plain-sheet.jpg", secondaryImage: "/products/plain-sheet.jpg", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
-    { id: 407, name: "Minor Drape Sets", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/minor-drape.jpg", secondaryImage: "/products/minor-drape.jpg", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
+    { id: 407, name: "Minor Drape Sets", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/minordrape.png", secondaryImage: "/products/minordrape.png", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
 
 
     // Medical Kits
-    { id: 501, name: "PPE Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/OT Premium Kit Product Pics.png", secondaryImage: "/products/Product Pics for Display July 30 2020.jpg", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
-    { id: 502, name: "Surgeon's OT Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/OT Premium Kit Product Pics.png", secondaryImage: "/products/Product Pics for Display July 30 2020.jpg", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
-    { id: 503, name: "Delivery Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/OT Premium Kit Product Pics.png", secondaryImage: "/products/Product Pics for Display July 30 2020.jpg", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
-    { id: 504, name: "OT Premium Kit", description: "Comprehensive kit for surgeons in the operating theatre.", category: "Medical Kits", image: "/products/ot-premium-kit.jpg", secondaryImage: "/placeholder.png", featured: false, specs: ["OT Essentials", "Sterile Components", "Convenient Pack"] },
-    { id: 505, name: "HIV | AIDS Protection kit", description: "Ultra delivery kit for childbirth procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Comprehensive", "Sterile", "For Safe Delivery"] },
-    { id: 506, name: "Dental Kit - Premium", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
-    { id: 507, name: "Disposable 'Z' Kit", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
-    { id: 508, name: "Onco Plus (Chemo Kit)", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/placeholder.png", secondaryImage: "/placeholder.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
+    { id: 501, name: "PPE Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
+    { id: 502, name: "Surgeon's OT Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/surgeonotkit.png", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
+    { id: 503, name: "Delivery Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
+    { id: 504, name: "OT Premium Kit", description: "Comprehensive kit for surgeons in the operating theatre.", category: "Medical Kits", image: "/products/ot-premium-kit.jpg", secondaryImage: "/products/ot-premium-kit.jpg", featured: false, specs: ["OT Essentials", "Sterile Components", "Convenient Pack"] },
+    { id: 505, name: "HIV | AIDS Protection kit", description: "Ultra delivery kit for childbirth procedures.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Comprehensive", "Sterile", "For Safe Delivery"] },
+    { id: 506, name: "Dental Kit - Premium", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
+    { id: 507, name: "Disposable 'Z' Kit", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
+    { id: 508, name: "Onco Plus (Chemo Kit)", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
 
     // General Medical & Surgical Disposables
     { id: 601, name: "Skin Blade / Prep Razor", description: "Precision surgical prep razors with safety features.", category: "General Medical & Surgical Disposables", image: "/products/razor.png", secondaryImage: "/products/razor-box.png", featured: false, specs: ["Sterile", "Safety Guard", "Sharp Blade"] },
@@ -155,109 +155,138 @@ export default function ProductsPage() {
       
       <div className="pt-[90px] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 py-8">
-          {/* Apple-style Category Navigation */}
-          <div className="mb-6 pb-4 border-b border-gray-200">
+          {/* Apple-style Category Navigation with Filtering */}
+          <div className="mb-6 pb-4 border-b border-gray-200 relative z-[60]">
             <div className="relative bg-white shadow-lg p-2 sm:p-3 md:p-6 border border-gray-100 overflow-hidden">
               <div ref={scrollableNavRef} className="flex items-center justify-start sm:justify-center space-x-2 sm:space-x-4 md:space-x-8 overflow-x-auto scrollbar-hide">
-                <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                    </svg>
-                  </div>
-                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">All</span>
-                </div>
+                {categories.map((category, index) => {
+                  // Map categories to appropriate icons and display names
+                  const getCategoryConfig = (categoryName: string) => {
+                    switch (categoryName) {
+                      case "All":
+                        return {
+                          icon: (
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                            </svg>
+                          ),
+                          displayName: "All"
+                        };
+                      case "Protective Apparel":
+                        return {
+                          icon: (
+                            <Image
+                              src="/Health Icon Apron.png"
+                              alt="Protective Apparel Icon"
+                              width={24}
+                              height={24}
+                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                            />
+                          ),
+                          displayName: "PPE Apparel"
+                        };
+                      case "Masks & Headwear":
+                        return {
+                          icon: (
+                            <Image
+                              src="/PPE Mask Icon.png"
+                              alt="Masks & Headwear Icon"
+                              width={24}
+                              height={24}
+                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                            />
+                          ),
+                          displayName: "Masks & Headwear"
+                        };
+                      case "Shoe & Leg Protection":
+                        return {
+                          icon: (
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                          ),
+                          displayName: "Foot Protection"
+                        };
+                      case "Drapes, Linens & Underpads":
+                        return {
+                          icon: (
+                            <Image
+                              src="/Vascular Surgery Icon.png"
+                              alt="Drapes & Linens Icon"
+                              width={24}
+                              height={24}
+                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                            />
+                          ),
+                          displayName: "Drapes & Linens"
+                        };
+                      case "Medical Kits":
+                        return {
+                          icon: (
+                            <Image
+                              src="/PPE Suit Icon.png"
+                              alt="Medical Kits Icon"
+                              width={24}
+                              height={24}
+                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                            />
+                          ),
+                          displayName: "Complete Medical Kits"
+                        };
+                      case "General Medical & Surgical Disposables":
+                        return {
+                          icon: (
+                            <Image
+                              src="/PPE Gloves Icon.png"
+                              alt="Medical Disposables Icon"
+                              width={24}
+                              height={24}
+                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                            />
+                          ),
+                          displayName: "Disposables"
+                        };
+                      default:
+                        return {
+                          icon: (
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                            </svg>
+                          ),
+                          displayName: categoryName
+                        };
+                    }
+                  };
 
-                <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                    <Image
-                      src="/PPE Mask Icon.png"
-                      alt="Face Masks Icon"
-                      width={24}
-                      height={24}
-                      className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Face Masks</span>
-                </div>
+                  const config = getCategoryConfig(category.name);
+                  const isActive = activeCategory === category.name;
 
-                <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                    <Image
-                      src="/Health Icon Apron.png"
-                      alt="Coveralls Icon"
-                      width={24}
-                      height={24}
-                      className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Coveralls</span>
-                </div>
-
-                <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                    <Image
-                      src="/Vascular Surgery Icon.png"
-                      alt="Surgical Items Icon"
-                      width={24}
-                      height={24}
-                      className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Surgical Drapes</span>
-                </div>
-
-                <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                    <Image
-                      src="/PPE Goggles Icon.png"
-                      alt="Goggles Icon"
-                      width={24}
-                      height={24}
-                      className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Goggles</span>
-                </div>
-
-                <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                    <Image
-                      src="/PPE Gloves Icon.png"
-                      alt="Gloves Icon"
-                      width={24}
-                      height={24}
-                      className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Gloves</span>
-                </div>
-
-                <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                    <Image
-                      src="/Outbreak Health Icon.png"
-                      alt="Disposal Bags Icon"
-                      width={24}
-                      height={24}
-                      className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Disposal Bags</span>
-                </div>
-
-                <div className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-[#0F4679] hover:bg-gray-50 transition-all duration-300 group-hover:scale-105">
-                    <Image
-                      src="/PPE Suit Icon.png"
-                      alt="Complete Kits Icon"
-                      width={24}
-                      height={24}
-                      className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#0F4679] transition-colors duration-300 text-center">Complete Kits</span>
-                </div>
+                  return (
+                    <motion.div
+                      key={category.name}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      onClick={() => setActiveCategory(category.name)}
+                      className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer"
+                    >
+                      <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 ${
+                        isActive 
+                          ? 'bg-[#0F4679] text-white shadow-lg' 
+                          : 'text-[#0F4679] hover:bg-gray-50'
+                      }`}>
+                        {config.icon}
+                      </div>
+                      <span className={`text-[10px] sm:text-xs md:text-sm font-medium transition-colors duration-300 text-center ${
+                        isActive 
+                          ? 'text-[#0F4679] font-semibold' 
+                          : 'text-[#0F4679]'
+                      }`}>
+                        {config.displayName}
+                      </span>
+                    </motion.div>
+                  );
+                })}
               </div>
 
               {/* Neon Glow Right Edge - Mobile Only */}
@@ -355,30 +384,78 @@ export default function ProductsPage() {
             ))}
           </div>
 
-          {/* New Filter Tabs */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-2 mb-12 md:mb-20" // Increased bottom margin
-          >
-            {categories.map((category, index) => (
-              <motion.button
-                key={category.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }} // Faster stagger
-                onClick={() => setActiveCategory(category.name)}
-                className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 border-2 ${
-                  activeCategory === category.name 
-                    ? "bg-[#0F4679] text-white border-[#0F4679]"
-                    : "text-gray-700 bg-white border-gray-300 hover:text-[#0F4679] hover:border-[#0F4679] hover:bg-gray-50"
-                }`}
-              >
-                {category.name}
-              </motion.button>
-            ))}
-          </motion.div>
+          {/* Full-Width Explore Products Banner Divider */}
+          <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-16">
+            <div className="relative overflow-hidden bg-gradient-to-r from-[#0F4679] via-[#1A5A8A] to-[#158C07] py-16 md:py-24">
+              {/* Background Pattern */}
+              <div className="absolute inset-0">
+                <div className="absolute top-0 left-0 w-full h-full opacity-10">
+                  <div className="absolute top-10 left-1/4 w-32 h-32 bg-white rounded-full blur-2xl"></div>
+                  <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-white rounded-full blur-3xl"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white rounded-full blur-3xl opacity-50"></div>
+                </div>
+                
+                {/* Subtle Grid Pattern */}
+                <div className="absolute inset-0 opacity-[0.03]" style={{
+                  backgroundImage: `
+                    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                  `,
+                  backgroundSize: '40px 40px'
+                }}></div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                >
+                  {/* Main Heading */}
+                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 -mt-10 leading-tight">
+                    Explore
+                    <span className="block bg-gradient-to-r from-white via-blue-100 to-green-100 bg-clip-text text-transparent">
+                      Products
+                    </span>
+                  </h2>
+                  
+                  {/* Subtitle */}
+                  <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
+                    Browse our extensive range of medical disposables and kits across all categories. 
+                    <span className="block mt-2">Filter by category to find exactly what you need.</span>
+                  </p>
+
+                  {/* Decorative Elements */}
+                  <div className="flex justify-center items-center mt-8 space-x-4">
+                    <div className="w-12 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                    <div className="w-16 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse delay-300"></div>
+                    <div className="w-12 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
+                  </div>
+
+                  {/* Category Count Badge */}
+                  <div className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                    <span className="text-white font-medium">
+                      {allProducts.length}+ Products • {categories.length - 1} Categories
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Bottom Wave Divider */}
+              <div className="absolute bottom-0 left-0 w-full">
+                <svg className="relative block w-full h-12" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                  <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-current text-white"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
 
           {/* Main Product Grid (Mini Replicas - Filterable) */}
           <AnimatePresence mode="wait">
