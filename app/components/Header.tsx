@@ -12,6 +12,7 @@ const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const { selectedCountry } = useCountryStore();
 
   // Flagship blue color
@@ -200,9 +201,16 @@ const Header: FC = () => {
     setIsNewsletterModalOpen(false);
   };
 
+
+
   // Memoize the toggle function to prevent recreation on renders
   const toggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen(prev => !prev);
+    setIsMobileMenuOpen(prev => {
+      if (!prev) {
+        setIsMobileProductsOpen(false); // Reset products dropdown when opening menu
+      }
+      return !prev;
+    });
   }, []);
 
   return (
@@ -411,12 +419,71 @@ const Header: FC = () => {
         {/* Mobile Navigation Menu */}
         <div className={`md:hidden bg-white border-t border-gray-200 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
           <nav className="px-4 py-2 divide-y divide-gray-300">
-            {navigationLinks.map((link) => (
+            {/* HOME Link */}
+            <Link 
+              href="/" 
+              className="block py-3 text-[12px] tracking-wide font-bold text-gray-800 hover:text-[#16599D] transition-colors duration-300"
+              onClick={toggleMobileMenu}
+            >
+              {navigationLinks[0].label}
+            </Link>
+
+            {/* Products Section with Dropdown */}
+            <div className="py-3">
+              <button
+                onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+                className="flex items-center justify-between w-full text-[12px] tracking-wide font-bold text-gray-800 hover:text-[#16599D] transition-colors duration-300"
+              >
+                {productsText}
+                <svg 
+                  className={`w-4 h-4 transition-transform duration-300 ${isMobileProductsOpen ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Mobile Products Dropdown */}
+              <div className={`overflow-hidden transition-all duration-300 ${
+                isMobileProductsOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+              }`}>
+                <div className="pt-2 pl-4 space-y-1">
+                  {productCategories.map((category, index) => (
+                    <Link
+                      key={index}
+                      href={category.href}
+                      className="flex items-center py-2 text-[11px] text-gray-600 hover:text-[#16599D] transition-colors duration-300"
+                      onClick={toggleMobileMenu}
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full mr-3 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+                      {category.label}
+                    </Link>
+                  ))}
+                  
+                  {/* View All Products Link */}
+                  <Link
+                    href="/products"
+                    className="flex items-center py-2 text-[11px] text-[#16599D] font-semibold hover:text-[#0F4679] transition-colors duration-300"
+                    onClick={toggleMobileMenu}
+                  >
+                    <svg className="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                    {viewAllProductsText}
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Other Navigation Links */}
+            {navigationLinks.slice(1).map((link) => (
               <Link 
                 key={link.href} 
                 href={link.href} 
                 className="block py-3 text-[12px] tracking-wide font-bold text-gray-800 hover:text-[#16599D] transition-colors duration-300"
-                onClick={toggleMobileMenu} // Close menu when a link is clicked
+                onClick={toggleMobileMenu}
               >
                 {link.label}
               </Link>
