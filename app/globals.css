@@ -152,3 +152,85 @@ input:focus {
     opacity: 0.8;
   }
 }
+
+/* Professional FAQ Styling */
+.faq-card:hover .faq-card-shadow {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.faq-category-header {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.faq-question:hover {
+  background-color: #fafafa;
+}
+
+.faq-answer-highlight {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-left: 4px solid #0f4679;
+}
+
+/* Professional Medical Gradient */
+.medical-gradient {
+  background: linear-gradient(135deg, #0f4679 0%, #158c07 100%);
+}
+
+/* Smooth Transitions for Professional Feel */
+.transition-all-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Professional Button Hover Effects */
+.professional-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.professional-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading Animation for FAQ Content */
+.faq-loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Professional Typography Improvements */
+.professional-heading {
+  font-variation-settings: 'wght' 700;
+  letter-spacing: -0.025em;
+}
+
+.professional-body {
+  font-variation-settings: 'wght' 400;
+  line-height: 1.7;
+}
+
+/* Medical Badge Styling */
+.medical-badge {
+  background: rgba(15, 70, 121, 0.05);
+  border: 1px solid rgba(15, 70, 121, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Professional Card Borders */
+.card-border-professional {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Improved Accessibility Focus States */
+.focus-professional:focus {
+  outline: 2px solid #0f4679;
+  outline-offset: 2px;
+}

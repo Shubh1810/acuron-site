@@ -4,110 +4,69 @@ export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://acuron-site.vercel.app'
+  const currentDate = new Date()
   
-  // Static pages
-  const staticPages = [
+  // Core business pages (highest priority)
+  const corePages = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
-      priority: 1,
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/products`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      url: `${baseUrl}/certificates`,
+      lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
+  ]
+
+  // Important business pages
+  const businessPages = [
     {
-      url: `${baseUrl}/certificates`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
+      url: `${baseUrl}/events`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/events`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    },
-    {
       url: `${baseUrl}/faq`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
     },
   ]
 
-  // Specific product category pages targeting user's keywords
-  const specificProductPages = [
+  // Product category pages (SEO-focused)
+  const productCategories = [
     'surgical-wear',
-    'surgical-supplies',
-    'surgical-gowns',
-    'surgical-gown',
+    'surgical-gowns', 
     'bouffant-caps',
-    'bouffant-cap',
     'surgical-razors',
     '3-ply-masks',
     'n95-masks',
-    'medical-wear',
     'medical-equipment',
-    'medical-products',
     'ppe-equipment',
-    'primawear',
-    'shi-mediwear'
   ]
 
-  // Traditional product categories
-  const productCategories = [
-    'surgical',
-    'orthopedic-drapes',
-    'gynecology-drapes', 
-    'urology-drapes',
-    'protective'
-  ]
-
-  // Combine all product pages
-  const allProductPages = [...specificProductPages, ...productCategories].map(category => ({
+  const productPages = productCategories.map(category => ({
     url: `${baseUrl}/products/${category}`,
-    lastModified: new Date(),
+    lastModified: currentDate,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }))
 
-  // Distribution and export pages
-  const businessPages = [
-    {
-      url: `${baseUrl}/distribution`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/exports`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/network`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }
+  // Combine all pages
+  return [
+    ...corePages,
+    ...businessPages,
+    ...productPages,
   ]
-
-  return [...staticPages, ...allProductPages, ...businessPages]
 } 

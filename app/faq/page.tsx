@@ -617,86 +617,86 @@ export default function FAQPage() {
             techSpecs: "Technical Specifications"
           },
           faqData: [
-    {
-      category: "Product Information",
-      questions: [
-        {
-          id: 1,
-          question: "What certifications do your medical products have?",
-          answer: "Our medical products are certified according to international standards including ISO 13485:2016, CE certification, and FDA registration where applicable. All our products meet or exceed the required quality and safety standards for their respective categories. You can view our full list of certifications on our Certificates page."
-        },
-        {
-          id: 2,
-          question: "Are your masks and PPE appropriate for medical use?",
-          answer: "Yes, our masks and PPE are specifically designed for medical use. Our 3-ply masks meet EN 14683 Type IIR standards with ≥98% bacterial filtration efficiency (BFE), while our N95 respirators are NIOSH-approved with 95% filtration efficiency for airborne particles. All our PPE products undergo rigorous testing to ensure they provide the required protection for healthcare professionals."
-        },
-        {
-          id: 3,
-          question: "What materials are used in your surgical drapes and gowns?",
-          answer: "Our surgical drapes and gowns are made using high-quality SMS (Spunbond-Meltblown-Spunbond) fabric in various weights (from 30 to 50 gsm). This material provides an effective barrier against fluids and microorganisms while remaining comfortable and breathable. We also offer reinforced options with additional fluid-resistant layers for high-risk procedures."
-        }
-      ]
-    },
-    {
-      category: "Orders & Shipping",
-      questions: [
-        {
-          id: 4,
-          question: "What is the minimum order quantity (MOQ) for your products?",
-          answer: "Our minimum order quantities vary by product type. For standard items like masks and gloves, our MOQs typically start at 10,000 units. For specialized items like surgical drapes or coveralls, MOQs may start at 1,000 units. For bulk orders or customized products, please contact our sales team for specific MOQ information."
-        },
-        {
-          id: 5,
-          question: "How long does shipping take and which countries do you deliver to?",
-          answer: "We ship worldwide to over 80 countries. Standard shipping times vary by destination: 7-10 business days for Europe, 10-15 days for North America and Middle East, and 15-20 days for other regions. Express shipping options are available for urgent orders. We handle all export documentation and can recommend shipping partners for specific regions."
-        },
-        {
-          id: 6,
-          question: "Do you offer customized packaging or private labeling?",
-          answer: "Yes, we offer customized packaging and private labeling services for bulk orders. This includes custom boxes, packaging inserts, and product labeling with your brand logo and information. Custom packaging requires a minimum order quantity and additional lead time, typically 2-3 weeks beyond standard production times."
-        }
-      ]
-    },
-    {
-      category: "Product Usage & Safety",
-      questions: [
-        {
-          id: 7,
-          question: "What is the shelf life of your medical supplies?",
-          answer: "The shelf life varies by product type. Masks, gloves, and other disposable items typically have a 3-year shelf life when stored properly in original packaging at room temperature in dry conditions. Sterile products like surgical drapes have a shelf life of 5 years when the packaging remains intact. Each product package is clearly marked with manufacturing and expiration dates."
-        },
-        {
-          id: 8,
-          question: "Are your products latex-free?",
-          answer: "Yes, all our medical supplies including gloves, masks, and other PPE are 100% latex-free to prevent allergic reactions. Our nitrile examination gloves are specifically designed to provide the same elasticity and comfort as latex while being suitable for individuals with latex allergies."
-        },
-        {
-          id: 9,
-          question: "How should I dispose of used medical supplies?",
-          answer: "Used medical supplies should be disposed of according to local regulations for medical waste. Our biodegradable waste disposal bags are specifically designed for the safe containment of used medical supplies. For items potentially contaminated with infectious materials, we recommend following your facility's protocols for biohazardous waste management."
-        }
-      ]
-    },
-    {
-      category: "Technical Specifications",
-      questions: [
-        {
-          id: 10,
-          question: "What are the filtration specifications of your N95 respirators?",
-          answer: "Our N95 respirators provide at least 95% filtration efficiency against non-oil-based particles and aerosols as small as 0.3 microns. They meet NIOSH 42 CFR 84 standards and feature a secure fit with adjustable nose bridges and elastic head straps. Each batch undergoes testing for filtration efficiency, breathing resistance, and fit performance."
-        },
-        {
-          id: 11,
-          question: "What is the fluid resistance level of your surgical gowns?",
-          answer: "Our surgical gowns are available in multiple AAMI levels: Level 1 (minimal fluid resistance), Level 2 (low fluid resistance), Level 3 (moderate fluid resistance), and Level 4 (high fluid resistance). The Level 4 gowns provide protection against penetration by blood and body fluids under pressure and are suitable for long, fluid-intensive procedures."
-        },
-        {
-          id: 12,
-          question: "Are your biodegradable waste bags suitable for autoclaving?",
-          answer: "Our standard biodegradable waste bags are not autoclave-safe as they have a melting point of approximately 90°C. However, we do offer specialized autoclave-safe waste bags made from high-temperature resistant biodegradable materials that can withstand temperatures up to 135°C, suitable for steam sterilization processes."
-        }
-      ]
-    }
+            {
+              category: "Product Information",
+              questions: [
+                {
+                  id: 1,
+                  question: "What certifications do your medical products have?",
+                  answer: "Our medical products are certified according to international standards including ISO 13485:2016, CE certification, and FDA registration where applicable. All our products meet or exceed the required quality and safety standards for their respective categories. You can view our full list of certifications on our Certificates page."
+                },
+                {
+                  id: 2,
+                  question: "Are your masks and PPE appropriate for medical use?",
+                  answer: "Yes, our masks and PPE are specifically designed for medical use. Our 3-ply masks meet EN 14683 Type IIR standards with ≥98% bacterial filtration efficiency (BFE), while our N95 respirators are NIOSH-approved with 95% filtration efficiency for airborne particles. All our PPE products undergo rigorous testing to ensure they provide the required protection for healthcare professionals."
+                },
+                {
+                  id: 3,
+                  question: "What materials are used in your surgical drapes and gowns?",
+                  answer: "Our surgical drapes and gowns are made using high-quality SMS (Spunbond-Meltblown-Spunbond) fabric in various weights (from 30 to 50 gsm). This material provides an effective barrier against fluids and microorganisms while remaining comfortable and breathable. We also offer reinforced options with additional fluid-resistant layers for high-risk procedures."
+                }
+              ]
+            },
+            {
+              category: "Orders & Shipping",
+              questions: [
+                {
+                  id: 4,
+                  question: "What is the minimum order quantity (MOQ) for your products?",
+                  answer: "Our minimum order quantities vary by product type. For standard items like masks and gloves, our MOQs typically start at 10,000 units. For specialized items like surgical drapes or coveralls, MOQs may start at 1,000 units. For bulk orders or customized products, please contact our sales team for specific MOQ information."
+                },
+                {
+                  id: 5,
+                  question: "How long does shipping take and which countries do you deliver to?",
+                  answer: "We ship worldwide to over 80 countries. Standard shipping times vary by destination: 7-10 business days for Europe, 10-15 days for North America and Middle East, and 15-20 days for other regions. Express shipping options are available for urgent orders. We handle all export documentation and can recommend shipping partners for specific regions."
+                },
+                {
+                  id: 6,
+                  question: "Do you offer customized packaging or private labeling?",
+                  answer: "Yes, we offer customized packaging and private labeling services for bulk orders. This includes custom boxes, packaging inserts, and product labeling with your brand logo and information. Custom packaging requires a minimum order quantity and additional lead time, typically 2-3 weeks beyond standard production times."
+                }
+              ]
+            },
+            {
+              category: "Product Usage & Safety",
+              questions: [
+                {
+                  id: 7,
+                  question: "What is the shelf life of your medical supplies?",
+                  answer: "The shelf life varies by product type. Masks, gloves, and other disposable items typically have a 3-year shelf life when stored properly in original packaging at room temperature in dry conditions. Sterile products like surgical drapes have a shelf life of 5 years when the packaging remains intact. Each product package is clearly marked with manufacturing and expiration dates."
+                },
+                {
+                  id: 8,
+                  question: "Are your products latex-free?",
+                  answer: "Yes, all our medical supplies including gloves, masks, and other PPE are 100% latex-free to prevent allergic reactions. Our nitrile examination gloves are specifically designed to provide the same elasticity and comfort as latex while being suitable for individuals with latex allergies."
+                },
+                {
+                  id: 9,
+                  question: "How should I dispose of used medical supplies?",
+                  answer: "Used medical supplies should be disposed of according to local regulations for medical waste. Our biodegradable waste disposal bags are specifically designed for the safe containment of used medical supplies. For items potentially contaminated with infectious materials, we recommend following your facility's protocols for biohazardous waste management."
+                }
+              ]
+            },
+            {
+              category: "Technical Specifications",
+              questions: [
+                {
+                  id: 10,
+                  question: "What are the filtration specifications of your N95 respirators?",
+                  answer: "Our N95 respirators provide at least 95% filtration efficiency against non-oil-based particles and aerosols as small as 0.3 microns. They meet NIOSH 42 CFR 84 standards and feature a secure fit with adjustable nose bridges and elastic head straps. Each batch undergoes testing for filtration efficiency, breathing resistance, and fit performance."
+                },
+                {
+                  id: 11,
+                  question: "What is the fluid resistance level of your surgical gowns?",
+                  answer: "Our surgical gowns are available in multiple AAMI levels: Level 1 (minimal fluid resistance), Level 2 (low fluid resistance), Level 3 (moderate fluid resistance), and Level 4 (high fluid resistance). The Level 4 gowns provide protection against penetration by blood and body fluids under pressure and are suitable for long, fluid-intensive procedures."
+                },
+                {
+                  id: 12,
+                  question: "Are your biodegradable waste bags suitable for autoclaving?",
+                  answer: "Our standard biodegradable waste bags are not autoclave-safe as they have a melting point of approximately 90°C. However, we do offer specialized autoclave-safe waste bags made from high-temperature resistant biodegradable materials that can withstand temperatures up to 135°C, suitable for steam sterilization processes."
+                }
+              ]
+            }
           ]
         };
     }
@@ -719,96 +719,127 @@ export default function FAQPage() {
     <>
       <Header />
       
-      <div className="pt-[90px] min-h-screen bg-gradient-to-b from-[#061D33] via-[#082F4F] to-[#061D33]">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          {/* Hero section */}
-          <div className="text-center mb-16">
+      {/* Professional Medical-Grade FAQ Design */}
+      <div className="pt-[90px] min-h-screen bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-16">
+          
+          {/* Professional Header Section */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center px-4 py-2 bg-[#0F4679]/5 rounded-full border border-[#0F4679]/10 mb-6">
+              <svg className="w-4 h-4 text-[#0F4679] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-sm font-semibold text-[#0F4679] tracking-wide">MEDICAL SUPPORT CENTER</span>
+            </div>
+            
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-[#78d6f5] bg-clip-text text-transparent mb-4"
+              transition={{ duration: 0.6 }}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-inter leading-tight"
             >
-              {content.title}
+              Frequently Asked Questions
             </motion.h1>
+            
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-[#78d6f5] max-w-2xl mx-auto text-lg"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-normal"
             >
-              {content.subtitle}
+              Expert answers to common questions about our ISO-certified medical supplies, 
+              ordering processes, and technical specifications
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+            
+            {/* Professional Divider */}
+            <motion.div 
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-24 h-1 bg-gradient-to-r from-[#1E619E] to-[#16DBBE] mx-auto mt-6"
+              className="w-24 h-0.5 bg-gradient-to-r from-[#0F4679] to-[#158C07] mx-auto mt-8"
             />
           </div>
 
-          {/* FAQ Categories */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {/* Professional FAQ Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
             {content.faqData.map((category, categoryIndex) => (
               <motion.div
                 key={category.category}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + categoryIndex * 0.1 }}
-                className="bg-gradient-to-br from-[#0A2A45]/80 to-[#061D33]/90 backdrop-blur-sm border border-[#1E619E]/30 rounded-xl overflow-hidden"
+                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+                className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300"
               >
-                <div className="p-6 border-b border-[#1E619E]/30">
-                  <h2 className="text-xl font-bold text-white flex items-center">
-                    <span className="mr-3 flex-shrink-0 w-8 h-8 rounded-full bg-[#16DBBE]/20 flex items-center justify-center">
+                {/* Professional Category Header */}
+                <div className="px-8 py-6 border-b border-gray-50 bg-gradient-to-r from-gray-50 to-white">
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#0F4679] to-[#158C07] flex items-center justify-center mr-4 shadow-sm">
                       {categoryIndex === 0 && (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#16DBBE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 7a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2zM9 9h6v6H9V9z" />
                         </svg>
                       )}
                       {categoryIndex === 1 && (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#16DBBE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                         </svg>
                       )}
                       {categoryIndex === 2 && (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#16DBBE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                       )}
                       {categoryIndex === 3 && (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#16DBBE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                       )}
-                    </span>
-                    {category.category}
-                  </h2>
+                    </div>
+                    <div>
+                      <h2 className="text-lg font-bold text-gray-900 font-inter">
+                        {category.category}
+                      </h2>
+                      <p className="text-sm text-gray-500 mt-1">
+                        {category.questions.length} questions
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="divide-y divide-[#1E619E]/20">
-                  {category.questions.map((item) => (
-                    <div key={item.id} className="p-6">
+                {/* Professional FAQ Items */}
+                <div className="divide-y divide-gray-50">
+                  {category.questions.map((item, index) => (
+                    <div key={item.id} className="group">
                       <button 
                         onClick={() => toggleQuestion(item.id)}
-                        className="w-full flex justify-between items-start text-left"
+                        className="w-full px-8 py-6 text-left hover:bg-gray-25 transition-colors duration-200"
                       >
-                        <h3 className="text-white font-medium pr-6 group-hover:text-[#16DBBE] transition-colors duration-300">
-                          {item.question}
-                        </h3>
-                        <div className={`mt-1 transition-transform duration-300 text-[#16DBBE] ${expandedQuestions[item.id] ? 'rotate-180' : ''}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
+                        <div className="flex justify-between items-start">
+                          <h3 className="text-base font-semibold text-gray-900 pr-6 group-hover:text-[#0F4679] transition-colors duration-200 leading-relaxed font-inter">
+                            {item.question}
+                          </h3>
+                          <div className={`flex-shrink-0 transition-transform duration-300 ${expandedQuestions[item.id] ? 'rotate-180' : ''}`}>
+                            <svg className="w-5 h-5 text-gray-400 group-hover:text-[#0F4679]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
                         </div>
                       </button>
+                      
                       {expandedQuestions[item.id] && (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
-                          transition={{ duration: 0.3 }}
-                          className="mt-4 text-gray-300 text-sm"
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="px-8 pb-6"
                         >
-                          <p>{item.answer}</p>
+                          <div className="bg-gray-50 rounded-xl p-6 border-l-4 border-[#0F4679]">
+                            <p className="text-gray-700 leading-relaxed font-normal text-sm">
+                              {item.answer}
+                            </p>
+                          </div>
                         </motion.div>
                       )}
                     </div>
@@ -818,35 +849,61 @@ export default function FAQPage() {
             ))}
           </div>
 
-          {/* CTA Section */}
+          {/* Professional CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="bg-gradient-to-r from-[#082A45] to-[#0A3D62] rounded-2xl p-8 md:p-12 shadow-lg border border-[#1E619E]/30 mb-16"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="bg-gradient-to-br from-[#0F4679] to-[#158C07] rounded-3xl p-12 text-center shadow-2xl"
           >
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  {content.ctaTitle}
-                </h2>
-                <p className="text-gray-300 mb-6 md:mb-0 max-w-xl">
-                  {content.ctaSubtitle}
-                </p>
+            <div className="max-w-3xl mx-auto">
+              <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full border border-white/20 mb-6">
+                <svg className="w-4 h-4 text-white mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 109.75 9.75c0-.622-.056-1.235-.166-1.825a.75.75 0 00-.668-.58H12z" />
+                </svg>
+                <span className="text-sm font-semibold text-white tracking-wide">EXPERT SUPPORT</span>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 whitespace-nowrap">
-                <button className="px-6 py-3 bg-[#16DBBE] hover:bg-[#14c5ac] text-[#082A45] font-bold rounded-lg transition-colors duration-300 flex items-center justify-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 font-inter">
+                Need Specialized Assistance?
+              </h2>
+              
+              <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl mx-auto">
+                Our medical supply specialists are available to provide detailed technical guidance, 
+                custom solutions, and regulatory compliance support.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button className="px-8 py-4 bg-white text-[#0F4679] font-bold rounded-xl hover:bg-gray-50 transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  {content.emailSupport}
+                  Contact Technical Support
                 </button>
-                <button className="px-6 py-3 bg-[#1E619E]/30 hover:bg-[#1E619E]/50 text-[#78d6f5] font-bold rounded-lg border border-[#1E619E]/50 transition-colors duration-300 flex items-center justify-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                
+                <button className="px-8 py-4 bg-white/10 text-white font-bold rounded-xl border border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center gap-3 backdrop-blur-sm">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
-                  {content.liveChat}
+                  Schedule Consultation
                 </button>
+              </div>
+              
+              {/* Professional Contact Info */}
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mt-8 pt-8 border-t border-white/20">
+                <div className="flex items-center text-white/90">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <span className="font-medium">+91 98200 43274</span>
+                </div>
+                
+                <div className="flex items-center text-white/90">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="font-medium">24/7 Support Available</span>
+                </div>
               </div>
             </div>
           </motion.div>
