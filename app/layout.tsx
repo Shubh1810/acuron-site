@@ -57,13 +57,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://acuron.in',
+    url: 'https://acuron-site.vercel.app',
     siteName: 'Acuron Products India',
     title: 'Acuron Products India | Surgical Wear, Medical Supplies & PPE Manufacturer',
     description: 'Leading manufacturer of surgical wear, 3 ply masks, N95 masks, surgical gowns, bouffant caps, and medical equipment. Wide distribution network across India with global exports. Primawear & Shi Mediwear quality.',
     images: [
       {
-        url: '/metalogo.JPEG',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Acuron Products India - Surgical Wear & Medical Supplies Manufacturer',
@@ -74,24 +74,22 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Acuron Products India | Surgical Wear, Medical Supplies & PPE Manufacturer',
     description: 'Leading manufacturer of surgical wear, 3 ply masks, N95 masks, surgical gowns, bouffant caps, and medical equipment. Wide distribution network across India.',
-    images: ['/favicon-og.jpeg'],
+    images: ['/og-image.jpg'],
     creator: '@acuronproducts',
   },
   icons: {
     icon: [
-      { url: '/metalogo.JPEG', sizes: '32x32', type: 'image/jpeg' },
-      { url: '/metalogo.JPEG', sizes: '16x16', type: 'image/jpeg' }
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' }
     ],
     apple: [
-      { url: '/favicon-og.jpeg', sizes: '180x180', type: 'image/jpeg' }
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
     ],
   },
   manifest: '/manifest.json',
   category: 'Medical Supplies',
   classification: 'Business',
-  other: {
-    'google-site-verification': 'oMfmk6MONr8-mGb0FV0vN-Wg7e8hmY5objVCV-Rt93Y',
-  },
 }
 
 export default function RootLayout({
@@ -104,8 +102,8 @@ export default function RootLayout({
     '@type': 'Organization',
     name: 'Acuron Products India',
     alternateName: ['Acuron', 'Primawear', 'Shi Mediwear'],
-    url: 'https://acuron.in',
-    logo: 'https://acuron.in/metalogo.JPEG',
+    url: 'https://acuron-site.vercel.app',
+    logo: 'https://acuron-site.vercel.app/logo.png',
     description: 'Leading manufacturer of surgical wear, surgical supplies, 3 ply masks, N95 masks, surgical gowns, bouffant caps, razors, and medical equipment with wide distribution network across India and exports globally.',
     foundingDate: '2010',
     slogan: 'Revolutionizing Medical Supply with Precision & Care',
@@ -242,8 +240,8 @@ export default function RootLayout({
   return (
     <html lang="en-IN">
       <head>
-        <link rel="preload" href="/oglogo2.png" as="image" />
-        <link rel="preload" href="/main.jpeg" as="image" />
+        <link rel="preload" href="/logo.png" as="image" />
+        <link rel="preload" href="/hero-bg.webp" as="image" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Canonical URL should be dynamic per page - implement in individual page components */}
