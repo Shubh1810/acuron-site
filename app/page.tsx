@@ -10,6 +10,15 @@ import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
 import ClientWrapper from './components/ClientWrapper';
 import { TextGenerateEffect } from './components/ui/textgenerateeffect';
+import { generatePageMetadata, pageKeywords } from './lib/seo-utils';
+
+// SEO Metadata with proper keywords
+export const metadata = generatePageMetadata({
+  title: 'Medical Supplies & Surgical Wear Manufacturer',
+  description: 'Leading manufacturer of ISO-certified surgical supplies, PPE equipment, 3-ply masks, N95 masks, and medical disposables. Wide distribution network across India with global exports.',
+  path: '/',
+  keywords: [...pageKeywords.home],
+});
 
 export default function Home() {
   return (

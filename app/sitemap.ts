@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://acuron.in'
+  const baseUrl = 'https://acuron-site.vercel.app'
   
   // Static pages
   const staticPages = [

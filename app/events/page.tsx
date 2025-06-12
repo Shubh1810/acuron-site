@@ -4,22 +4,97 @@ import { motion } from "motion/react";
 import Header from "../components/Header";
 import Image from "next/image";
 import Footer from "../components/sections/Footer";
+import Head from "next/head";
+import { generateCanonicalUrl } from "../lib/seo-utils";
 
 export default function EventsPage() {
   // Mock upcoming and past events data
   const upcomingEvents = [
     {
       id: 1,
-      name: "MEDICA 2023",
-      location: "Düsseldorf, Germany",
-      date: "November 13-16, 2023",
-      description: "World's largest medical trade fair, featuring innovative products and solutions for outpatient and clinical care",
-      boothNumber: "Hall 6, Stand D42",
+      name: "14th edition Medical Expo",
+      location: "Guwahati, India",
+      date: "April 25-27, 2024",
+      description: "Brochure Distribution",
+      boothNumber: "N/A",
       image: "/medical-1.jpg",
-      category: "Trade Fair"
+      category: "Expo"
     },
     {
       id: 2,
+      name: "India Med Expo - Noida",
+      location: "Noida, India",
+      date: "May 23-25, 2024",
+      description: "Brochure Distribution",
+      boothNumber: "N/A",
+      image: "/medical-1.jpg",
+      category: "Expo"
+    },
+    {
+      id: 3,
+      name: "GMEC India 2025",
+      location: "Bengaluru, India",
+      date: "June 20-22, 2024",
+      description: "Visit & Brochure Distribution",
+      boothNumber: "N/A",
+      image: "/medical-1.jpg",
+      category: "Visit"
+    },
+    {
+      id: 4,
+      name: "India Health Exhibition",
+      location: "Delhi, India",
+      date: "July 11-13, 2024",
+      description: "Brochure Distribution",
+      boothNumber: "N/A",
+      image: "/medical-1.jpg",
+      category: "Expo"
+    },
+    {
+      id: 5,
+      name: "Medicall Exhibition 25",
+      location: "Chennai, India",
+      date: "July 25-27, 2024",
+      description: "Acuron Booth",
+      boothNumber: "TBD",
+      image: "/medical-1.jpg",
+      category: "Booth"
+    },
+    {
+      id: 6,
+      name: "Medical Expo - Ahmedabad",
+      location: "Ahmedabad, India",
+      date: "August 22-23, 2024",
+      description: "Visit & Brochure Distribution",
+      boothNumber: "N/A",
+      image: "/medical-1.jpg",
+      category: "Visit"
+    },
+    {
+      id: 7,
+      name: "Gujarat Medical - Ahmedabad",
+      location: "Ahmedabad, India",
+      date: "September 14-16, 2024",
+      description: "Brochure Distribution",
+      boothNumber: "N/A",
+      image: "/medical-1.jpg",
+      category: "Expo"
+    },
+    {
+      id: 8,
+      name: "Medicall",
+      location: "Delhi, India",
+      date: "September 15-26, 2024",
+      description: "Brochure Distribution",
+      boothNumber: "N/A",
+      image: "/medical-1.jpg",
+      category: "Expo"
+    }
+  ];
+
+  const pastEvents = [
+    {
+      id: 9,
       name: "Arab Health 2025",
       location: "Dubai, UAE",
       date: "January 27-30, 2025",
@@ -29,20 +104,7 @@ export default function EventsPage() {
       category: "Exhibition"
     },
     {
-      id: 3,
-      name: "FIME 2024",
-      location: "Miami, FL, USA",
-      date: "July 17-19, 2024",
-      description: "Florida International Medical Expo - the largest medical trade show across the Americas",
-      boothNumber: "Booth #B45",
-      image: "/medical-1.jpg",
-      category: "Exhibition"
-    }
-  ];
-
-  const pastEvents = [
-    {
-      id: 4,
+      id: 10,
       name: "CMEF Spring 2023",
       location: "Shanghai, China",
       date: "May 14-17, 2023",
@@ -52,7 +114,7 @@ export default function EventsPage() {
       category: "Exhibition"
     },
     {
-      id: 5,
+      id: 11,
       name: "HOSPITALAR 2023",
       location: "São Paulo, Brazil",
       date: "May 23-26, 2023",
@@ -61,36 +123,6 @@ export default function EventsPage() {
       image: "/medical-1.jpg",
       category: "Trade Fair"
     },
-    {
-      id: 6,
-      name: "Medical Japan 2023",
-      location: "Osaka, Japan",
-      date: "February 22-24, 2023",
-      description: "International Medical & Elderly Care Expo focusing on healthcare, elderly care, and nursing care in Japan",
-      boothNumber: "East Hall 3, E3-42",
-      image: "/medical-1.jpg",
-      category: "Exhibition"
-    },
-    {
-      id: 7,
-      name: "Africa Health 2023",
-      location: "Johannesburg, South Africa",
-      date: "April 18-20, 2023",
-      description: "The largest healthcare exhibition in Africa highlighting the latest medical technologies and solutions",
-      boothNumber: "Hall 2, Stand G10",
-      image: "/medical-1.jpg",
-      category: "Conference"
-    },
-    {
-      id: 8,
-      name: "Medical Fair Thailand 2023",
-      location: "Bangkok, Thailand",
-      date: "September 13-15, 2023",
-      description: "Southeast Asia's most important medical and healthcare event",
-      boothNumber: "Hall 5, Booth H45",
-      image: "/medical-1.jpg",
-      category: "Trade Fair"
-    }
   ];
 
   // Toggle between upcoming and past events
@@ -98,6 +130,27 @@ export default function EventsPage() {
 
   return (
     <>
+      <Head>
+        <title>Events & Exhibitions | Acuron</title>
+        <meta name="description" content="Connect with us at medical trade shows, exhibitions, and conferences around the world" />
+        <meta name="keywords" content="medical, events, exhibitions, conferences, trade shows, Acuron" />
+        <meta name="author" content="Acuron" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="bingbot" content="index, follow" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Acuron" />
+        <meta name="twitter:creator" content="@Acuron" />
+        <meta name="twitter:title" content="Events & Exhibitions | Acuron" />
+        <meta name="twitter:description" content="Connect with us at medical trade shows, exhibitions, and conferences around the world" />
+        <meta name="twitter:image" content={generateCanonicalUrl("/events")} />
+        <meta property="og:title" content="Events & Exhibitions | Acuron" />
+        <meta property="og:description" content="Connect with us at medical trade shows, exhibitions, and conferences around the world" />
+        <meta property="og:image" content={generateCanonicalUrl("/events")} />
+        <meta property="og:url" content={generateCanonicalUrl("/events")} />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href={generateCanonicalUrl("/events")} />
+      </Head>
       <Header />
       
       <div className="pt-[90px] min-h-screen bg-gradient-to-b from-[#061D33] via-[#082F4F] to-[#061D33]">
@@ -120,12 +173,28 @@ export default function EventsPage() {
             >
               Connect with us at medical trade shows, exhibitions, and conferences around the world
             </motion.p>
+            {/* Animated Divider */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-24 h-1 bg-gradient-to-r from-[#1E619E] to-[#16DBBE] mx-auto mt-6"
-            />
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex justify-center items-center gap-4 my-6"
+            >
+              <motion.div className="w-16 h-px bg-gradient-to-r from-transparent via-[#16DBBE]/50 to-[#16DBBE]" />
+              <motion.div
+                className="w-2.5 h-2.5 bg-[#16DBBE] rounded-full shadow-[0_0_8px_#16DBBE]"
+                animate={{
+                  scale: [1, 1.4, 1, 1],
+                }}
+                transition={{
+                  duration: 1.2,
+                  repeat: Infinity,
+                  times: [0, 0.1, 0.2, 1],
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div className="w-16 h-px bg-gradient-to-l from-transparent via-[#16DBBE]/50 to-[#16DBBE]" />
+            </motion.div>
           </div>
 
           {/* Event toggle buttons */}
@@ -243,7 +312,7 @@ export default function EventsPage() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-2xl font-bold text-white mb-8"
             >
-              Our Global Exhibition Presence
+              Our National Exhibition Presence
             </motion.h3>
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}

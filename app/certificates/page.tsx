@@ -1,205 +1,250 @@
 "use client";
-import React from "react";
-import { motion } from "motion/react";
+import React, { useState } from "react";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
+import Image from "next/image";
 import Header from "../components/Header";
 import Footer from "../components/sections/Footer";
+import WhiteGridBackground from "../components/ui/white-grid-background";
 
-export default function CertificatesPage() {
-  // Certificate data
-  const certificates = [
-    {
-      id: 1,
-      name: "ISO 13485:2016",
-      description: "Quality management systems for medical devices",
-      category: "Quality"
-    },
-    {
-      id: 2,
-      name: "CE Certification",
-      description: "European conformity for medical devices and PPE",
-      category: "Compliance"
-    },
-    {
-      id: 3,
-      name: "FDA Registration",
-      description: "US Food and Drug Administration registration",
-      category: "Compliance"
-    },
-    {
-      id: 4,
-      name: "ISO 9001:2015",
-      description: "Quality management system certification",
-      category: "Quality"
-    },
-    {
-      id: 5,
-      name: "EN 14683",
-      description: "European standard for medical face masks",
-      category: "Product Standard"
-    },
-    {
-      id: 6,
-      name: "ASTM F2100",
-      description: "Standard specification for performance of materials used in medical face masks",
-      category: "Product Standard"
-    },
-    {
-      id: 7,
-      name: "EN 14126",
-      description: "Protective clothing against infective agents",
-      category: "Product Standard"
-    },
-    {
-      id: 8,
-      name: "EN 374",
-      description: "Protective gloves against chemicals and micro-organisms",
-      category: "Product Standard"
-    }
+function AnimatedMotif() {
+  const motifs = [
+    { size: 250, x: '10vw', y: '20vh', duration: 40, opacity: 0.03 },
+    { size: 180, x: '80vw', y: '30vh', duration: 30, opacity: 0.05 },
+    { size: 120, x: '50vw', y: '75vh', duration: 50, opacity: 0.04 },
+    { size: 160, x: '20vw', y: '80vh', duration: 35, opacity: 0.04 },
+    { size: 90, x: '90vw', y: '70vh', duration: 45, opacity: 0.03 },
   ];
 
   return (
-    <>
-      <Header />
-      
-      <div className="pt-[90px] min-h-screen bg-gradient-to-b from-[#061D33] via-[#082F4F] to-[#061D33]">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          {/* Hero section */}
-          <div className="text-center mb-16">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-[#78d6f5] bg-clip-text text-transparent mb-4"
-            >
-              Our Certificates
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-[#78d6f5] max-w-2xl mx-auto text-lg"
-            >
-              Demonstrating our commitment to quality and compliance in medical supplies
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-24 h-1 bg-gradient-to-r from-[#1E619E] to-[#16DBBE] mx-auto mt-6"
+    <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+      {motifs.map((motif, i) => (
+        <motion.div
+          key={i}
+          initial={{ x: motif.x, y: motif.y, scale: 0.5, opacity: 0 }}
+          animate={{ scale: [1, 1.2, 1], rotate: 360 }}
+          transition={{
+            duration: motif.duration,
+            repeat: Infinity,
+            repeatType: 'mirror',
+            ease: 'easeInOut',
+            delay: i * 2,
+          }}
+          className="absolute rounded-full bg-gradient-to-br from-[#0F4679] to-[#158C07]"
+          style={{ 
+            width: motif.size, 
+            height: motif.size,
+            opacity: motif.opacity,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+// Define types for certificate and props
+interface Certificate {
+  id: number;
+  name: string;
+  description: string;
+  category: string;
+  image: string;
+  year: string;
+}
+
+interface CertificateCardProps {
+  certificate: Certificate;
+  index: number;
+}
+
+function CertificateCard({ certificate, index }: CertificateCardProps) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [-150, 150], [10, -10]);
+  const rotateY = useTransform(x, [-150, 150], [-10, 10]);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    x.set(event.clientX - rect.left - rect.width / 2);
+    y.set(event.clientY - rect.top - rect.height / 2);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100
+      }}
+      className="group cursor-pointer"
+      style={{ perspective: 1000 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <motion.div
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F4679]/20 to-[#158C07]/20 rounded-3xl blur-xl scale-105 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+        
+        <div style={{ transformStyle: "preserve-3d" }} className="relative bg-white rounded-3xl shadow-2xl overflow-hidden transform group-hover:scale-105 transition-all duration-500">
+          <div className="aspect-[3/4] relative">
+            <Image
+              src={certificate.image}
+              alt={certificate.name}
+              fill
+              className="object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUzMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+CiAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSI2MCIgZmlsbD0iIzBGNDY3OSIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzBGNDY3OSI+Q2VydGlmaWNhdGU8L3RleHQ+Cjwvc3ZnPg==";
+              }}
             />
+            
+            <motion.div style={{ transform: "translateZ(40px)" }} className="absolute top-4 right-4 bg-[#158C07] text-white p-2 rounded-full shadow-lg">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </motion.div>
+
+            <motion.div style={{ transform: "translateZ(30px)" }} className="absolute top-4 left-4 bg-black/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+              {certificate.year}
+            </motion.div>
           </div>
 
-          {/* Certificate filter tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {["All", "Quality", "Compliance", "Product Standard"].map((category) => (
-              <button 
-                key={category}
-                className="px-4 py-2 rounded-full text-sm font-medium bg-[#0A2A45]/80 text-[#78d6f5] hover:bg-[#1E619E]/50 transition-colors duration-300 border border-[#1E619E]/30"
-              >
-                {category}
-              </button>
-            ))}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+            <motion.h3 style={{ transform: "translateZ(50px)" }} className="text-white font-bold text-lg mb-1">
+              {certificate.name}
+            </motion.h3>
+            <motion.p style={{ transform: "translateZ(40px)" }} className="text-white/90 text-sm">
+              {certificate.description}
+            </motion.p>
           </div>
+        </div>
+      </motion.div>
 
-          {/* Certificates grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {certificates.map((certificate, index) => (
-              <motion.div
-                key={certificate.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 + (index % 6) * 0.1 }}
-                className="bg-gradient-to-br from-[#0A2A45]/80 to-[#061D33]/90 backdrop-blur-sm border border-[#1E619E]/30 rounded-xl overflow-hidden hover:shadow-[0_0_15px_rgba(30,97,158,0.3)] transition-all duration-300 group"
-              >
-                <div className="aspect-[3/2] w-full bg-[#0A2A45]/50 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1E619E]/20 to-transparent" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-24 h-24 bg-[#16DBBE]/10 rounded-full flex items-center justify-center">
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        className="h-12 w-12 text-[#16DBBE]" 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-[#16DBBE]/20 text-[#16DBBE] text-xs font-bold py-1 px-3 rounded-full">
-                    {certificate.category}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#16DBBE] transition-colors duration-300">
-                    {certificate.name}
-                  </h3>
-                  <p className="text-gray-300 mb-4 text-sm">
-                    {certificate.description}
-                  </p>
-                  <div className="flex justify-end items-center">
-                    <button className="px-4 py-2 bg-[#1E619E]/30 hover:bg-[#1E619E]/50 text-[#78d6f5] rounded-lg transition-colors duration-300 text-sm font-medium flex items-center gap-2">
-                      View Certificate
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      <motion.div 
+        className="text-center mt-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 + index * 0.1 }}
+      >
+        <h4 className="text-xl font-bold text-[#0F4679] mb-2">
+          {certificate.name}
+        </h4>
+        <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
+          {certificate.category}
+        </span>
+      </motion.div>
+    </motion.div>
+  );
+}
 
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+export default function CertificatesPage() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const certificates: Certificate[] = [
+    { id: 1, name: "ISO 13485:2016", description: "Quality management systems", category: "Quality", image: "/certificates/iso-13485.jpg", year: "2023" },
+    { id: 2, name: "CE Certification", description: "European conformity for PPE", category: "Compliance", image: "/certificates/ce-certification.jpg", year: "2023" },
+    { id: 3, name: "FDA Registration", description: "US FDA registration", category: "Compliance", image: "/certificates/fda-registration.jpg", year: "2023" },
+    { id: 4, name: "ISO 9001:2015", description: "Quality management system", category: "Quality", image: "/certificates/iso-9001.jpg", year: "2022" },
+    { id: 5, name: "EN 14683", description: "Standard for medical face masks", category: "Product Standard", image: "/certificates/en-14683.jpg", year: "2023" },
+    { id: 6, name: "ASTM F2100", description: "Standard for medical face masks", category: "Product Standard", image: "/certificates/astm-f2100.jpg", year: "2023" }
+  ];
+
+  const categories = ["All", "Quality", "Compliance", "Product Standard"];
+
+  const filteredCertificates = activeCategory === "All" 
+    ? certificates 
+    : certificates.filter(cert => cert.category === activeCategory);
+
+  return (
+    <>
+      <WhiteGridBackground />
+      <Header />
+      <AnimatedMotif />
+      
+      <div className="pt-[90px] min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 py-16">
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="bg-gradient-to-r from-[#082A45] to-[#0A3D62] rounded-2xl p-8 md:p-12 shadow-lg border border-[#1E619E]/30 mb-16"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
           >
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Have questions about our certifications?</h2>
-                <p className="text-gray-300 mb-6 md:mb-0 max-w-xl">
-                  Our team can provide detailed information about our quality standards and certifications. Contact us today for more information about our compliance and product safety.
-                </p>
+            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent mb-4">
+              Our Certificates
+            </h1>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Quality. Compliance. Trust.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center mb-20"
+          >
+            <div className="bg-white/80 backdrop-blur-xl rounded-full p-2 shadow-lg border border-gray-200">
+              <div className="flex gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setActiveCategory(category)}
+                    className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                      activeCategory === category
+                        ? 'bg-[#0F4679] text-white shadow-lg'
+                        : 'text-gray-600 hover:text-[#0F4679] hover:bg-gray-50'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
               </div>
-              <button className="px-6 py-3 bg-[#16DBBE] hover:bg-[#14c5ac] text-[#082A45] font-bold rounded-lg transition-colors duration-300 whitespace-nowrap flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Request Information
-              </button>
             </div>
           </motion.div>
 
-          {/* Trust indicators */}
-          <div className="text-center mb-16">
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-2xl font-bold text-white mb-8"
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 mb-20"
             >
-              Trusted by Healthcare Providers Worldwide
-            </motion.h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {['Europe', 'North America', 'Middle East', 'Asia Pacific'].map((region, index) => (
-                <motion.div
-                  key={region}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  className="bg-[#0A2A45]/50 p-6 rounded-lg border border-[#1E619E]/30"
-                >
-                  <div className="text-[#16DBBE] font-bold text-lg mb-1">{region}</div>
-                  <div className="text-gray-400 text-sm">Certified Distributor</div>
-                </motion.div>
+              {filteredCertificates.map((certificate, index) => (
+                <CertificateCard key={certificate.id} certificate={certificate} index={index} />
               ))}
+            </motion.div>
+          </AnimatePresence>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-center"
+          >
+            <div className="inline-flex items-center gap-4 bg-white/80 backdrop-blur-xl rounded-full px-8 py-4 shadow-lg border border-gray-200">
+              <div className="w-2 h-2 bg-[#158C07] rounded-full animate-pulse"></div>
+              <span className="text-gray-700 font-medium">
+                Trusted by 500+ healthcare providers worldwide
+              </span>
+              <div className="w-2 h-2 bg-[#0F4679] rounded-full animate-pulse delay-500"></div>
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
+      
       <Footer />
     </>
   );

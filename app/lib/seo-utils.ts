@@ -1,5 +1,7 @@
 // SEO utilities for consistent metadata and schema markup
 
+import { Metadata } from 'next';
+
 export interface SEOMetadata {
   title: string;
   description: string;
@@ -9,36 +11,68 @@ export interface SEOMetadata {
   type?: 'website' | 'article' | 'product';
 }
 
-export function generateMetadata(config: SEOMetadata) {
-  const baseUrl = 'https://acuron.in';
+// Base URL for the site
+const BASE_URL = 'https://acuron-site.vercel.app';
+
+// Generate canonical URL for a given path
+export function generateCanonicalUrl(path: string = ''): string {
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `${BASE_URL}${cleanPath}`;
+}
+
+// Generate page-specific metadata
+export function generatePageMetadata({
+  title,
+  description,
+  path = '',
+  keywords,
+  images,
+}: {
+  title: string;
+  description: string;
+  path?: string;
+  keywords?: string[];
+  images?: { url: string; width: number; height: number; alt: string }[];
+}): Metadata {
+  const canonicalUrl = generateCanonicalUrl(path);
   
   return {
-    title: config.title,
-    description: config.description,
-    keywords: config.keywords?.join(', '),
-    canonical: config.url ? `${baseUrl}${config.url}` : baseUrl,
+    title: `${title} | Acuron Products India`,
+    description,
+    // Use only 3-5 focused keywords per page instead of keyword stuffing
+    keywords: keywords?.slice(0, 5).join(', '),
     openGraph: {
-      title: config.title,
-      description: config.description,
-      url: config.url ? `${baseUrl}${config.url}` : baseUrl,
-      type: config.type || 'website',
-      images: config.image ? [
-        {
-          url: config.image,
-          width: 1200,
-          height: 630,
-          alt: config.title
-        }
-      ] : undefined,
+      title: `${title} | Acuron Products India`,
+      description,
+      url: canonicalUrl,
+      images: images || [{
+        url: '/metalogo.JPEG',
+        width: 1200,
+        height: 630,
+        alt: 'Acuron Products India - Medical Supplies Manufacturer',
+      }],
     },
     twitter: {
-      card: 'summary_large_image',
-      title: config.title,
-      description: config.description,
-      images: config.image ? [config.image] : undefined,
-    }
+      title: `${title} | Acuron Products India`,
+      description,
+      images: images?.map(img => img.url) || ['/favicon-og.jpeg'],
+    },
   };
 }
+
+// Generate canonical link element (use in page components)
+export function generateCanonicalLink(path: string = ''): string {
+  return `<link rel="canonical" href="${generateCanonicalUrl(path)}" />`;
+}
+
+// Page-specific keyword suggestions (use sparingly, 3-5 max per page)
+export const pageKeywords = {
+  home: ['medical disposables India', 'Acuron products', 'PPE equipment manufacturer'],
+  products: ['surgical gowns', 'N95 masks', 'medical drapes, nitrile gloves'],
+  certificates: ['ISO certified medical', 'CE marked surgical supplies'],
+  events: ['medical trade shows', 'healthcare exhibitions'],
+  faq: ['medical supplies FAQ', 'surgical wear questions'],
+} as const;
 
 export function generateProductSchema(product: {
   name: string;

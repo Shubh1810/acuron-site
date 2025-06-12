@@ -39,70 +39,8 @@ export const metadata: Metadata = {
     template: '%s | Acuron Products India'
   },
   description: 'Acuron Products - Leading manufacturer of surgical supplies, surgical wear, 3 ply masks, N95 masks, surgical gowns, bouffant caps, razors, and medical equipment. Wide distribution network across India with exports globally. ISO certified Primawear & Shi Mediwear quality.',
-  metadataBase: new URL('https://acuron.in'),
-  keywords: [
-    // Primary Brand Keywords
-    'Acuron',
-    'Acuron Products',
-    'Acuron India',
-    'Primawear',
-    'Shi Mediwear',
-    
-    // Core Product Keywords
-    'surgical wear',
-    'surgical supplies',
-    'surgical gown',
-    'surgical gowns',
-    'bouffant cap',
-    'bouffant caps',
-    'surgical razors',
-    'razor surgical',
-    '3 ply mask',
-    '3-ply masks',
-    'N95 mask',
-    'N95 masks',
-    'medical wear',
-    'medical equipment',
-    'medical products',
-    'medical supplies',
-    'medical supplies India',
-    
-    // Business & Distribution Keywords
-    'exports medical supplies',
-    'medical supplies export',
-    'distribution network India',
-    'wide network medical supplies',
-    'connections across India',
-    'medical supply distribution',
-    'healthcare distribution network',
-    
-    // Industry Keywords
-    'PPE equipment',
-    'PPE supplies',
-    'medical disposables',
-    'surgical instruments',
-    'healthcare equipment',
-    'hospital supplies',
-    'surgical kits',
-    'orthopedic drapes',
-    'gynecology supplies',
-    'urology drapes',
-    'surgical drapes',
-    
-    // Certification Keywords
-    'ISO certified medical products',
-    'CE marked surgical supplies',
-    'FDA registered medical devices',
-    'BIS certified medical equipment',
-    
-    // Location Keywords
-    'medical supplies manufacturer India',
-    'surgical wear manufacturer',
-    'Bhiwandi medical supplies',
-    'Maharashtra medical equipment',
-    'Indian medical products exporter'
-  ].join(', '),
-  authors: [{ name: 'Acuron Products India', url: 'https://acuron.in' }],
+  metadataBase: new URL('https://acuron-site.vercel.app'),
+  authors: [{ name: 'Acuron Products India', url: 'https://acuron-site.vercel.app' }],
   creator: 'Acuron Products India',
   publisher: 'Acuron Products India',
   robots: {
@@ -152,7 +90,7 @@ export const metadata: Metadata = {
   category: 'Medical Supplies',
   classification: 'Business',
   other: {
-    'google-site-verification': 'your-google-verification-code', // Add your actual verification code
+    'google-site-verification': 'oMfmk6MONr8-mGb0FV0vN-Wg7e8hmY5objVCV-Rt93Y',
   },
 }
 
@@ -308,7 +246,7 @@ export default function RootLayout({
         <link rel="preload" href="/main.jpeg" as="image" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="canonical" href="https://acuron.in" />
+        {/* Canonical URL should be dynamic per page - implement in individual page components */}
         <meta name="geo.region" content="IN-MH" />
         <meta name="geo.placename" content="Bhiwandi, Maharashtra" />
         <meta name="geo.position" content="19.2952;73.0543" />

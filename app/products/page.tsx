@@ -6,6 +6,15 @@ import WhiteGridBackground from "../components/ui/white-grid-background";
 import Image from "next/image";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
 import Footer from "../components/sections/Footer";
+import { generatePageMetadata, pageKeywords } from '../lib/seo-utils';
+
+// SEO Metadata with proper keywords
+export const metadata = generatePageMetadata({
+  title: 'Medical Products & Surgical Supplies',
+  description: 'Comprehensive range of surgical gowns, N95 masks, medical disposables, PPE equipment, and healthcare supplies manufactured with ISO certification.',
+  path: '/products',
+  keywords: [...pageKeywords.products],
+});
 
 // Professional Video Showcase Component
 function VideoShowcase() {
