@@ -250,8 +250,8 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
   const { keyPhrase, titleParts, hasKeyPhrase } = getKeyPhraseAndParts();
   
   return (
-    <div className="bg-white px-4 pb-0 md:pb-4 pt-[39px]">
-      <div className="relative h-[calc(80vh-39px-1rem)] min-h-[500px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden">
+    <div className="bg-white px-2 md:px-4 pb-0 md:pb-4 pt-[60px] md:pt-[50px]">
+      <div className="relative h-[calc(80vh-60px-1rem)] md:h-[calc(80vh-50px-1rem)] min-h-[500px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden">
         {/* Background Image */}
         <div 
           className="absolute inset-0 w-full h-full"

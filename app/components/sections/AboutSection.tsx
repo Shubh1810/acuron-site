@@ -148,7 +148,7 @@ export default function AboutSection() {
         {/* Header */}
         <div className="flex justify-center mb-12">
           <div className="relative">
-            <h2 className="section-title text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
               {aboutUsTitle}
             </h2>
           </div>
@@ -181,20 +181,20 @@ export default function AboutSection() {
             </div>
           </div>
           <div className="md:w-1/2 flex flex-col justify-center">
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5 font-sakamoto leading-tight">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5 font-sans leading-tight">
               {whyChooseTitle}
             </h3>
             <div className="space-y-5">
-              <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed">
+              <p className="text-base md:text-lg text-gray-700 font-sans leading-relaxed">
               {aboutParagraph1}
               </p>
-              <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed">
+              <p className="text-base md:text-lg text-gray-700 font-sans leading-relaxed">
               {aboutParagraph2}
               </p>
-              <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed">
+              <p className="text-base md:text-lg text-gray-700 font-sans leading-relaxed">
               {aboutParagraph3}
             </p>
-              <p className="text-base md:text-lg text-gray-700 font-rubik leading-relaxed font-medium">
+              <p className="text-base md:text-lg text-gray-700 font-sans leading-relaxed font-medium">
               {aboutParagraph4}
             </p>
             </div>
@@ -214,7 +214,7 @@ export default function AboutSection() {
           }}
         >
           <div className="relative mb-2 sm:mb-4">
-            <h2 className={`section-title text-3xl sm:text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center leading-tight transition-all duration-900 delay-100 ${
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center leading-tight transition-all duration-900 delay-100 ${
               isVisible 
                 ? 'opacity-100 transform translate-x-0' 
                 : 'opacity-0 transform -translate-x-12'

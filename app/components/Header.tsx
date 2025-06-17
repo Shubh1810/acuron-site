@@ -161,14 +161,6 @@ const Header: FC = () => {
     pt: 'INQUÉRITO'
   });
 
-  const careersText = getLocalizedContent('CAREERS', {
-    de: 'KARRIERE',
-    fr: 'CARRIÈRES',
-    ja: 'キャリア',
-    zh: '职业',
-    pt: 'CARREIRAS'
-  });
-
   const catalogText = getLocalizedContent('CATALOG', {
     de: 'KATALOG',
     fr: 'CATALOGUE',
@@ -215,7 +207,23 @@ const Header: FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
       {/* Top Navigation Bar - Changed to white background with blue text */}
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 py-1.5 flex justify-end items-center space-x-3 sm:space-x-6">
+        <div className="max-w-7xl mx-auto px-4 py-1.5 flex md:justify-end justify-between items-center">
+          {/* Mobile Logo - Left side, only visible on mobile */}
+          <Link href="/" className="md:hidden flex-shrink-0">
+            <div className="w-28 h-8 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">
+              <Image
+                src="/acprod.png"
+                alt="Acuron Logo"
+                width={160}
+                height={48}
+                priority
+                className="object-contain scale-100"
+              />
+            </div>
+          </Link>
+          
+          {/* Right side navigation items */}
+          <div className="flex items-center space-x-3 sm:space-x-6">
           <a 
             href="tel:+919820043274" 
             className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300 cursor-pointer"
@@ -225,10 +233,8 @@ const Header: FC = () => {
           <Link href="/#contact-us-section" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             {contactText}
           </Link>
-          <Link href="/careers" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
-            {careersText}
-          </Link>
           <CountrySelector />
+          </div>
         </div>
       </div>
       

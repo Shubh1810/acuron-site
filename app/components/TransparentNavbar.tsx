@@ -186,8 +186,8 @@ const TransparentNavbar: FC = () => {
   return (
     <nav className="relative z-20 w-full">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
+        {/* Logo - Hidden on mobile */}
+        <Link href="/" className="flex-shrink-0 hidden md:block">
           <div className="w-40 sm:w-44 h-16 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">
             <Image
               src="/acuron.png"
@@ -200,6 +200,9 @@ const TransparentNavbar: FC = () => {
             />
           </div>
         </Link>
+        
+        {/* Mobile spacer to maintain layout */}
+        <div className="md:hidden"></div>
         
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-8">
@@ -330,7 +333,7 @@ const TransparentNavbar: FC = () => {
           {/* Mobile Menu Button */}
           <button 
             onClick={toggleMobileMenu}
-            className="lg:hidden flex items-center justify-center w-8 h-8 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+            className="lg:hidden flex items-center justify-center w-8 h-8 mb-2 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
             aria-label="Toggle mobile menu"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
