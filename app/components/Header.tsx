@@ -205,8 +205,45 @@ const Header: FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
-      {/* Top Navigation Bar - Changed to white background with blue text */}
-      <div className="bg-white">
+      {/* Top Navigation Bar - Glassmorphism effect with dot pattern */}
+      <div 
+        className="bg-white/70 backdrop-blur-md relative"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 1px 1px, transparent 1.2px, rgba(255,255,255,0.7) 1.2px),
+            radial-gradient(circle at 3px 2px, transparent 1px, transparent 1px),
+            radial-gradient(circle at 5px 1px, transparent 1.1px, transparent 1.1px),
+            radial-gradient(circle at 2px 4px, transparent 0.9px, transparent 0.9px),
+            radial-gradient(circle at 6px 3px, transparent 1.3px, transparent 1.3px),
+            radial-gradient(circle at 0.5px 2.5px, transparent 0.8px, transparent 0.8px),
+            radial-gradient(circle at 2.5px 0.5px, transparent 1px, transparent 1px),
+            radial-gradient(circle at 4px 4px, transparent 1.2px, transparent 1.2px),
+            radial-gradient(circle at 6.5px 1.5px, transparent 0.9px, transparent 0.9px),
+            radial-gradient(circle at 1.5px 3.5px, transparent 1.1px, transparent 1.1px),
+            radial-gradient(circle at 3.5px 5px, transparent 0.8px, transparent 0.8px),
+            radial-gradient(circle at 5.5px 2.5px, transparent 1px, transparent 1px),
+            radial-gradient(circle at 0.8px 5.5px, transparent 1.2px, transparent 1.2px),
+            radial-gradient(circle at 4.5px 0.8px, transparent 0.9px, transparent 0.9px),
+            radial-gradient(circle at 7px 4.5px, transparent 1.3px, transparent 1.3px),
+            radial-gradient(circle at 0.2px 0.8px, transparent 0.7px, transparent 0.7px),
+            radial-gradient(circle at 1.8px 1.8px, transparent 1px, transparent 1px),
+            radial-gradient(circle at 3.2px 3.2px, transparent 0.8px, transparent 0.8px),
+            radial-gradient(circle at 4.8px 2.2px, transparent 1.1px, transparent 1.1px),
+            radial-gradient(circle at 6.2px 0.2px, transparent 0.9px, transparent 0.9px),
+            radial-gradient(circle at 7.5px 1.8px, transparent 1px, transparent 1px),
+            radial-gradient(circle at 0.8px 4.2px, transparent 1.2px, transparent 1.2px),
+            radial-gradient(circle at 2.2px 5.8px, transparent 0.8px, transparent 0.8px),
+            radial-gradient(circle at 3.8px 6.5px, transparent 1px, transparent 1px),
+            radial-gradient(circle at 5.2px 5.2px, transparent 1.1px, transparent 1.1px),
+            radial-gradient(circle at 6.8px 6.8px, transparent 0.9px, transparent 0.9px),
+            radial-gradient(circle at 7.2px 2.8px, transparent 1px, transparent 1px),
+            radial-gradient(circle at 1.2px 6.2px, transparent 1.2px, transparent 1.2px),
+            radial-gradient(circle at 4.2px 1.2px, transparent 0.8px, transparent 0.8px),
+            radial-gradient(circle at 5.8px 4.8px, transparent 1.1px, transparent 1.1px)
+          `,
+          backgroundSize: '8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px'
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 py-1.5 flex md:justify-end justify-between items-center">
           {/* Mobile Logo - Left side, only visible on mobile */}
           <Link href="/" className="md:hidden flex-shrink-0">

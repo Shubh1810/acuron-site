@@ -187,7 +187,7 @@ const TransparentNavbar: FC = () => {
     <nav className="relative z-20 w-full">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo - Hidden on mobile */}
-        <Link href="/" className="flex-shrink-0 hidden md:block">
+        <Link href="/" className="flex-shrink-0 hidden md:block md:ml-8">
           <div className="w-40 sm:w-44 h-16 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">
             <Image
               src="/acuron.png"
@@ -297,7 +297,7 @@ const TransparentNavbar: FC = () => {
         </nav>
         
         {/* Right Side Actions */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 md:mr-8">
           {/* Catalog Button */}
           <button 
             onClick={handleCatalogDownload}

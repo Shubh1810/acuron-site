@@ -274,9 +274,9 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
       <TransparentNavbar />
 
       {/* Hero Content */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center px-4 sm:px-6 lg:px-8 text-white">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold font-sans leading-tight mb-6">
+      <div className="absolute inset-0 z-10 flex items-center justify-center px-2 sm:px-6 lg:px-8 text-white">
+        <div className="text-center w-full max-w-none sm:max-w-4xl mx-auto">
+          <h1 className="text-4xl sm:text-4xl lg:text-6xl font-bold font-sans leading-tight mb-6 text-center">
             {hasKeyPhrase ? (
               <>
                 {titleParts[0]}
@@ -299,16 +299,16 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   {localizedTitle.split('Precision & Care')[0]}
                   <span className="font-serif italic font-normal"><span className="underline underline-offset-4 decoration-white/60">Precision</span> & <span className="underline underline-offset-4 decoration-white/60">Care</span></span>
                   {localizedTitle.split('Precision & Care')[1]}
-                </>
-              ) : (
-                localizedTitle
+              </>
+            ) : (
+              localizedTitle
               )
             )}
           </h1>
           
           <TextGenerateEffect 
             words={localizedSubtitle} 
-            className="text-base sm:text-lg lg:text-xl mb-8 text-white/90 font-light leading-relaxed max-w-3xl mx-auto" 
+            className="text-base sm:text-lg lg:text-xl mb-8 text-white/90 font-light leading-relaxed max-w-sm sm:max-w-3xl mx-auto" 
           />
           
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
@@ -318,20 +318,21 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               <div className="absolute -inset-1 bg-gradient-to-r from-lime-300 via-green-300 to-emerald-300 rounded-full blur-md opacity-50 group-hover:opacity-75 animate-ping group-hover:animate-pulse transition-all duration-500"></div>
               <div className="absolute -inset-2 bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 rounded-full blur-lg opacity-30 group-hover:opacity-60 animate-bounce group-hover:animate-pulse transition-all duration-700"></div>
               
-              <Link 
-                href={ctaLink}
-                className="relative inline-flex items-center px-6 py-3 bg-white text-[#0F4679] font-bold text-base rounded-full hover:bg-white/95 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 z-10"
-              >
-                {localizedCtaText}
-              </Link>
+            <Link 
+              href={ctaLink}
+                className="relative inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-white text-[#0F4679] font-bold text-sm sm:text-base rounded-full hover:bg-white/95 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 z-10"
+            >
+              {localizedCtaText}
+            </Link>
             </div>
             
             <button 
               onClick={handleCatalogDownload}
-              className="inline-flex items-center px-6 py-3 border-2 border-white/30 text-white font-semibold text-base rounded-full hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+              className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 border-2 border-white/30 text-white font-semibold text-sm sm:text-base rounded-full hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
             >
-              <Download size={18} className="mr-2" />
-              Download Catalog
+              <Download size={16} className="mr-2 sm:mr-2" />
+              <span className="hidden sm:inline">Download Catalog</span>
+              <span className="sm:hidden">Download Catalog</span>
             </button>
           </div>
         </div>

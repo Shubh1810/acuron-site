@@ -146,7 +146,7 @@ export default function AboutSection() {
     <section className="py-16 px-6 bg-white" id="about-us-section">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-start mb-12 ml-8">
           <div className="relative">
             <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
               {aboutUsTitle}
@@ -154,49 +154,53 @@ export default function AboutSection() {
           </div>
         </div>
         
-        {/* Founders Image and About Text */}
-        <div className="flex flex-col md:flex-row gap-10 mb-16">
-          <div className="md:w-1/2 relative" ref={imageRef}>
-            <div className="relative h-96 md:h-[500px] overflow-hidden rounded-lg">
+        {/* Centered Image with Why Choose Us Overlay */}
+        <div className="flex justify-center mb-12">
+          <div className="relative w-full max-w-5xl" ref={imageRef}>
+            <div className="relative h-[45vh] md:h-[50vh] lg:h-[55vh] overflow-hidden rounded-lg">
               <Image 
                 src="/about-us.JPEG" 
                 alt="Acuron Products India founders and leadership team showcasing medical supplies manufacturing expertise" 
-                width={500} 
-                height={500} 
-                className="w-full h-full relative z-10 border-transparent rounded-lg object-cover object-top"
+                fill
+                className="relative z-10 border-transparent rounded-lg object-cover opacity-10"
                 style={{
                   maskImage: `
                     linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
-                    linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)
+                    linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%)
                   `,
                   WebkitMaskImage: `
                     linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
-                    linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)
+                    linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%)
                   `,
                   maskComposite: 'intersect',
-                  WebkitMaskComposite: 'source-in'
+                  WebkitMaskComposite: 'source-in',
+                  objectPosition: 'center top'
                 }}
                 priority
               />
-            </div>
-          </div>
-          <div className="md:w-1/2 flex flex-col justify-center">
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5 font-sans leading-tight">
-              {whyChooseTitle}
-            </h3>
-            <div className="space-y-5">
-              <p className="text-base md:text-lg text-gray-700 font-sans leading-relaxed">
-              {aboutParagraph1}
-              </p>
-              <p className="text-base md:text-lg text-gray-700 font-sans leading-relaxed">
-              {aboutParagraph2}
-              </p>
-              <p className="text-base md:text-lg text-gray-700 font-sans leading-relaxed">
-              {aboutParagraph3}
-            </p>
-              <p className="text-base md:text-lg text-gray-700 font-sans leading-relaxed font-medium">
-              {aboutParagraph4}
-            </p>
+              
+              {/* Why Choose Us Content Overlay */}
+              <div className="absolute inset-0 z-20 flex items-center justify-center p-3 md:p-8">
+                <div className="text-center max-w-3xl overflow-y-auto max-h-full">
+                  <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-[#0F4679] mb-2 md:mb-4 font-sans leading-tight">
+                    {whyChooseTitle}
+                  </h3>
+                  <div className="space-y-2 md:space-y-4">
+                    <p className="text-xs md:text-sm lg:text-base text-gray-800 font-sans leading-snug md:leading-relaxed">
+                      {aboutParagraph1}
+                    </p>
+                    <p className="text-xs md:text-sm lg:text-base text-gray-800 font-sans leading-snug md:leading-relaxed">
+                      {aboutParagraph2}
+                    </p>
+                    <p className="text-xs md:text-sm lg:text-base text-gray-800 font-sans leading-snug md:leading-relaxed">
+                      {aboutParagraph3}
+                    </p>
+                    <p className="text-xs md:text-sm lg:text-base text-gray-800 font-sans leading-snug md:leading-relaxed font-medium">
+                      {aboutParagraph4}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -213,8 +217,8 @@ export default function AboutSection() {
             transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
           }}
         >
-          <div className="relative mb-2 sm:mb-4">
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-center leading-tight transition-all duration-900 delay-100 ${
+          <div className="relative mb-2 sm:mb-4 ml-8">
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-left leading-tight transition-all duration-900 delay-100 ${
               isVisible 
                 ? 'opacity-100 transform translate-x-0' 
                 : 'opacity-0 transform -translate-x-12'
@@ -243,7 +247,7 @@ export default function AboutSection() {
               Array.from({ length: 11 }).map((_, index) => (
                                   <div 
                     key={`set-${setIndex}-${index}`} 
-                    className="relative flex-shrink-0 mx-0 sm:mx-3 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64 xl:w-80 xl:h-80 flex items-center justify-center"
+                    className="relative flex-shrink-0 -mx-2 sm:-mx-1 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 flex items-center justify-center"
                   >
                   <Image 
                     src={`/tender${index + 1}.png`} 
