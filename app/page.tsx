@@ -9,6 +9,7 @@ import ProductPreviewSection from './components/sections/ProductPreviewSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
 import ClientWrapper from './components/ClientWrapper';
+import LogosSection from './components/LogosSection';
 import { TextGenerateEffect } from './components/ui/textgenerateeffect';
 import { generatePageMetadata, pageKeywords } from './lib/seo-utils';
 
@@ -26,7 +27,7 @@ export default function Home() {
       <GridBackground />
       <Header />
       <ScrollbarEffect />
-      <main className="min-h-screen pt-[110px]">
+      <main className="min-h-screen">
         <HeroSection 
           title="Revolutionizing Medical Supply with Precision & Care."
           subtitle="India's trusted manufacturer of ISO-certified PPE and medical disposable products and kits, empowering hospitals nationwide."
@@ -34,6 +35,7 @@ export default function Home() {
           ctaLink="/products"
         />
 
+        <LogosSection />
         <AboutSection />
         <MissionSection />
         <ProductPreviewSection />

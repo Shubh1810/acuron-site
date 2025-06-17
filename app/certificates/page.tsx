@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
+import React, { useState, useTransition } from "react";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "motion/react";
 import Image from "next/image";
 import Header from "../components/Header";
 import Footer from "../components/sections/Footer";
@@ -148,6 +148,7 @@ function CertificateCard({ certificate, index }: CertificateCardProps) {
 
 export default function CertificatesPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [isPending, startTransition] = useTransition();
 
   const certificates: Certificate[] = [
     { id: 1, name: "ISO 13485:2016", description: "Quality management systems", category: "Quality", image: "/certificates/iso-13485.jpg", year: "2023" },
@@ -198,12 +199,12 @@ export default function CertificatesPage() {
                 {categories.map((category) => (
                   <button
                     key={category}
-                    onClick={() => setActiveCategory(category)}
+                    onClick={() => startTransition(() => setActiveCategory(category))}
                     className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                       activeCategory === category
                         ? 'bg-[#0F4679] text-white shadow-lg'
                         : 'text-gray-600 hover:text-[#0F4679] hover:bg-gray-50'
-                    }`}
+                    } ${isPending ? 'opacity-50' : ''}`}
                   >
                     {category}
                   </button>

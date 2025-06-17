@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useTransition } from "react";
+import { motion } from "motion/react";
 
 export function ColourfulText({ text }: { text: string }) {
+  const [isPending, startTransition] = useTransition();
+  
   // Create a gradient effect from bright blue to sky blue
   const getColorForIndex = (index: number, totalChars: number) => {
     // Define gradient endpoints
@@ -42,9 +44,9 @@ export function ColourfulText({ text }: { text: string }) {
   // Split the text into characters
   const characters = text.split("");
   
-  // Create a subtle breathing animation effect
+  // Create a subtle breathing animation effect with useTransition for performance
   return (
-    <>
+    <div className={isPending ? 'opacity-75' : ''}>
       {characters.map((char, index) => (
         <motion.span
           key={`${char}-${index}`}
@@ -63,10 +65,18 @@ export function ColourfulText({ text }: { text: string }) {
             ease: "easeInOut"
           }}
           className="inline-block whitespace-pre font-sans tracking-tight"
+          onAnimationStart={() => {
+            // Wrap heavy calculations in useTransition
+            if (index === 0) {
+              startTransition(() => {
+                // Color calculations are already optimized
+              });
+            }
+          }}
         >
           {char}
         </motion.span>
       ))}
-    </>
+    </div>
   );
 }

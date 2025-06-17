@@ -1,9 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import { FC, useState, useMemo, useCallback } from 'react';
+import { Download } from 'lucide-react';
 import { ColourfulText } from './ui/colorful-text';
 import { useCountryStore } from '../../lib/store';
 import { TextGenerateEffect } from "./ui/textgenerateeffect";
+import TransparentNavbar from './TransparentNavbar';
+import NewsletterModal from './NewsletterModal';
 
 interface HeroSectionProps {
   title: string;
@@ -12,7 +17,8 @@ interface HeroSectionProps {
   ctaLink: string;
 }
 
-const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) => {
+const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }) => {
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const { selectedCountry } = useCountryStore();
 
   // Get localized content based on selected country
@@ -22,6 +28,164 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
     }
     return translations[selectedCountry.language] || englishText;
   };
+
+  // Memoize navigation links with localization
+  const navigationLinks = useMemo(() => [
+    { 
+      href: '/', 
+      label: getLocalizedContent('HOME', {
+        de: 'STARTSEITE',
+        fr: 'ACCUEIL',
+        ja: 'ホーム',
+        zh: '首页',
+        pt: 'INÍCIO'
+      })
+    },
+    { 
+      href: '/certificates', 
+      label: getLocalizedContent('CERTIFICATES', {
+        de: 'ZERTIFIKATE',
+        fr: 'CERTIFICATS',
+        ja: '証明書',
+        zh: '证书',
+        pt: 'CERTIFICADOS'
+      })
+    },
+    { 
+      href: '/events', 
+      label: getLocalizedContent('EVENTS', {
+        de: 'VERANSTALTUNGEN',
+        fr: 'ÉVÉNEMENTS',
+        ja: 'イベント',
+        zh: '活动',
+        pt: 'EVENTOS'
+      })
+    },
+    { 
+      href: '/faq', 
+      label: getLocalizedContent('FAQ', {
+        de: 'FAQ',
+        fr: 'FAQ',
+        ja: 'よくある質問',
+        zh: '常见问题',
+        pt: 'FAQ'
+      })
+    },
+  ], [selectedCountry]);
+
+  // Products dropdown categories
+  const productCategories = useMemo(() => [
+    {
+      label: getLocalizedContent('Protective Apparel', {
+        de: 'Schutzkleidung',
+        fr: 'Vêtements de protection',
+        ja: '保護服',
+        zh: '防护服',
+        pt: 'Vestuário de Proteção'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('Masks & Headwear', {
+        de: 'Masken & Kopfbedeckungen',
+        fr: 'Masques et couvre-chefs',
+        ja: 'マスク・帽子',
+        zh: '口罩和头饰',
+        pt: 'Máscaras e Chapéus'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('Shoe & Leg Protection', {
+        de: 'Schuh- & Beinschutz',
+        fr: 'Protection des chaussures et jambes',
+        ja: '靴・脚保護',
+        zh: '鞋套和腿部保护',
+        pt: 'Proteção de Sapatos e Pernas'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('Drapes Linens & Underpads', {
+        de: 'Tücher, Bettwäsche & Unterlagen',
+        fr: 'Draps, linge et alèses',
+        ja: 'ドレープ・リネン・パッド',
+        zh: '手术巾、床单和护垫',
+        pt: 'Campos, Roupas de Cama e Forrações'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('Medical Kits', {
+        de: 'Medizinische Kits',
+        fr: 'Kits médicaux',
+        ja: '医療キット',
+        zh: '医疗套件',
+        pt: 'Kits Médicos'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('General Medical & Surgical Disposables', {
+        de: 'Allgemeine medizinische & chirurgische Einwegartikel',
+        fr: 'Jetables médicaux et chirurgicaux généraux',
+        ja: '一般医療・外科用使い捨て用品',
+        zh: '一般医疗和手术一次性用品',
+        pt: 'Descartáveis Médicos e Cirúrgicos Gerais'
+      }),
+      href: '/products'
+    }
+  ], [selectedCountry]);
+
+  const productsText = getLocalizedContent('PRODUCTS', {
+    de: 'PRODUKTE',
+    fr: 'PRODUITS',
+    ja: '製品',
+    zh: '产品',
+    pt: 'PRODUTOS'
+  });
+
+  const viewAllProductsText = getLocalizedContent('View All Products', {
+    de: 'Alle Produkte anzeigen',
+    fr: 'Voir tous les produits',
+    ja: 'すべての製品を見る',
+    zh: '查看所有产品',
+    pt: 'Ver Todos os Produtos'
+  });
+
+  const catalogText = getLocalizedContent('CATALOG', {
+    de: 'KATALOG',
+    fr: 'CATALOGUE',
+    ja: 'カタログ',
+    zh: '目录',
+    pt: 'CATÁLOGO'
+  });
+
+  const searchPlaceholder = getLocalizedContent('SEARCH', {
+    de: 'SUCHEN',
+    fr: 'RECHERCHER',
+    ja: '検索',
+    zh: '搜索',
+    pt: 'PESQUISAR'
+  });
+
+  // Function to handle catalog download - opens newsletter modal first
+  const handleCatalogDownload = () => {
+    setIsNewsletterModalOpen(true);
+  };
+
+  // Function to actually download after newsletter signup
+  const handleActualDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/catalog/acuron-catalog.pdf';
+    link.download = 'Acuron-Medical-Catalog.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setIsNewsletterModalOpen(false);
+  };
+
+
 
   const localizedTitle = getLocalizedContent(title, {
     de: "Revolutionierung der medizinischen Versorgung mit Präzision und Sorgfalt.",
@@ -58,13 +222,12 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
       };
     }
 
-    // Define key phrases for each language
     const keyPhrases: Record<string, string> = {
-      de: "medizinischen Versorgung", // "medical supply/care" in German
-      fr: "approvisionnement médical", // "medical supply" in French
-      ja: "医療供給", // "medical supply" in Japanese
-      zh: "医疗供应", // "medical supply" in Chinese
-      pt: "fornecimento médico" // "medical supply" in Portuguese
+      de: "medizinischen Versorgung",
+      fr: "approvisionnement médical",
+      ja: "医療供給",
+      zh: "医疗供应",
+      pt: "fornecimento médico"
     };
 
     const keyPhrase = keyPhrases[selectedCountry.language];
@@ -77,7 +240,6 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
       };
     }
 
-    // Fallback if no key phrase found
     return {
       keyPhrase: "",
       titleParts: [localizedTitle],
@@ -88,49 +250,100 @@ const HeroSection = ({ title, subtitle, ctaText, ctaLink }: HeroSectionProps) =>
   const { keyPhrase, titleParts, hasKeyPhrase } = getKeyPhraseAndParts();
   
   return (
-    <div className="relative h-[600px] flex items-center">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 w-full h-full"
-        style={{
-          backgroundImage: 'url(/main.jpeg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0.5)'
-        }}
-      />
+    <div className="bg-white px-4 pb-0 md:pb-4 pt-[39px]">
+      <div className="relative h-[calc(80vh-39px-1rem)] min-h-[500px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: 'url(/main.jpeg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            filter: 'brightness(0.4)'
+          }}
+        />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        {/* Top Overlay gradient */}
+        <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[#0F4679]/80 to-transparent pointer-events-none" style={{ height: '40%' }} />
+        
+        {/* Bottom Overlay gradient */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679]/80 to-transparent pointer-events-none" style={{ height: '40%' }} />
+
+      {/* Transparent Navigation */}
+      <TransparentNavbar />
+
+      {/* Hero Content */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center px-4 sm:px-6 lg:px-8 text-white">
+        <div className="text-center max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold font-sans leading-tight mb-6">
             {hasKeyPhrase ? (
               <>
                 {titleParts[0]}
                 <span className="whitespace-nowrap">
                   <ColourfulText text={keyPhrase} />
                 </span>
-                {titleParts[1]}
+                {titleParts[1].includes('Precision & Care') ? (
+                  <>
+                    {titleParts[1].split('Precision & Care')[0]}
+                    <span className="font-serif italic font-normal"><span className="underline underline-offset-4 decoration-white/60">Precision</span> & <span className="underline underline-offset-4 decoration-white/60">Care</span></span>
+                    {titleParts[1].split('Precision & Care')[1]}
+                  </>
+                ) : (
+                  titleParts[1]
+                )}
               </>
             ) : (
-              localizedTitle
+              localizedTitle.includes('Precision & Care') ? (
+                <>
+                  {localizedTitle.split('Precision & Care')[0]}
+                  <span className="font-serif italic font-normal"><span className="underline underline-offset-4 decoration-white/60">Precision</span> & <span className="underline underline-offset-4 decoration-white/60">Care</span></span>
+                  {localizedTitle.split('Precision & Care')[1]}
+                </>
+              ) : (
+                localizedTitle
+              )
             )}
           </h1>
-          <TextGenerateEffect words={localizedSubtitle} className="text-lg sm:text-xl mb-8 text-gray-100 font-rubik" />
-          <div className="inline-block relative">
-            <Link 
-              href={ctaLink}
-              className="inline-block bg-white text-[#0F4679] font-bold py-3 px-10 rounded-full border-2 border-[#158C07] hover:bg-gray-50 transition-colors duration-300 shadow-md"
+          
+          <TextGenerateEffect 
+            words={localizedSubtitle} 
+            className="text-base sm:text-lg lg:text-xl mb-8 text-white/90 font-light leading-relaxed max-w-3xl mx-auto" 
+          />
+          
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <div className="relative group">
+              {/* Animated Web3 Gradient Background */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 rounded-full blur-sm opacity-70 group-hover:opacity-100 animate-pulse group-hover:animate-none transition-all duration-300"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-lime-300 via-green-300 to-emerald-300 rounded-full blur-md opacity-50 group-hover:opacity-75 animate-ping group-hover:animate-pulse transition-all duration-500"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 rounded-full blur-lg opacity-30 group-hover:opacity-60 animate-bounce group-hover:animate-pulse transition-all duration-700"></div>
+              
+              <Link 
+                href={ctaLink}
+                className="relative inline-flex items-center px-6 py-3 bg-white text-[#0F4679] font-bold text-base rounded-full hover:bg-white/95 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 z-10"
+              >
+                {localizedCtaText}
+              </Link>
+            </div>
+            
+            <button 
+              onClick={handleCatalogDownload}
+              className="inline-flex items-center px-6 py-3 border-2 border-white/30 text-white font-semibold text-base rounded-full hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
             >
-              {localizedCtaText}
-            </Link>
+              <Download size={18} className="mr-2" />
+              Download Catalog
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Overlay gradient */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679] to-transparent pointer-events-none" style={{ height: '50%' }} />
+        {/* Newsletter Modal */}
+        <NewsletterModal 
+          isOpen={isNewsletterModalOpen}
+          onClose={() => setIsNewsletterModalOpen(false)}
+          onSuccess={handleActualDownload}
+        />
+      </div>
     </div>
   );
 };

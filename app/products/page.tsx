@@ -50,7 +50,18 @@ export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const scrollableNavRef = useRef<HTMLDivElement>(null);
+
+  // Track mouse position for parallax effects
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -150,15 +161,60 @@ export default function ProductsPage() {
 
   return (
     <>
-      <WhiteGridBackground />
+      {/* Web3 Midnight Navy Canvas with Star Noise */}
+      <div className="fixed inset-0 bg-[#0D1B2A] -z-50">
+        {/* Star noise texture */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, white 1px, transparent 1px),
+                           radial-gradient(circle at 75% 75%, white 1px, transparent 1px),
+                           radial-gradient(circle at 50% 10%, white 0.5px, transparent 0.5px),
+                           radial-gradient(circle at 10% 90%, white 0.5px, transparent 0.5px)`,
+          backgroundSize: '80px 80px, 120px 120px, 60px 60px, 90px 90px',
+          backgroundPosition: '0 0, 40px 40px, 20px 20px, 60px 60px'
+        }}></div>
+        
+        {/* Animated diagonal grid lines */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div 
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(45deg, rgba(91, 78, 255, 0.3) 1px, transparent 1px),
+                               linear-gradient(-45deg, rgba(0, 245, 255, 0.2) 1px, transparent 1px)`,
+              backgroundSize: '100px 100px, 150px 150px',
+              animation: 'drift 60s linear infinite'
+            }}
+          ></div>
+        </div>
+        
+        {/* Holo-gradient ambient glow */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-[#00F5FF]/8 via-[#5B4EFF]/4 to-[#58FF9B]/6 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-tl from-[#58FF9B]/6 via-[#5B4EFF]/4 to-[#00F5FF]/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+      
+      {/* Cursor-reactive parallax elements */}
+      <div 
+        className="fixed inset-0 pointer-events-none -z-40"
+        style={{
+          transform: `translate(${typeof window !== 'undefined' ? (mousePosition.x - window.innerWidth / 2) * 0.01 : 0}px, ${typeof window !== 'undefined' ? (mousePosition.y - window.innerHeight / 2) * 0.01 : 0}px)`
+        }}
+      >
+        <div className="absolute top-20 left-20 w-4 h-4 bg-gradient-to-r from-[#00F5FF] to-[#5B4EFF] rounded-full opacity-20 animate-pulse"></div>
+        <div className="absolute top-40 right-32 w-2 h-2 bg-[#58FF9B] rounded-full opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-32 left-1/3 w-3 h-3 bg-gradient-to-r from-[#5B4EFF] to-[#58FF9B] rounded-full opacity-25 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+      </div>
+      
       <Header />
       
-      <div className="pt-[90px] min-h-screen">
+      <div className="pt-[90px] min-h-screen relative z-10">
         <div className="max-w-7xl mx-auto px-4 py-8">
-          {/* Apple-style Category Navigation with Filtering */}
-          <div className="mb-6 pb-4 border-b border-gray-200 relative z-[60]">
-            <div className="relative bg-white shadow-lg p-2 sm:p-3 md:p-6 border border-gray-100 overflow-hidden">
-              <div ref={scrollableNavRef} className="flex items-center justify-start sm:justify-center space-x-2 sm:space-x-4 md:space-x-8 overflow-x-auto scrollbar-hide">
+          {/* Web3 Category Navigation with Glass Effect */}
+          <div className="mb-6 pb-4 relative z-[60]">
+            <div className="relative bg-white/10 backdrop-blur-[24px] shadow-lg p-2 sm:p-3 md:p-6 border border-[#265DFF]/20 overflow-hidden rounded-3xl">
+              {/* Holo-gradient accent lines */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#00F5FF]/8 via-[#5B4EFF]/8 to-[#58FF9B]/8 rounded-3xl opacity-20"></div>
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00F5FF]/50 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#58FF9B]/50 to-transparent"></div>
+              <div ref={scrollableNavRef} className="relative flex items-center justify-start sm:justify-center space-x-2 sm:space-x-4 md:space-x-8 overflow-x-auto scrollbar-hide z-10">
                 {categories.map((category, index) => {
                   // Map categories to appropriate icons and display names
                   const getCategoryConfig = (categoryName: string) => {
@@ -270,17 +326,17 @@ export default function ProductsPage() {
                       onClick={() => setActiveCategory(category.name)}
                       className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer"
                     >
-                      <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 ${
+                      <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-106 ${
                         isActive 
-                          ? 'bg-[#0F4679] text-white shadow-lg' 
-                          : 'text-[#0F4679] hover:bg-gray-50'
+                          ? 'bg-gradient-to-br from-[#00F5FF]/20 to-[#5B4EFF]/20 backdrop-blur-sm text-white shadow-lg border border-[#00F5FF]/30' 
+                          : 'text-white/80 hover:bg-white/10 hover:backdrop-blur-sm'
                       }`}>
                         {config.icon}
                       </div>
                       <span className={`text-[10px] sm:text-xs md:text-sm font-medium transition-colors duration-300 text-center ${
                         isActive 
-                          ? 'text-[#0F4679] font-semibold' 
-                          : 'text-[#0F4679]'
+                          ? 'text-white font-semibold' 
+                          : 'text-white/80'
                       }`}>
                         {config.displayName}
                       </span>

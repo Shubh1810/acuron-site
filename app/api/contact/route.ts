@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { validateContactForm, escapeHtml, checkRateLimit } from '../../lib/security-utils';
 
 interface ContactFormData {
   name: string;
@@ -110,6 +111,18 @@ async function sendEmailNotification(data: ContactFormData) {
       return { success: false, error: 'Resend API key not configured' };
     }
 
+    // Escape all user inputs to prevent XSS
+    const safeData = {
+      name: escapeHtml(data.name),
+      organization: escapeHtml(data.organization),
+      email: escapeHtml(data.email),
+      phone: data.phone ? escapeHtml(data.phone) : '',
+      productInterest: data.productInterest ? escapeHtml(data.productInterest) : 'Not specified',
+      message: data.message ? escapeHtml(data.message) : 'No additional message',
+      source: escapeHtml(data.source),
+      timestamp: new Date(data.timestamp).toLocaleString()
+    };
+
     const emailHtml = `
     <!DOCTYPE html>
     <html>
@@ -126,8 +139,8 @@ async function sendEmailNotification(data: ContactFormData) {
             .inquiry-card { background: #f8fafc; border-radius: 8px; padding: 20px; margin: 20px 0; border-left: 4px solid #0F4679; }
             .field { margin-bottom: 15px; }
             .field-label { font-weight: 600; color: #374151; font-size: 14px; margin-bottom: 4px; }
-            .field-value { color: #6b7280; line-height: 1.5; }
-            .message-box { background: white; border: 1px solid #e5e7eb; border-radius: 6px; padding: 15px; margin-top: 10px; }
+            .field-value { color: #6b7280; line-height: 1.5; word-wrap: break-word; }
+            .message-box { background: white; border: 1px solid #e5e7eb; border-radius: 6px; padding: 15px; margin-top: 10px; white-space: pre-wrap; }
             .footer { background: #f9fafb; padding: 20px; text-align: center; font-size: 12px; color: #6b7280; border-top: 1px solid #e5e7eb; }
             .quick-actions { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
             .action-btn { background: #0F4679; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; }
@@ -149,48 +162,47 @@ async function sendEmailNotification(data: ContactFormData) {
                 <div class="inquiry-card priority-medium">
                     <div class="field">
                         <div class="field-label">👤 Full Name</div>
-                        <div class="field-value">${data.name}</div>
+                        <div class="field-value">${safeData.name}</div>
                     </div>
                     
                     <div class="field">
                         <div class="field-label">🏢 Organization</div>
-                        <div class="field-value">${data.organization}</div>
+                        <div class="field-value">${safeData.organization}</div>
                     </div>
                     
                     <div class="field">
                         <div class="field-label">📧 Email Address</div>
-                        <div class="field-value"><a href="mailto:${data.email}" style="color: #0F4679;">${data.email}</a></div>
+                        <div class="field-value">${safeData.email}</div>
                     </div>
                     
                     <div class="field">
                         <div class="field-label">📱 Phone Number</div>
-                        <div class="field-value">${data.phone ? `<a href="tel:${data.phone}" style="color: #0F4679;">${data.phone}</a>` : 'Not provided'}</div>
+                        <div class="field-value">${safeData.phone || 'Not provided'}</div>
                     </div>
                     
                     <div class="field">
                         <div class="field-label">🎯 Product Interest</div>
-                        <div class="field-value"><strong>${data.productInterest || 'Not specified'}</strong></div>
+                        <div class="field-value"><strong>${safeData.productInterest}</strong></div>
                     </div>
                     
                     <div class="field">
                         <div class="field-label">💬 Message</div>
-                        <div class="message-box">${data.message || 'No additional message'}</div>
+                        <div class="message-box">${safeData.message}</div>
                     </div>
                     
                     <div class="field">
                         <div class="field-label">⏰ Received</div>
-                        <div class="field-value">${new Date(data.timestamp).toLocaleString()}</div>
+                        <div class="field-value">${safeData.timestamp}</div>
                     </div>
                     
                     <div class="field">
                         <div class="field-label">📍 Source</div>
-                        <div class="field-value">${data.source}</div>
+                        <div class="field-value">${safeData.source}</div>
                     </div>
                 </div>
                 
                 <div class="quick-actions">
-                    <a href="mailto:${data.email}?subject=Re: Your Inquiry - Acuron Products&body=Dear ${data.name},%0A%0AThank you for your inquiry about our medical products. We have received your message and will respond within 24 hours.%0A%0ABest regards,%0AAcuron Products Team" class="action-btn">Reply via Email</a>
-                    ${data.phone ? `<a href="https://wa.me/${data.phone.replace(/[^\d]/g, '')}?text=Hello ${data.name}, thank you for your inquiry about our medical products. How can we assist you further?" class="action-btn">WhatsApp Reply</a>` : ''}
+                    <a href="mailto:${data.email}?subject=Re:%20Your%20Inquiry%20-%20Acuron%20Products" class="action-btn">Reply via Email</a>
                 </div>
             </div>
             
@@ -207,9 +219,10 @@ async function sendEmailNotification(data: ContactFormData) {
       from: process.env.RESEND_FROM_EMAIL || 'Acuron <onboarding@resend.dev>',
       to: [process.env.NOTIFICATION_EMAIL || 'sales@acuron.in'],
       cc: process.env.CC_EMAIL ? [process.env.CC_EMAIL] : undefined,
-      subject: `🔔 New Inquiry from ${data.name} - ${data.organization}`,
+      subject: `🔔 New Inquiry from ${safeData.name} - ${safeData.organization}`,
       html: emailHtml,
-      replyTo: data.email, // This allows replying directly to the customer
+      // Use validated email for reply-to, but don't include in subject/body to prevent injection
+      replyTo: data.email,
     });
 
     if (error) {
@@ -227,28 +240,43 @@ async function sendEmailNotification(data: ContactFormData) {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    console.log('📨 Received contact form submission:', JSON.stringify(body, null, 2));
+    // Get client IP for rate limiting
+    const clientIP = request.headers.get('x-forwarded-for') || 
+                    request.headers.get('x-real-ip') || 
+                    'unknown';
 
-    // Validate required fields (only name, email, organization)
-    const requiredFields = ['name', 'organization', 'email'];
-    for (const field of requiredFields) {
-      if (!body[field] || body[field].trim() === '') {
-        return NextResponse.json(
-          { error: `Missing required field: ${field}` },
-          { status: 400 }
-        );
-      }
+    // Rate limiting: 5 requests per minute per IP
+    if (!checkRateLimit(clientIP, 5, 60000)) {
+      console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
     }
+
+    const body = await request.json();
+    console.log('📨 Received contact form submission from IP:', clientIP);
+
+    // Comprehensive input validation and sanitization
+    const validation = validateContactForm(body);
+    if (!validation.isValid) {
+      console.warn('Invalid form data:', validation.errors);
+      return NextResponse.json(
+        { error: 'Invalid form data', details: validation.errors },
+        { status: 400 }
+      );
+    }
+
+    const sanitizedData = validation.sanitizedData!;
 
     // Prepare data for integrations
     const contactData: ContactFormData = {
-      name: body.name,
-      organization: body.organization,
-      email: body.email,
-      phone: body.phone || '',
-      productInterest: body.productInterest,
-      message: body.message,
+      name: sanitizedData.name,
+      organization: sanitizedData.organization,
+      email: sanitizedData.email,
+      phone: sanitizedData.phone,
+      productInterest: sanitizedData.productInterest,
+      message: sanitizedData.message,
       timestamp: new Date().toISOString(),
       source: 'Acuron Website Contact Form'
     };
@@ -311,10 +339,15 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('❌ Contact form submission error:', error);
+    
+    // Don't expose internal error details to client
     return NextResponse.json(
       { 
         error: 'Failed to submit inquiry. Please try again or contact us directly.',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        // Only include error details in development
+        ...(process.env.NODE_ENV === 'development' && { 
+          details: error instanceof Error ? error.message : 'Unknown error' 
+        })
       },
       { status: 500 }
     );
