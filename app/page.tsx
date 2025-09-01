@@ -1,14 +1,13 @@
 import React from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import ScrollbarEffect from './components/ScrollbarEffect';
 import GridBackground from './components/ui/grid-background';
 import AboutSection from './components/sections/AboutSection';
+import EventsSection from './components/sections/EventsSection';
 import MissionSection from './components/sections/MissionSection';
 import ProductPreviewSection from './components/sections/ProductPreviewSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
-import ClientWrapper from './components/ClientWrapper';
 import LogosSection from './components/LogosSection';
 import { TextGenerateEffect } from './components/ui/textgenerateeffect';
 import { generatePageMetadata, pageKeywords } from './lib/seo-utils';
@@ -23,10 +22,9 @@ export const metadata = generatePageMetadata({
 
 export default function Home() {
   return (
-    <ClientWrapper>
+    <>
       <GridBackground />
       <Header />
-      <ScrollbarEffect />
       <main className="min-h-screen">
         <HeroSection 
           title="Revolutionizing Medical Supply with Precision & Care."
@@ -36,12 +34,13 @@ export default function Home() {
         />
 
         <LogosSection />
+        <EventsSection />
         <AboutSection />
         <MissionSection />
         <ProductPreviewSection />
         <ContactSection />
         <Footer />
       </main>
-    </ClientWrapper>
+    </>
   );
 } 

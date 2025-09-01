@@ -1,6 +1,6 @@
 'use client';
 
-import { BackgroundGradientAnimation } from '../ui/background-gradient-animation';
+
 import Metric from '../ui/metric';
 import { useCountryStore } from '../../../lib/store';
 
@@ -125,19 +125,7 @@ export default function MissionSection() {
 
   return (
     <section className="relative py-16 min-h-[1000px] sm:min-h-[900px] md:min-h-[650px] text-white">
-      <BackgroundGradientAnimation 
-        gradientBackgroundStart="rgb(10, 61, 98)" 
-        gradientBackgroundEnd="rgb(15, 70, 110)"
-        firstColor="18, 113, 255"
-        secondColor="80, 210, 255"
-        thirdColor="30, 160, 230"
-        fourthColor="20, 120, 200"
-        fifthColor="90, 180, 250"
-        pointerColor="100, 220, 255"
-        blendingValue="soft-light"
-        size="150%"
-        containerClassName="absolute inset-0"
-      >
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900">
         <div className="relative z-10 flex flex-col h-full">
           <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-10 py-10 flex-grow flex flex-col justify-between">
             {/* Header Section */}
@@ -267,7 +255,7 @@ export default function MissionSection() {
             </div>
           </div>
         </div>
-      </BackgroundGradientAnimation>
-    </section>
+              </div>
+      </section>
   );
 }

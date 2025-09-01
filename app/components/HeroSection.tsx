@@ -51,16 +51,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
         pt: 'CERTIFICADOS'
       })
     },
-    { 
-      href: '/events', 
-      label: getLocalizedContent('EVENTS', {
-        de: 'VERANSTALTUNGEN',
-        fr: 'ÉVÉNEMENTS',
-        ja: 'イベント',
-        zh: '活动',
-        pt: 'EVENTOS'
-      })
-    },
+
     { 
       href: '/faq', 
       label: getLocalizedContent('FAQ', {
@@ -271,7 +262,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679]/80 to-transparent pointer-events-none" style={{ height: '40%' }} />
 
       {/* Transparent Navigation */}
-      <TransparentNavbar />
+      <TransparentNavbar isHeroSection={true} />
 
       {/* Hero Content */}
       <div className="absolute inset-0 z-10 flex items-center justify-center px-2 sm:px-6 lg:px-8 text-white">

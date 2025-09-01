@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import TransparentNavbar from '../components/TransparentNavbar';
 import Footer from '../components/sections/Footer';
 
 export const metadata = {
@@ -11,7 +12,8 @@ export default function PrivacyPage() {
   return (
     <>
       <Header />
-      <main className="pt-24 pb-16 bg-gray-50 min-h-screen">
+      <TransparentNavbar />
+      <main className="pt-[60px] pb-16 bg-gray-50 min-h-screen">
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-8">Privacy Policy</h1>

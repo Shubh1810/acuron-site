@@ -3,6 +3,7 @@ import React, { useState, useTransition } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "motion/react";
 import Image from "next/image";
 import Header from "../components/Header";
+import TransparentNavbar from "../components/TransparentNavbar";
 import Footer from "../components/sections/Footer";
 import WhiteGridBackground from "../components/ui/white-grid-background";
 
@@ -151,12 +152,18 @@ export default function CertificatesPage() {
   const [isPending, startTransition] = useTransition();
 
   const certificates: Certificate[] = [
-    { id: 1, name: "ISO 13485:2016", description: "Quality management systems", category: "Quality", image: "/certificates/iso-13485.jpg", year: "2023" },
-    { id: 2, name: "CE Certification", description: "European conformity for PPE", category: "Compliance", image: "/certificates/ce-certification.jpg", year: "2023" },
-    { id: 3, name: "FDA Registration", description: "US FDA registration", category: "Compliance", image: "/certificates/fda-registration.jpg", year: "2023" },
-    { id: 4, name: "ISO 9001:2015", description: "Quality management system", category: "Quality", image: "/certificates/iso-9001.jpg", year: "2022" },
-    { id: 5, name: "EN 14683", description: "Standard for medical face masks", category: "Product Standard", image: "/certificates/en-14683.jpg", year: "2023" },
-    { id: 6, name: "ASTM F2100", description: "Standard for medical face masks", category: "Product Standard", image: "/certificates/astm-f2100.jpg", year: "2023" }
+    { id: 1, name: "SASMIRA Certification", description: "SASMIRA quality certification", category: "Quality", image: "/sasmira.jpg", year: "2025" },
+    { id: 2, name: "SASMIRA Standard", description: "SASMIRA standard compliance", category: "Compliance", image: "/sasmira2.jpg", year: "2025" },
+    { id: 3, name: "SASMIRA Approval", description: "SASMIRA regulatory approval", category: "Compliance", image: "/sasmira3.jpg", year: "2025" },
+    { id: 4, name: "CE Certification", description: "European conformity certification document", category: "Compliance", image: "/IMG_8303.jpg", year: "2025" },
+    { id: 5, name: "GMP WHO Certificate", description: "Good Manufacturing Practice WHO certification", category: "Quality", image: "/IMG_8304.jpg", year: "2025" },
+    { id: 6, name: "ISO 13485", description: "Quality management systems certification", category: "Quality", image: "/IMG_8305.jpg", year: "2025" },
+    { id: 7, name: "ISO 13759:1996", description: "Medical devices quality management standard", category: "Product Standard", image: "/IMG_8306.jpg", year: "2025" },
+    { id: 8, name: "ISO 9001:2015", description: "Quality management system certification", category: "Quality", image: "/IMG_8307.jpg", year: "2025" },
+    { id: 9, name: "WHO GMP Certificate", description: "Good Manufacturing Practice WHO certification", category: "Quality", image: "/IMG_8309.jpg", year: "2025" },
+    { id: 10, name: "ISO 9001:2015 (New)", description: "Quality management system certification", category: "Quality", image: "/IMG_8310.jpg", year: "2025" },
+    { id: 11, name: "CE Certification (New)", description: "European conformity certification", category: "Compliance", image: "/IMG_8311.jpg", year: "2025" },
+    { id: 12, name: "ISO 13485:2016 (New)", description: "Quality management systems certification", category: "Quality", image: "/IMG_8312.jpg", year: "2025" }
   ];
 
   const categories = ["All", "Quality", "Compliance", "Product Standard"];
@@ -169,9 +176,12 @@ export default function CertificatesPage() {
     <>
       <WhiteGridBackground />
       <Header />
+      <div className="mt-2">
+        <TransparentNavbar />
+      </div>
       <AnimatedMotif />
       
-      <div className="pt-[90px] min-h-screen">
+      <div className="pt-[0px] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 py-16">
           
           <motion.div 

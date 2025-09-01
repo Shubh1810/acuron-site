@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from "react";
 import { motion } from "motion/react";
 import Header from "../components/Header";
+import TransparentNavbar from "../components/TransparentNavbar";
 import Footer from "../components/sections/Footer";
 import { useCountryStore } from "../../lib/store";
 
@@ -718,9 +719,12 @@ export default function FAQPage() {
   return (
     <>
       <Header />
+      <div className="mt-2">
+        <TransparentNavbar />
+      </div>
       
       {/* Professional Medical-Grade FAQ Design */}
-      <div className="pt-[90px] min-h-screen bg-white">
+      <div className="pt-[0px] min-h-screen bg-white">
         <div className="max-w-6xl mx-auto px-4 py-16">
           
           {/* Professional Header Section */}

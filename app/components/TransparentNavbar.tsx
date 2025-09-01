@@ -8,7 +8,11 @@ import CountrySelector from './CountrySelector';
 import NewsletterModal from './NewsletterModal';
 import { useCountryStore } from '../../lib/store';
 
-const TransparentNavbar: FC = () => {
+interface TransparentNavbarProps {
+  isHeroSection?: boolean;
+}
+
+const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
@@ -44,16 +48,7 @@ const TransparentNavbar: FC = () => {
         pt: 'CERTIFICADOS'
       })
     },
-    { 
-      href: '/events', 
-      label: getLocalizedContent('EVENTS', {
-        de: 'VERANSTALTUNGEN',
-        fr: 'ÉVÉNEMENTS',
-        ja: 'イベント',
-        zh: '活动',
-        pt: 'EVENTOS'
-      })
-    },
+
     { 
       href: '/faq', 
       label: getLocalizedContent('FAQ', {
@@ -209,10 +204,16 @@ const TransparentNavbar: FC = () => {
           {/* HOME Link */}
           <Link 
             href="/" 
-            className="text-xs font-semibold text-white/90 hover:text-white relative group transition-colors duration-300"
+            className={`text-xs font-semibold relative group transition-colors duration-300 ${
+              isHeroSection 
+                ? 'text-white/90 hover:text-white' 
+                : 'text-[#0F4679]/90 hover:text-[#0F4679]'
+            }`}
           >
             {navigationLinks[0].label}
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/80 group-hover:w-full transition-all duration-300"></span>
+            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
+              isHeroSection ? 'bg-white/80' : 'bg-[#0F4679]/80'
+            }`}></span>
           </Link>
 
           {/* Products Dropdown */}
@@ -223,7 +224,11 @@ const TransparentNavbar: FC = () => {
           >
             <Link 
               href="/products"
-              className="flex items-center text-xs font-semibold text-white/90 hover:text-white relative group transition-colors duration-300"
+              className={`flex items-center text-xs font-semibold relative group transition-colors duration-300 ${
+                isHeroSection 
+                  ? 'text-white/90 hover:text-white' 
+                  : 'text-[#0F4679]/90 hover:text-[#0F4679]'
+              }`}
             >
               {productsText}
               <svg 
@@ -234,7 +239,9 @@ const TransparentNavbar: FC = () => {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/80 group-hover:w-full transition-all duration-300"></span>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
+                isHeroSection ? 'bg-white/80' : 'bg-[#0F4679]/80'
+              }`}></span>
             </Link>
             
             {/* Dropdown Menu */}
@@ -288,10 +295,16 @@ const TransparentNavbar: FC = () => {
             <Link 
               key={link.href} 
               href={link.href} 
-              className="text-xs font-semibold text-white/90 hover:text-white relative group transition-colors duration-300"
+              className={`text-xs font-semibold relative group transition-colors duration-300 ${
+                isHeroSection 
+                  ? 'text-white/90 hover:text-white' 
+                  : 'text-[#0F4679]/90 hover:text-[#0F4679]'
+              }`}
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/80 group-hover:w-full transition-all duration-300"></span>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
+                isHeroSection ? 'bg-white/80' : 'bg-[#0F4679]/80'
+              }`}></span>
             </Link>
           ))}
         </nav>
@@ -301,7 +314,11 @@ const TransparentNavbar: FC = () => {
           {/* Catalog Button */}
           <button 
             onClick={handleCatalogDownload}
-            className="hidden lg:flex items-center text-xs font-semibold text-white/90 hover:text-white transition-colors duration-300"
+            className={`hidden lg:flex items-center text-xs font-semibold transition-colors duration-300 ${
+              isHeroSection 
+                ? 'text-white/90 hover:text-white' 
+                : 'text-[#0F4679]/90 hover:text-[#0F4679]'
+            }`}
             title="Download Catalog"
           >
             <Download size={16} className="mr-2" />
@@ -313,14 +330,22 @@ const TransparentNavbar: FC = () => {
             <input
               type="text"
               placeholder={searchPlaceholder}
-              className="search-input border border-white/30 bg-white/10 backdrop-blur-sm rounded-lg py-2 px-3 pr-8
+              className={`search-input border backdrop-blur-sm rounded-lg py-2 px-3 pr-8
                        w-[160px] lg:w-[200px]
-                       transition-all duration-300 text-xs text-white
-                       placeholder-white/70 focus:bg-white/20 focus:border-white/50"
+                       transition-all duration-300 text-xs
+                       ${
+                         isHeroSection 
+                           ? 'border-white/30 bg-white/10 text-white placeholder-white/70 focus:bg-white/20 focus:border-white/50'
+                           : 'border-[#0F4679]/30 bg-white/90 text-[#0F4679] placeholder-[#0F4679]/70 focus:bg-white focus:border-[#0F4679]/50'
+                       }`}
             />
             <button className="absolute right-3 top-1/2 transform -translate-y-1/2 transition-colors duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" 
-                   className="h-4 w-4 text-white/70 hover:text-white transition-colors duration-300" 
+                   className={`h-4 w-4 transition-colors duration-300 ${
+                     isHeroSection 
+                       ? 'text-white/70 hover:text-white' 
+                       : 'text-[#0F4679]/70 hover:text-[#0F4679]'
+                   }`}
                    fill="none" 
                    viewBox="0 0 24 24" 
                    stroke="currentColor"
@@ -333,7 +358,11 @@ const TransparentNavbar: FC = () => {
           {/* Mobile Menu Button */}
           <button 
             onClick={toggleMobileMenu}
-            className="lg:hidden flex items-center justify-center w-8 h-8 mb-2 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+            className={`lg:hidden flex items-center justify-center w-8 h-8 mb-2 rounded-md backdrop-blur-sm border transition-all duration-300 ${
+              isHeroSection 
+                ? 'bg-white/10 border-white/20 text-white hover:bg-white/20' 
+                : 'bg-white/90 border-[#0F4679]/20 text-[#0F4679] hover:bg-white'
+            }`}
             aria-label="Toggle mobile menu"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -345,13 +374,21 @@ const TransparentNavbar: FC = () => {
 
       {/* Mobile Navigation Menu */}
       <div className={`lg:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-        <div className="mx-4 mt-4 rounded-xl backdrop-blur-xl bg-white/10 border border-white/20">
+        <div className={`mx-4 mt-4 rounded-xl backdrop-blur-xl border ${
+          isHeroSection 
+            ? 'bg-white/10 border-white/20' 
+            : 'bg-white/90 border-[#0F4679]/20'
+        }`}>
           <nav className="px-4 py-2 space-y-1">
             {navigationLinks.map((link) => (
               <Link 
                 key={link.href} 
                 href={link.href} 
-                className="block py-3 text-sm font-semibold text-white/90 hover:text-white transition-colors duration-300"
+                className={`block py-3 text-sm font-semibold transition-colors duration-300 ${
+                  isHeroSection 
+                    ? 'text-white/90 hover:text-white' 
+                    : 'text-[#0F4679]/90 hover:text-[#0F4679]'
+                }`}
                 onClick={toggleMobileMenu}
               >
                 {link.label}
@@ -359,7 +396,11 @@ const TransparentNavbar: FC = () => {
             ))}
             <Link 
               href="/products"
-              className="block py-3 text-sm font-semibold text-white/90 hover:text-white transition-colors duration-300"
+              className={`block py-3 text-sm font-semibold transition-colors duration-300 ${
+                isHeroSection 
+                  ? 'text-white/90 hover:text-white' 
+                  : 'text-[#0F4679]/90 hover:text-[#0F4679]'
+              }`}
               onClick={toggleMobileMenu}
             >
               {productsText}

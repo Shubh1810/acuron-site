@@ -97,7 +97,7 @@ export default function ChatbotWidget() {
           <div className="absolute inset-0 bg-gradient-radial from-[#158C07] via-[#158C07]/90 to-[#0F6007] rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-300"></div>
           
           {/* Online Status Dot */}
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#158C07] rounded-full border-2 border-white animate-pulse shadow-lg"></div>
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#158C07] rounded-full border-2 border-white shadow-lg"></div>
           
           {/* Icon */}
           <div className="relative z-10 flex items-center justify-center h-full">
@@ -122,7 +122,7 @@ export default function ChatbotWidget() {
           </div>
 
           {/* Pulse Animation */}
-          <div className="absolute inset-0 rounded-full border-2 border-white/20 animate-ping opacity-75"></div>
+          <div className="absolute inset-0 rounded-full border-2 border-white/20 opacity-75"></div>
         </button>
       </motion.div>
 
@@ -151,7 +151,7 @@ export default function ChatbotWidget() {
                     />
                   </div>
                   {/* Online Status Indicator */}
-                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#158C07] rounded-full border-2 border-white animate-pulse"></div>
+                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#158C07] rounded-full border-2 border-white"></div>
                 </div>
                 <div>
                   <h3 className="font-rubik font-bold text-[#158C07] text-lg">Acuron Assistant</h3>

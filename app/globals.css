@@ -18,6 +18,11 @@
     scrollbar-width: none; /* Firefox */
   }
 
+  /* Hide scrollbars for all elements */
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-bold;
   }
@@ -65,35 +70,9 @@
   }
 }
 
-/* Custom animations */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
 
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
-/* Gradient outline rotation animation */
-@keyframes gradient-rotate {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
-.animate-gradient-rotate {
-  background-size: 200% 200%;
-  animation: gradient-rotate 3s ease infinite;
-}
 
 /* Smooth hover transitions */
 .hover-lift {
@@ -191,19 +170,7 @@ input:focus {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Loading Animation for FAQ Content */
-.faq-loading {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: .5;
-  }
-}
 
 /* Professional Typography Improvements */
 .professional-heading {
@@ -233,4 +200,22 @@ input:focus {
 .focus-professional:focus {
   outline: 2px solid #0f4679;
   outline-offset: 2px;
+}
+
+/* Tender Carousel Animation */
+@keyframes tender-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.tender-carousel {
+  animation: tender-scroll 30s linear infinite;
+}
+
+.tender-carousel:hover {
+  animation-play-state: paused;
 }

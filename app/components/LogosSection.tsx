@@ -5,11 +5,11 @@ const LogosSection = () => {
     { src: '/ce-mark.png', alt: 'CE Mark Certification', name: 'CE Mark' },
     { src: '/cdsco-logo.webp', alt: 'CDSCO Certification', name: 'CDSCO' },
     { src: '/NSIC.PNG', alt: 'NSIC Certification', name: 'NSIC' },
-    { src: '/msme.png', alt: 'MSME Certification', name: 'MSME' },
+    { src: '/msmep.png', alt: 'MSME Certification', name: 'MSME' },
     { src: '/who.png', alt: 'WHO Guidelines', name: 'WHO' },
     { src: '/Make_In_India.png', alt: 'Make In India', name: 'Make In India' },
     { src: '/atma.png', alt: 'ATMA Certification', name: 'ATMA' },
-    { src: '/iso.webp', alt: 'ISO Certification', name: 'ISO' },
+    { src: '/isop.png', alt: 'ISO Certification', name: 'ISO' },
   ];
 
   return (

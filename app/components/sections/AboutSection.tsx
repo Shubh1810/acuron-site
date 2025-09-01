@@ -234,9 +234,8 @@ export default function AboutSection() {
         {/* Infinite Carousel Tender Logos */}
         <div className="relative w-full overflow-hidden h-40 sm:h-52 lg:h-64 xl:h-80">
           <div 
-            className="flex hover:pause-animation"
+            className="flex tender-carousel"
             style={{
-              animation: 'carousel-scroll 40s linear infinite',
               width: 'max-content'
             }}
             role="region" 
@@ -245,10 +244,10 @@ export default function AboutSection() {
             {/* Render logos twice for seamless infinite loop */}
             {[...Array(2)].map((_, setIndex) => 
               Array.from({ length: 11 }).map((_, index) => (
-                                  <div 
-                    key={`set-${setIndex}-${index}`} 
-                    className="relative flex-shrink-0 -mx-2 sm:-mx-1 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 flex items-center justify-center"
-                  >
+                <div 
+                  key={`set-${setIndex}-${index}`} 
+                  className="relative flex-shrink-0 -mx-2 sm:-mx-1 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 flex items-center justify-center"
+                >
                   <Image 
                     src={`/tender${index + 1}.png`} 
                     alt={`Tender ${index + 1}`} 
@@ -263,22 +262,7 @@ export default function AboutSection() {
           </div>
         </div>
         
-        {/* CSS for carousel animation */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            @keyframes carousel-scroll {
-              0% {
-                transform: translateX(0);
-              }
-              100% {
-                transform: translateX(-50%);
-              }
-            }
-            .hover\\:pause-animation:hover {
-              animation-play-state: paused !important;
-            }
-          `
-        }} />
+
       </div>
     </section>
   );
