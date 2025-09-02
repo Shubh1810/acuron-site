@@ -244,9 +244,15 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative py-16 min-h-[1700px] sm:min-h-[1500px] md:min-h-[850px]" id="contact-us-section">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900">
-        <div className="relative z-10 h-full flex items-start sm:items-center">
+    <section className="relative py-16 min-h-[1500px] md:min-h-[900px]" id="contact-us-section">
+      {/* Simple animated gradient background behind content */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F4679] via-[#0C3864] to-[#145088]" />
+        <div className="absolute -top-20 -left-20 w-[60vw] h-[60vw] rounded-full bg-cyan-400/10 blur-3xl animate-pulse" />
+        <div className="absolute -bottom-32 -right-32 w-[70vw] h-[70vw] rounded-full bg-blue-500/10 blur-3xl animate-pulse" />
+      </div>
+
+      <div className="relative z-10 h-full flex items-start sm:items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-10">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10 lg:h-full">
               {/* Left Column - Map and Company Info */}
@@ -515,7 +521,6 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-              </div>
-      </section>
+    </section>
   );
 } 

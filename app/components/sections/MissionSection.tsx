@@ -124,9 +124,15 @@ export default function MissionSection() {
   });
 
   return (
-    <section className="relative py-16 min-h-[1000px] sm:min-h-[900px] md:min-h-[650px] text-white">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900">
-        <div className="relative z-10 flex flex-col h-full">
+    <section className="relative py-16 min-h-[900px] md:min-h-[650px] text-white overflow-hidden">
+      {/* Simple animated gradient background behind content */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F4679] via-[#0C3864] to-[#145088]" />
+        <div className="absolute -top-20 -left-20 w-[60vw] h-[60vw] rounded-full bg-cyan-400/10 blur-3xl animate-pulse" />
+        <div className="absolute -bottom-32 -right-32 w-[70vw] h-[70vw] rounded-full bg-blue-500/10 blur-3xl animate-pulse" />
+      </div>
+
+      <div className="relative z-10 flex flex-col h-full">
           <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-10 py-10 flex-grow flex flex-col justify-between">
             {/* Header Section */}
             <div className="relative mb-6">
@@ -255,7 +261,6 @@ export default function MissionSection() {
             </div>
           </div>
         </div>
-              </div>
-      </section>
+    </section>
   );
 }
