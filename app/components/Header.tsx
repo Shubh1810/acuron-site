@@ -185,8 +185,9 @@ const Header: FC = () => {
   // Function to actually download after newsletter signup
   const handleActualDownload = () => {
     const link = document.createElement('a');
-    link.href = '/catalog/acuron-catalog.pdf'; // Path to your catalog file
-    link.download = 'Acuron-Medical-Catalog.pdf';
+    const filePath = '/acuron-brochure.pdf';
+    link.href = encodeURI(filePath);
+    link.download = 'Acuron-Brochure.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

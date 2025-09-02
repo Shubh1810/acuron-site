@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FC, useState, useMemo, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
 import { Download } from 'lucide-react';
 import CountrySelector from './CountrySelector';
 import NewsletterModal from './NewsletterModal';
@@ -17,6 +18,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const { selectedCountry } = useCountryStore();
+  const pathname = usePathname();
 
   // Get localized content based on selected country
   const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
@@ -165,8 +167,9 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
   // Function to actually download after newsletter signup
   const handleActualDownload = () => {
     const link = document.createElement('a');
-    link.href = '/catalog/acuron-catalog.pdf';
-    link.download = 'Acuron-Medical-Catalog.pdf';
+    const filePath = '/acuron-brochure.pdf';
+    link.href = encodeURI(filePath);
+    link.download = 'Acuron-Brochure.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -178,6 +181,13 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     setIsMobileMenuOpen(prev => !prev);
   }, []);
 
+  // Conditionally use white logo only on homepage hero, colored logo elsewhere
+  const isHomeHero = isHeroSection && pathname === '/';
+  const logoSrc = isHomeHero ? '/acuron.png' : '/acprod.png';
+  const logoClass = isHomeHero 
+    ? 'object-contain scale-125 filter brightness-0 invert'
+    : 'object-contain';
+
   return (
     <nav className="relative z-20 w-full">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -185,13 +195,13 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
         <Link href="/" className="flex-shrink-0 hidden md:block md:ml-8">
           <div className="w-40 sm:w-44 h-16 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">
             <Image
-              src="/acuron.png"
+              src={logoSrc}
               alt="Acuron Logo"
               width={320}
               height={96}
               priority
               sizes="(max-width: 640px) 160px, 176px"
-              className="object-contain scale-125 filter brightness-0 invert"
+              className={logoClass}
             />
           </div>
         </Link>

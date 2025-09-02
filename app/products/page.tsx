@@ -175,7 +175,7 @@ export default function ProductsPage() {
                       case "All":
                         return {
                           icon: (
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                             </svg>
                           ),
@@ -187,9 +187,9 @@ export default function ProductsPage() {
                             <Image
                               src="/Health Icon Apron.png"
                               alt="Protective Apparel Icon"
-                              width={24}
-                              height={24}
-                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
                           displayName: "PPE Apparel"
@@ -200,9 +200,9 @@ export default function ProductsPage() {
                             <Image
                               src="/PPE Mask Icon.png"
                               alt="Masks & Headwear Icon"
-                              width={24}
-                              height={24}
-                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
                           displayName: "Masks & Headwear"
@@ -210,7 +210,7 @@ export default function ProductsPage() {
                       case "Shoe & Leg Protection":
                         return {
                           icon: (
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                           ),
@@ -222,9 +222,9 @@ export default function ProductsPage() {
                             <Image
                               src="/Vascular Surgery Icon.png"
                               alt="Drapes & Linens Icon"
-                              width={24}
-                              height={24}
-                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
                           displayName: "Drapes & Linens"
@@ -235,9 +235,9 @@ export default function ProductsPage() {
                             <Image
                               src="/PPE Suit Icon.png"
                               alt="Medical Kits Icon"
-                              width={24}
-                              height={24}
-                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
                           displayName: "Complete Medical Kits"
@@ -248,9 +248,9 @@ export default function ProductsPage() {
                             <Image
                               src="/PPE Gloves Icon.png"
                               alt="Medical Disposables Icon"
-                              width={24}
-                              height={24}
-                              className="object-contain h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
                           displayName: "Disposables"
@@ -258,7 +258,7 @@ export default function ProductsPage() {
                       default:
                         return {
                           icon: (
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                           ),
@@ -277,9 +277,9 @@ export default function ProductsPage() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                       onClick={() => setActiveCategory(category.name)}
-                      className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] group cursor-pointer"
+                      className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[70px] sm:min-w-[86px] md:min-w-[100px] group cursor-pointer"
                     >
-                                              <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-106 ${
+                                              <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-106 ${
                           isActive 
                             ? 'bg-gradient-to-br from-blue-500/20 to-teal-500/20 backdrop-blur-sm text-blue-700 shadow-lg border border-blue-300' 
                             : 'text-gray-600 hover:bg-gray-100 hover:backdrop-blur-sm'
