@@ -7,6 +7,7 @@ import AboutSection from './components/sections/AboutSection';
 import EventsSection from './components/sections/EventsSection';
 import MissionSection from './components/sections/MissionSection';
 import ProductPreviewSection from './components/sections/ProductPreviewSection';
+import TestimonialsSection from './components/sections/TestimonialsSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
 import LogosSection from './components/LogosSection';
@@ -25,9 +26,10 @@ export default function Home() {
   return (
     <>
       <GridBackground />
-      {/* Stack header and navbar naturally; navbar is sticky at top */}
-      <Header />
-      <TransparentNavbar isHeroSection={true} />
+      <div className="sticky top-0 z-[60]">
+        <Header />
+        <TransparentNavbar isHeroSection={false} /> {/* Remove hero conditional since wrapper is sticky */}
+      </div>
       <main className="min-h-screen w-full max-w-[100vw] overflow-x-hidden">
         <HeroSection 
           title="Revolutionizing Medical Supply with Precision & Care."
@@ -39,8 +41,9 @@ export default function Home() {
         <LogosSection />
         <EventsSection />
         <AboutSection />
-        <MissionSection />
         <ProductPreviewSection />
+        <MissionSection />
+        <TestimonialsSection />
         <ContactSection />
         <Footer />
       </main>

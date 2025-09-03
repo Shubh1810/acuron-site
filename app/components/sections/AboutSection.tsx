@@ -181,7 +181,7 @@ export default function AboutSection() {
               
               {/* Why Choose Us Content Overlay */}
               <div className="absolute inset-0 z-20 flex items-center justify-center p-3 md:p-8">
-                <div className="text-center max-w-3xl overflow-y-auto max-h-full">
+                <div className="text-left max-w-3xl overflow-y-auto max-h-full">
                   <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-[#0F4679] mb-2 md:mb-4 font-sans leading-tight">
                     {whyChooseTitle}
                   </h3>
