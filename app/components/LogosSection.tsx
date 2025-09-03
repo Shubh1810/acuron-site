@@ -30,14 +30,14 @@ const LogosSection = () => {
             {logos.map((logo, index) => (
               <div 
                 key={index} 
-                className={`flex items-center justify-center ${logo.name === 'GEMM' ? 'h-12 md:h-14 lg:h-16' : 'h-8 md:h-10 lg:h-12'}`}
+                className={`flex items-center justify-center ${logo.name === 'GEMM' ? 'h-20 md:h-24 lg:h-28' : 'h-16 md:h-20 lg:h-24'}`}
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={70}
-                  height={50}
-                  className="max-w-full max-h-full object-contain opacity-60 hover:opacity-80 transition-opacity duration-300 filter grayscale"
+                  width={logo.name === 'GEMM' ? 130 : 100}
+                  height={logo.name === 'GEMM' ? 94 : 72}
+                  className={`max-w-full max-h-full object-contain opacity-90 ${logo.name === 'GEMM' ? '' : 'filter grayscale'}`}
                   style={{ width: 'auto', height: 'auto' }}
                 />
               </div>

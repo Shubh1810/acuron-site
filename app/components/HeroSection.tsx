@@ -243,7 +243,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
   
   return (
     <div className="bg-white px-2 md:px-4 pb-0 md:pb-4 w-full max-w-[100vw] overflow-x-hidden">
-      <div className="relative h-[80vh] min-h-[500px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden w-full">
+      <div className="relative h-[70vh] sm:h-[68vh] md:h-[66vh] lg:h-[62vh] min-h-[420px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden w-full">
         {/* Background Image */}
         <div 
           className="absolute inset-0 w-full h-full"
