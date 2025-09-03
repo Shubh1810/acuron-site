@@ -63,18 +63,8 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     },
   ], [selectedCountry]);
 
-  // Products dropdown categories - Food, Health, Pharma
+  // Products dropdown categories - Health, Food, Pharma (Health first)
   const productCategories = useMemo(() => [
-    {
-      label: getLocalizedContent('Food', {
-        de: 'Lebensmittel',
-        fr: 'Alimentation',
-        ja: '食品',
-        zh: '食品',
-        pt: 'Alimentação'
-      }),
-      href: '/products'
-    },
     {
       label: getLocalizedContent('Health', {
         de: 'Gesundheit',
@@ -82,6 +72,16 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
         ja: '健康',
         zh: '健康',
         pt: 'Saúde'
+      }),
+      href: '/products'
+    },
+    {
+      label: getLocalizedContent('Food', {
+        de: 'Lebensmittel',
+        fr: 'Alimentation',
+        ja: '食品',
+        zh: '食品',
+        pt: 'Alimentação'
       }),
       href: '/products'
     },
@@ -157,7 +157,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
   const logoClass = 'object-contain';
 
   return (
-    <nav className={`${isHomeHero ? 'sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-200/50' : 'relative z-20'} w-full max-w-[100vw] overflow-x-hidden transition-all duration-300`}>
+    <nav className={`${isHomeHero ? 'sticky top-0 z-[60] bg-white/95 backdrop-blur-md shadow-sm' : 'relative z-[60]'} w-full max-w-[100vw] overflow-visible transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-2 sm:px-4 py-1.5 sm:py-2 flex justify-between items-center w-full">
         {/* Logo - Hidden on mobile */}
         <Link href="/" className="flex-shrink-0 hidden md:block md:ml-4 lg:ml-8">
@@ -212,7 +212,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
             
             {/* Dropdown Menu */}
             <div 
-              className={`absolute top-full left-0 mt-3 w-80 z-50 transition-all duration-500 ease-out transform-gpu ${
+              className={`absolute top-full left-0 mt-3 w-80 z-[100] transition-all duration-500 ease-out transform-gpu ${
                 isProductsDropdownOpen 
                   ? 'opacity-100 translate-y-0 visible scale-100' 
                   : 'opacity-0 -translate-y-4 invisible scale-95'

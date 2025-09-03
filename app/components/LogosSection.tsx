@@ -30,7 +30,7 @@ const LogosSection = () => {
             {logos.map((logo, index) => (
               <div 
                 key={index} 
-                className={`flex items-center justify-center ${logo.name === 'GEMM' ? 'h-10 md:h-12 lg:h-14' : 'h-8 md:h-10 lg:h-12'}`}
+                className={`flex items-center justify-center ${logo.name === 'GEMM' ? 'h-12 md:h-14 lg:h-16' : 'h-8 md:h-10 lg:h-12'}`}
               >
                 <Image
                   src={logo.src}

@@ -252,15 +252,15 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            filter: 'brightness(0.4)'
+            filter: 'brightness(0.5)'
           }}
         />
 
         {/* Top Overlay gradient */}
-        <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[#0F4679]/80 to-transparent pointer-events-none" style={{ height: '40%' }} />
+        <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[#0F4679]/50 to-transparent pointer-events-none" style={{ height: '40%' }} />
         
         {/* Bottom Overlay gradient */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679]/80 to-transparent pointer-events-none" style={{ height: '40%' }} />
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679]/50 to-transparent pointer-events-none" style={{ height: '40%' }} />
 
 
 
@@ -305,9 +305,9 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <div className="relative group">
               {/* Animated Web3 Gradient Background */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 rounded-full blur-sm opacity-70 group-hover:opacity-100 animate-pulse group-hover:animate-none transition-all duration-300"></div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-lime-300 via-green-300 to-emerald-300 rounded-full blur-md opacity-50 group-hover:opacity-75 animate-ping group-hover:animate-pulse transition-all duration-500"></div>
-              <div className="absolute -inset-2 bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 rounded-full blur-lg opacity-30 group-hover:opacity-60 animate-bounce group-hover:animate-pulse transition-all duration-700"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 rounded-full blur-[2px] opacity-70 group-hover:opacity-100 animate-pulse group-hover:animate-none transition-all duration-300"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-lime-300 via-green-300 to-emerald-300 rounded-full blur-[4px] opacity-50 group-hover:opacity-75 animate-ping group-hover:animate-pulse transition-all duration-500"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 rounded-full blur-[6px] opacity-30 group-hover:opacity-60 animate-bounce group-hover:animate-pulse transition-all duration-700"></div>
               
             <Link 
               href={ctaLink}
