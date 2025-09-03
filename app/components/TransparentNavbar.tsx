@@ -63,65 +63,35 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     },
   ], [selectedCountry]);
 
-  // Products dropdown categories
+  // Products dropdown categories - Food, Health, Pharma
   const productCategories = useMemo(() => [
     {
-      label: getLocalizedContent('Protective Apparel', {
-        de: 'Schutzkleidung',
-        fr: 'Vêtements de protection',
-        ja: '保護服',
-        zh: '防护服',
-        pt: 'Vestuário de Proteção'
+      label: getLocalizedContent('Food', {
+        de: 'Lebensmittel',
+        fr: 'Alimentation',
+        ja: '食品',
+        zh: '食品',
+        pt: 'Alimentação'
       }),
       href: '/products'
     },
     {
-      label: getLocalizedContent('Masks & Headwear', {
-        de: 'Masken & Kopfbedeckungen',
-        fr: 'Masques et couvre-chefs',
-        ja: 'マスク・帽子',
-        zh: '口罩和头饰',
-        pt: 'Máscaras e Chapéus'
+      label: getLocalizedContent('Health', {
+        de: 'Gesundheit',
+        fr: 'Santé',
+        ja: '健康',
+        zh: '健康',
+        pt: 'Saúde'
       }),
       href: '/products'
     },
     {
-      label: getLocalizedContent('Shoe & Leg Protection', {
-        de: 'Schuh- & Beinschutz',
-        fr: 'Protection des chaussures et jambes',
-        ja: '靴・脚保護',
-        zh: '鞋套和腿部保护',
-        pt: 'Proteção de Sapatos e Pernas'
-      }),
-      href: '/products'
-    },
-    {
-      label: getLocalizedContent('Drapes Linens & Underpads', {
-        de: 'Tücher, Bettwäsche & Unterlagen',
-        fr: 'Draps, linge et alèses',
-        ja: 'ドレープ・リネン・パッド',
-        zh: '手术巾、床单和护垫',
-        pt: 'Campos, Roupas de Cama e Forrações'
-      }),
-      href: '/products'
-    },
-    {
-      label: getLocalizedContent('Medical Kits', {
-        de: 'Medizinische Kits',
-        fr: 'Kits médicaux',
-        ja: '医療キット',
-        zh: '医疗套件',
-        pt: 'Kits Médicos'
-      }),
-      href: '/products'
-    },
-    {
-      label: getLocalizedContent('General Medical & Surgical Disposables', {
-        de: 'Allgemeine medizinische & chirurgische Einwegartikel',
-        fr: 'Jetables médicaux et chirurgicaux généraux',
-        ja: '一般医療・外科用使い捨て用品',
-        zh: '一般医疗和手术一次性用品',
-        pt: 'Descartáveis Médicos e Cirúrgicos Gerais'
+      label: getLocalizedContent('Pharma', {
+        de: 'Pharma',
+        fr: 'Pharma',
+        ja: 'ファルマ',
+        zh: '制药',
+        pt: 'Farmacêutica'
       }),
       href: '/products'
     }
@@ -181,19 +151,17 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     setIsMobileMenuOpen(prev => !prev);
   }, []);
 
-  // Conditionally use white logo only on homepage hero, colored logo elsewhere
+  // Conditionally use white logo only on homepage hero overlay, colored logo for sticky navbar
   const isHomeHero = isHeroSection && pathname === '/';
-  const logoSrc = isHomeHero ? '/acuron.png' : '/acprod.png';
-  const logoClass = isHomeHero 
-    ? 'object-contain scale-125 filter brightness-0 invert'
-    : 'object-contain';
+  const logoSrc = '/acprod.png'; // Always use colored logo for sticky navbar
+  const logoClass = 'object-contain';
 
   return (
-    <nav className="relative z-20 w-full">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <nav className={`${isHomeHero ? 'fixed top-[24px] sm:top-[28px] md:top-[32px] left-0 right-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-200/50' : 'relative z-20'} w-full max-w-[100vw] overflow-x-hidden transition-all duration-300`}>
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 py-1.5 sm:py-2 flex justify-between items-center w-full">
         {/* Logo - Hidden on mobile */}
-        <Link href="/" className="flex-shrink-0 hidden md:block md:ml-8">
-          <div className="w-40 sm:w-44 h-16 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">
+        <Link href="/" className="flex-shrink-0 hidden md:block md:ml-4 lg:ml-8">
+          <div className="w-32 sm:w-36 md:w-40 lg:w-44 h-12 sm:h-14 md:h-16 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">
             <Image
               src={logoSrc}
               alt="Acuron Logo"
@@ -210,20 +178,14 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
         <div className="md:hidden"></div>
         
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-4 xl:space-x-8">
           {/* HOME Link */}
           <Link 
             href="/" 
-            className={`text-xs font-semibold relative group transition-colors duration-300 ${
-              isHeroSection 
-                ? 'text-white/90 hover:text-white' 
-                : 'text-[#0F4679]/90 hover:text-[#0F4679]'
-            }`}
+            className="text-xs font-semibold relative group transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
           >
             {navigationLinks[0].label}
-            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-              isHeroSection ? 'bg-white/80' : 'bg-[#0F4679]/80'
-            }`}></span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-[#0F4679]/80"></span>
           </Link>
 
           {/* Products Dropdown */}
@@ -234,11 +196,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
           >
             <Link 
               href="/products"
-              className={`flex items-center text-xs font-semibold relative group transition-colors duration-300 ${
-                isHeroSection 
-                  ? 'text-white/90 hover:text-white' 
-                  : 'text-[#0F4679]/90 hover:text-[#0F4679]'
-              }`}
+              className="flex items-center text-xs font-semibold relative group transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
             >
               {productsText}
               <svg 
@@ -249,9 +207,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-                isHeroSection ? 'bg-white/80' : 'bg-[#0F4679]/80'
-              }`}></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-[#0F4679]/80"></span>
             </Link>
             
             {/* Dropdown Menu */}
@@ -305,30 +261,20 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
             <Link 
               key={link.href} 
               href={link.href} 
-              className={`text-xs font-semibold relative group transition-colors duration-300 ${
-                isHeroSection 
-                  ? 'text-white/90 hover:text-white' 
-                  : 'text-[#0F4679]/90 hover:text-[#0F4679]'
-              }`}
+              className="text-xs font-semibold relative group transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
             >
               {link.label}
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-                isHeroSection ? 'bg-white/80' : 'bg-[#0F4679]/80'
-              }`}></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-[#0F4679]/80"></span>
             </Link>
           ))}
         </nav>
         
         {/* Right Side Actions */}
-        <div className="flex items-center space-x-4 md:mr-8">
+        <div className="flex items-center space-x-2 sm:space-x-4 md:mr-4 lg:mr-8">
           {/* Catalog Button */}
           <button 
             onClick={handleCatalogDownload}
-            className={`hidden lg:flex items-center text-xs font-semibold transition-colors duration-300 ${
-              isHeroSection 
-                ? 'text-white/90 hover:text-white' 
-                : 'text-[#0F4679]/90 hover:text-[#0F4679]'
-            }`}
+            className="hidden lg:flex items-center text-xs font-semibold transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
             title="Download Catalog"
           >
             <Download size={16} className="mr-2" />
@@ -340,22 +286,11 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
             <input
               type="text"
               placeholder={searchPlaceholder}
-              className={`search-input border backdrop-blur-sm rounded-lg py-2 px-3 pr-8
-                       w-[160px] lg:w-[200px]
-                       transition-all duration-300 text-xs
-                       ${
-                         isHeroSection 
-                           ? 'border-white/30 bg-white/10 text-white placeholder-white/70 focus:bg-white/20 focus:border-white/50'
-                           : 'border-[#0F4679]/30 bg-white/90 text-[#0F4679] placeholder-[#0F4679]/70 focus:bg-white focus:border-[#0F4679]/50'
-                       }`}
+              className="search-input border backdrop-blur-sm rounded-lg py-1.5 sm:py-2 px-2 sm:px-3 pr-6 sm:pr-8 w-[120px] sm:w-[140px] md:w-[160px] lg:w-[180px] xl:w-[200px] transition-all duration-300 text-xs border-[#0F4679]/30 bg-white/90 text-[#0F4679] placeholder-[#0F4679]/70 focus:bg-white focus:border-[#0F4679]/50"
             />
             <button className="absolute right-3 top-1/2 transform -translate-y-1/2 transition-colors duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" 
-                   className={`h-4 w-4 transition-colors duration-300 ${
-                     isHeroSection 
-                       ? 'text-white/70 hover:text-white' 
-                       : 'text-[#0F4679]/70 hover:text-[#0F4679]'
-                   }`}
+                   className="h-4 w-4 transition-colors duration-300 text-[#0F4679]/70 hover:text-[#0F4679]"
                    fill="none" 
                    viewBox="0 0 24 24" 
                    stroke="currentColor"
@@ -368,11 +303,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
           {/* Mobile Menu Button */}
           <button 
             onClick={toggleMobileMenu}
-            className={`lg:hidden flex items-center justify-center w-8 h-8 mb-2 rounded-md backdrop-blur-sm border transition-all duration-300 ${
-              isHeroSection 
-                ? 'bg-white/10 border-white/20 text-white hover:bg-white/20' 
-                : 'bg-white/90 border-[#0F4679]/20 text-[#0F4679] hover:bg-white'
-            }`}
+            className="lg:hidden flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 mb-1 sm:mb-2 rounded-md backdrop-blur-sm border transition-all duration-300 bg-white/90 border-[#0F4679]/20 text-[#0F4679] hover:bg-white"
             aria-label="Toggle mobile menu"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -384,21 +315,13 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
 
       {/* Mobile Navigation Menu */}
       <div className={`lg:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-        <div className={`mx-4 mt-4 rounded-xl backdrop-blur-xl border ${
-          isHeroSection 
-            ? 'bg-white/10 border-white/20' 
-            : 'bg-white/90 border-[#0F4679]/20'
-        }`}>
+        <div className="mx-4 mt-4 rounded-xl backdrop-blur-xl border bg-white/90 border-[#0F4679]/20">
           <nav className="px-4 py-2 space-y-1">
             {navigationLinks.map((link) => (
               <Link 
                 key={link.href} 
                 href={link.href} 
-                className={`block py-3 text-sm font-semibold transition-colors duration-300 ${
-                  isHeroSection 
-                    ? 'text-white/90 hover:text-white' 
-                    : 'text-[#0F4679]/90 hover:text-[#0F4679]'
-                }`}
+                className="block py-3 text-sm font-semibold transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
                 onClick={toggleMobileMenu}
               >
                 {link.label}
@@ -406,11 +329,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
             ))}
             <Link 
               href="/products"
-              className={`block py-3 text-sm font-semibold transition-colors duration-300 ${
-                isHeroSection 
-                  ? 'text-white/90 hover:text-white' 
-                  : 'text-[#0F4679]/90 hover:text-[#0F4679]'
-              }`}
+              className="block py-3 text-sm font-semibold transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
               onClick={toggleMobileMenu}
             >
               {productsText}

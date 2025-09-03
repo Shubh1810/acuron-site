@@ -254,7 +254,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${rubik.variable} font-sans`}>
+      <body className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${rubik.variable} font-sans w-full max-w-[100vw] overflow-x-hidden`}>
         <CacheCleanupClient />
         {children}
         <ChatbotWidget />

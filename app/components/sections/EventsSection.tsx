@@ -47,7 +47,7 @@ export default function EventsSection() {
     },
     {
       id: 2,
-      name: "Indiamed.Expo",
+      name: "IndiaMed Expo",
       location: "Noida, India",
       date: "May 23-25, 2025",
       description: "Brochure Distribution",

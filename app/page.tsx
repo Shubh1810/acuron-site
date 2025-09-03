@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
+import TransparentNavbar from './components/TransparentNavbar';
 import HeroSection from './components/HeroSection';
 import GridBackground from './components/ui/grid-background';
 import AboutSection from './components/sections/AboutSection';
@@ -25,7 +26,8 @@ export default function Home() {
     <>
       <GridBackground />
       <Header />
-      <main className="min-h-screen">
+      <TransparentNavbar isHeroSection={true} />
+      <main className="min-h-screen pt-[70px] sm:pt-[80px] md:pt-[90px] lg:pt-[100px] w-full max-w-[100vw] overflow-x-hidden">
         <HeroSection 
           title="Revolutionizing Medical Supply with Precision & Care."
           subtitle="India's trusted manufacturer of ISO-certified PPE and medical disposable products and kits, empowering hospitals nationwide."

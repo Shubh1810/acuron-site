@@ -245,7 +245,7 @@ const Header: FC = () => {
           backgroundSize: '8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px'
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 py-1.5 flex md:justify-end justify-between items-center">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-1 sm:py-1.5 flex md:justify-end justify-between items-center">
           {/* Mobile Logo - Left side, only visible on mobile */}
           <Link href="/" className="md:hidden flex-shrink-0">
             <div className="w-28 h-8 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">

@@ -242,8 +242,8 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
   const { keyPhrase, titleParts, hasKeyPhrase } = getKeyPhraseAndParts();
   
   return (
-    <div className="bg-white px-2 md:px-4 pb-0 md:pb-4 pt-[60px] md:pt-[50px]">
-      <div className="relative h-[calc(80vh-60px-1rem)] md:h-[calc(80vh-50px-1rem)] min-h-[500px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden">
+    <div className="bg-white px-2 md:px-4 pb-0 md:pb-4 pt-[60px] md:pt-[50px] w-full max-w-[100vw] overflow-x-hidden">
+      <div className="relative h-[calc(80vh-60px-1rem)] md:h-[calc(80vh-50px-1rem)] min-h-[500px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden w-full">
         {/* Background Image */}
         <div 
           className="absolute inset-0 w-full h-full"
@@ -262,8 +262,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
         {/* Bottom Overlay gradient */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679]/80 to-transparent pointer-events-none" style={{ height: '40%' }} />
 
-      {/* Transparent Navigation */}
-      <TransparentNavbar isHeroSection={true} />
+
 
       {/* Hero Content */}
       <div className="absolute inset-0 z-10 flex items-center justify-center px-2 sm:px-6 lg:px-8 text-white">
