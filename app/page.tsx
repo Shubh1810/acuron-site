@@ -25,9 +25,10 @@ export default function Home() {
   return (
     <>
       <GridBackground />
+      {/* Stack header and navbar naturally; navbar is sticky at top */}
       <Header />
       <TransparentNavbar isHeroSection={true} />
-      <main className="min-h-screen pt-[70px] sm:pt-[80px] md:pt-[90px] lg:pt-[100px] w-full max-w-[100vw] overflow-x-hidden">
+      <main className="min-h-screen w-full max-w-[100vw] overflow-x-hidden mt-px">
         <HeroSection 
           title="Revolutionizing Medical Supply with Precision & Care."
           subtitle="India's trusted manufacturer of ISO-certified PPE and medical disposable products and kits, empowering hospitals nationwide."

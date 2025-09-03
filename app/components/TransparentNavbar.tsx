@@ -157,7 +157,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
   const logoClass = 'object-contain';
 
   return (
-    <nav className={`${isHomeHero ? 'fixed top-[24px] sm:top-[28px] md:top-[32px] left-0 right-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-200/50' : 'relative z-20'} w-full max-w-[100vw] overflow-x-hidden transition-all duration-300`}>
+    <nav className={`${isHomeHero ? 'sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-200/50' : 'relative z-20'} w-full max-w-[100vw] overflow-x-hidden transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-2 sm:px-4 py-1.5 sm:py-2 flex justify-between items-center w-full">
         {/* Logo - Hidden on mobile */}
         <Link href="/" className="flex-shrink-0 hidden md:block md:ml-4 lg:ml-8">

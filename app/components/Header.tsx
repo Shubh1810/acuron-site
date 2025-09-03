@@ -205,7 +205,7 @@ const Header: FC = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full">
+    <header className="w-full">
       {/* Top Navigation Bar - Glassmorphism effect with dot pattern */}
       <div 
         className="bg-white/70 backdrop-blur-md relative"
