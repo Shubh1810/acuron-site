@@ -57,12 +57,12 @@ export default function EventsSection() {
     },
     {
       id: 3,
-      name: "G-Mac",
+      name: "GMEC India 2025",
       location: "Bangalore, India",
       date: "June 20-22, 2025",
       description: "Visit & Brochure Distribution",
       boothNumber: "C-18",
-      image: "/IMG_8318.PNG",
+      image: "/gmec.jpeg",
       category: "Expo"
     },
     {
@@ -72,7 +72,7 @@ export default function EventsSection() {
       date: "July 11-13, 2025",
       description: "Brochure Distribution",
       boothNumber: "D3.72",
-      image: "/IMG_8316.PNG",
+      image: "/indiahelth.webp",
       category: "Expo"
     },
     {
@@ -82,7 +82,7 @@ export default function EventsSection() {
       date: "July 25-27, 2025",
       description: "Acuron Booth",
       boothNumber: "B-42",
-      image: "/IMG_8317.JPG",
+      image: "/IMG_8318.JPG",
       category: "Expo"
     },
     {
@@ -92,7 +92,7 @@ export default function EventsSection() {
       date: "August 22-23, 2025",
       description: "Visit & Brochure Distribution",
       boothNumber: "C-15",
-      image: "/IMG_8318.PNG",
+      image: "/IMG_8317.PNG",
       category: "Expo"
     },
     {

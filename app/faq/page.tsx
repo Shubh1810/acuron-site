@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import TransparentNavbar from "../components/TransparentNavbar";
 import Footer from "../components/sections/Footer";
 import { useCountryStore } from "../../lib/store";
+import Image from "next/image";
 
 export default function FAQPage() {
   const { selectedCountry } = useCountryStore();
@@ -779,8 +780,8 @@ export default function FAQPage() {
                   <div className="flex items-center">
                     <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#0F4679] to-[#158C07] flex items-center justify-center mr-4 shadow-sm">
                       {categoryIndex === 0 && (
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 7a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2zM9 9h6v6H9V9z" />
+                        <svg className="w-6 h-6 text-white" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                          <path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" />
                         </svg>
                       )}
                       {categoryIndex === 1 && (
