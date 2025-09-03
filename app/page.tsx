@@ -7,6 +7,7 @@ import AboutSection from './components/sections/AboutSection';
 import EventsSection from './components/sections/EventsSection';
 import MissionSection from './components/sections/MissionSection';
 import ProductPreviewSection from './components/sections/ProductPreviewSection';
+import QualityStandardsSection from './components/sections/QualityStandardsSection';
 import TestimonialsSection from './components/sections/TestimonialsSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
@@ -39,10 +40,11 @@ export default function Home() {
         />
 
         <LogosSection />
-        <EventsSection />
-        <AboutSection />
-        <ProductPreviewSection />
         <MissionSection />
+        <AboutSection />
+        <QualityStandardsSection />
+        <ProductPreviewSection />
+        <EventsSection />
         <TestimonialsSection />
         <ContactSection />
         <Footer />
