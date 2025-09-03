@@ -82,7 +82,7 @@ export default function EventsSection() {
       date: "July 25-27, 2025",
       description: "Acuron Booth",
       boothNumber: "B-42",
-      image: "/IMG_8318.JPG",
+      image: "/IMG_8316.PNG",
       category: "Expo"
     },
     {
@@ -92,7 +92,7 @@ export default function EventsSection() {
       date: "August 22-23, 2025",
       description: "Visit & Brochure Distribution",
       boothNumber: "C-15",
-      image: "/IMG_8317.PNG",
+      image: "/IMG_8318.PNG",
       category: "Expo"
     },
     {
@@ -102,7 +102,7 @@ export default function EventsSection() {
       date: "September 14-16, 2025",
       description: "Brochure Distribution",
       boothNumber: "D-28",
-      image: "/IMG_8316.PNG",
+      image: "/gujmed.jpg",
       category: "Expo"
     },
     {
@@ -112,7 +112,7 @@ export default function EventsSection() {
       date: "September 15-26, 2025",
       description: "Brochure Distribution",
       boothNumber: "E-35",
-      image: "/IMG_8317.JPG",
+      image: "/IMG_8316.PNG",
       category: "Expo"
     },
     {
@@ -122,7 +122,7 @@ export default function EventsSection() {
       date: "November 2025",
       description: "Brochure Distribution",
       boothNumber: "F-12",
-      image: "/IMG_8318.PNG",
+      image: "/bihar.png",
       category: "Expo"
     },
     {
@@ -142,7 +142,7 @@ export default function EventsSection() {
       date: "December 19-21, 2025",
       description: "Brochure Distribution",
       boothNumber: "H-33",
-      image: "/IMG_8317.JPG",
+      image: "/IMG_8318.PNG",
       category: "Expo"
     }
   ];

@@ -232,7 +232,7 @@ export default function AboutSection() {
         </div>
         
         {/* Infinite Carousel Tender Logos */}
-        <div className="relative w-full overflow-hidden h-40 sm:h-52 lg:h-64 xl:h-80">
+        <div className="relative w-full overflow-hidden h-48 sm:h-64 lg:h-72 xl:h-80">
           <div 
             className="flex tender-carousel"
             style={{
@@ -246,13 +246,13 @@ export default function AboutSection() {
               Array.from({ length: 11 }).map((_, index) => (
                 <div 
                   key={`set-${setIndex}-${index}`} 
-                  className="relative flex-shrink-0 -mx-2 sm:-mx-1 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 flex items-center justify-center"
+                  className="relative flex-shrink-0 -mx-3 sm:-mx-4 lg:-mx-6 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 flex items-center justify-center"
                 >
                   <Image 
                     src={`/tender${index + 1}.png`} 
                     alt={`Tender ${index + 1}`} 
-                    width={400} 
-                    height={400}
+                    width={600} 
+                    height={600}
                     className="object-contain max-w-full max-h-full"
                     loading="lazy"
                   />
