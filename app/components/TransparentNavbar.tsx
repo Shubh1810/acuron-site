@@ -235,7 +235,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
                     className="group flex items-center px-4 py-3 text-sm font-medium text-gray-800 rounded-xl transition-all duration-300 hover:bg-white/70 hover:shadow-md"
                     onClick={() => setIsProductsDropdownOpen(false)}
                   >
-                    <div className="w-2.5 h-2.5 rounded-full mr-3 bg-gradient-to-r from-blue-500 to-blue-600 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="w-2.5 h-2.5 rounded-full mr-3 bg-gradient-to-r from-[#0F4679] to-[#0F4679]/90 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <span className="group-hover:translate-x-1 transition-transform duration-300">{category.label}</span>
                   </Link>
                 ))}
