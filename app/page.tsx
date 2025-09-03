@@ -8,6 +8,7 @@ import EventsSection from './components/sections/EventsSection';
 import MissionSection from './components/sections/MissionSection';
 import ProductPreviewSection from './components/sections/ProductPreviewSection';
 import QualityStandardsSection from './components/sections/QualityStandardsSection';
+import TendersSection from './components/sections/TendersSection';
 import TestimonialsSection from './components/sections/TestimonialsSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
@@ -49,6 +50,8 @@ export default function Home() {
         <QualityStandardsSection />
         <SectionDivider />
         <ProductPreviewSection />
+        <SectionDivider />
+        <TendersSection />
         <SectionDivider />
         <EventsSection />
         <SectionDivider />

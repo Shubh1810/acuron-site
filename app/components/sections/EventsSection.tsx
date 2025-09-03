@@ -172,11 +172,11 @@ export default function EventsSection() {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section className="py-16 bg-[#0F4679] relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #0F4679 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
           backgroundSize: '20px 20px'
         }} />
       </div>
@@ -192,18 +192,18 @@ export default function EventsSection() {
             viewport={{ once: true }}
             className="lg:col-span-4 text-center lg:text-left"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-[#0F4679]/10 rounded-2xl border border-[#0F4679]/20 mb-6">
-              <svg className="w-4 h-4 text-[#0F4679] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-2xl border border-white/20 mb-6">
+              <svg className="w-4 h-4 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <span className="text-sm font-bold text-[#0F4679] tracking-wide">{eventsText.toUpperCase()}</span>
+              <span className="text-sm font-bold text-white tracking-wide">{eventsText.toUpperCase()}</span>
             </div>
             
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-inter leading-tight">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-inter leading-tight">
               {joinUsText} at Industry Events
             </h2>
             
-            <p className="text-gray-600 text-base leading-relaxed mb-8">
+            <p className="text-blue-100 text-base leading-relaxed mb-8">
               Connect with us at leading medical exhibitions and conferences worldwide. Discover our latest innovations and solutions.
             </p>
 
@@ -231,7 +231,7 @@ export default function EventsSection() {
                 </svg>
               </button>
 
-              <div className="text-sm text-gray-500 font-medium">
+              <div className="text-sm text-blue-200 font-medium">
                 {currentIndex + 1} / {Math.ceil(events.length / 2)}
               </div>
             </div>

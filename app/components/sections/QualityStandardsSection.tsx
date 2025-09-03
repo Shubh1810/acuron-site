@@ -18,7 +18,7 @@ export default function QualityStandardsSection() {
 
 
   return (
-    <section className="py-12 bg-gray-50 relative overflow-hidden">
+    <section className="py-12 bg-[#0F4679] relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
@@ -29,7 +29,7 @@ export default function QualityStandardsSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-white mb-4">
             {getLocalizedContent('Quality Assurance Policy', {
               de: 'Qualitätssicherungsrichtlinie',
               fr: 'Politique d\'Assurance Qualité',
@@ -39,7 +39,7 @@ export default function QualityStandardsSection() {
             })}
           </h2>
           
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-blue-100 max-w-2xl mx-auto">
             {getLocalizedContent('At Acuron Products, quality is our top priority. We are committed to manufacturing and delivering superior surgical disposables and medical devices that meet international standards.', {
               de: 'Bei Acuron Products ist Qualität unsere oberste Priorität. Wir verpflichten uns zur Herstellung und Lieferung hochwertiger chirurgischer Einwegartikel.',
               fr: 'Chez Acuron Products, la qualité est notre priorité absolue. Nous nous engageons à fabriquer des dispositifs médicaux supérieurs.',
@@ -171,7 +171,7 @@ export default function QualityStandardsSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-gray-600 max-w-3xl mx-auto">
+          <p className="text-blue-100 max-w-3xl mx-auto">
             {getLocalizedContent('With advanced QC systems, a dedicated team, and a customer-centric approach, we aim to exceed expectations and maintain our reputation as a trusted name in the healthcare industry.', {
               de: 'Mit fortschrittlichen QC-Systemen, einem engagierten Team und einem kundenorientierten Ansatz wollen wir Erwartungen übertreffen.',
               fr: 'Avec des systèmes QC avancés, une équipe dédiée et une approche centrée sur le client, nous visons à dépasser les attentes.',
