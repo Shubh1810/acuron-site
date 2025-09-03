@@ -14,7 +14,7 @@ const LogosSection = () => {
   ];
 
   return (
-    <section className="bg-white py-4 md:py-8">
+    <section className="bg-white py-2 md:py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-6">
           {/* Left side text */}
@@ -30,13 +30,13 @@ const LogosSection = () => {
             {logos.map((logo, index) => (
               <div 
                 key={index} 
-                className={`flex items-center justify-center ${logo.name === 'GEMM' ? 'h-48 md:h-60 lg:h-72' : 'h-16 md:h-20 lg:h-24'}`}
+                className={`flex items-center justify-center ${logo.name === 'GEMM' ? 'h-56 md:h-72 lg:h-80' : 'h-16 md:h-20 lg:h-24'}`}
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={logo.name === 'GEMM' ? 320 : 100}
-                  height={logo.name === 'GEMM' ? 230 : 72}
+                  width={logo.name === 'GEMM' ? 400 : 100}
+                  height={logo.name === 'GEMM' ? 288 : 72}
                   className={`max-w-full max-h-full object-contain opacity-90 ${logo.name === 'GEMM' ? '' : 'filter grayscale'}`}
                   style={{ width: 'auto', height: 'auto' }}
                 />

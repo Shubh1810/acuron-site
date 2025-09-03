@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Download, Mail, User, Building2 } from 'lucide-react';
+import { X, Download, Mail, User, Building2, Phone } from 'lucide-react';
 import { useCountryStore } from '../../lib/store';
 
 interface NewsletterModalProps {
@@ -14,6 +14,7 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     company: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -62,6 +63,14 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
     pt: 'Endereço de E-mail'
   });
 
+  const phoneText = getLocalizedContent('Phone Number', {
+    de: 'Telefonnummer',
+    fr: 'Numéro de téléphone',
+    ja: '電話番号',
+    zh: '电话号码',
+    pt: 'Número de Telefone'
+  });
+
   const companyText = getLocalizedContent('Company/Organization', {
     de: 'Firma/Organisation',
     fr: 'Entreprise/Organisation',
@@ -94,6 +103,14 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
     pt: 'Digite seu endereço de e-mail'
   });
 
+  const enterPhonePlaceholder = getLocalizedContent('Enter your phone number', {
+    de: 'Geben Sie Ihre Telefonnummer ein',
+    fr: 'Entrez votre numéro de téléphone',
+    ja: '電話番号を入力してください',
+    zh: '输入您的电话号码',
+    pt: 'Digite seu número de telefone'
+  });
+
   const enterCompanyPlaceholder = getLocalizedContent('Enter company name (optional)', {
     de: 'Firmenname eingeben (optional)',
     fr: 'Entrez le nom de l\'entreprise (optionnel)',
@@ -112,7 +129,7 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) return;
+    if (!formData.name || !formData.email || !formData.phone) return;
 
     setIsSubmitting(true);
     
@@ -126,7 +143,7 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
@@ -193,6 +210,23 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
               />
             </div>
 
+            {/* Phone Field */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <Phone size={16} className="inline mr-2" />
+                {phoneText} *
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder={enterPhonePlaceholder}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0F4679] focus:ring-2 focus:ring-[#0F4679]/20 transition-colors duration-200 text-sm"
+                required
+              />
+            </div>
+
             {/* Company Field */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -213,7 +247,7 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={!formData.name || !formData.email || isSubmitting}
+            disabled={!formData.name || !formData.email || !formData.phone || isSubmitting}
             className="w-full mt-6 bg-gradient-to-r from-[#0F4679] to-[#1E5A8D] text-white font-semibold py-3 px-6 rounded-xl hover:from-[#0D3C6B] hover:to-[#16599D] transform hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
           >
             {isSubmitting ? (
