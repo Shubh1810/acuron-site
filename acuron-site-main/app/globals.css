@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    overscroll-behavior: none;
+    overflow-x: hidden; /* Single declaration for horizontal scroll prevention */
+  }
+  
+  body {
+    @apply antialiased text-gray-800;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Hide scrollbars for all elements */
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-md inline-block transition duration-300 shadow-soft hover:shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-white text-white hover:bg-white hover:text-teal-900 font-bold py-3 px-8 rounded-md inline-block transition duration-300 shadow-soft hover:shadow-md;
+  }
+
+  .card {
+    @apply bg-white rounded-lg overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300;
+  }
+
+  .section-title {
+    @apply text-2xl font-semibold text-gray-800 px-8 relative inline-block;
+  }
+
+  .section-title::after {
+    @apply content-[''] absolute bottom-0 left-0 right-0 h-px bg-gray-300;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-r from-teal-700 to-blue-800;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-blue-600;
+  }
+}
+
+
+
+
+
+/* Smooth hover transitions */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Hide WebKit scrollbar but keep functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scrollbar hide utility class */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Add these styles to remove input focus outlines globally */
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Specifically for the search input */
+.search-input {
+  outline: none !important;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@500&display=swap');
+
+/* Additional mobile viewport adjustments */
+@media (max-width: 767px) {
+  /* Ensure scrollbar is visible and not hidden by browser UI on mobile */
+  html, body {
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+    position: relative;
+    touch-action: pan-y;
+  }
+  
+  /* Ensure scrollbar component is visible above all content */
+  div[class*="fixed right-0 z-50"] {
+    z-index: 9999 !important;
+    right: 0 !important;
+    opacity: 0.8;
+  }
+}
+
+/* Professional FAQ Styling */
+.faq-card:hover .faq-card-shadow {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.faq-category-header {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.faq-question:hover {
+  background-color: #fafafa;
+}
+
+.faq-answer-highlight {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-left: 4px solid #0f4679;
+}
+
+/* Professional Medical Gradient */
+.medical-gradient {
+  background: linear-gradient(135deg, #0f4679 0%, #158c07 100%);
+}
+
+/* Smooth Transitions for Professional Feel */
+.transition-all-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Professional Button Hover Effects */
+.professional-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.professional-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* Professional Typography Improvements */
+.professional-heading {
+  font-variation-settings: 'wght' 700;
+  letter-spacing: -0.025em;
+}
+
+.professional-body {
+  font-variation-settings: 'wght' 400;
+  line-height: 1.7;
+}
+
+/* Medical Badge Styling */
+.medical-badge {
+  background: rgba(15, 70, 121, 0.05);
+  border: 1px solid rgba(15, 70, 121, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Professional Card Borders */
+.card-border-professional {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Improved Accessibility Focus States */
+.focus-professional:focus {
+  outline: 2px solid #0f4679;
+  outline-offset: 2px;
+}
+
+/* Tender Carousel Animation */
+@keyframes tender-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.tender-carousel {
+  animation: tender-scroll 30s linear infinite;
+}
+
+.tender-carousel:hover {
+  animation-play-state: paused;
+}
