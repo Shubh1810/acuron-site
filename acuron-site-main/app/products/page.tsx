@@ -5,8 +5,10 @@ import Header from "../components/Header";
 import TransparentNavbar from "../components/TransparentNavbar";
 import WhiteGridBackground from "../components/ui/white-grid-background";
 import Image from "next/image";
+import Link from "next/link";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
 import Footer from "../components/sections/Footer";
+import { allProducts } from "../lib/productData";
 
 
 export default function ProductsPage() {
@@ -20,50 +22,7 @@ export default function ProductsPage() {
     { label: 'Products' }
   ];
 
-  // New extensive product data
-  const allProducts = [
-    // Protective Apparel
-    { id: 101, name: "Surgical Gowns", description: "Standard nonwoven surgical gown for basic protection.", category: "Protective Apparel", image: "/products/surgical-gown.jpeg", secondaryImage: "/products/surgical-gown.jpg", featured: false, specs: ["Nonwoven Fabric", "Fluid Resistant", "Comfortable Fit"] },
-    { id: 102, name: "Patient Gowns", description: "Comfortable and dignifying patient gowns.", category: "Protective Apparel", image: "/products/patgown.JPEG", secondaryImage: "/products/patgown.JPEG", featured: false, specs: ["Soft Fabric", "Easy Access", "Disposable"] },
-    { id: 103, name: "Plastic Aprons", description: "Waterproof plastic aprons for various medical applications.", category: "Protective Apparel", image: "/products/plastic-ap.jpg", secondaryImage: "/products/plastic-apron.jpg", featured: false, specs: ["Waterproof LDPE", "Disposable", "Hygienic"] },
-    { id: 104, name: "Medical Coveralls", description: "Nonwoven labcoats for laboratory and general use.", category: "Protective Apparel", image: "/products/medcoverall.jpg", secondaryImage: "/products/coverall-2.jpg", featured: false, specs: ["Nonwoven Polypropylene", "Splash Resistant", "Knee-Length"] },
-
-    // Masks & Headwear
-    { id: 201, name: "3 Ply Face Masks", description: "Standard 3-ply face mask with tie/lace closure.", category: "Masks & Headwear", image: "/products/3ply-pack.png", secondaryImage: "/products/3ply-display.png", featured: false, specs: ["Tie/Lace Closure", "High BFE", "Comfortable"] },
-    { id: 202, name: "N95/FFP2 Protective Face Masks", description: "N95/FFP2 respirator mask with earloops.", category: "Masks & Headwear", image: "/products/n95-box.png", secondaryImage: "/products/n95-banner.png", featured: false, specs: ["N95/FFP2 Standard", "High Filtration", "Earloop"] },
-    { id: 203, name: "Bouffant Caps", description: "Standard 18-inch bouffant caps for hair coverage.", category: "Masks & Headwear", image: "/products/cap.jpeg", secondaryImage: "/products/cap.jpeg", featured: false, specs: ["18 Inch Diameter", "Nonwoven", "Elasticated"] },
-    { id: 204, name: "Surgeon Caps", description: "Traditional surgeon caps for operating room use.", category: "Masks & Headwear", image: "/products/surgeon-cap.png", secondaryImage: "/products/surgeon-cap.png", featured: false, specs: ["Tie-back Design", "Cotton/Nonwoven", "Breathable"] },
-    { id: 205, name: "Goggles", description: "Protective goggles for eye safety.", category: "Masks & Headwear", image: "/products/goggles.jpeg", secondaryImage: "/products/goggles.jpg", featured: false, specs: ["Polycarbonate Lens", "Anti-Fog Coating", "Adjustable Headband"] },
-
-    // Shoe & Leg Protection
-    { id: 301, name: "Shoe Covers", description: "Disposable plastic (LDPE) shoe covers.", category: "Shoe & Leg Protection", image: "/products/shoecover.avif", secondaryImage: "/products/shoecover-white.avif", featured: false, specs: ["LDPE Material", "Water Resistant", "Anti-Slip Option"] },
-    { id: 302, name: "PE Shoe Leggings", description: "Polyethylene shoe leggings for extended leg protection.", category: "Shoe & Leg Protection", image: "/products/pe-shoecover.webp", secondaryImage: "/products/pe-shoecover.webp", featured: false, specs: ["Polyethylene", "Knee-High", "Waterproof"] },
-
-    // Drapes, Linens & Underpads
-    { id: 401, name: "Bedsheets & Pillow Covers", description: "Disposable nonwoven bedsheets and pillow covers for hygiene.", category: "Drapes, Linens & Underpads", image: "/products/bed-sheet.webp", secondaryImage: "/products/bed-sheet.webp", featured: false, specs: ["Nonwoven Fabric", "Hygienic", "Various Sizes"] },
-    { id: 403, name: "Underpads", description: "Absorbent underpads for patient care.", category: "Drapes, Linens & Underpads", image: "/products/underpads.jpg", secondaryImage: "/products/underpads.jpg", featured: false, specs: ["High Absorbency", "Waterproof Backing", "Multiple Sizes"] },
-    { id: 404, name: "Sterilization Wraps", description: "SMS sterilization wraps for medical instruments.", category: "Drapes, Linens & Underpads", image: "/products/sterile-wrap.avif", secondaryImage: "/products/sterile-wrap.avif", featured: false, specs: ["35gsm SMS", "Bacterial Barrier", "Various Sizes"] },
-    { id: 405, name: "Poly Drapes", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/poly-drape.jpeg", secondaryImage: "/products/poly-drape.jpeg", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
-    { id: 406, name: "Plain Sheets", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/plain-sheet.jpg", secondaryImage: "/products/plain-sheet.jpg", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
-    { id: 407, name: "Minor Drape Sets", description: "Surgical drape for surgical procedures.", category: "Drapes, Linens & Underpads", image: "/products/minordrape.png", secondaryImage: "/products/minordrape.png", featured: false, specs: ["Nonwoven Fabric", "Waterproof", "Sterile"] },
-
-
-    // Medical Kits
-    { id: 501, name: "PPE Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
-    { id: 502, name: "Surgeon's OT Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/surgeonotkit.png", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
-    { id: 503, name: "Delivery Kit", description: "Basic PPE kit for general protection.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Basic Coverage", "ISO Certified", "Cost-Effective"] },
-    { id: 504, name: "OT Premium Kit", description: "Comprehensive kit for surgeons in the operating theatre.", category: "Medical Kits", image: "/products/ot-premium-kit.jpg", secondaryImage: "/products/ot-premium-kit.jpg", featured: false, specs: ["OT Essentials", "Sterile Components", "Convenient Pack"] },
-    { id: 505, name: "HIV | AIDS Protection kit", description: "Ultra delivery kit for childbirth procedures.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Comprehensive", "Sterile", "For Safe Delivery"] },
-    { id: 506, name: "Dental Kit - Premium", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
-    { id: 507, name: "Disposable 'Z' Kit", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
-    { id: 508, name: "Onco Plus (Chemo Kit)", description: "Premium dental kit for various dental procedures.", category: "Medical Kits", image: "/products/fullppe.png", secondaryImage: "/products/fullppe.png", featured: false, specs: ["Dental Essentials", "High Quality", "Sterile Options"] },
-
-    // General Medical & Surgical Disposables
-    { id: 601, name: "Skin Blade / Prep Razor", description: "Precision surgical prep razors with safety features.", category: "General Medical & Surgical Disposables", image: "/products/razor.png", secondaryImage: "/products/razor-box.png", featured: false, specs: ["Sterile", "Safety Guard", "Sharp Blade"] },
-    { id: 602, name: "C Arm Cover (Polyethylene)", description: "Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/products/arm-cover.avif", secondaryImage: "/products/arm-cover.avif", featured: false, specs: ["Polyethylene", "Sterile", "Equipment Protection"] },
-    { id: 603, name: "Nitrile Gloves", description: "Non-Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/products/nitrile-gloves.jpg", secondaryImage: "/products/nitrile-gloves.jpg", featured: false, specs: ["Non-Polyethylene", "Sterile", "Equipment Protection"] },
-    { id: 604, name: "Bio-degradable Disposal Bag", description: "Non-Polyethylene C-Arm covers for imaging equipment.", category: "General Medical & Surgical Disposables", image: "/products/waste-bag.avif", secondaryImage: "/products/waste-bag.avif", featured: false, specs: ["Non-Polyethylene", "Sterile", "Equipment Protection"] },
-  ];
+  // Products are now imported from productData.ts
 
   const featuredProducts = allProducts.filter(product => product.featured);
   const nonFeaturedProducts = allProducts.filter(product => !product.featured);
@@ -339,10 +298,18 @@ export default function ProductsPage() {
                     {product.name}
                   </h3>
                   
-                  {/* Action Button */}
-                  <button className="w-full px-6 py-4 bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-xl transition-all duration-300 font-semibold border-2 border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-lg">
+                  {/* Action Buttons */}
+                  <div className="flex gap-3">
+                    <button className="flex-1 px-4 py-3 bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-xl transition-all duration-300 font-semibold border-2 border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-lg text-sm">
                     Get Quote
                   </button>
+                    <Link 
+                      href={`/products/${product.slug}`}
+                      className="flex-1 px-4 py-3 bg-[#0F4679] text-white rounded-xl transition-all duration-300 font-semibold hover:bg-[#0D3A64] hover:shadow-lg text-sm text-center flex items-center justify-center"
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Card Glow Effect */}
@@ -490,14 +457,17 @@ export default function ProductsPage() {
                       <button className="flex-1 px-3 py-2 text-xs bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-lg transition-all duration-300 font-semibold border border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-md">
                       Get Quote
                     </button>
-                      <button className="relative flex-1 px-3 py-2 text-xs bg-white hover:bg-[#0F4679] rounded-lg transition-all duration-300 font-semibold shadow-md hover:shadow-lg hover:scale-105 overflow-hidden group">
+                      <Link 
+                        href={`/products/${product.slug}`}
+                        className="relative flex-1 px-3 py-2 text-xs bg-white hover:bg-[#0F4679] rounded-lg transition-all duration-300 font-semibold shadow-md hover:shadow-lg hover:scale-105 overflow-hidden group text-center"
+                      >
                         <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-lg p-px">
                           <div className="w-full h-full bg-white group-hover:bg-[#0F4679] rounded-[7px] transition-all duration-300"></div>
                       </div>
                         <span className="relative bg-gradient-to-r from-[#0F4679] to-[#158C07] group-hover:text-white bg-clip-text text-transparent transition-all duration-300">
                         Details →
                       </span>
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
