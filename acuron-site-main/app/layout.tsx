@@ -254,7 +254,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${rubik.variable} font-sans w-full max-w-[100vw] overflow-x-hidden`}>
+      <body 
+        className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${rubik.variable} font-sans w-full max-w-[100vw] overflow-x-hidden`}
+        suppressHydrationWarning={true} // Suppress hydration warnings caused by browser extensions (Grammarly, etc.)
+      >
         <CacheCleanupClient />
         {children}
         <ChatbotWidget />

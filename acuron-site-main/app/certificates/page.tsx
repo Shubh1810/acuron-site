@@ -176,7 +176,7 @@ export default function CertificatesPage() {
     <>
       <WhiteGridBackground />
       <Header />
-      <div className="mt-2">
+      <div>
         <TransparentNavbar />
       </div>
       <AnimatedMotif />

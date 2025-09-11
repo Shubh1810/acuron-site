@@ -720,7 +720,7 @@ export default function FAQPage() {
   return (
     <>
       <Header />
-      <div className="mt-2">
+      <div>
         <TransparentNavbar />
       </div>
       

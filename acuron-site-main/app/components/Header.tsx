@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FC, useState, useMemo, useCallback } from 'react';
+import { FC, useState, useMemo, useCallback, useEffect } from 'react';
 import { Download } from 'lucide-react';
 import CountrySelector from './CountrySelector';
 import { useCountryStore } from '../../lib/store';
@@ -11,7 +11,13 @@ const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const { selectedCountry } = useCountryStore();
+
+  // Fix hydration issues by ensuring client-side rendering
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Flagship blue color
   const flagshipBlue = "#0F4679";
@@ -229,38 +235,37 @@ const Header: FC = () => {
       >
         <div className="max-w-7xl mx-auto px-2 sm:px-4 py-1 sm:py-1.5 flex justify-between items-center">
           {/* Left side - Available on platforms (desktop only) */}
-          <div className="hidden md:flex items-center space-x-2">
-            <span className="text-[9px] sm:text-[10px] text-[#0F4679]/70 font-medium">Available on:</span>
-            <div className="flex items-center space-x-1">
-              <div className="w-12 h-4 flex items-center justify-center bg-white/50 rounded-sm">
+          {isClient && (
+            <div className="hidden md:flex items-center space-x-2">
+              <span className="text-[9px] sm:text-[10px] text-[#0F4679]/70 font-medium">Available on:</span>
+              <div className="flex items-center space-x-1">
                 <Image
-                  src="/flipkart.png"
+                  src="/flip.png"
                   alt="Available on Flipkart"
                   width={48}
                   height={16}
-                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain max-w-full max-h-full"
+                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain"
                 />
-              </div>
-              <div className="w-12 h-4 flex items-center justify-center bg-white/50 rounded-sm">
                 <Image
                   src="/amazon.png"
                   alt="Available on Amazon"
                   width={48}
                   height={16}
-                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain max-w-full max-h-full"
+                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain"
                 />
-              </div>
-              <div className="w-12 h-4 flex items-center justify-center bg-white/50 rounded-sm">
                 <Image
-                  src="/indiamart.jpg"
+                  src="/indiamart.png"
                   alt="Available on IndiaMART"
                   width={48}
                   height={16}
-                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain max-w-full max-h-full"
+                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain"
                 />
               </div>
             </div>
-          </div>
+          )}
+          
+          {/* Placeholder for server-side rendering */}
+          {!isClient && <div className="hidden md:block w-48 h-5"></div>}
 
           {/* Mobile Logo - Center on mobile */}
           <Link href="/" className="md:hidden flex-shrink-0">
@@ -287,7 +292,7 @@ const Header: FC = () => {
           <Link href="/#contact-us-section" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
             {contactText}
           </Link>
-          <CountrySelector />
+          {isClient && <CountrySelector />}
           </div>
         </div>
       </div>

@@ -8,44 +8,6 @@ import Image from "next/image";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
 import Footer from "../components/sections/Footer";
 
-// Professional Video Showcase Component
-function VideoShowcase() {
-  return (
-    <div className="mb-0">
-      <div className="w-full">
-        {/* Minimal Video Display */}
-        <div className="relative mx-auto max-w-sm aspect-[3/4] md:max-w-none md:aspect-video">
-          <video
-            className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            disablePictureInPicture
-            controlsList="nodownload nofullscreen noremoteplayback"
-            style={{ 
-              pointerEvents: 'none',
-              maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
-              WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)' 
-            }}
-          >
-            <source src="/Indian Nurse Video.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Premium Medical Solutions Badge - Top Right */}
-          <div className="absolute top-6 right-6 z-20">
-            <div className="inline-flex items-center gap-0.5 px-1.5 py-0.5 md:gap-1.5 md:px-3 md:py-1.5 bg-gradient-to-r from-[#0F4679]/10 to-[#158C07]/10 backdrop-blur-md rounded-full border border-white/30 shadow-lg whitespace-nowrap">
-              <div className="w-0.5 h-0.5 md:w-1.5 md:h-1.5 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-full animate-pulse"></div>
-              <span className="text-[8px] md:text-xs font-semibold bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent tracking-wider">
-                PREMIUM MEDICAL SOLUTIONS
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -154,7 +116,7 @@ export default function ProductsPage() {
       <WhiteGridBackground />
       
               <Header />
-        <div className="mt-2">
+        <div>
           <TransparentNavbar />
         </div>
         
@@ -329,9 +291,9 @@ export default function ProductsPage() {
               {/* Header Layout: Logo + Badge Left, Description Right */}
               {/* Mobile: Logo and Badge side-by-side, centered. Text below, centered. */}
               {/* Desktop: Logo and Badge side-by-side on left. Text on right. */}
-              <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-12 px-4">
+              <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-0 px-4">
                 {/* Logo Block - Much Larger */}
-                <div className="flex flex-row items-center mb-6 md:mb-0">
+                <div className="flex flex-row items-center mb-0">
                   <Image
                     src="/acprod.png"
                     alt="Acuron Products - Premium Medical Supplies Manufacturer"
@@ -343,14 +305,12 @@ export default function ProductsPage() {
                 </div>
 
                 {/* Description Text Block */}
-                <div className="w-full text-center md:flex-1 md:text-right md:pl-12 mt-0 md:mt-6">
+                <div className="w-full text-center md:flex-1 md:text-right md:pl-12 mt-0">
                   <p className="text-sm md:text-xl text-gray-600 leading-relaxed font-light max-w-2xl mx-auto md:ml-auto md:mr-0">
                     Discover our comprehensive range of ISO-certified medical supplies, designed for healthcare professionals who demand excellence in every procedure.
                   </p>
                 </div>
               </div>
-              {/* Professional Video Showcase moved here */}
-              <VideoShowcase /> 
             </motion.div>
           </div>
 
