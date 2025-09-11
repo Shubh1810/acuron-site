@@ -5,12 +5,10 @@ import Image from 'next/image';
 import { FC, useState, useMemo, useCallback } from 'react';
 import { Download } from 'lucide-react';
 import CountrySelector from './CountrySelector';
-import NewsletterModal from './NewsletterModal';
 import { useCountryStore } from '../../lib/store';
 
 const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const { selectedCountry } = useCountryStore();
@@ -177,22 +175,6 @@ const Header: FC = () => {
     pt: 'PESQUISAR'
   });
 
-  // Function to handle catalog download - opens newsletter modal first
-  const handleCatalogDownload = () => {
-    setIsNewsletterModalOpen(true);
-  };
-
-  // Function to actually download after newsletter signup
-  const handleActualDownload = () => {
-    const link = document.createElement('a');
-    const filePath = '/acuron-brochure.pdf';
-    link.href = encodeURI(filePath);
-    link.download = 'Acuron-Brochure.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setIsNewsletterModalOpen(false);
-  };
 
   // Memoize the toggle function to prevent recreation on renders
   const toggleMobileMenu = useCallback(() => {
@@ -278,12 +260,6 @@ const Header: FC = () => {
       
 
 
-      {/* Newsletter Modal */}
-      <NewsletterModal 
-        isOpen={isNewsletterModalOpen}
-        onClose={() => setIsNewsletterModalOpen(false)}
-        onSuccess={handleActualDownload}
-      />
     </header>
   );
 };

@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FC, useState, useMemo, useCallback } from 'react';
+import { FC, useState, useMemo, useCallback, useEffect } from 'react';
 import { Download } from 'lucide-react';
 import { ColourfulText } from './ui/colorful-text';
 import { useCountryStore } from '../../lib/store';
 import { TextGenerateEffect } from "./ui/textgenerateeffect";
 import TransparentNavbar from './TransparentNavbar';
 import NewsletterModal from './NewsletterModal';
+import { useNewsletterModalTrigger } from '../lib/modalEvents';
 
 interface HeroSectionProps {
   title: string;
@@ -20,6 +21,14 @@ interface HeroSectionProps {
 const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }) => {
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const { selectedCountry } = useCountryStore();
+
+  // Listen for external modal triggers
+  useEffect(() => {
+    const cleanup = useNewsletterModalTrigger(() => {
+      setIsNewsletterModalOpen(true);
+    });
+    return cleanup;
+  }, []);
 
   // Get localized content based on selected country
   const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
@@ -242,8 +251,8 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
   const { keyPhrase, titleParts, hasKeyPhrase } = getKeyPhraseAndParts();
   
   return (
-    <div className="bg-white px-2 md:px-4 pb-0 md:pb-4 w-full max-w-[100vw] overflow-x-hidden">
-      <div className="relative h-[70vh] sm:h-[68vh] md:h-[66vh] lg:h-[62vh] min-h-[420px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden w-full">
+    <div id="hero-section" className="bg-white px-2 md:px-4 pb-0 w-full max-w-[100vw] overflow-x-hidden">
+      <div className="relative h-[85vh] sm:h-[82vh] md:h-[80vh] lg:h-[78vh] min-h-[600px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden w-full">
         {/* Background Image */}
         <div 
           className="absolute inset-0 w-full h-full"

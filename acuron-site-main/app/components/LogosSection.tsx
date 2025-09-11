@@ -14,7 +14,7 @@ const LogosSection = () => {
   ];
 
   return (
-    <section className="bg-white py-2 md:py-4">
+    <section className="bg-white py-0 -mt-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-6">
           {/* Left side text */}

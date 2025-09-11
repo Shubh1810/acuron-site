@@ -6,8 +6,8 @@ import { FC, useState, useMemo, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import { Download } from 'lucide-react';
 import CountrySelector from './CountrySelector';
-import NewsletterModal from './NewsletterModal';
 import { useCountryStore } from '../../lib/store';
+import { triggerNewsletterModal } from '../lib/modalEvents';
 
 interface TransparentNavbarProps {
   isHeroSection?: boolean;
@@ -15,7 +15,6 @@ interface TransparentNavbarProps {
 
 const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const { selectedCountry } = useCountryStore();
   const pathname = usePathname();
@@ -129,22 +128,6 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     pt: 'PESQUISAR'
   });
 
-  // Function to handle catalog download - opens newsletter modal first
-  const handleCatalogDownload = () => {
-    setIsNewsletterModalOpen(true);
-  };
-
-  // Function to actually download after newsletter signup
-  const handleActualDownload = () => {
-    const link = document.createElement('a');
-    const filePath = '/acuron-brochure.pdf';
-    link.href = encodeURI(filePath);
-    link.download = 'Acuron-Brochure.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setIsNewsletterModalOpen(false);
-  };
 
   // Memoize the toggle function to prevent recreation on renders
   const toggleMobileMenu = useCallback(() => {
@@ -271,9 +254,9 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
         
         {/* Right Side Actions */}
         <div className="flex items-center space-x-2 sm:space-x-4 md:mr-4 lg:mr-8">
-          {/* Catalog Button */}
+          {/* Catalog Button - Trigger modal */}
           <button 
-            onClick={handleCatalogDownload}
+            onClick={triggerNewsletterModal}
             className="hidden lg:flex items-center text-xs font-semibold transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
             title="Download Catalog"
           >
@@ -338,12 +321,6 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
         </div>
       </div>
 
-      {/* Newsletter Modal */}
-      <NewsletterModal 
-        isOpen={isNewsletterModalOpen}
-        onClose={() => setIsNewsletterModalOpen(false)}
-        onSuccess={handleActualDownload}
-      />
     </nav>
   );
 };
