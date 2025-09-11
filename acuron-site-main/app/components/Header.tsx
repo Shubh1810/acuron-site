@@ -227,8 +227,42 @@ const Header: FC = () => {
           backgroundSize: '8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px'
         }}
       >
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-1 sm:py-1.5 flex md:justify-end justify-between items-center">
-          {/* Mobile Logo - Left side, only visible on mobile */}
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-1 sm:py-1.5 flex justify-between items-center">
+          {/* Left side - Available on platforms (desktop only) */}
+          <div className="hidden md:flex items-center space-x-2">
+            <span className="text-[9px] sm:text-[10px] text-[#0F4679]/70 font-medium">Available on:</span>
+            <div className="flex items-center space-x-1">
+              <div className="w-12 h-4 flex items-center justify-center bg-white/50 rounded-sm">
+                <Image
+                  src="/flipkart.png"
+                  alt="Available on Flipkart"
+                  width={48}
+                  height={16}
+                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain max-w-full max-h-full"
+                />
+              </div>
+              <div className="w-12 h-4 flex items-center justify-center bg-white/50 rounded-sm">
+                <Image
+                  src="/amazon.png"
+                  alt="Available on Amazon"
+                  width={48}
+                  height={16}
+                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain max-w-full max-h-full"
+                />
+              </div>
+              <div className="w-12 h-4 flex items-center justify-center bg-white/50 rounded-sm">
+                <Image
+                  src="/indiamart.jpg"
+                  alt="Available on IndiaMART"
+                  width={48}
+                  height={16}
+                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain max-w-full max-h-full"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Logo - Center on mobile */}
           <Link href="/" className="md:hidden flex-shrink-0">
             <div className="w-28 h-8 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">
               <Image
