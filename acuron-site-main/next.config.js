@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: true,  // Add trailing slashes to URLs
+  // trailingSlash: true,  // Removed to avoid 404s
   reactStrictMode: true,
   images: {
     unoptimized: process.env.NODE_ENV === 'development' ? true : false,  // Enable optimization for production builds
