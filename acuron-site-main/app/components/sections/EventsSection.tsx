@@ -192,20 +192,18 @@ export default function EventsSection() {
             viewport={{ once: true }}
             className="lg:col-span-4 text-center lg:text-left"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-2xl border border-white/20 mb-6">
-              <svg className="w-4 h-4 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <span className="text-sm font-bold text-white tracking-wide">{eventsText.toUpperCase()}</span>
+            <div className="flex justify-start">
+              <div className="relative">
+                <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
+                  {joinUsText} at Industry {eventsText}
+                </h2>
+              </div>
             </div>
-            
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-inter leading-tight">
-              {joinUsText} at Industry Events
-            </h2>
-            
-            <p className="text-blue-100 text-base leading-relaxed mb-8">
-              Connect with us at leading medical exhibitions and conferences worldwide. Discover our latest innovations and solutions.
-            </p>
+            <div className="mt-6">
+              <p className="text-blue-100 text-base leading-relaxed max-w-2xl">
+                Connect with us at leading medical exhibitions and conferences worldwide. Discover our latest innovations and solutions.
+              </p>
+            </div>
 
             {/* Navigation Controls */}
             <div className="flex items-center justify-center lg:justify-start space-x-4">

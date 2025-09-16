@@ -27,27 +27,32 @@ export default function QualityStandardsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="mb-12"
         >
-          <h2 className="text-3xl font-bold text-white mb-4">
-            {getLocalizedContent('Quality Assurance Policy', {
-              de: 'Qualitätssicherungsrichtlinie',
-              fr: 'Politique d\'Assurance Qualité',
-              ja: '品質保証ポリシー',
-              zh: '质量保证政策',
-              pt: 'Política de Garantia de Qualidade'
-            })}
-          </h2>
-          
-          <p className="text-blue-100 max-w-2xl mx-auto">
-            {getLocalizedContent('At Acuron Products, quality is our top priority. We are committed to manufacturing and delivering superior surgical disposables and medical devices that meet international standards.', {
-              de: 'Bei Acuron Products ist Qualität unsere oberste Priorität. Wir verpflichten uns zur Herstellung und Lieferung hochwertiger chirurgischer Einwegartikel.',
-              fr: 'Chez Acuron Products, la qualité est notre priorité absolue. Nous nous engageons à fabriquer des dispositifs médicaux supérieurs.',
-              ja: 'Acuron Productsでは、品質が最優先事項です。国際基準を満たす優れた外科用使い捨て製品の製造に取り組んでいます。',
-              zh: '在Acuron Products，质量是我们的首要任务。我们致力于制造符合国际标准的优质外科一次性用品。',
-              pt: 'Na Acuron Products, qualidade é nossa prioridade máxima. Estamos comprometidos em fabricar dispositivos médicos superiores.'
-            })}
-          </p>
+          <div className="flex justify-start ml-8">
+            <div className="relative">
+              <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
+                {getLocalizedContent('Quality Assurance Policy', {
+                  de: 'Qualitätssicherungsrichtlinie',
+                  fr: 'Politique d\'Assurance Qualité',
+                  ja: '品質保証ポリシー',
+                  zh: '质量保证政策',
+                  pt: 'Política de Garantia de Qualidade'
+                })}
+              </h2>
+            </div>
+          </div>
+          <div className="mt-6 ml-8">
+            <p className="text-blue-100 max-w-2xl">
+              {getLocalizedContent('At Acuron Products, quality is our top priority. We are committed to manufacturing and delivering superior surgical disposables and medical devices that meet international standards.', {
+                de: 'Bei Acuron Products ist Qualität unsere oberste Priorität. Wir verpflichten uns zur Herstellung und Lieferung hochwertiger chirurgischer Einwegartikel.',
+                fr: 'Chez Acuron Products, la qualité est notre priorité absolue. Nous nous engageons à fabriquer des dispositifs médicaux supérieurs.',
+                ja: 'Acuron Productsでは、品質が最優先事項です。国際基準を満たす優れた外科用使い捨て製品の製造に取り組んでいます。',
+                zh: '在Acuron Products，质量是我们的首要任务。我们致力于制造符合国际标准的优质外科一次性用品。',
+                pt: 'Na Acuron Products, qualidade é nossa prioridade máxima. Estamos comprometidos em fabricar dispositivos médicos superiores.'
+              })}
+            </p>
+          </div>
         </motion.div>
 
         {/* Quality Pillars */}

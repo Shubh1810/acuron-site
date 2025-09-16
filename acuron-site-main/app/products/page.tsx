@@ -13,9 +13,8 @@ import { allProducts } from "../lib/productData";
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
-      const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
-    const [showScrollIndicator, setShowScrollIndicator] = useState(false);
-    const scrollableNavRef = useRef<HTMLDivElement>(null);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const scrollableNavRef = useRef<HTMLDivElement>(null);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -23,8 +22,6 @@ export default function ProductsPage() {
   ];
 
   // Products are now imported from productData.ts
-
-  const featuredProducts = allProducts.filter(product => product.featured);
   const nonFeaturedProducts = allProducts.filter(product => !product.featured);
 
   // New categories for filtering
@@ -273,52 +270,6 @@ export default function ProductsPage() {
             </motion.div>
           </div>
 
-          {/* Static Large Featured Product Cards (Disconnected from filters) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-24">
-            {featuredProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                onHoverStart={() => setHoveredProduct(product.id)}
-                onHoverEnd={() => setHoveredProduct(null)}
-                className="group relative" // This is the large card structure
-              >
-                <div className={`relative overflow-hidden aspect-[4/5] mb-2`}>
-                  <Image 
-                    src={hoveredProduct === product.id && product.secondaryImage ? product.secondaryImage : product.image}
-                    alt={product.name}
-                    fill
-                    className="object-contain transition-all duration-700 group-hover:scale-110 p-3 sm:p-4 md:p-8" // Added padding
-                  />
-                </div>
-                <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/40 shadow-xl hover:shadow-2xl transition-all duration-700">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#0F4679] transition-colors duration-300 leading-tight">
-                    {product.name}
-                  </h3>
-                  
-                  {/* Action Buttons */}
-                  <div className="flex gap-3">
-                    <button className="flex-1 px-4 py-3 bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-xl transition-all duration-300 font-semibold border-2 border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-lg text-sm">
-                    Get Quote
-                  </button>
-                    <Link 
-                      href={`/products/${product.slug}`}
-                      className="flex-1 px-4 py-3 bg-[#0F4679] text-white rounded-xl transition-all duration-300 font-semibold hover:bg-[#0D3A64] hover:shadow-lg text-sm text-center flex items-center justify-center"
-                    >
-                      View Details
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Card Glow Effect */}
-                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679]/20 to-[#158C07]/20 rounded-3xl blur-2xl scale-110" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
 
           {/* Full-Width Explore Products Banner Divider */}
           <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-16">
@@ -409,8 +360,6 @@ export default function ProductsPage() {
                   initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }} // Staggered animation for cards
-                onHoverStart={() => setHoveredProduct(product.id)}
-                onHoverEnd={() => setHoveredProduct(null)}
                   className="group relative flex flex-col h-full" // Added flex-col and h-full for consistent card height
                 >
                   {/* Background Container - Extends behind image */}
@@ -419,7 +368,7 @@ export default function ProductsPage() {
                   {/* Image Container - Smaller */}
                   <div className="relative overflow-hidden aspect-[4/3] mb-2 rounded-t-2xl bg-white">
                   <Image 
-                      src={hoveredProduct === product.id && product.secondaryImage ? product.secondaryImage : product.image}
+                      src={product.image}
                     alt={product.name}
                     fill
                       className="object-contain transition-all duration-500 group-hover:scale-105 p-4"

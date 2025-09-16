@@ -13,8 +13,8 @@ interface ContactFormData {
   source: string;
 }
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend conditionally
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 
 
@@ -106,7 +106,7 @@ ${data.message || 'No additional message'}
 // Email Notification using Resend SDK
 async function sendEmailNotification(data: ContactFormData) {
   try {
-    if (!process.env.RESEND_API_KEY) {
+    if (!resend) {
       console.log('Resend API key not configured');
       return { success: false, error: 'Resend API key not configured' };
     }

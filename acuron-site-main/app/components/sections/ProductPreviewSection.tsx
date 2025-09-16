@@ -264,26 +264,19 @@ export default function ProductPreviewSection() {
 
       <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-10 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="relative inline-block mb-5">
-            <div className="absolute -left-2 -top-2 w-20 h-8 bg-gradient-to-br from-[#158C07]/40 to-[#0F4679]/40 rounded-full blur-lg"></div>
-            <span className="relative inline-block px-4 py-2 text-sm uppercase tracking-wider font-semibold bg-white backdrop-blur-sm rounded-full border-l-4 border-[#158C07] text-black shadow-lg">
-              {productsText}
-            </span>
+        <div className="mb-12">
+          <div className="flex justify-start ml-8">
+            <div className="relative">
+              <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+                {discoverTitle}
+              </h2>
+            </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5 leading-tight">
-            <span className="relative">
-              {discoverTitle.split(' ').slice(0, 2).join(' ')}
-              <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-[#0F4679] to-transparent"></span>
-            </span>
-            {' '}
-            <span className="bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent">
-              {discoverTitle.split(' ').slice(2).join(' ')}
-            </span>
-          </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            {exploreDescription}
-          </p>
+          <div className="mt-6 ml-8">
+            <p className="text-base md:text-lg text-gray-600 max-w-3xl leading-relaxed">
+              {exploreDescription}
+            </p>
+          </div>
         </div>
 
         {/* Video Showcase */}

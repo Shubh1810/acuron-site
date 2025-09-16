@@ -6,12 +6,19 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-16">
           {/* Header */}
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">WHY HEALTHCARE PROFESSIONALS TRUST US</h2>
-            <div className="w-28 h-1 bg-gradient-to-r from-[#158C07] to-[#0F4679] mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our medical products are trusted by healthcare professionals worldwide for their quality, reliability, and innovation.
-            </p>
+          <div className="mb-12">
+            <div className="flex justify-start ml-8">
+              <div className="relative">
+                <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+                  Why Healthcare Professionals Trust Us
+                </h2>
+              </div>
+            </div>
+            <div className="mt-6 ml-8">
+              <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+                Our medical products are trusted by healthcare professionals worldwide for their quality, reliability, and innovation.
+              </p>
+            </div>
           </div>
 
           {/* Doctor Testimonials */}

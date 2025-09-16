@@ -129,7 +129,7 @@ export default function DistributionSection() {
         {/* Header */}
         <div 
           ref={distributionRef}
-          className={`text-center mb-8 transition-all duration-800 ${
+          className={`mb-12 transition-all duration-800 ${
             isVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -138,12 +138,18 @@ export default function DistributionSection() {
             transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent mb-4 leading-tight">
-            {distributionTitle}
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-            {distributionSubtitle}
-          </p>
+          <div className="flex justify-start ml-8">
+            <div className="relative">
+              <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+                {distributionTitle}
+              </h2>
+            </div>
+          </div>
+          <div className="mt-6 ml-8">
+            <p className="text-gray-600 text-lg max-w-2xl leading-relaxed">
+              {distributionSubtitle}
+            </p>
+          </div>
         </div>
 
         {/* Main Content Grid */}

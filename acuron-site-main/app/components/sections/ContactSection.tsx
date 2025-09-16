@@ -259,18 +259,15 @@ export default function ContactSection() {
               <div className="lg:col-span-2 flex flex-col space-y-6">
                 {/* Company Logo and Heading */}
                 <div className="relative">
-                  <div className="absolute -left-3 -top-3 w-12 h-12 bg-gradient-to-br from-blue-400/40 to-teal-300/40 rounded-full blur-lg"></div>
-                  <div className="relative z-10">
-                    <span className="inline-block px-4 py-2 text-sm uppercase tracking-wider font-semibold bg-white/10 backdrop-blur-sm rounded-full mb-3 border-l-2 border-accent-400 text-white">
-                      {contactUsText}
-                    </span>
-                    <h2 className="text-2xl md:text-3xl font-bold font-heading tracking-tight text-white/95 leading-tight mb-2">
-                      <span className="relative">
-                      {getInTouchText}
-                        <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-accent-400 to-transparent"></span>
-                      </span>
-                    </h2>
-                    <p className="text-base md:text-lg text-accent-300 font-normal leading-relaxed">
+                  <div className="flex justify-start">
+                    <div className="relative">
+                      <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
+                        {getInTouchText}
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <p className="text-base md:text-lg text-blue-100 font-normal leading-relaxed max-w-2xl">
                       {hereToHelpText}
                     </p>
                   </div>

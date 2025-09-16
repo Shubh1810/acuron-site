@@ -41,23 +41,58 @@ export const allProducts: Product[] = [
     variants: [
       {
         productCode: "AP SG 01",
-        productName: "Standard Surgical Gown - Regular",
-        packingPerBox: "50 pcs",
-        gstPercentage: "12.00%",
+        productName: "Nonwoven Gown 40 gsm",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
         hsnCode: "62101000"
       },
       {
-        productCode: "AP SG 02",
-        productName: "Standard Surgical Gown - Large",
-        packingPerBox: "50 pcs",
-        gstPercentage: "12.00%",
+        productCode: "AP SG L 01",
+        productName: "LAMINATED Gown 20 + 15 gsm",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
         hsnCode: "62101000"
       },
       {
-        productCode: "AP SG 03",
-        productName: "Reinforced Surgical Gown - Premium",
-        packingPerBox: "25 pcs",
-        gstPercentage: "12.00%",
+        productCode: "AP SG35 01",
+        productName: "SMS Gown 35 gsm",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "62101000"
+      },
+      {
+        productCode: "AP SG43 01",
+        productName: "SMMS Gown 43 gsm",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "62101000"
+      },
+      {
+        productCode: "AP SG43U01",
+        productName: "SSMMS Gown (L) with Ultrasonic Stitching (ARAS) with Towel",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "62101000"
+      },
+      {
+        productCode: "AP SGW 01",
+        productName: "SMS WRAP AROUND Gown with Towel",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "62101000"
+      },
+      {
+        productCode: "AP SGR4301",
+        productName: "Reinforced Surgeon Gown 43 gsm Eco",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "62101000"
+      },
+      {
+        productCode: "AP SGR50 01",
+        productName: "Reinforced Surgeon Gown 50 gsm with Towel",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
         hsnCode: "62101000"
       }
     ],
@@ -92,16 +127,9 @@ export const allProducts: Product[] = [
     variants: [
       {
         productCode: "AP PG 01",
-        productName: "Standard Patient Gown - Adult",
-        packingPerBox: "100 pcs",
-        gstPercentage: "12.00%",
-        hsnCode: "62101000"
-      },
-      {
-        productCode: "AP PG 02",
-        productName: "Pediatric Patient Gown",
-        packingPerBox: "100 pcs",
-        gstPercentage: "12.00%",
+        productName: "Patient Gown (Half Sleeve) NON STERILE",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
         hsnCode: "62101000"
       }
     ],
@@ -306,16 +334,23 @@ export const allProducts: Product[] = [
     variants: [
       {
         productCode: "AP N95 01",
-        productName: "N95 Respirator Mask - Standard",
-        packingPerBox: "20 pcs",
-        gstPercentage: "12.00%",
+        productName: "N95 - BULK with BOX (Ear Loop)",
+        packingPerBox: "50 pcs",
+        gstPercentage: "5.00%",
         hsnCode: "63079090"
       },
       {
         productCode: "AP N95 02",
-        productName: "N95 Respirator Mask - With Valve",
-        packingPerBox: "20 pcs",
-        gstPercentage: "12.00%",
+        productName: "N95 - Ind. Pack (Ear Loop) - Ind. Pack",
+        packingPerBox: "50 pcs",
+        gstPercentage: "5.00%",
+        hsnCode: "63079090"
+      },
+      {
+        productCode: "AP N95 03",
+        productName: "N95 - Ind. Pack (Head Loop) - Ind. Pack",
+        packingPerBox: "50 pcs",
+        gstPercentage: "5.00%",
         hsnCode: "63079090"
       }
     ],
@@ -351,17 +386,24 @@ export const allProducts: Product[] = [
     variants: [
       {
         productCode: "AP BC 01",
-        productName: "Bouffant Cap - 18 inch White",
+        productName: "Bouffant Cap 18 inch (Blue)",
         packingPerBox: "100 pcs",
-        gstPercentage: "12.00%",
-        hsnCode: "65050090"
+        gstPercentage: "5.00%",
+        hsnCode: "63079090"
       },
       {
         productCode: "AP BC 02",
-        productName: "Bouffant Cap - 21 inch Blue",
+        productName: "Bouffant Cap 18 inch (Blue) - Box Pack",
         packingPerBox: "100 pcs",
-        gstPercentage: "12.00%",
-        hsnCode: "65050090"
+        gstPercentage: "5.00%",
+        hsnCode: "63079090"
+      },
+      {
+        productCode: "AP BC 03",
+        productName: "Bouffant Cap 21 inch (Blue) - MOQ 50,000 pcs",
+        packingPerBox: "100 pcs",
+        gstPercentage: "5.00%",
+        hsnCode: "63079090"
       }
     ],
     features: [
@@ -395,17 +437,17 @@ export const allProducts: Product[] = [
     variants: [
       {
         productCode: "AP SC 01",
-        productName: "Surgeon Cap - Tie Back",
+        productName: "Surgeon Cap (Bulk Pack)",
         packingPerBox: "100 pcs",
-        gstPercentage: "12.00%",
-        hsnCode: "65050090"
+        gstPercentage: "5.00%",
+        hsnCode: "62104090"
       },
       {
         productCode: "AP SC 02",
-        productName: "Surgeon Cap - Elastic Band",
-        packingPerBox: "100 pcs",
-        gstPercentage: "12.00%",
-        hsnCode: "65050090"
+        productName: "Surgeon Cap - Box Pack",
+        packingPerBox: "50 pcs",
+        gstPercentage: "5.00%",
+        hsnCode: "62104090"
       }
     ],
     features: [
@@ -469,6 +511,43 @@ export const allProducts: Product[] = [
     metaTitle: "Protective Goggles - Eye Safety Equipment | Acuron Products",
     metaDescription: "Protective goggles with polycarbonate lens and anti-fog coating. Comprehensive eye protection for medical and laboratory use.",
     keywords: ["protective goggles", "safety goggles", "eye protection", "medical goggles"]
+  },
+  {
+    id: 206,
+    name: "Hood Cap / Monkey Cap",
+    description: "25 gsm hood cap for comprehensive head coverage.",
+    detailedDescription: "Our hood cap (monkey cap) provides comprehensive head and neck coverage for enhanced protection in medical and industrial environments. Made from 25 gsm nonwoven material for comfort and breathability.",
+    category: "Masks & Headwear",
+    image: "/products/hood-cap.png",
+    secondaryImage: "/products/hood-cap.png",
+    featured: false,
+    specs: ["25 GSM", "Full Coverage", "Nonwoven"],
+    variants: [
+      {
+        productCode: "AP HC 01",
+        productName: "Hood Cap / Monkey Cap 25 gsm",
+        packingPerBox: "50 pcs",
+        gstPercentage: "5.00%",
+        hsnCode: "63079090"
+      }
+    ],
+    features: [
+      "Complete head and neck coverage",
+      "25 gsm lightweight material",
+      "Breathable nonwoven fabric",
+      "Secure fit design"
+    ],
+    applications: [
+      "Medical procedures",
+      "Food processing",
+      "Clean room environments",
+      "Industrial applications"
+    ],
+    certifications: ["ISO 13485", "Food Grade"],
+    slug: "hood-cap-monkey-cap",
+    metaTitle: "Hood Cap Monkey Cap - Full Head Coverage | Acuron Products",
+    metaDescription: "25 gsm hood cap (monkey cap) for comprehensive head and neck coverage in medical and industrial environments.",
+    keywords: ["hood cap", "monkey cap", "head coverage", "medical headwear", "25 gsm"]
   },
 
   // Continue with other categories...
@@ -569,17 +648,31 @@ export const allProducts: Product[] = [
     variants: [
       {
         productCode: "AP BS 01",
-        productName: "Disposable Bedsheet - Single",
-        packingPerBox: "50 pcs",
-        gstPercentage: "12.00%",
-        hsnCode: "63079090"
+        productName: "Nonwoven Bedsheet 40 gsm (120 x 210) cm",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "63041940"
       },
       {
-        productCode: "AP PC 01",
-        productName: "Disposable Pillow Cover",
-        packingPerBox: "100 pcs",
-        gstPercentage: "12.00%",
-        hsnCode: "63079090"
+        productCode: "AP BS 02",
+        productName: "SMS Bedsheet 35gsm (160 x 225) cm",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "63041940"
+      },
+      {
+        productCode: "AP BS P 01",
+        productName: "Nonwoven Bedsheet & Pillow Cover Set (120 x 210 cm)",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "63041940"
+      },
+      {
+        productCode: "AP BS P 02",
+        productName: "SMS Bedsheet & Pillow Cover Set 35gsm (160 x 225) cm",
+        packingPerBox: "Ind. Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "63041940"
       }
     ],
     features: [
@@ -599,6 +692,43 @@ export const allProducts: Product[] = [
     metaTitle: "Disposable Bedsheets & Pillow Covers | Acuron Products",
     metaDescription: "Hygienic disposable bedsheets and pillow covers for patient care. Soft nonwoven fabric ensuring comfort and cleanliness.",
     keywords: ["disposable bedsheets", "pillow covers", "patient care", "hygienic bedding"]
+  },
+  {
+    id: 402,
+    name: "Couch Sheet / Draw Sheet",
+    description: "Disposable couch sheet for examination tables and patient beds.",
+    detailedDescription: "Our couch sheet (draw sheet) provides a hygienic barrier for examination tables and patient beds. Designed for easy positioning and patient comfort during medical examinations and procedures.",
+    category: "Drapes, Linens & Underpads",
+    image: "/products/couch-sheet.webp",
+    secondaryImage: "/products/couch-sheet.webp",
+    featured: false,
+    specs: ["80x120 cm", "Bulk Pack", "Disposable"],
+    variants: [
+      {
+        productCode: "AP CS 01",
+        productName: "Couch Sheet / Draw Sheet (80x120) cms",
+        packingPerBox: "Bulk Pack",
+        gstPercentage: "5.00%",
+        hsnCode: "62104090"
+      }
+    ],
+    features: [
+      "Standard examination table size",
+      "Hygienic disposable design",
+      "Comfortable for patients",
+      "Easy to position and remove"
+    ],
+    applications: [
+      "Medical examinations",
+      "Patient positioning",
+      "Examination tables",
+      "Hospital beds"
+    ],
+    certifications: ["ISO 13485", "Medical Grade"],
+    slug: "couch-sheet-draw-sheet",
+    metaTitle: "Couch Sheet Draw Sheet - Medical Examination | Acuron Products",
+    metaDescription: "Disposable couch sheet (draw sheet) for examination tables and patient beds. Hygienic barrier for medical examinations.",
+    keywords: ["couch sheet", "draw sheet", "examination table", "medical bedding", "disposable sheet"]
   },
 
   // Medical Kits
@@ -738,6 +868,66 @@ export const allProducts: Product[] = [
     keywords: ["surgical razor", "prep razor", "skin blade", "medical razor", "pre-operative"]
   },
 
+  {
+    id: 602,
+    name: "Biodegradable Waste Bags",
+    description: "Eco-friendly biodegradable waste disposal bags for medical waste.",
+    detailedDescription: "Our biodegradable waste bags are specifically designed for the safe containment of used medical supplies and waste. Made from environmentally friendly biodegradable materials, these bags break down naturally while providing secure containment during use.",
+    category: "General Medical & Surgical Disposables",
+    image: "/products/biodegradable-bag.png",
+    secondaryImage: "/products/biodegradable-bag.png",
+    featured: false,
+    specs: ["Biodegradable Material", "Medical Waste Safe", "Various Sizes"],
+    variants: [
+      {
+        productCode: "AP WB 01",
+        productName: "Biodegradable Waste Bag - Small (30x40 cm)",
+        packingPerBox: "100 pcs",
+        gstPercentage: "12.00%",
+        hsnCode: "39232990"
+      },
+      {
+        productCode: "AP WB 02",
+        productName: "Biodegradable Waste Bag - Medium (45x60 cm)",
+        packingPerBox: "100 pcs",
+        gstPercentage: "12.00%",
+        hsnCode: "39232990"
+      },
+      {
+        productCode: "AP WB 03",
+        productName: "Biodegradable Waste Bag - Large (60x80 cm)",
+        packingPerBox: "50 pcs",
+        gstPercentage: "12.00%",
+        hsnCode: "39232990"
+      },
+      {
+        productCode: "AP WB A 01",
+        productName: "Autoclave-Safe Biodegradable Bag (45x60 cm)",
+        packingPerBox: "100 pcs",
+        gstPercentage: "12.00%",
+        hsnCode: "39232990"
+      }
+    ],
+    features: [
+      "100% biodegradable material",
+      "Safe for medical waste containment",
+      "Puncture and tear resistant",
+      "Autoclave-safe options available",
+      "Environmentally friendly disposal"
+    ],
+    applications: [
+      "Medical waste disposal",
+      "Infectious waste containment",
+      "Hospital waste management",
+      "Laboratory waste disposal",
+      "Healthcare facility protocols"
+    ],
+    certifications: ["ISO 13485", "Biodegradable Certification", "Medical Waste Safe"],
+    slug: "biodegradable-waste-bags",
+    metaTitle: "Biodegradable Waste Bags - Eco-Friendly Medical Waste | Acuron Products",
+    metaDescription: "Biodegradable waste disposal bags for safe medical waste containment. Environmentally friendly with autoclave-safe options available.",
+    keywords: ["biodegradable bags", "medical waste bags", "eco-friendly bags", "waste disposal", "autoclave safe bags"]
+  },
   {
     id: 603,
     name: "Nitrile Gloves",

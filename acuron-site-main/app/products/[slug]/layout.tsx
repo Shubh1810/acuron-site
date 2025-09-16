@@ -1,16 +1,18 @@
 import { Metadata } from 'next';
+import { use } from 'react';
 import { getProductBySlug, getAllProductSlugs } from '../../lib/productData';
 import { generateProductSchema } from '../../lib/seo-utils';
 
 interface ProductLayoutProps {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const product = getProductBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
 
   if (!product) {
     return {
@@ -57,7 +59,8 @@ export async function generateStaticParams() {
 }
 
 export default function ProductLayout({ children, params }: ProductLayoutProps) {
-  const product = getProductBySlug(params.slug);
+  const { slug } = use(params);
+  const product = getProductBySlug(slug);
 
   if (!product) {
     return children;

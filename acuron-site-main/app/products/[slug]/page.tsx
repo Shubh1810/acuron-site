@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, use } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Header from "../../components/Header";
@@ -11,13 +11,14 @@ import ProductSpecTable from "../../components/ProductSpecTable";
 import { getProductBySlug } from "../../lib/productData";
 
 interface ProductDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function ProductDetailPage({ params }: ProductDetailPageProps) {
-  const product = getProductBySlug(params.slug);
+  const { slug } = use(params);
+  const product = getProductBySlug(slug);
   
   if (!product) {
     notFound();
