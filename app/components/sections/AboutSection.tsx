@@ -149,20 +149,20 @@ export default function AboutSection() {
               {/* Why Choose Us Content Overlay */}
               <div className="absolute inset-0 z-20 flex items-center justify-center p-3 md:p-8">
                 <div className="text-left max-w-3xl overflow-y-auto max-h-full">
-                  <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-[#0F4679] mb-2 md:mb-4 font-sans leading-tight">
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-[#0F4679] mb-2 md:mb-4 font-sans leading-tight text-left">
                     {whyChooseTitle}
                   </h3>
                   <div className="space-y-2 md:space-y-4">
-                    <p className="text-xs md:text-sm lg:text-base text-gray-800 font-sans leading-snug md:leading-relaxed">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-800 font-sans leading-snug md:leading-relaxed text-left">
                       {aboutParagraph1}
                     </p>
-                    <p className="text-xs md:text-sm lg:text-base text-gray-800 font-sans leading-snug md:leading-relaxed">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-800 font-sans leading-snug md:leading-relaxed text-left">
                       {aboutParagraph2}
                     </p>
-                    <p className="text-xs md:text-sm lg:text-base text-gray-800 font-sans leading-snug md:leading-relaxed">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-800 font-sans leading-snug md:leading-relaxed text-left">
                       {aboutParagraph3}
                     </p>
-                    <p className="text-xs md:text-sm lg:text-base text-gray-800 font-sans leading-snug md:leading-relaxed font-medium">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-800 font-sans leading-snug md:leading-relaxed font-medium text-left">
                       {aboutParagraph4}
                     </p>
                   </div>

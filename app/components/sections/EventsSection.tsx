@@ -190,17 +190,17 @@ export default function EventsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="lg:col-span-4 text-center lg:text-left"
+            className="lg:col-span-4 text-left"
           >
             <div className="flex justify-start">
               <div className="relative">
-                <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight text-left">
                   {joinUsText} at Industry {eventsText}
                 </h2>
               </div>
             </div>
             <div className="mt-6">
-              <p className="text-blue-100 text-base leading-relaxed max-w-2xl">
+              <p className="text-blue-100 text-sm sm:text-base leading-relaxed max-w-2xl text-left">
                 Connect with us at leading medical exhibitions and conferences worldwide. Discover our latest innovations and solutions.
               </p>
             </div>

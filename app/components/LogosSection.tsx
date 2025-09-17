@@ -14,31 +14,40 @@ const LogosSection = () => {
   ];
 
   return (
-    <section className="bg-white py-0 -mt-2">
+    <section className="bg-white py-2 sm:py-4 lg:py-6 -mt-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-6">
-          {/* Left side text */}
-          <div className="flex-shrink-0">
-            <p className="text-gray-500 text-xs md:text-sm lg:text-base leading-relaxed">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4 lg:gap-6">
+          {/* Left side text - left aligned on all screens */}
+          <div className="flex-shrink-0 text-left">
+            <p className="text-gray-500 text-xs sm:text-sm lg:text-base leading-relaxed">
               Recognized by leading organizations<br />
               and regulatory bodies worldwide
             </p>
           </div>
           
-          {/* Right side logos */}
-          <div className="flex flex-wrap md:flex-nowrap items-center justify-center lg:justify-end gap-3 md:gap-4 lg:gap-6">
+          {/* Right side logos - Significantly smaller on mobile */}
+          <div className="flex flex-wrap md:flex-nowrap items-center justify-center lg:justify-end gap-1.5 sm:gap-2 md:gap-3 lg:gap-4">
             {logos.map((logo, index) => (
               <div 
                 key={index} 
-                className={`flex items-center justify-center ${logo.name === 'GEMM' ? 'h-56 md:h-72 lg:h-80' : 'h-16 md:h-20 lg:h-24'}`}
+                className={`flex items-center justify-center ${
+                  logo.name === 'GEMM' 
+                    ? 'h-8 sm:h-12 md:h-16 lg:h-20 xl:h-24' 
+                    : 'h-6 sm:h-8 md:h-10 lg:h-12 xl:h-14'
+                }`}
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={logo.name === 'GEMM' ? 400 : 100}
-                  height={logo.name === 'GEMM' ? 288 : 72}
-                  className={`max-w-full max-h-full object-contain opacity-90 ${logo.name === 'GEMM' ? '' : 'filter grayscale'}`}
+                  width={logo.name === 'GEMM' ? 120 : 60}
+                  height={logo.name === 'GEMM' ? 86 : 36}
+                  className={`max-w-full max-h-full object-contain opacity-90 transition-all duration-300 ${
+                    logo.name === 'GEMM' 
+                      ? 'hover:opacity-100' 
+                      : 'filter grayscale hover:grayscale-0 hover:opacity-100'
+                  }`}
                   style={{ width: 'auto', height: 'auto' }}
+                  sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
                 />
               </div>
             ))}

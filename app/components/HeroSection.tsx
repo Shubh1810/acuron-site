@@ -276,7 +276,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
       {/* Hero Content */}
       <div className="absolute inset-0 z-10 flex items-center justify-center px-2 sm:px-6 lg:px-8 text-white">
         <div className="text-center w-full max-w-none sm:max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-4xl lg:text-6xl font-bold font-sans leading-tight mb-6 text-center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans leading-tight mb-6 text-center">
             {hasKeyPhrase ? (
               <>
                 {titleParts[0]}
@@ -308,7 +308,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
           
           <TextGenerateEffect 
             words={localizedSubtitle} 
-            className="text-base sm:text-lg lg:text-xl mb-8 text-white/90 font-light leading-relaxed max-w-sm sm:max-w-3xl mx-auto" 
+            className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 text-white/90 font-light leading-relaxed max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto px-2" 
           />
           
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">

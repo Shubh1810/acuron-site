@@ -24,19 +24,31 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold;
+    @apply font-heading font-bold text-left;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-tight;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl;
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight;
+  }
+
+  h4 {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl leading-tight;
+  }
+
+  h5 {
+    @apply text-sm sm:text-base md:text-lg lg:text-xl leading-tight;
+  }
+
+  h6 {
+    @apply text-xs sm:text-sm md:text-base lg:text-lg leading-tight;
   }
 }
 
@@ -54,7 +66,7 @@
   }
 
   .section-title {
-    @apply text-2xl font-semibold text-gray-800 px-8 relative inline-block;
+    @apply text-xl sm:text-2xl font-semibold text-gray-800 px-4 sm:px-8 relative inline-block text-left;
   }
 
   .section-title::after {
@@ -129,6 +141,27 @@ input:focus {
     z-index: 9999 !important;
     right: 0 !important;
     opacity: 0.8;
+  }
+
+  /* Mobile-specific text alignment and spacing */
+  .mobile-left {
+    text-align: left !important;
+  }
+
+  /* Mobile section padding adjustments */
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Mobile heading adjustments - keep left aligned */
+  h1, h2, h3, h4, h5, h6 {
+    text-align: left !important;
+  }
+
+  /* Mobile paragraph left alignment for key content */
+  .mobile-text-left p {
+    text-align: left !important;
   }
 }
 

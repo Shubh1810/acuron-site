@@ -28,16 +28,6 @@ function VideoShowcase() {
           >
             <source src="/Indian Nurse Video.mp4" type="video/mp4" />
           </video>
-          
-          {/* Premium Medical Solutions Badge */}
-          <div className="absolute top-6 right-6 z-20">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-[#0F4679]/10 to-[#158C07]/10 backdrop-blur-md rounded-full border border-white/30 shadow-lg">
-              <div className="w-1.5 h-1.5 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-full animate-pulse"></div>
-              <span className="text-xs font-semibold bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent tracking-wider">
-                PREMIUM MEDICAL SOLUTIONS
-              </span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
