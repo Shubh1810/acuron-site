@@ -124,7 +124,7 @@ export default function DistributionSection() {
   ];
 
   return (
-    <section className="py-12 px-6 bg-white relative overflow-hidden">
+    <section className="py-12 px-6 md:px-8 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div 
@@ -138,14 +138,14 @@ export default function DistributionSection() {
             transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
           }}
         >
-          <div className="flex justify-start ml-8">
+          <div className="flex justify-start">
             <div className="relative">
               <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
                 {distributionTitle}
               </h2>
             </div>
           </div>
-          <div className="mt-6 ml-8">
+          <div className="mt-6">
             <p className="text-gray-600 text-lg max-w-2xl leading-relaxed">
               {distributionSubtitle}
             </p>

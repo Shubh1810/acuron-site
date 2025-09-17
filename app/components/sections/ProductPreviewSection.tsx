@@ -255,14 +255,14 @@ export default function ProductPreviewSection() {
       <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-10 relative z-10">
         {/* Header */}
         <div className="mb-12">
-          <div className="flex justify-start ml-8">
+          <div className="flex justify-start">
             <div className="relative">
               <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
                 {discoverTitle}
               </h2>
             </div>
           </div>
-          <div className="mt-6 ml-8">
+          <div className="mt-6">
             <p className="text-base md:text-lg text-gray-600 max-w-3xl leading-relaxed">
               {exploreDescription}
             </p>
