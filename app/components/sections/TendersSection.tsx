@@ -94,7 +94,7 @@ export default function TendersSection() {
               Array.from({ length: 11 }).map((_, index) => (
                 <div 
                   key={`set-${setIndex}-${index}`} 
-                  className="relative flex-shrink-0 -mx-3 sm:-mx-4 lg:-mx-6 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 flex items-center justify-center"
+                  className="relative flex-shrink-0 -mx-12 sm:-mx-4 lg:-mx-6 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 flex items-center justify-center"
                 >
                   <Image 
                     src={`/tender${index + 1}.png`} 
