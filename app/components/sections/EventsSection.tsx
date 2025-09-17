@@ -152,23 +152,32 @@ export default function EventsSection() {
     if (!isAutoPlaying) return;
     
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % Math.ceil(events.length / 2));
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      const cardsPerPage = isMobile ? 4 : 2;
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % Math.ceil(events.length / cardsPerPage));
     }, 4000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, events.length]);
 
   const getCurrentEvents = () => {
-    const startIndex = currentIndex * 2;
-    return events.slice(startIndex, startIndex + 2);
+    // Mobile: 4 cards, Desktop: 2 cards
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const cardsPerPage = isMobile ? 4 : 2;
+    const startIndex = currentIndex * cardsPerPage;
+    return events.slice(startIndex, startIndex + cardsPerPage);
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % Math.ceil(events.length / 2));
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const cardsPerPage = isMobile ? 4 : 2;
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % Math.ceil(events.length / cardsPerPage));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + Math.ceil(events.length / 2)) % Math.ceil(events.length / 2));
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const cardsPerPage = isMobile ? 4 : 2;
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + Math.ceil(events.length / cardsPerPage)) % Math.ceil(events.length / cardsPerPage));
   };
 
   return (
@@ -205,16 +214,16 @@ export default function EventsSection() {
               </p>
             </div>
 
-            {/* Navigation Controls */}
-            <div className="flex items-center justify-center lg:justify-start space-x-4">
+            {/* Navigation Controls - Containerless */}
+            <div className="flex items-center justify-center lg:justify-start space-x-6">
               <button
                 onClick={prevSlide}
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
-                className="w-12 h-12 bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200/60 flex items-center justify-center text-[#0F4679] hover:bg-white hover:scale-110 hover:shadow-xl transition-all duration-300 group"
+                className="w-10 h-10 flex items-center justify-center text-white/80 hover:text-white hover:scale-125 transition-all duration-300 group"
               >
-                <svg className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                <svg className="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               
@@ -222,15 +231,15 @@ export default function EventsSection() {
                 onClick={nextSlide}
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
-                className="w-12 h-12 bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200/60 flex items-center justify-center text-[#0F4679] hover:bg-white hover:scale-110 hover:shadow-xl transition-all duration-300 group"
+                className="w-10 h-10 flex items-center justify-center text-white/80 hover:text-white hover:scale-125 transition-all duration-300 group"
               >
-                <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
 
-              <div className="text-sm text-blue-200 font-medium">
-                {currentIndex + 1} / {Math.ceil(events.length / 2)}
+              <div className="text-sm text-blue-200/70 font-medium">
+                {currentIndex + 1} / {Math.ceil(events.length / (typeof window !== 'undefined' && window.innerWidth < 768 ? 4 : 2))}
               </div>
             </div>
           </motion.div>
@@ -244,7 +253,7 @@ export default function EventsSection() {
             className="lg:col-span-8"
           >
             {/* Events Container */}
-            <div className="relative h-[420px]">
+            <div className="relative min-h-[420px] md:h-[420px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -252,89 +261,70 @@ export default function EventsSection() {
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: -300, opacity: 0 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="absolute inset-0 flex gap-6"
+                  className="absolute inset-0 grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-6"
                 >
                   {getCurrentEvents().map((event, index) => (
-                    <div key={event.id} className="flex-1">
-                      <div className="h-full bg-white rounded-3xl border border-gray-100/80 shadow-xl hover:shadow-2xl transition-all duration-700 overflow-hidden group relative">
-                        {/* Professional Header Strip */}
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0F4679] via-[#158C07] to-[#0F4679]"></div>
-                        
-                        {/* Event Image with Overlay */}
-                        <div className="relative h-40 overflow-hidden">
+                    <div key={event.id} className="w-full">
+                      <div className="h-full bg-white/20 backdrop-blur-md rounded-xl border border-white/10 hover:bg-white/30 hover:border-white/20 transition-all duration-500 overflow-hidden group">
+                        {/* Event Image - Majority of card on desktop */}
+                        <div className="relative h-20 md:h-80 overflow-hidden rounded-t-xl">
                           <Image
                             src={event.image}
                             alt={event.name}
                             fill
-                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-br from-[#0F4679]/20 via-transparent to-[#158C07]/20"></div>
+                          <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent"></div>
                           
-                          {/* Category Badge - Top Right */}
-                          <div className="absolute top-4 right-4">
-                            <div className="bg-white/95 backdrop-blur-sm rounded-xl px-3 py-1.5 shadow-lg border border-white/50">
-                              <span className="text-xs font-bold text-[#0F4679] tracking-wide">{event.category}</span>
+                          {/* Date Badge - Ultra minimal */}
+                          <div className="absolute top-2 left-2">
+                            <div className="bg-white/90 backdrop-blur-sm rounded-md px-2 py-0.5">
+                              <span className="text-xs font-medium text-gray-800">{event.date.split(',')[0]}</span>
                             </div>
                           </div>
-
-                          {/* Date Badge - Top Left */}
-                          <div className="absolute top-4 left-4">
-                            <div className="bg-[#0F4679]/95 backdrop-blur-sm rounded-xl px-3 py-1.5 shadow-lg">
-                              <div className="flex items-center text-white">
-                                <svg className="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                                <span className="text-xs font-semibold">{event.date}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Content Area */}
-                        <div className="p-5 flex-1 flex flex-col">
-                          {/* Event Title */}
-                          <div className="mb-3">
-                            <h3 className="text-base font-bold text-gray-900 mb-2 leading-tight group-hover:text-[#0F4679] transition-colors duration-300 line-clamp-2">
+                          
+                          {/* Content Overlay on Image for Desktop */}
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 md:p-4">
+                            <h3 className="text-sm md:text-base font-semibold text-white mb-1 leading-tight line-clamp-1">
                               {event.name}
                             </h3>
-                            <div className="flex items-center text-gray-600">
-                              <svg className="w-3.5 h-3.5 mr-1.5 text-[#0F4679]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex items-center text-white/90 mb-1">
+                              <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                               </svg>
-                              <span className="text-xs font-medium">{event.location}</span>
+                              <span className="text-xs truncate">{event.location}</span>
                             </div>
-                          </div>
-
-
-
-                          {/* Bottom Section */}
-                          <div className="space-y-3">
-                            {/* Booth Information */}
+                            
+                            {/* Booth Info - Overlay */}
                             {event.boothNumber !== "N/A" && (
-                              <div className="flex items-center p-2.5 bg-gray-50/80 rounded-lg border border-gray-100/50">
-                                <div className="w-6 h-6 bg-[#0F4679]/10 rounded-md flex items-center justify-center mr-2.5">
-                                  <svg className="w-3 h-3 text-[#0F4679]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                  </svg>
-                                </div>
-                                <div>
-                                  <p className="text-xs text-gray-500 font-medium leading-none">Booth</p>
-                                  <p className="text-xs font-bold text-[#0F4679] leading-none">{event.boothNumber}</p>
-                                </div>
+                              <div className="text-xs text-white/80">
+                                <span>Booth: {event.boothNumber}</span>
                               </div>
                             )}
+                          </div>
+                        </div>
 
-                            {/* Action Button */}
-                            <button className="w-full group/btn relative overflow-hidden bg-gradient-to-r from-gray-600 to-gray-700 text-white font-semibold py-2.5 px-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]">
-                              <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-800 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                              <div className="relative flex items-center justify-center">
-                                <span className="text-xs">Learn More</span>
-                                <svg className="w-3 h-3 ml-1.5 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
+                        {/* Content Area - Minimal for mobile only */}
+                        <div className="p-3 md:hidden flex flex-col justify-between flex-1">
+                          <div>
+                            <h3 className="text-sm font-semibold text-white mb-1 leading-tight line-clamp-1">
+                              {event.name}
+                            </h3>
+                            <div className="flex items-center text-white/70 mb-2">
+                              <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                              </svg>
+                              <span className="text-xs truncate">{event.location}</span>
+                            </div>
+                            
+                            {/* Booth Info - Mobile */}
+                            {event.boothNumber !== "N/A" && (
+                              <div className="text-xs text-white/60">
+                                <span>Booth: {event.boothNumber}</span>
                               </div>
-                            </button>
+                            )}
                           </div>
                         </div>
                       </div>

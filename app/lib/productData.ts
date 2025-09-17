@@ -874,8 +874,8 @@ export const allProducts: Product[] = [
     description: "Eco-friendly biodegradable waste disposal bags for medical waste.",
     detailedDescription: "Our biodegradable waste bags are specifically designed for the safe containment of used medical supplies and waste. Made from environmentally friendly biodegradable materials, these bags break down naturally while providing secure containment during use.",
     category: "General Medical & Surgical Disposables",
-    image: "/products/biodegradable-bag.png",
-    secondaryImage: "/products/biodegradable-bag.png",
+    image: "/products/waste-bag.avif",
+    secondaryImage: "/products/waste-bag.avif",
     featured: false,
     specs: ["Biodegradable Material", "Medical Waste Safe", "Various Sizes"],
     variants: [
