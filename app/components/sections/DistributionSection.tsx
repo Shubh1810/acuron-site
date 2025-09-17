@@ -140,7 +140,7 @@ export default function DistributionSection() {
         >
           <div className="flex justify-start">
             <div className="relative">
-              <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+              <h2 className="section-heading text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
                 {distributionTitle}
               </h2>
             </div>

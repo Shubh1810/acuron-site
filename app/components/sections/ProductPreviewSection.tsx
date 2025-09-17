@@ -257,7 +257,7 @@ export default function ProductPreviewSection() {
         <div className="mb-12">
           <div className="flex justify-start">
             <div className="relative">
-              <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+              <h2 className="section-heading text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
                 {discoverTitle}
               </h2>
             </div>
@@ -272,41 +272,38 @@ export default function ProductPreviewSection() {
         {/* Video Showcase */}
         <VideoShowcase />
 
-        {/* Product Carousel */}
+        {/* Product Carousel - Minimal Design */}
         <div className="flex flex-col items-center mb-16">
-          <div className="w-full max-w-4xl mx-auto">
-            {/* Featured Product Display */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-gray-100">
+          <div className="w-full max-w-5xl mx-auto">
+            {/* Featured Product Display - Clean & Minimal */}
+            <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 md:p-10 mb-8 border border-white/20">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 {/* Product Image */}
-            <div className="text-center">
-                  <div className="relative w-64 h-64 mx-auto mb-4">
+                <div className="text-center">
+                  <div className="relative w-56 h-56 md:w-72 md:h-72 mx-auto">
                     <Image
                       src={currentProduct.image}
                       alt={currentProduct.name}
                       fill
-                      className="object-contain rounded-lg"
+                      className="object-contain"
                     />
-                  </div>
-                  <div className="inline-block px-3 py-1 bg-[#0F4679]/10 text-[#0F4679] text-sm font-medium rounded-full">
-                    {currentProduct.category}
                   </div>
                 </div>
 
                 {/* Product Details */}
-                <div className="text-center md:text-left">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                <div className="text-center md:text-left space-y-4">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-gray-800">
                     {currentProduct.name}
                   </h3>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {currentProduct.description}
                   </p>
                   <Link
                     href="/products"
-                    className="inline-flex items-center px-6 py-3 bg-[#0F4679] text-white font-semibold rounded-xl hover:bg-[#0D3C6B] transform hover:scale-105 transition-all duration-300 group"
+                    className="inline-flex items-center px-6 py-2.5 bg-[#0F4679] text-white font-medium rounded-xl hover:bg-[#0D3C6B] transition-colors duration-200 group"
                   >
                     View Product Details
-                    <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
@@ -314,29 +311,15 @@ export default function ProductPreviewSection() {
               </div>
             </div>
 
-            {/* Product Navigation Dots */}
-            <div className="flex justify-center space-x-2 mb-8">
-              {products.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentProductIndex(index)}
-                  className={`h-3 rounded-full transition-all duration-300 ${
-                    index === currentProductIndex
-                      ? 'bg-[#0F4679] w-8'
-                      : 'bg-gray-300 w-3 hover:bg-gray-400'
-                  }`}
-                />
-              ))}
-            </div>
 
-            {/* CTA Button */}
+            {/* CTA Button - Minimal */}
             <div className="text-center">
               <Link
                 href="/products"
-                className="inline-flex items-center px-8 py-4 font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 group bg-white border-2 border-[#0F4679] text-[#0F4679] hover:bg-[#0F4679] hover:text-white"
+                className="inline-flex items-center px-6 py-3 font-medium rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200 group"
               >
                 {exploreAllProductsText}
-                <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>

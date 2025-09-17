@@ -24,7 +24,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold text-left;
+    @apply font-heading font-bold;
   }
 
   h1 {
@@ -154,8 +154,8 @@ input:focus {
     padding-right: 1rem !important;
   }
 
-  /* Mobile heading adjustments - keep left aligned */
-  h1, h2, h3, h4, h5, h6 {
+  /* Mobile heading adjustments - allow individual control */
+  .section-heading {
     text-align: left !important;
   }
 
