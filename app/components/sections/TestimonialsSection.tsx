@@ -7,14 +7,14 @@ export default function TestimonialsSection() {
         <div className="flex flex-col gap-16">
           {/* Header */}
           <div className="mb-12">
-            <div className="flex justify-start">
+            <div className="flex justify-start ml-8">
               <div className="relative">
                 <h2 className="section-heading text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
                   Why Healthcare Professionals Trust Us
                 </h2>
               </div>
             </div>
-            <div className="mt-6">
+            <div className="mt-6 ml-8">
               <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
                 Our medical products are trusted by healthcare professionals worldwide for their quality, reliability, and innovation.
               </p>

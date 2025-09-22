@@ -65,7 +65,7 @@ export default function TendersSection() {
             transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
           }}
         >
-          <div className="relative mb-2 sm:mb-4">
+          <div className="relative mb-2 sm:mb-4 ml-8">
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-left leading-tight transition-all duration-900 delay-100 ${
               isVisible 
                 ? 'opacity-100 transform translate-x-0' 

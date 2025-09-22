@@ -1,16 +1,29 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { X, Cookie, Shield, Settings } from 'lucide-react';
+import { X, Cookie, Shield, Settings, BarChart3, Target } from 'lucide-react';
 import { useCountryStore } from '../../lib/store';
 
 interface CookieBannerProps {
   className?: string;
 }
 
+interface CookiePreferences {
+  essential: boolean;
+  analytics: boolean;
+  marketing: boolean;
+  functional: boolean;
+}
+
 export default function CookieBanner({ className = '' }: CookieBannerProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [preferences, setPreferences] = useState<CookiePreferences>({
+    essential: true,
+    analytics: true,
+    marketing: true,
+    functional: true
+  });
   const { selectedCountry } = useCountryStore();
 
   // Get localized content based on selected country
@@ -88,6 +101,14 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
     pt: 'Cookies de Marketing'
   });
 
+  const functionalCookiesText = getLocalizedContent('Functional Cookies', {
+    de: 'Funktionale Cookies',
+    fr: 'Cookies fonctionnels',
+    ja: '機能的Cookie',
+    zh: '功能Cookie',
+    pt: 'Cookies Funcionais'
+  });
+
   const essentialDescription = getLocalizedContent(
     'Required for basic site functionality and security.',
     {
@@ -121,6 +142,17 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
     }
   );
 
+  const functionalDescription = getLocalizedContent(
+    'Enable enhanced functionality and personalization features.',
+    {
+      de: 'Ermöglichen erweiterte Funktionalität und Personalisierungsfunktionen.',
+      fr: 'Permettent des fonctionnalités améliorées et des fonctions de personnalisation.',
+      ja: '拡張機能とパーソナライゼーション機能を有効にします。',
+      zh: '启用增强功能和个性化功能。',
+      pt: 'Habilitam funcionalidades aprimoradas e recursos de personalização.'
+    }
+  );
+
   const privacyPolicyText = getLocalizedContent('Privacy Policy', {
     de: 'Datenschutzrichtlinie',
     fr: 'Politique de confidentialité',
@@ -138,27 +170,69 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
   }, []);
 
   const handleAcceptAll = () => {
-    localStorage.setItem('acuron-cookie-consent', JSON.stringify({
+    const allAccepted = {
       essential: true,
       analytics: true,
       marketing: true,
+      functional: true,
       timestamp: Date.now()
-    }));
+    };
     
-    // Enable analytics and marketing scripts
+    localStorage.setItem('acuron-cookie-consent', JSON.stringify(allAccepted));
+    
+    // Enable all scripts
     enableAnalytics();
     enableMarketing();
+    enableFunctional();
     
     setIsVisible(false);
   };
 
   const handleRejectAll = () => {
-    localStorage.setItem('acuron-cookie-consent', JSON.stringify({
+    const onlyEssential = {
       essential: true,
       analytics: false,
       marketing: false,
+      functional: false,
       timestamp: Date.now()
-    }));
+    };
+    
+    localStorage.setItem('acuron-cookie-consent', JSON.stringify(onlyEssential));
+    
+    // Disable non-essential scripts
+    disableAnalytics();
+    disableMarketing();
+    disableFunctional();
+    
+    setIsVisible(false);
+  };
+
+  const handleSavePreferences = () => {
+    const customPreferences = {
+      ...preferences,
+      timestamp: Date.now()
+    };
+    
+    localStorage.setItem('acuron-cookie-consent', JSON.stringify(customPreferences));
+    
+    // Apply preferences
+    if (preferences.analytics) {
+      enableAnalytics();
+    } else {
+      disableAnalytics();
+    }
+    
+    if (preferences.marketing) {
+      enableMarketing();
+    } else {
+      disableMarketing();
+    }
+    
+    if (preferences.functional) {
+      enableFunctional();
+    } else {
+      disableFunctional();
+    }
     
     setIsVisible(false);
   };
@@ -185,6 +259,47 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
         'ad_personalization': 'granted'
       });
     }
+  };
+
+  const enableFunctional = () => {
+    // Enable functional cookies (language preferences, UI customizations, etc.)
+    if (typeof window !== 'undefined') {
+      // Enable functional features like chat widgets, social media embeds, etc.
+      console.log('Functional cookies enabled');
+    }
+  };
+
+  const disableAnalytics = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
+        'analytics_storage': 'denied'
+      });
+    }
+  };
+
+  const disableMarketing = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+    }
+  };
+
+  const disableFunctional = () => {
+    if (typeof window !== 'undefined') {
+      // Disable functional features
+      console.log('Functional cookies disabled');
+    }
+  };
+
+  const updatePreference = (key: keyof CookiePreferences, value: boolean) => {
+    if (key === 'essential') return; // Essential cookies cannot be disabled
+    setPreferences(prev => ({
+      ...prev,
+      [key]: value
+    }));
   };
 
   if (!isVisible) return null;
@@ -228,7 +343,8 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
 
           {/* Cookie Categories (when expanded) */}
           {showDetails && (
-            <div className="space-y-3 mb-4 max-h-40 overflow-y-auto">
+            <div className="space-y-3 mb-4 max-h-48 overflow-y-auto">
+              {/* Essential Cookies */}
               <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
                 <Shield className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                 <div className="min-w-0">
@@ -244,28 +360,63 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
                 </div>
               </div>
 
+              {/* Analytics Cookies */}
               <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                <div className="w-4 h-4 mt-0.5 flex-shrink-0">
-                  <input type="checkbox" className="w-4 h-4 text-[#0F4679] rounded" defaultChecked />
-                </div>
-                <div className="min-w-0">
-                  <span className="text-xs font-medium text-gray-900 block">
-                    {analyticsCookiesText}
-                  </span>
+                <BarChart3 className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-gray-900">
+                      {analyticsCookiesText}
+                    </span>
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 text-[#0F4679] rounded border-gray-300 focus:ring-[#0F4679] focus:ring-2" 
+                      checked={preferences.analytics}
+                      onChange={(e) => updatePreference('analytics', e.target.checked)}
+                    />
+                  </div>
                   <p className="text-xs text-gray-500 mt-1">
                     {analyticsDescription}
                   </p>
                 </div>
               </div>
 
+              {/* Functional Cookies */}
               <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                <div className="w-4 h-4 mt-0.5 flex-shrink-0">
-                  <input type="checkbox" className="w-4 h-4 text-[#0F4679] rounded" defaultChecked />
+                <Settings className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-gray-900">
+                      {functionalCookiesText}
+                    </span>
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 text-[#0F4679] rounded border-gray-300 focus:ring-[#0F4679] focus:ring-2" 
+                      checked={preferences.functional}
+                      onChange={(e) => updatePreference('functional', e.target.checked)}
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {functionalDescription}
+                  </p>
                 </div>
-                <div className="min-w-0">
-                  <span className="text-xs font-medium text-gray-900 block">
-                    {marketingCookiesText}
-                  </span>
+              </div>
+
+              {/* Marketing Cookies */}
+              <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                <Target className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-gray-900">
+                      {marketingCookiesText}
+                    </span>
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 text-[#0F4679] rounded border-gray-300 focus:ring-[#0F4679] focus:ring-2" 
+                      checked={preferences.marketing}
+                      onChange={(e) => updatePreference('marketing', e.target.checked)}
+                    />
+                  </div>
                   <p className="text-xs text-gray-500 mt-1">
                     {marketingDescription}
                   </p>
@@ -277,20 +428,29 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
           {/* Action Buttons */}
           <div className="space-y-2">
             {showDetails ? (
-              <div className="flex space-x-2">
+              <div className="space-y-2">
+                <div className="flex space-x-2">
+                  <button
+                    onClick={handleAcceptAll}
+                    className="flex-1 bg-[#0F4679] text-white text-xs font-medium py-2 px-3 rounded-lg 
+                             hover:bg-[#0A3356] transition-colors duration-200"
+                  >
+                    {acceptAllText}
+                  </button>
+                  <button
+                    onClick={handleRejectAll}
+                    className="flex-1 bg-gray-100 text-gray-700 text-xs font-medium py-2 px-3 rounded-lg 
+                             hover:bg-gray-200 transition-colors duration-200"
+                  >
+                    {rejectAllText}
+                  </button>
+                </div>
                 <button
-                  onClick={handleAcceptAll}
-                  className="flex-1 bg-[#0F4679] text-white text-xs font-medium py-2 px-3 rounded-lg 
-                           hover:bg-[#0A3356] transition-colors duration-200"
+                  onClick={handleSavePreferences}
+                  className="w-full bg-green-600 text-white text-xs font-medium py-2 px-3 rounded-lg 
+                           hover:bg-green-700 transition-colors duration-200"
                 >
-                  {acceptAllText}
-                </button>
-                <button
-                  onClick={handleRejectAll}
-                  className="flex-1 bg-gray-100 text-gray-700 text-xs font-medium py-2 px-3 rounded-lg 
-                           hover:bg-gray-200 transition-colors duration-200"
-                >
-                  {rejectAllText}
+                  Save Preferences
                 </button>
               </div>
             ) : (
@@ -315,12 +475,20 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
 
           {/* Privacy Policy Link */}
           <div className="text-center mt-3 pt-3 border-t border-gray-100">
-            <a 
-              href="/privacy" 
-              className="text-xs text-[#0F4679] hover:underline transition-colors duration-200"
-            >
-              {privacyPolicyText}
-            </a>
+            <div className="flex justify-center space-x-4">
+              <a 
+                href="/privacy" 
+                className="text-xs text-[#0F4679] hover:underline transition-colors duration-200"
+              >
+                {privacyPolicyText}
+              </a>
+              <a 
+                href="/cookies" 
+                className="text-xs text-[#0F4679] hover:underline transition-colors duration-200"
+              >
+                Cookie Policy
+              </a>
+            </div>
           </div>
         </div>
       </div>

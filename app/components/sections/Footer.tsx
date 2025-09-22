@@ -187,7 +187,7 @@ export default function Footer() {
             <ul className="space-y-3 mt-6 text-sm">
               <li><Link href="/#about-us-section" className="hover:text-gray-300">{aboutUsText}</Link></li>
               <li><Link href="/#contact-us-section" className="hover:text-gray-300">{contactUsText}</Link></li>
-              <li><Link href="/careers" className="hover:text-gray-300">{careersText}</Link></li>
+              <li><Link href="/#contact-us-section" className="hover:text-gray-300">{careersText}</Link></li>
               <li><Link href="/events" className="hover:text-gray-300">{newsEventsText}</Link></li>
             </ul>
             <div className="flex space-x-4 mt-6">

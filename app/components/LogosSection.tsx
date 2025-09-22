@@ -36,19 +36,34 @@ const LogosSection = () => {
                     : 'h-6 sm:h-8 md:h-10 lg:h-12 xl:h-14'
                 }`}
               >
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.name === 'GEMM' ? 120 : 60}
-                  height={logo.name === 'GEMM' ? 86 : 36}
-                  className={`max-w-full max-h-full object-contain opacity-90 transition-all duration-300 ${
-                    logo.name === 'GEMM' 
-                      ? 'hover:opacity-100' 
-                      : 'filter grayscale hover:grayscale-0 hover:opacity-100'
-                  }`}
-                  style={{ width: 'auto', height: 'auto' }}
-                  sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
-                />
+                {logo.name === 'GEMM' ? (
+                  <a 
+                    href="https://mkp.gem.gov.in/surgical-textiles-surgical-drapes/search#/?1758578431789"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full h-full flex items-center justify-center"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={120}
+                      height={86}
+                      className="max-w-full max-h-full object-contain opacity-90 transition-all duration-300 hover:opacity-100 cursor-pointer"
+                      style={{ width: 'auto', height: 'auto' }}
+                      sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
+                    />
+                  </a>
+                ) : (
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={60}
+                    height={36}
+                    className="max-w-full max-h-full object-contain opacity-70 transition-all duration-300 filter grayscale hover:grayscale-0 hover:opacity-100"
+                    style={{ width: 'auto', height: 'auto' }}
+                    sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
+                  />
+                )}
               </div>
             ))}
           </div>

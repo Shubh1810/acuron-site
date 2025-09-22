@@ -113,7 +113,7 @@ export default function AboutSection() {
     <section className="py-16 bg-white" id="about-us-section">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
         {/* Header */}
-        <div className="flex justify-start mb-12">
+        <div className="flex justify-start ml-8 mb-12">
           <div className="relative">
             <h2 className="section-heading text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
               {aboutUsTitle}

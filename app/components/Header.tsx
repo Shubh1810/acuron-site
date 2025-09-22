@@ -246,20 +246,34 @@ const Header: FC = () => {
                   height={16}
                   className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain"
                 />
-                <Image
-                  src="/amazon.png"
-                  alt="Available on Amazon"
-                  width={48}
-                  height={16}
-                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain"
-                />
-                <Image
-                  src="/indiamart.png"
-                  alt="Available on IndiaMART"
-                  width={48}
-                  height={16}
-                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain"
-                />
+                <a 
+                  href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-100 transition-opacity duration-300"
+                >
+                  <Image
+                    src="/amazon.png"
+                    alt="Available on Amazon"
+                    width={48}
+                    height={16}
+                    className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain cursor-pointer"
+                  />
+                </a>
+                <a 
+                  href="https://dir.indiamart.com/search.mp?ss=acuron&prdsrc=1&v=4&mcatid=&catid=&sref=as-popular%7Ckwd%3Dacuron%7Cpos%3D2%7Ccat%3D-2%7Cmcat%3D-2%7Ckwd_len%3D6%7Ckwd_cnt%3D1&cq=mumbai&tags=res:RC1-R5%7Cktp:N0%7Cmtp:S%7Cwc:1%7Clcf:3%7Ccq:mumbai%7Cqr_nm:localhgmct-gl-gd%7Ccs:17898%7Ccom-cf:nl%7Cptrs:na%7Cmc:186459%7Ccat:855%7Cqry_typ:P%7Clang:en%7Ctyr:1%7Cqrd:250923%7Cmrd:250923%7Cprdt:250923%7Cmsf:hs%7Cpfen:1%7Cgli:G0I0%7Cgc:Mumbai%7Cic:Mumbai%7Cscw:1%7Clf:5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-100 transition-opacity duration-300"
+                >
+                  <Image
+                    src="/indiamart.png"
+                    alt="Available on IndiaMART"
+                    width={48}
+                    height={16}
+                    className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain cursor-pointer"
+                  />
+                </a>
               </div>
             </div>
           )}

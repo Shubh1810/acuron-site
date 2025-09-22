@@ -1,9 +1,11 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useSearchParams } from "next/navigation";
 import Header from "../components/Header";
 import TransparentNavbar from "../components/TransparentNavbar";
 import WhiteGridBackground from "../components/ui/white-grid-background";
+import PharmaCorporateGiftingShowcase from "../components/PharmaCorporateGiftingShowcase";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
@@ -15,10 +17,15 @@ export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
   const scrollableNavRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
+  
+  // Check if pharma category is selected
+  const isPharmaCategory = searchParams.get('category') === 'pharma';
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Products' }
+    { label: 'Products' },
+    ...(isPharmaCategory ? [{ label: 'Pharmaceuticals' }] : [])
   ];
 
   // Products are now imported from productData.ts
@@ -78,6 +85,13 @@ export default function ProductsPage() {
         
         <div className="pt-[0px] min-h-screen relative z-10">
         <div className="max-w-7xl mx-auto px-4 py-8">
+          
+          {/* Pharma Corporate Gifting Showcase - Only show when pharma category is selected */}
+          {isPharmaCategory && (
+            <div className="mb-16">
+              <PharmaCorporateGiftingShowcase />
+            </div>
+          )}
           {/* Web3 Category Navigation with Glass Effect */}
           <div className="mb-6 pb-4 relative z-[60]">
             <div className="relative bg-white/80 backdrop-blur-[24px] shadow-lg p-2 sm:p-3 md:p-6 border border-gray-200 overflow-hidden rounded-3xl">

@@ -878,19 +878,24 @@ export default function FAQPage() {
                 custom solutions, and regulatory compliance support.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button className="px-8 py-4 bg-white text-[#0F4679] font-bold rounded-xl hover:bg-gray-50 transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+              <div className="flex justify-center items-center">
+                <button 
+                  onClick={() => {
+                    // Trigger the chat widget popup
+                    if (typeof window !== 'undefined' && (window as any).openChatWidget) {
+                      (window as any).openChatWidget();
+                    } else {
+                      // Fallback: dispatch custom event to trigger chat widget
+                      const event = new CustomEvent('openChatWidget');
+                      window.dispatchEvent(event);
+                    }
+                  }}
+                  className="px-8 py-4 bg-white text-[#0F4679] font-bold rounded-xl hover:bg-gray-50 transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
-                  Contact Technical Support
-                </button>
-                
-                <button className="px-8 py-4 bg-white/10 text-white font-bold rounded-xl border border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center gap-3 backdrop-blur-sm">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                  Schedule Consultation
+                  Ask AI Now
                 </button>
               </div>
               

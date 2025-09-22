@@ -138,14 +138,14 @@ export default function DistributionSection() {
             transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
           }}
         >
-          <div className="flex justify-start">
+          <div className="flex justify-start ml-8">
             <div className="relative">
               <h2 className="section-heading text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
                 {distributionTitle}
               </h2>
             </div>
           </div>
-          <div className="mt-6">
+          <div className="mt-6 ml-8">
             <p className="text-gray-600 text-lg max-w-2xl leading-relaxed">
               {distributionSubtitle}
             </p>
@@ -173,44 +173,6 @@ export default function DistributionSection() {
                 className="object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-lg"
                 priority
               />
-              {/* Connection lines overlay */}
-              <div className="absolute inset-0 pointer-events-none">
-                <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  {connections.map((connection, index) => {
-                    const fromCity = cityMarkers[connection.from];
-                    const toCity = cityMarkers[connection.to];
-                    return (
-                      <line
-                        key={index}
-                        x1={fromCity.x}
-                        y1={fromCity.y}
-                        x2={toCity.x}
-                        y2={toCity.y}
-                        stroke="rgba(255,255,255,0.6)"
-                        strokeWidth="0.2"
-                        strokeDasharray="1,1"
-                        className="animate-pulse"
-                      />
-                    );
-                  })}
-                </svg>
-              </div>
-
-              {/* City markers overlay */}
-              <div className="absolute inset-0 pointer-events-none">
-                {cityMarkers.map((city, index) => (
-                  <div
-                    key={city.name}
-                    className="absolute pointer-events-none"
-                    style={{ left: `${city.x}%`, top: `${city.y}%`, transform: 'translate(-50%, -50%)' }}
-                  >
-                    {/* Ping ring */}
-                    <span className="absolute -inset-2 rounded-full bg-white/30 animate-ping" />
-                    {/* Core dot with glow */}
-                    <span className="relative block w-3 h-3 rounded-full bg-white shadow-[0_0_16px_rgba(255,255,255,0.8)] border border-white/50" />
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
@@ -230,13 +192,13 @@ export default function DistributionSection() {
               {keyStats.map((stat, index) => (
                 <div 
                   key={index}
-                  className={`text-center p-4 bg-gray-50 border border-gray-200 rounded-xl transition-all duration-500 delay-${400 + index * 100} hover:bg-gray-100 hover:border-blue-300 hover:scale-105 group ${
+                  className={`text-center p-4 bg-gray-50 border border-gray-200 rounded-xl transition-all duration-500 delay-${400 + index * 100} hover:bg-gray-100 hover:border-[#0F4679]/30 hover:scale-105 group ${
                     isVisible 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-4'
                   }`}
                 >
-                  <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 group-hover:text-blue-700 transition-colors duration-300">
+                  <div className="text-2xl sm:text-3xl font-bold text-[#0F4679] mb-1 group-hover:text-[#0D3C6B] transition-colors duration-300">
                     {stat.number}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600 font-medium tracking-wide">
@@ -300,14 +262,14 @@ export default function DistributionSection() {
               ].map((feature, index) => (
                 <div 
                   key={index}
-                  className={`flex items-start space-x-3 p-3 rounded-lg bg-gray-50/50 border-l-3 border-blue-500 transition-all duration-500 delay-${500 + index * 100} hover:bg-gray-100/50 hover:border-blue-600 group ${
+                  className={`flex items-start space-x-3 p-3 rounded-lg bg-gray-50/50 border-l-3 border-[#0F4679] transition-all duration-500 delay-${500 + index * 100} hover:bg-gray-100/50 hover:border-[#0D3C6B] group ${
                     isVisible 
                       ? 'opacity-100 translate-x-0' 
                       : 'opacity-0 translate-x-4'
                   }`}
                 >
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-1 group-hover:text-blue-700 transition-colors duration-300">
+                    <h4 className="font-semibold text-gray-800 mb-1 group-hover:text-[#0F4679] transition-colors duration-300">
                       {feature.title}
                     </h4>
                     <p className="text-sm text-gray-600 leading-relaxed">

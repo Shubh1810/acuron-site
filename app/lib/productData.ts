@@ -518,8 +518,8 @@ export const allProducts: Product[] = [
     description: "25 gsm hood cap for comprehensive head coverage.",
     detailedDescription: "Our hood cap (monkey cap) provides comprehensive head and neck coverage for enhanced protection in medical and industrial environments. Made from 25 gsm nonwoven material for comfort and breathability.",
     category: "Masks & Headwear",
-    image: "/products/hood-cap.png",
-    secondaryImage: "/products/hood-cap.png",
+    image: "/products/cap.jpeg",
+    secondaryImage: "/products/cap-display.png",
     featured: false,
     specs: ["25 GSM", "Full Coverage", "Nonwoven"],
     variants: [
@@ -699,8 +699,8 @@ export const allProducts: Product[] = [
     description: "Disposable couch sheet for examination tables and patient beds.",
     detailedDescription: "Our couch sheet (draw sheet) provides a hygienic barrier for examination tables and patient beds. Designed for easy positioning and patient comfort during medical examinations and procedures.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/couch-sheet.webp",
-    secondaryImage: "/products/couch-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/bed-sheet.webp",
     featured: false,
     specs: ["80x120 cm", "Bulk Pack", "Disposable"],
     variants: [

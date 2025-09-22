@@ -62,35 +62,45 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     },
   ], [selectedCountry]);
 
-  // Products dropdown categories - Health, Food, Pharma (Health first)
+  // Products dropdown categories - Healthcare, Food Processing, Pharmaceuticals, Chemical
   const productCategories = useMemo(() => [
     {
-      label: getLocalizedContent('Health', {
-        de: 'Gesundheit',
-        fr: 'Santé',
-        ja: '健康',
-        zh: '健康',
-        pt: 'Saúde'
+      label: getLocalizedContent('Healthcare', {
+        de: 'Gesundheitswesen',
+        fr: 'Soins de santé',
+        ja: 'ヘルスケア',
+        zh: '医疗保健',
+        pt: 'Cuidados de Saúde'
       }),
       href: '/products'
     },
     {
-      label: getLocalizedContent('Food', {
-        de: 'Lebensmittel',
-        fr: 'Alimentation',
-        ja: '食品',
-        zh: '食品',
-        pt: 'Alimentação'
+      label: getLocalizedContent('Food Processing', {
+        de: 'Lebensmittelverarbeitung',
+        fr: 'Transformation alimentaire',
+        ja: '食品加工',
+        zh: '食品加工',
+        pt: 'Processamento de Alimentos'
       }),
       href: '/products'
     },
     {
-      label: getLocalizedContent('Pharma', {
-        de: 'Pharma',
-        fr: 'Pharma',
-        ja: 'ファルマ',
+      label: getLocalizedContent('Pharmaceuticals', {
+        de: 'Pharmazeutika',
+        fr: 'Pharmaceutiques',
+        ja: '製薬',
         zh: '制药',
-        pt: 'Farmacêutica'
+        pt: 'Farmacêuticos'
+      }),
+      href: '/products?category=pharma'
+    },
+    {
+      label: getLocalizedContent('Chemical', {
+        de: 'Chemisch',
+        fr: 'Chimique',
+        ja: '化学',
+        zh: '化学',
+        pt: 'Químico'
       }),
       href: '/products'
     }

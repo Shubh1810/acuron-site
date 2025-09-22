@@ -20,7 +20,17 @@ interface HeroSectionProps {
 
 const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }) => {
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { selectedCountry } = useCountryStore();
+
+  // Array of background images
+  const backgroundImages = [
+    '/main.jpeg',
+    '/wall.jpg',
+    '/wall2.jpg',
+    '/wall3.jpg',
+    '/wall4.jpg'
+  ];
 
   // Listen for external modal triggers
   useEffect(() => {
@@ -29,6 +39,17 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
     });
     return cleanup;
   }, []);
+
+  // Cycle through background images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % backgroundImages.length
+      );
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
 
   // Get localized content based on selected country
   const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
@@ -253,17 +274,22 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
   return (
     <div id="hero-section" className="bg-white px-2 md:px-4 pb-0 w-full max-w-[100vw] overflow-x-hidden">
       <div className="relative h-[85vh] sm:h-[82vh] md:h-[80vh] lg:h-[78vh] min-h-[600px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden w-full">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 w-full h-full"
-          style={{
-            backgroundImage: 'url(/main.jpeg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            filter: 'brightness(0.5)'
-          }}
-        />
+        {/* Background Images with Fade Effect */}
+        {backgroundImages.map((image, index) => (
+          <div 
+            key={image}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              filter: 'brightness(0.5)'
+            }}
+          />
+        ))}
 
         {/* Top Overlay gradient */}
         <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-[#0F4679]/50 to-transparent pointer-events-none" style={{ height: '40%' }} />
