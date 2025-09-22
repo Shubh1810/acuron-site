@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import Header from "../components/Header";
@@ -13,7 +13,8 @@ import Footer from "../components/sections/Footer";
 import { allProducts } from "../lib/productData";
 
 
-export default function ProductsPage() {
+// Component that uses useSearchParams - needs to be wrapped in Suspense
+function ProductsContent() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
   const scrollableNavRef = useRef<HTMLDivElement>(null);
@@ -492,5 +493,38 @@ export default function ProductsPage() {
       </div>
       <Footer />
     </>
+  );
+}
+
+// Loading component for Suspense fallback
+function ProductsLoading() {
+  return (
+    <>
+      <WhiteGridBackground />
+      <Header />
+      <div>
+        <TransparentNavbar />
+      </div>
+      <div className="pt-[0px] min-h-screen relative z-10">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0F4679] mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading products...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+// Main page component with Suspense boundary
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<ProductsLoading />}>
+      <ProductsContent />
+    </Suspense>
   );
 }
