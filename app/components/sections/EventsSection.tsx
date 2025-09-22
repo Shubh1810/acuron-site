@@ -265,9 +265,9 @@ export default function EventsSection() {
                 >
                   {getCurrentEvents().map((event, index) => (
                     <div key={event.id} className="w-full">
-                      <div className="h-full bg-white/20 backdrop-blur-md rounded-xl border border-white/10 hover:bg-white/30 hover:border-white/20 transition-all duration-500 overflow-hidden group">
-                        {/* Event Image - Majority of card on desktop */}
-                        <div className="relative h-20 md:h-80 overflow-hidden rounded-t-xl">
+                      <div className="h-full bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-500 overflow-hidden group shadow-lg hover:shadow-xl flex flex-col">
+                        {/* Event Image - Fixed height */}
+                        <div className="relative h-20 md:h-64 overflow-hidden rounded-t-2xl">
                           <Image
                             src={event.image}
                             alt={event.name}
@@ -276,52 +276,31 @@ export default function EventsSection() {
                           />
                           <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent"></div>
                           
-                          {/* Date Badge - Ultra minimal */}
-                          <div className="absolute top-2 left-2">
-                            <div className="bg-white/90 backdrop-blur-sm rounded-md px-2 py-0.5">
-                              <span className="text-xs font-medium text-gray-800">{event.date.split(',')[0]}</span>
+                          {/* Date Badge - Subtle glass effect */}
+                          <div className="absolute top-3 left-3">
+                            <div className="bg-white/20 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/30">
+                              <span className="text-xs font-medium text-white">{event.date.split(',')[0]}</span>
                             </div>
-                          </div>
-                          
-                          {/* Content Overlay on Image for Desktop */}
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 md:p-4">
-                            <h3 className="text-sm md:text-base font-semibold text-white mb-1 leading-tight line-clamp-1">
-                              {event.name}
-                            </h3>
-                            <div className="flex items-center text-white/90 mb-1">
-                              <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                              </svg>
-                              <span className="text-xs truncate">{event.location}</span>
-                            </div>
-                            
-                            {/* Booth Info - Overlay */}
-                            {event.boothNumber !== "N/A" && (
-                              <div className="text-xs text-white/80">
-                                <span>Booth: {event.boothNumber}</span>
-                              </div>
-                            )}
                           </div>
                         </div>
 
-                        {/* Content Area - Minimal for mobile only */}
-                        <div className="p-3 md:hidden flex flex-col justify-between flex-1">
+                        {/* Content Area - Below image for all screen sizes */}
+                        <div className="p-3 md:p-4 flex flex-col justify-between flex-1">
                           <div>
-                            <h3 className="text-sm font-semibold text-white mb-1 leading-tight line-clamp-1">
+                            <h3 className="text-sm md:text-base font-semibold text-white mb-2 leading-tight line-clamp-1">
                               {event.name}
                             </h3>
-                            <div className="flex items-center text-white/70 mb-2">
-                              <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex items-center text-white/90 mb-2">
+                              <svg className="w-3 h-3 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                               </svg>
                               <span className="text-xs truncate">{event.location}</span>
                             </div>
                             
-                            {/* Booth Info - Mobile */}
+                            {/* Booth Info */}
                             {event.boothNumber !== "N/A" && (
-                              <div className="text-xs text-white/60">
+                              <div className="text-xs text-white/80">
                                 <span>Booth: {event.boothNumber}</span>
                               </div>
                             )}
