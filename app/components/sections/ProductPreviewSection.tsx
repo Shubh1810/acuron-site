@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { } from 'react';
 import { useCountryStore } from '../../../lib/store';
 
@@ -120,12 +119,7 @@ export default function ProductPreviewSection() {
     pt: 'Variações de kits disponíveis'
   });
 
-  // Simple gallery images
-  const galleryImages = [
-    '/products/3ply-pack.png',
-    '/products/n95-box.png',
-    '/products/pe-shoecover.webp'
-  ];
+  // Gallery removed as requested
 
   return (
     <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
@@ -155,18 +149,9 @@ export default function ProductPreviewSection() {
         {/* Video Showcase */}
         <VideoShowcase />
 
-        {/* Minimal Gallery + CTA */}
+        {/* CTA only (gallery removed) */}
         <div className="flex flex-col items-center mb-16">
           <div className="w-full max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-              {galleryImages.map((src, idx) => (
-                <div key={idx} className="bg-white/60 backdrop-blur-sm rounded-2xl border border-white/20 p-4">
-                  <div className="relative aspect-[4/3] w-full">
-                    <Image src={src} alt={`Gallery ${idx + 1}`} fill className="object-contain" />
-                  </div>
-                </div>
-              ))}
-            </div>
             <div className="text-center">
               <Link
                 href="/products"

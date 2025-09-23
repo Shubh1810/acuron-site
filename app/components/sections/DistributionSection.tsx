@@ -83,14 +83,8 @@ export default function DistributionSection() {
       })
     },
     {
-      number: getLocalizedContent('24/7', { de: '24/7', fr: '24/7', ja: '24/7', zh: '24/7', pt: '24/7' }),
-      label: getLocalizedContent('Supply Support', {
-        de: 'Versorgungsunterstützung',
-        fr: 'Support d\'Approvisionnement',
-        ja: 'サプライサポート',
-        zh: '供应支持',
-        pt: 'Suporte de Suprimentos'
-      })
+      number: getLocalizedContent('50+', {}),
+      label: getLocalizedContent('Logistics Partners', {})
     }
   ];
 
