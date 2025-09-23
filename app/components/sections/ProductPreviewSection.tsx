@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { } from 'react';
 import { useCountryStore } from '../../../lib/store';
 
 // Video Showcase Component
@@ -35,7 +35,6 @@ function VideoShowcase() {
 }
 
 export default function ProductPreviewSection() {
-  const [currentProductIndex, setCurrentProductIndex] = useState(0);
   const { selectedCountry } = useCountryStore();
 
   // Get localized content based on selected country
@@ -121,128 +120,12 @@ export default function ProductPreviewSection() {
     pt: 'Variações de kits disponíveis'
   });
 
-  // Simple product carousel data
-  const products = [
-    {
-      name: getLocalizedContent("3-Ply Face Masks", {
-        de: "3-lagige Gesichtsmasken",
-        fr: "Masques faciaux 3 plis",
-        ja: "3層フェイスマスク",
-        zh: "三层口罩",
-        pt: "Máscaras Faciais 3 Camadas"
-      }),
-      image: "/products/3ply-pack.png",
-      description: getLocalizedContent("High-quality disposable face masks with 3-layer protection", {
-        de: "Hochwertige Einweg-Gesichtsmasken mit 3-lagigem Schutz",
-        fr: "Masques faciaux jetables de haute qualité avec protection 3 couches",
-        ja: "3層保護の高品質使い捨てフェイスマスク",
-        zh: "具有3层保护的高质量一次性口罩",
-        pt: "Máscaras faciais descartáveis de alta qualidade com proteção de 3 camadas"
-      }),
-      category: "Masks"
-    },
-    {
-      name: getLocalizedContent("N95 Respirator Masks", {
-        de: "N95-Atemschutzmasken",
-        fr: "Masques respiratoires N95",
-        ja: "N95呼吸器マスク",
-        zh: "N95呼吸器口罩",
-        pt: "Máscaras Respiratórias N95"
-          }),
-          image: "/products/n95-box.png",
-      description: getLocalizedContent("Premium N95 masks for superior respiratory protection", {
-        de: "Premium N95-Masken für überlegenen Atemschutz",
-        fr: "Masques N95 premium pour une protection respiratoire supérieure",
-        ja: "優れた呼吸保護のためのプレミアムN95マスク",
-        zh: "用于卓越呼吸保护的优质N95口罩",
-        pt: "Máscaras N95 premium para proteção respiratória superior"
-      }),
-      category: "Masks"
-    },
-    {
-      name: getLocalizedContent("Surgical Caps", {
-        de: "Chirurgische Hauben",
-        fr: "Bonnets chirurgicaux",
-        ja: "手術帽",
-        zh: "手术帽",
-        pt: "Gorros Cirúrgicos"
-      }),
-      image: "/products/cap-box.jpg",
-      description: getLocalizedContent("Comfortable and breathable surgical caps for medical professionals", {
-        de: "Bequeme und atmungsaktive chirurgische Hauben für medizinisches Fachpersonal",
-        fr: "Bonnets chirurgicaux confortables et respirants pour les professionnels de santé",
-        ja: "医療従事者のための快適で通気性の良い手術帽",
-        zh: "为医疗专业人员提供舒适透气的手术帽",
-        pt: "Gorros cirúrgicos confortáveis e respiráveis para profissionais médicos"
-      }),
-      category: "Headwear"
-    },
-    {
-      name: getLocalizedContent("Shoe Covers", {
-        de: "Schuhüberzieher",
-        fr: "Couvre-chaussures",
-        ja: "靴カバー",
-        zh: "鞋套",
-        pt: "Protetores de Sapatos"
-      }),
-      image: "/products/Shoe Cover Box Pack.jpg",
-      description: getLocalizedContent("Disposable shoe covers for maintaining sterile environments", {
-        de: "Einweg-Schuhüberzieher zur Aufrechterhaltung steriler Umgebungen",
-        fr: "Couvre-chaussures jetables pour maintenir des environnements stériles",
-        ja: "無菌環境を維持するための使い捨て靴カバー",
-        zh: "用于维持无菌环境的一次性鞋套",
-        pt: "Protetores de sapatos descartáveis para manter ambientes estéreis"
-      }),
-      category: "Protection"
-    },
-    {
-      name: getLocalizedContent("Disposable Razors", {
-        de: "Einwegrasierer",
-        fr: "Rasoirs jetables",
-        ja: "使い捨てカミソリ",
-        zh: "一次性剃刀",
-        pt: "Lâminas Descartáveis"
-      }),
-      image: "/products/razor.png",
-      description: getLocalizedContent("Medical-grade disposable razors for surgical preparation", {
-        de: "Medizinische Einwegrasierer für die chirurgische Vorbereitung",
-        fr: "Rasoirs jetables de qualité médicale pour la préparation chirurgicale",
-        ja: "手術準備のための医療グレード使い捨てカミソリ",
-        zh: "用于手术准备的医疗级一次性剃刀",
-        pt: "Lâminas descartáveis de grau médico para preparação cirúrgica"
-      }),
-      category: "Surgical"
-    },
-    {
-      name: getLocalizedContent("Premium OT Kit", {
-        de: "Premium OP-Kit",
-        fr: "Kit de bloc opératoire premium",
-        ja: "プレミアム手術室キット",
-        zh: "高级手术室套件",
-        pt: "Kit de Centro Cirúrgico Premium"
-      }),
-      image: "/products/OT Premium Kit Product Pics.png",
-      description: getLocalizedContent("Complete operating theater kit with all essential items", {
-        de: "Komplettes Operationssaal-Kit mit allen wichtigen Artikeln",
-        fr: "Kit de bloc opératoire complet avec tous les articles essentiels",
-        ja: "すべての必需品を含む完全な手術室キット",
-        zh: "包含所有必需品的完整手术室套件",
-        pt: "Kit completo de centro cirúrgico com todos os itens essenciais"
-      }),
-      category: "Kits"
-    }
+  // Simple gallery images
+  const galleryImages = [
+    '/products/3ply-pack.png',
+    '/products/n95-box.png',
+    '/products/pe-shoecover.webp'
   ];
-
-  // Auto-rotate products in carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentProductIndex((prev) => (prev + 1) % products.length);
-    }, 4000); // Change product every 4 seconds
-
-    return () => clearInterval(interval);
-  }, [products.length]);
-
-  const currentProduct = products[currentProductIndex];
 
   return (
     <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
@@ -252,7 +135,7 @@ export default function ProductPreviewSection() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#158C07] rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-10 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 relative z-10">
         {/* Header */}
         <div className="mb-12">
           <div className="flex justify-start ml-8">
@@ -272,47 +155,18 @@ export default function ProductPreviewSection() {
         {/* Video Showcase */}
         <VideoShowcase />
 
-        {/* Product Carousel - Minimal Design */}
+        {/* Minimal Gallery + CTA */}
         <div className="flex flex-col items-center mb-16">
           <div className="w-full max-w-5xl mx-auto">
-            {/* Featured Product Display - Clean & Minimal */}
-            <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 md:p-10 mb-8 border border-white/20">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                {/* Product Image */}
-                <div className="text-center">
-                  <div className="relative w-56 h-56 md:w-72 md:h-72 mx-auto">
-                    <Image
-                      src={currentProduct.image}
-                      alt={currentProduct.name}
-                      fill
-                      className="object-contain"
-                    />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+              {galleryImages.map((src, idx) => (
+                <div key={idx} className="bg-white/60 backdrop-blur-sm rounded-2xl border border-white/20 p-4">
+                  <div className="relative aspect-[4/3] w-full">
+                    <Image src={src} alt={`Gallery ${idx + 1}`} fill className="object-contain" />
                   </div>
                 </div>
-
-                {/* Product Details */}
-                <div className="text-center md:text-left space-y-4">
-                  <h3 className="text-2xl md:text-3xl font-semibold text-gray-800">
-                    {currentProduct.name}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {currentProduct.description}
-                  </p>
-                  <Link
-                    href="/products"
-                    className="inline-flex items-center px-6 py-2.5 bg-[#0F4679] text-white font-medium rounded-xl hover:bg-[#0D3C6B] transition-colors duration-200 group"
-                  >
-                    View Product Details
-                    <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
+              ))}
             </div>
-
-
-            {/* CTA Button - Minimal */}
             <div className="text-center">
               <Link
                 href="/products"

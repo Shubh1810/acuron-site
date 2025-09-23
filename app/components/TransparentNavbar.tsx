@@ -237,7 +237,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
               <div className="border-t border-gray-200/50 m-3 mt-0 rounded-b-xl overflow-hidden">
                 <Link
                   href="/products"
-                  className="flex items-center justify-center px-4 py-4 text-sm font-bold text-blue-700 hover:text-blue-800 transition-colors duration-300 hover:bg-blue-50/70 group"
+                  className="flex items-center justify-center px-4 py-4 text-sm font-bold text-[#0F4679] hover:text-[#0D3C6B] transition-colors duration-300 rounded-lg bg-gradient-to-r from-[#0F4679]/5 to-[#158C07]/10 hover:from-[#0F4679]/10 hover:to-[#158C07]/20 group"
                   onClick={() => setIsProductsDropdownOpen(false)}
                 >
                   <span className="group-hover:scale-105 transition-transform duration-300">{viewAllProductsText}</span>

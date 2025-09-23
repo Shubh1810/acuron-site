@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -79,6 +79,25 @@ export default function ChatbotWidget() {
       handleSendMessage();
     }
   };
+
+  // Expose an imperative API and event listener so other pages can open the widget
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const open = () => setIsOpen(true);
+    (window as any).openChatWidget = open;
+
+    const eventHandler = () => setIsOpen(true);
+    window.addEventListener('openChatWidget' as any, eventHandler as EventListener);
+
+    return () => {
+      // Clean up only if we set it
+      if ((window as any).openChatWidget === open) {
+        try { delete (window as any).openChatWidget; } catch {}
+      }
+      window.removeEventListener('openChatWidget' as any, eventHandler as EventListener);
+    };
+  }, []);
 
   return (
     <>

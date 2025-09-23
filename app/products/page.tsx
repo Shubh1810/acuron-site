@@ -15,9 +15,10 @@ import { allProducts } from "../lib/productData";
 
 // Component that uses useSearchParams - needs to be wrapped in Suspense
 function ProductsContent() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("all");
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
   const scrollableNavRef = useRef<HTMLDivElement>(null);
+  const productsSectionRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   
   // Check if pharma category is selected
@@ -32,21 +33,92 @@ function ProductsContent() {
   // Products are now imported from productData.ts
   const nonFeaturedProducts = allProducts.filter(product => !product.featured);
 
-  // New categories for filtering
-  const categories = [
-    { name: "All" },
-    { name: "Protective Apparel" },
-    { name: "Masks & Headwear" },
-    { name: "Shoe & Leg Protection" },
-    { name: "Drapes, Linens & Underpads" },
-    { name: "Medical Kits" },
-    { name: "General Medical & Surgical Disposables" }
+  // Helpers
+  const includesAny = (text: string, terms: string[]) => {
+    const lower = text.toLowerCase();
+    return terms.some(t => lower.includes(t));
+  };
+
+  // Apple-like navbar categories with predicates
+  const categories: Array<{ key: string; label: string; predicate: (p: typeof allProducts[number]) => boolean }> = [
+    { key: 'all', label: 'All', predicate: () => true },
+    { key: 'razors', label: 'Razors', predicate: (p) => includesAny(p.name, ['razor']) },
+    { key: 'face-masks', label: 'Face Masks', predicate: (p) => includesAny(p.name, ['mask']) || includesAny(p.category, ['masks']) },
+    { key: 'surgical-caps', label: 'Surgical Caps', predicate: (p) => includesAny(p.name, ['cap']) },
+    { key: 'shoe-covers', label: 'Shoe Covers', predicate: (p) => includesAny(p.name, ['shoe cover', 'shoe']) },
+    { key: 'surgical-gowns', label: 'Surgical Gowns', predicate: (p) => includesAny(p.name, ['gown']) },
+    { key: 'medical-coveralls', label: 'Medical Coveralls', predicate: (p) => includesAny(p.name, ['coverall', 'labcoat', 'scrub', 'scrub suit']) },
+    { key: 'drapes', label: 'Drapes', predicate: (p) =>
+      !includesAny(p.name, ['wrap']) && (
+        includesAny(p.name, ['drape']) ||
+        includesAny(p.category, ['drapes', 'linens', 'underpads']) ||
+        (includesAny(p.name, ['pack', 'kit']) && includesAny(p.category, ['drapes', 'linens', 'underpads']))
+      )
+    },
+    { key: 'sheets', label: 'Sheets', predicate: (p) => includesAny(p.name, ['sheet', 'underpad', 'wrap']) && !includesAny(p.name, ['gown']) },
+    { key: 'gloves', label: 'Gloves', predicate: (p) => includesAny(p.name, ['glove']) },
+    { key: 'miscellaneous', label: 'Miscellaneous', predicate: (p) => {
+        // Not matching any of the above specific categories
+        const matched = categories.slice(1, -1).some(c => c.predicate(p));
+        return !matched;
+      }
+    },
   ];
 
-  // Filter products based on active category (excluding featured products from this filter)
-  const filteredMiniProducts = activeCategory === "All"
-    ? nonFeaturedProducts
-    : nonFeaturedProducts.filter(product => product.category === activeCategory);
+  // Filter products based on active category
+  const activeCategoryObj = categories.find(c => c.key === activeCategory) || categories[0];
+  const filteredMiniProducts = nonFeaturedProducts.filter(p => activeCategoryObj.predicate(p));
+
+  // Expand variants into separate display items for specific categories (e.g., Face Masks)
+  type DisplayProduct = typeof allProducts[number] & { __variantCode?: string; __displayName?: string };
+  const expandedProducts: DisplayProduct[] = (() => {
+    const isMasks = activeCategoryObj.key === 'face-masks';
+    const isCaps = activeCategoryObj.key === 'surgical-caps';
+    const isShoes = activeCategoryObj.key === 'shoe-covers';
+    if (!isMasks && !isCaps && !isShoes) return filteredMiniProducts as DisplayProduct[];
+
+    const allowedN95Codes = new Set(['AP N95 01', 'AP N95 02', 'AP N95 03']);
+    // Shoe covers + leggings should map to SC and SL codes per productData
+    const allowedShoeCodes = new Set(['AP SC 01', 'AP SC 02', 'AP SL 01']);
+    const items: DisplayProduct[] = [];
+    for (const p of filteredMiniProducts) {
+      // Masks view: exclude caps/hoods and goggles entirely
+      if (isMasks) {
+        if (/cap|hood/i.test(p.name)) continue;
+        if (/goggle/i.test(p.name) || /goggle/i.test(p.category)) continue;
+      }
+
+      const isMaskProduct = /mask/i.test(p.name) || /mask/i.test(p.category);
+      const isCapProduct = /cap/i.test(p.name) || /cap/i.test(p.category);
+      const isShoeProduct = /shoe/i.test(p.name) || /shoe/i.test(p.category) || /legging/i.test(p.name);
+
+      // Decide whether to expand variants for this item
+      const shouldExpand = (isMasks && isMaskProduct) || (isCaps && isCapProduct) || (isShoes && isShoeProduct);
+
+      if (shouldExpand && p.variants && p.variants.length > 0) {
+        const isN95 = isMasks && (/n95/i.test(p.name) || p.variants.some(v => /n95/i.test(v.productName)));
+        for (const v of p.variants) {
+          // Masks-only restriction for N95 variants
+          if (isN95 && !allowedN95Codes.has(v.productCode)) continue;
+          if (isMasks && /goggle/i.test(v.productName)) continue;
+          // Shoe-covers: only three specified codes
+          if (isShoes && !allowedShoeCodes.has(v.productCode)) continue;
+          items.push({
+            ...p,
+            __variantCode: v.productCode,
+            __displayName: v.productName || `${p.name}`,
+          });
+        }
+      } else if (shouldExpand) {
+        // For shoe-covers view, restrict to specific codes only; skip non-variant items
+        if (isShoes) {
+          continue;
+        }
+        items.push(p as DisplayProduct);
+      }
+    }
+    return items;
+  })();
 
   // Effect to handle scroll indicator visibility
   useEffect(() => {
@@ -103,9 +175,9 @@ function ProductsContent() {
               <div ref={scrollableNavRef} className="relative flex items-center justify-start sm:justify-center space-x-2 sm:space-x-4 md:space-x-8 overflow-x-auto scrollbar-hide z-10">
                 {categories.map((category, index) => {
                   // Map categories to appropriate icons and display names
-                  const getCategoryConfig = (categoryName: string) => {
-                    switch (categoryName) {
-                      case "All":
+                  const getCategoryConfig = (categoryKey: string) => {
+                    switch (categoryKey) {
+                      case "all":
                         return {
                           icon: (
                             <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,79 +186,131 @@ function ProductsContent() {
                           ),
                           displayName: "All"
                         };
-                      case "Protective Apparel":
+                      case "razors":
                         return {
                           icon: (
                             <Image
-                              src="/Health Icon Apron.png"
-                              alt="Protective Apparel Icon"
+                              src="/shave.png"
+                              alt="Razors Icon"
                               width={32}
                               height={32}
                               className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
-                          displayName: "PPE Apparel"
+                          displayName: "Razors"
                         };
-                      case "Masks & Headwear":
+                      case "face-masks":
                         return {
                           icon: (
                             <Image
                               src="/PPE Mask Icon.png"
-                              alt="Masks & Headwear Icon"
+                              alt="Face Masks Icon"
                               width={32}
                               height={32}
                               className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
-                          displayName: "Masks & Headwear"
+                          displayName: "Face Masks"
                         };
-                      case "Shoe & Leg Protection":
-                        return {
-                          icon: (
-                            <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                          ),
-                          displayName: "Foot Protection"
-                        };
-                      case "Drapes, Linens & Underpads":
+                      case "surgical-caps":
                         return {
                           icon: (
                             <Image
-                              src="/Vascular Surgery Icon.png"
-                              alt="Drapes & Linens Icon"
+                              src="/caphood.png"
+                              alt="Surgical Caps Icon"
                               width={32}
                               height={32}
                               className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
-                          displayName: "Drapes & Linens"
+                          displayName: "Surgical Caps"
                         };
-                      case "Medical Kits":
+                      case "shoe-covers":
+                        return {
+                          icon: (
+                            <Image
+                              src="/PPE shoe.png"
+                              alt="PPE Shoe Covers Icon"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                            />
+                          ),
+                          displayName: "Shoe Covers"
+                        };
+                      case "surgical-gowns":
+                        return {
+                          icon: (
+                            <Image
+                              src="/Health Icon Apron.png"
+                              alt="Surgical Gowns Icon"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                            />
+                          ),
+                          displayName: "Gowns"
+                        };
+                      case "medical-coveralls":
                         return {
                           icon: (
                             <Image
                               src="/PPE Suit Icon.png"
-                              alt="Medical Kits Icon"
+                              alt="Coveralls Icon"
                               width={32}
                               height={32}
                               className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
-                          displayName: "Complete Medical Kits"
+                          displayName: "Coveralls/Labcoats"
                         };
-                      case "General Medical & Surgical Disposables":
+                      case "drapes":
+                        return {
+                          icon: (
+                            <Image
+                              src="/Vascular Surgery Icon.png"
+                              alt="Drapes Icon"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                            />
+                          ),
+                          displayName: "Drapes"
+                        };
+                      case "sheets":
+                        return {
+                          icon: (
+                            <Image
+                              src="/surgery.png"
+                              alt="ISO Sheets Icon"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                            />
+                          ),
+                          displayName: "Sheets"
+                        };
+                      case "gloves":
                         return {
                           icon: (
                             <Image
                               src="/PPE Gloves Icon.png"
-                              alt="Medical Disposables Icon"
+                              alt="Gloves Icon"
                               width={32}
                               height={32}
                               className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
                             />
                           ),
-                          displayName: "Disposables"
+                          displayName: "Gloves"
+                        };
+                      case "miscellaneous":
+                        return {
+                          icon: (
+                            <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
+                            </svg>
+                          ),
+                          displayName: "Miscellaneous"
                         };
                       default:
                         return {
@@ -195,21 +319,29 @@ function ProductsContent() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                           ),
-                          displayName: categoryName
+                          displayName: category.label
                         };
                     }
                   };
 
-                  const config = getCategoryConfig(category.name);
-                  const isActive = activeCategory === category.name;
+                  const config = getCategoryConfig(category.key);
+                  const isActive = activeCategory === category.key;
 
                   return (
                     <motion.div
-                      key={category.name}
+                      key={category.key}
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
-                      onClick={() => setActiveCategory(category.name)}
+                      onClick={() => {
+                        setActiveCategory(category.key);
+                        const el = productsSectionRef.current;
+                        if (el) {
+                          const headerOffset = 120;
+                          const y = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                          window.scrollTo({ top: y, behavior: 'smooth' });
+                        }
+                      }}
                       className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[70px] sm:min-w-[86px] md:min-w-[100px] group cursor-pointer"
                     >
                                               <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-106 ${
@@ -359,6 +491,9 @@ function ProductsContent() {
             </div>
           </div>
 
+          {/* Scroll target for smooth jump from category navbar */}
+          <div ref={productsSectionRef}></div>
+
           {/* Main Product Grid (Mini Replicas - Filterable) */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -369,9 +504,9 @@ function ProductsContent() {
               transition={{ duration: 0.3 }} // Faster transition
               className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10 mb-24" // Adjusted gap and columns
             >
-              {filteredMiniProducts.map((product, index) => (
+              {expandedProducts.map((product, index) => (
               <motion.div
-                  key={product.id} // Use product.id for unique key
+                  key={`${product.id}${product.__variantCode ? '-' + product.__variantCode : ''}`} // Ensure unique key per variant
                   initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }} // Staggered animation for cards
@@ -393,7 +528,7 @@ function ProductsContent() {
                   {/* Content Container - Scaled Down Replica */}
                   <div className="flex flex-col flex-grow bg-gray-100/40 backdrop-blur-xl rounded-b-2xl p-5 border-t-0 border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300">
                     <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-[#0F4679] transition-colors duration-300 leading-tight">
-                    {product.name}
+                    {product.__displayName || product.name}
                   </h3>
                     <p className="text-gray-600 mb-3 text-xs leading-relaxed line-clamp-3 flex-grow hidden sm:block">
                     {product.description}

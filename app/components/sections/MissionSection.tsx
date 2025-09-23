@@ -91,6 +91,14 @@ export default function MissionSection() {
     }
   );
 
+  const aboutUsTitle = getLocalizedContent('About Us', {
+    de: 'Über uns',
+    fr: 'À propos de nous',
+    ja: '私たちについて',
+    zh: '关于我们',
+    pt: 'Sobre nós'
+  });
+
   const ourImpactText = getLocalizedContent('Our Impact', {
     de: 'Unsere Wirkung',
     fr: 'Notre Impact',
@@ -133,15 +141,13 @@ export default function MissionSection() {
       </div>
 
       <div className="relative z-10 flex flex-col h-full">
-          <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-10 py-10 flex-grow flex flex-col justify-between">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 py-10 flex-grow flex flex-col justify-between">
             {/* Header Section */}
-            <div className="relative mb-6 text-left">
-              <div className="absolute -left-3 -top-3 w-12 h-12 bg-gradient-to-br from-blue-400/40 to-teal-300/40 rounded-full blur-lg"></div>
-              
+            <div className="flex justify-start ml-8 mb-6 text-left">
               <div className="relative z-10">
-                <span className="inline-block px-4 py-2 text-xs uppercase tracking-wider font-semibold bg-white/10 backdrop-blur-sm rounded-full mb-3 border-l-2 border-accent-400 text-white">
+                <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight mb-3">
                   {ourMissionText}
-                </span>
+                </h2>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading tracking-tight text-white/95 leading-tight text-left">
                   <span className="relative">
                     {missionTitle.split(':')[0]}
