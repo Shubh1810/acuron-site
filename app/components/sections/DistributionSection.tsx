@@ -167,7 +167,7 @@ export default function DistributionSection() {
           >
             <div className="relative w-full h-[350px] lg:h-[400px] group">
               <Image
-                src="/indiamap.webp"
+                src="/mapog.png"
                 alt="India Distribution Network"
                 fill
                 className="object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-lg"
