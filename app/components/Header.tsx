@@ -239,13 +239,6 @@ const Header: FC = () => {
             <div className="hidden md:flex items-center space-x-2">
               <span className="text-[9px] sm:text-[10px] text-[#0F4679]/70 font-medium">Available on:</span>
               <div className="flex items-center space-x-1">
-                <Image
-                  src="/flip.png"
-                  alt="Available on Flipkart"
-                  width={48}
-                  height={16}
-                  className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain"
-                />
                 <a 
                   href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1"
                   target="_blank"

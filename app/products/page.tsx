@@ -10,19 +10,42 @@ import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
 import Footer from "../components/sections/Footer";
+import NewsletterModal from "../components/NewsletterModal";
 import { allProducts } from "../lib/productData";
+import { useNewsletterModalTrigger } from "../lib/modalEvents";
 
 
 // Component that uses useSearchParams - needs to be wrapped in Suspense
 function ProductsContent() {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("kits");
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const scrollableNavRef = useRef<HTMLDivElement>(null);
   const productsSectionRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   
   // Check if pharma category is selected
   const isPharmaCategory = searchParams.get('category') === 'pharma';
+
+  // Newsletter modal functionality
+  const handleActualDownload = () => {
+    // Create a temporary link element to trigger download
+    const link = document.createElement('a');
+    link.href = '/acuron-brochure.pdf';
+    link.download = 'acuron-brochure.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Set up newsletter modal trigger
+  useEffect(() => {
+    const cleanup = useNewsletterModalTrigger(() => {
+      setIsNewsletterModalOpen(true);
+    });
+    
+    return cleanup;
+  }, []);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -41,11 +64,7 @@ function ProductsContent() {
 
   // Apple-like navbar categories with predicates
   const categories: Array<{ key: string; label: string; predicate: (p: typeof allProducts[number]) => boolean }> = [
-    { key: 'all', label: 'All', predicate: () => true },
-    { key: 'razors', label: 'Razors', predicate: (p) => includesAny(p.name, ['razor']) },
-    { key: 'face-masks', label: 'Face Masks', predicate: (p) => includesAny(p.name, ['mask']) || includesAny(p.category, ['masks']) },
-    { key: 'surgical-caps', label: 'Surgical Caps', predicate: (p) => includesAny(p.name, ['cap']) },
-    { key: 'shoe-covers', label: 'Shoe Covers', predicate: (p) => includesAny(p.name, ['shoe cover', 'shoe']) },
+    { key: 'kits', label: 'Kits', predicate: (p) => includesAny(p.name, ['kit', 'pack', 'set']) || includesAny(p.category, ['kits', 'packs']) },
     { key: 'surgical-gowns', label: 'Surgical Gowns', predicate: (p) => includesAny(p.name, ['gown']) },
     { key: 'medical-coveralls', label: 'Medical Coveralls', predicate: (p) => includesAny(p.name, ['coverall', 'labcoat', 'scrub', 'scrub suit']) },
     { key: 'drapes', label: 'Drapes', predicate: (p) =>
@@ -56,10 +75,14 @@ function ProductsContent() {
       )
     },
     { key: 'sheets', label: 'Sheets', predicate: (p) => includesAny(p.name, ['sheet', 'underpad', 'wrap']) && !includesAny(p.name, ['gown']) },
+    { key: 'face-masks', label: 'Face Masks', predicate: (p) => includesAny(p.name, ['mask']) || includesAny(p.category, ['masks']) },
+    { key: 'razors', label: 'Razors', predicate: (p) => includesAny(p.name, ['razor']) },
+    { key: 'surgical-caps', label: 'Surgical Caps', predicate: (p) => includesAny(p.name, ['cap']) },
+    { key: 'shoe-covers', label: 'Shoe Covers', predicate: (p) => includesAny(p.name, ['shoe cover', 'shoe']) },
     { key: 'gloves', label: 'Gloves', predicate: (p) => includesAny(p.name, ['glove']) },
     { key: 'miscellaneous', label: 'Miscellaneous', predicate: (p) => {
         // Not matching any of the above specific categories
-        const matched = categories.slice(1, -1).some(c => c.predicate(p));
+        const matched = categories.slice(0, -1).some(c => c.predicate(p));
         return !matched;
       }
     },
@@ -75,7 +98,8 @@ function ProductsContent() {
     const isMasks = activeCategoryObj.key === 'face-masks';
     const isCaps = activeCategoryObj.key === 'surgical-caps';
     const isShoes = activeCategoryObj.key === 'shoe-covers';
-    if (!isMasks && !isCaps && !isShoes) return filteredMiniProducts as DisplayProduct[];
+    const isKits = activeCategoryObj.key === 'kits';
+    if (!isMasks && !isCaps && !isShoes && !isKits) return filteredMiniProducts as DisplayProduct[];
 
     const allowedN95Codes = new Set(['AP N95 01', 'AP N95 02', 'AP N95 03']);
     // Shoe covers + leggings should map to SC and SL codes per productData
@@ -91,9 +115,10 @@ function ProductsContent() {
       const isMaskProduct = /mask/i.test(p.name) || /mask/i.test(p.category);
       const isCapProduct = /cap/i.test(p.name) || /cap/i.test(p.category);
       const isShoeProduct = /shoe/i.test(p.name) || /shoe/i.test(p.category) || /legging/i.test(p.name);
+      const isKitProduct = /kit/i.test(p.name) || /pack/i.test(p.name) || /set/i.test(p.name) || /kit/i.test(p.category) || /pack/i.test(p.category);
 
       // Decide whether to expand variants for this item
-      const shouldExpand = (isMasks && isMaskProduct) || (isCaps && isCapProduct) || (isShoes && isShoeProduct);
+      const shouldExpand = (isMasks && isMaskProduct) || (isCaps && isCapProduct) || (isShoes && isShoeProduct) || (isKits && isKitProduct);
 
       if (shouldExpand && p.variants && p.variants.length > 0) {
         const isN95 = isMasks && (/n95/i.test(p.name) || p.variants.some(v => /n95/i.test(v.productName)));
@@ -167,24 +192,28 @@ function ProductsContent() {
           )}
           {/* Web3 Category Navigation with Glass Effect */}
           <div className="mb-6 pb-4 relative z-[60]">
-            <div className="relative bg-white/80 backdrop-blur-[24px] shadow-lg p-2 sm:p-3 md:p-6 border border-gray-200 overflow-hidden rounded-3xl">
+            <div className="relative bg-white/80 backdrop-blur-[24px] shadow-lg p-3 sm:p-4 md:p-6 border border-gray-200 overflow-hidden rounded-3xl">
               {/* Subtle gradient accent */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 via-white to-teal-50/50 rounded-3xl opacity-60"></div>
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-200 to-transparent"></div>
-              <div ref={scrollableNavRef} className="relative flex items-center justify-start sm:justify-center space-x-2 sm:space-x-4 md:space-x-8 overflow-x-auto scrollbar-hide z-10">
+              <div ref={scrollableNavRef} className="relative flex items-center justify-start space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-5 overflow-x-auto scrollbar-hide z-10 px-2 sm:px-4">
                 {categories.map((category, index) => {
                   // Map categories to appropriate icons and display names
                   const getCategoryConfig = (categoryKey: string) => {
                     switch (categoryKey) {
-                      case "all":
+                      case "kits":
                         return {
                           icon: (
-                            <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                            </svg>
+                            <Image
+                              src="/medical.png"
+                              alt="Medical Kits Icon"
+                              width={32}
+                              height={32}
+                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                            />
                           ),
-                          displayName: "All"
+                          displayName: "Kits"
                         };
                       case "razors":
                         return {
@@ -229,7 +258,7 @@ function ProductsContent() {
                         return {
                           icon: (
                             <Image
-                              src="/PPE shoe.png"
+                              src="/boot.png"
                               alt="PPE Shoe Covers Icon"
                               width={32}
                               height={32}
@@ -342,9 +371,9 @@ function ProductsContent() {
                           window.scrollTo({ top: y, behavior: 'smooth' });
                         }
                       }}
-                      className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[70px] sm:min-w-[86px] md:min-w-[100px] group cursor-pointer"
+                      className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[70px] sm:min-w-[80px] md:min-w-[90px] group cursor-pointer shrink-0"
                     >
-                                              <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-106 ${
+                                              <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 aspect-square rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 shrink-0 ${
                           isActive 
                             ? 'bg-gradient-to-br from-blue-500/20 to-teal-500/20 backdrop-blur-sm text-blue-700 shadow-lg border border-blue-300' 
                             : 'text-gray-600 hover:bg-gray-100 hover:backdrop-blur-sm'
@@ -476,7 +505,7 @@ function ProductsContent() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
                     <span className="text-white font-medium">
-                      {allProducts.length}+ Products • {categories.length - 1} Categories
+                      {allProducts.length}+ Products • {categories.length} Categories
                     </span>
                   </div>
                 </motion.div>
@@ -571,7 +600,7 @@ function ProductsContent() {
                 </div>
               </motion.div>
             ))}
-               {filteredMiniProducts.length === 0 && activeCategory !== "All" && (
+               {filteredMiniProducts.length === 0 && (
                 <motion.div 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -580,7 +609,7 @@ function ProductsContent() {
                 >
                     <Image src="/placeholder.png" alt="No products found" width={128} height={128} className="mx-auto mb-4 opacity-50" />
                     <p className="text-gray-600 text-lg">No products found in "{activeCategory}".</p>
-                    <p className="text-gray-500 text-sm">Try selecting another category or "All" to see all available products.</p>
+                    <p className="text-gray-500 text-sm">Try selecting another category to see available products.</p>
                 </motion.div>
             )}
             </motion.div>
@@ -627,6 +656,13 @@ function ProductsContent() {
         </div>
       </div>
       <Footer />
+      
+      {/* Newsletter Modal */}
+      <NewsletterModal 
+        isOpen={isNewsletterModalOpen}
+        onClose={() => setIsNewsletterModalOpen(false)}
+        onSuccess={handleActualDownload}
+      />
     </>
   );
 }

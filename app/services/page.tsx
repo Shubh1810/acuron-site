@@ -1,14 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Header from "../components/Header";
 import TransparentNavbar from "../components/TransparentNavbar";
 import Image from "next/image";
 import WhiteGridBackground from "../components/ui/white-grid-background";
 import Footer from "../components/sections/Footer";
+import NewsletterModal from "../components/NewsletterModal";
+import { useNewsletterModalTrigger } from "../lib/modalEvents";
 
 export default function ServicesPage() {
   const [expandedService, setExpandedService] = useState<number | null>(null);
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
 
   const toggleExpanded = (id: number) => {
     if (expandedService === id) {
@@ -17,6 +20,26 @@ export default function ServicesPage() {
       setExpandedService(id);
     }
   };
+
+  // Newsletter modal functionality
+  const handleActualDownload = () => {
+    // Create a temporary link element to trigger download
+    const link = document.createElement('a');
+    link.href = '/acuron-brochure.pdf';
+    link.download = 'acuron-brochure.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Set up newsletter modal trigger
+  useEffect(() => {
+    const cleanup = useNewsletterModalTrigger(() => {
+      setIsNewsletterModalOpen(true);
+    });
+    
+    return cleanup;
+  }, []);
 
   const services = [
     {
@@ -393,6 +416,13 @@ export default function ServicesPage() {
         </div>
       </div>
       <Footer />
+      
+      {/* Newsletter Modal */}
+      <NewsletterModal 
+        isOpen={isNewsletterModalOpen}
+        onClose={() => setIsNewsletterModalOpen(false)}
+        onSuccess={handleActualDownload}
+      />
     </>
   );
 } 

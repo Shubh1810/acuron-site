@@ -110,21 +110,24 @@ export default function AboutSection() {
 
 
   return (
-    <section className="py-16 bg-white" id="about-us-section">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+    <section className="py-8 sm:py-12 md:py-16 bg-white" id="about-us-section">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
         {/* Header */}
-        <div className="flex justify-start ml-8 mb-12">
+        <div className="flex justify-start ml-4 sm:ml-6 md:ml-8 mb-6 sm:mb-8">
           <div className="relative">
-            <h2 className="section-heading text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+            <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
               {aboutUsTitle}
             </h2>
+            <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-[#0F4679] mt-1 sm:mt-2 md:mt-3 font-sans leading-tight">
+              {whyChooseTitle}
+            </h3>
           </div>
         </div>
         
         {/* Image with Why Choose Us Overlay aligned to container left */}
         <div className="mb-12">
           <div className="relative w-full" ref={imageRef}>
-            <div className="relative min-h-[60vh] sm:min-h-[55vh] md:min-h-[50vh] lg:min-h-[55vh] overflow-hidden rounded-lg">
+            <div className="relative min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[550px] xl:min-h-[600px] overflow-hidden rounded-lg">
               <Image 
                 src="/about-us.JPEG" 
                 alt="Acuron Products India founders and leadership team showcasing medical supplies manufacturing expertise" 
@@ -146,12 +149,9 @@ export default function AboutSection() {
                 priority
               />
               
-              {/* Why Choose Us Content Overlay */}
+              {/* Content Overlay */}
               <div className="absolute inset-0 z-20 flex items-start justify-start px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10">
                 <div className="text-left max-w-4xl w-full">
-                  <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-[#0F4679] mb-3 sm:mb-4 md:mb-6 font-sans leading-tight text-left">
-                    {whyChooseTitle}
-                  </h3>
                   <div className="space-y-2 sm:space-y-3 md:space-y-4">
                     <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-800 font-sans leading-relaxed text-left">
                       {aboutParagraph1}
