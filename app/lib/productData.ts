@@ -34,8 +34,8 @@ export const allProducts: Product[] = [
     description: "Standard nonwoven surgical gown for basic protection.",
     detailedDescription: "Our surgical gowns are designed to provide optimal protection and comfort for healthcare professionals during surgical procedures. Made from high-quality nonwoven fabric, these gowns offer excellent fluid resistance while maintaining breathability.",
     category: "Protective Apparel",
-    image: "/products/surgical-gown.jpeg",
-    secondaryImage: "/products/surgical-gown.jpg",
+    image: "/products/surgical-gown2.png",
+    secondaryImage: "/products/surgical-gown2.png",
     featured: false,
     specs: ["Nonwoven Fabric", "Fluid Resistant", "Comfortable Fit"],
     variants: [
@@ -369,7 +369,7 @@ export const allProducts: Product[] = [
     description: "Nonwoven labcoats for laboratory and general use.",
     detailedDescription: "Our medical coveralls provide comprehensive protection for healthcare workers in various medical environments. Made from high-quality nonwoven polypropylene, these coveralls offer excellent barrier protection while maintaining comfort.",
     category: "Protective Apparel",
-    image: "/products/medcoverall.jpg",
+    image: "/products/coverall.jpg",
     secondaryImage: "/products/coverall-2.jpg",
     featured: false,
     specs: ["Nonwoven Polypropylene", "Splash Resistant", "Knee-Length"],
@@ -442,7 +442,7 @@ export const allProducts: Product[] = [
     description: "Nonwoven 40 gsm labcoat & pant set.",
     detailedDescription: "Labcoat and pant set made from 40 gsm nonwoven fabric for hygienic protection.",
     category: "Protective Apparel",
-    image: "/products/medcoverall.jpg",
+    image: "/products/gown.jpg",
     secondaryImage: "/products/coverall-2.jpg",
     featured: false,
     specs: ["Nonwoven", "40 gsm", "Two-piece set"],
@@ -463,7 +463,7 @@ export const allProducts: Product[] = [
     description: "Disposable SSMMS scrub suit (shirt & pant).",
     detailedDescription: "Disposable scrub suit made from SSMMS fabric offering comfort and protection for medical staff.",
     category: "Protective Apparel",
-    image: "/products/medcoverall.jpg",
+    image: "/products/patgown.JPEG",
     secondaryImage: "/products/coverall-2.jpg",
     featured: false,
     specs: ["SSMMS", "Two-piece", "Breathable"],
@@ -867,126 +867,7 @@ export const allProducts: Product[] = [
   },
 
   // Drapes, Linens & Underpads - Additional Products
-  {
-    id: 403,
-    name: "Minor Drape Set",
-    description: "Comprehensive minor drape set kit for surgeries.",
-    detailedDescription: "Minor Drape Set including: Hysterectomy Drape - 1 pc, Trolly Towel - 1 pc, Surgeon Gown - 1 pc, Wrap - 1 pc.",
-    category: "Drapes, Linens & Underpads",
-    image: "/products/plain-sheet.jpg",
-    secondaryImage: "/products/plain-sheet.jpg",
-    featured: false,
-    specs: ["Surgical drape kit", "Single-use", "Sterile"],
-    variants: [
-      {
-        productCode: "AP MD K 01",
-        productName: "Minor Drape Set (1 KIT)",
-        packingPerBox: "1 KIT",
-        gstPercentage: "5.00%",
-        hsnCode: "63071010"
-      }
-    ],
-    features: [
-      "Includes essential components",
-      "Designed for minor procedures",
-      "Convenient kit packaging"
-    ],
-    applications: ["Minor surgical procedures", "OT draping"],
-    certifications: ["ISO 13485", "CE Mark"],
-    slug: "minor-drape-set",
-    metaTitle: "Minor Drape Set - Surgical Drape Kit | Acuron Products",
-    metaDescription: "Minor Drape Set with drape, towel, surgeon gown and wrap. Packed as 1 KIT.",
-    keywords: ["minor drape set", "surgical drape kit", "AP MD K 01"]
-  },
-  {
-    id: 404,
-    name: "Major Drape Set",
-    description: "Comprehensive major drape set kit for surgeries.",
-    detailedDescription: "Major Drape Set including: Hysterectomy Drape - 1 pc, Trolly Towel - 1 pc, Surgeon Gown - 3 pcs, Leggings - 1 pair, Wrap - 1 pc, PolyDrape - 1 pc.",
-    category: "Drapes, Linens & Underpads",
-    image: "/products/plain-sheet.jpg",
-    secondaryImage: "/products/plain-sheet.jpg",
-    featured: false,
-    specs: ["Surgical drape kit", "Single-use", "Sterile"],
-    variants: [
-      {
-        productCode: "AP MD K 02",
-        productName: "Major Drape Set (1 KIT)",
-        packingPerBox: "1 KIT",
-        gstPercentage: "5.00%",
-        hsnCode: "63071010"
-      }
-    ],
-    features: [
-      "Expanded components for major procedures",
-      "Convenient kit packaging",
-      "Designed for operating theatre"
-    ],
-    applications: ["Major surgical procedures", "OT draping"],
-    certifications: ["ISO 13485", "CE Mark"],
-    slug: "major-drape-set",
-    metaTitle: "Major Drape Set - Surgical Drape Kit | Acuron Products",
-    metaDescription: "Major Drape Set with drapes, towels, 3 surgeon gowns, leggings, wrap and polydrape. Packed as 1 KIT.",
-    keywords: ["major drape set", "surgical drape kit", "AP MD K 02"]
-  },
-  {
-    id: 401,
-    name: "Bedsheets & Pillow Covers",
-    description: "Disposable nonwoven bedsheets and pillow covers for hygiene.",
-    detailedDescription: "Our disposable bedsheets and pillow covers provide a hygienic barrier for patient care. Made from soft nonwoven fabric, these products ensure comfort while maintaining strict hygiene standards in healthcare facilities.",
-    category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
-    featured: false,
-    specs: ["Nonwoven Fabric", "Hygienic", "Various Sizes"],
-    variants: [
-      {
-        productCode: "AP BS 01",
-        productName: "Nonwoven Bedsheet 40 gsm (120 x 210) cm",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "63041940"
-      },
-      {
-        productCode: "AP BS 02",
-        productName: "SMS Bedsheet 35gsm (160 x 225) cm",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "63041940"
-      },
-      {
-        productCode: "AP BS P 01",
-        productName: "Nonwoven Bedsheet & Pillow Cover Set (120 x 210 cm)",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "63041940"
-      },
-      {
-        productCode: "AP BS P 02",
-        productName: "SMS Bedsheet & Pillow Cover Set 35gsm (160 x 225) cm",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "63041940"
-      }
-    ],
-    features: [
-      "Soft nonwoven material",
-      "Hygienic single-use design",
-      "Various sizes available",
-      "Comfortable for patients"
-    ],
-    applications: [
-      "Hospital patient care",
-      "Long-term care facilities",
-      "Emergency medical services",
-      "Home healthcare"
-    ],
-    certifications: ["ISO 13485", "Hygienic Standards"],
-    slug: "bedsheets-pillow-covers",
-    metaTitle: "Disposable Bedsheets & Pillow Covers | Acuron Products",
-    metaDescription: "Hygienic disposable bedsheets and pillow covers for patient care. Soft nonwoven fabric ensuring comfort and cleanliness.",
-    keywords: ["disposable bedsheets", "pillow covers", "patient care", "hygienic bedding"]
-  },
+  
   // Individual Bedsheet and Set products
   {
     id: 405,
@@ -1071,7 +952,7 @@ export const allProducts: Product[] = [
     description: "Comprehensive CABG surgical drape pack.",
     detailedDescription: "CABG Pack includes: Square Sheet, Large Sheet, Towel-02pcs, Bottom Drape Sheet, Drape Sheet with Adhesive, Wing Drape with Towel, Iodophor Incise, Trolley Cover, Towel, Basin Stand Cover, Waist Band, Saddle Bag, Disposable Bag, Tubing Organizer Small-02pcs, Tubing Organizer Big; Wraparound Gown with Hand Towel Medium, Wraparound Gown with Hand Towel Large - 02 pcs.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/plain-sheet.jpg",
+    image: "/cabg-drape.png",
     secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["OT Pack", "Cardiovascular-Thoracic"],
@@ -1090,7 +971,7 @@ export const allProducts: Product[] = [
     description: "TURP drape with adhesive area 24x17 cm with 3 cm condom catheter.",
     detailedDescription: "Transurethral Resection of Prostate (TURP) drape size 160x200 cm with adhesive area 24x17 cm and 3 cm condom catheter.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/plain-sheet.jpg",
+    image: "/turp-drape.png",
     secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["160x200 cm", "Adhesive area 24x17 cm"],
@@ -1109,7 +990,7 @@ export const allProducts: Product[] = [
     description: "Dialysis On/Off kit with swabs, balls, towels, and SMS sheet.",
     detailedDescription: "On/Off Kit for Dialysis includes: Gauze Swabs-02 pcs, Cotton Balls-03 pcs, Arm Rest Towel, Tissue Towel, SMS Sheet, Pouch.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/plain-sheet.jpg",
+    image: "/dialysis-on-off-kit.jpg",
     secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["Dialysis kit", "Single-use"],
@@ -1128,7 +1009,7 @@ export const allProducts: Product[] = [
     description: "PCNL drape with 20x25 cm incise and drainage funnel.",
     detailedDescription: "Percutaneous Nephrolithotomy (PCNL) drape size 160x300 cm, incise area 20x25 cm with drainage funnel.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/plain-sheet.jpg",
+    image: "/PCNL-Drape.webp",
     secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["160x300 cm", "Incise 20x25 cm", "Drainage funnel"],
@@ -1142,50 +1023,13 @@ export const allProducts: Product[] = [
     keywords: ["PCNL drape", "urology", "AP 913"]
   },
   {
-    id: 402,
-    name: "Couch Sheet / Draw Sheet",
-    description: "Disposable couch sheet for examination tables and patient beds.",
-    detailedDescription: "Our couch sheet (draw sheet) provides a hygienic barrier for examination tables and patient beds. Designed for easy positioning and patient comfort during medical examinations and procedures.",
-    category: "Drapes, Linens & Underpads",
-    image: "/products/plain-sheet.jpg",
-    secondaryImage: "/products/bed-sheet.webp",
-    featured: false,
-    specs: ["80x120 cm", "Bulk Pack", "Disposable"],
-    variants: [
-      {
-        productCode: "AP CS 01",
-        productName: "Couch Sheet / Draw Sheet (80x120) cms",
-        packingPerBox: "Bulk Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "62104090"
-      }
-    ],
-    features: [
-      "Standard examination table size",
-      "Hygienic disposable design",
-      "Comfortable for patients",
-      "Easy to position and remove"
-    ],
-    applications: [
-      "Medical examinations",
-      "Patient positioning",
-      "Examination tables",
-      "Hospital beds"
-    ],
-    certifications: ["ISO 13485", "Medical Grade"],
-    slug: "couch-sheet-draw-sheet",
-    metaTitle: "Couch Sheet Draw Sheet - Medical Examination | Acuron Products",
-    metaDescription: "Disposable couch sheet (draw sheet) for examination tables and patient beds. Hygienic barrier for medical examinations.",
-    keywords: ["couch sheet", "draw sheet", "examination table", "medical bedding", "disposable sheet"]
-  },
-  {
     id: 4030,
     name: "Sterilization Wraps",
     description: "Sterilization wraps in multiple sizes, 35 gsm.",
     detailedDescription: "High-quality 35 gsm sterilization wraps available in a range of sizes for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "Multiple sizes", "Medical grade"],
     variants: [
@@ -1215,8 +1059,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 38x38 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap ideal for small instruments and trays.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "38x38 cm"],
     variants: [ { productCode: "AP 028 E", productName: "Sterilization Wrap 38x38 cm - 35 gsm", packingPerBox: "100 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1234,8 +1078,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 50x50 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "50x50 cm"],
     variants: [ { productCode: "AP 029 E", productName: "Sterilization Wrap 50x50 cm - 35 gsm", packingPerBox: "100 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1253,8 +1097,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 61x61 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "61x61 cm"],
     variants: [ { productCode: "AP 030 E", productName: "Sterilization Wrap 61x61 cm - 35 gsm", packingPerBox: "50 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1272,8 +1116,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 76x76 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "76x76 cm"],
     variants: [ { productCode: "AP 031 E", productName: "Sterilization Wrap 76x76 cm - 35 gsm", packingPerBox: "50 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1291,8 +1135,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 91x91 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "91x91 cm"],
     variants: [ { productCode: "AP 032 E", productName: "Sterilization Wrap 91x91 cm - 35 gsm", packingPerBox: "50 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1310,8 +1154,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 101x101 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "101x101 cm"],
     variants: [ { productCode: "AP 033 E", productName: "Sterilization Wrap 101x101 cm - 35 gsm", packingPerBox: "20 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1329,8 +1173,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 121x121 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "121x121 cm"],
     variants: [ { productCode: "AP 034 E", productName: "Sterilization Wrap 121x121 cm - 35 gsm", packingPerBox: "20 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1348,8 +1192,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 160x120 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "160x120 cm"],
     variants: [ { productCode: "AP 035 E", productName: "Sterilization Wrap 160x120 cm - 35 gsm", packingPerBox: "20 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1367,8 +1211,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 150x150 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "150x150 cm"],
     variants: [ { productCode: "AP 036 E", productName: "Sterilization Wrap 150x150 cm - 35 gsm", packingPerBox: "20 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1386,8 +1230,8 @@ export const allProducts: Product[] = [
     description: "Sterilization wrap 35 gsm, size 160x160 cm.",
     detailedDescription: "Medical-grade 35 gsm sterilization wrap for instrument and tray wrapping.",
     category: "Drapes, Linens & Underpads",
-    image: "/products/bed-sheet.webp",
-    secondaryImage: "/products/bed-sheet.webp",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
     featured: false,
     specs: ["35 gsm", "160x160 cm"],
     variants: [ { productCode: "AP 037 E", productName: "Sterilization Wrap 160x160 cm - 35 gsm", packingPerBox: "20 pcs", gstPercentage: "5.00%", hsnCode: "63079090" } ],
@@ -1489,6 +1333,111 @@ export const allProducts: Product[] = [
     metaTitle: "Surgeon's OT Kit - Operating Theatre Kit | Acuron Products",
     metaDescription: "Comprehensive surgeon's operating theatre kit with sterile components. Premium quality surgical kit for operating room procedures.",
     keywords: ["surgeon kit", "OT kit", "operating theatre", "surgical kit", "sterile kit"]
+  },
+  {
+    id: 503,
+    name: "HIV Test & Safety Kit",
+    description: "Comprehensive HIV procedure safety kit.",
+    detailedDescription: "A complete HIV procedure safety kit including PPE essentials and disposables required for safe handling and testing protocols.",
+    category: "Medical Kits",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
+    featured: false,
+    specs: ["PPE Essentials", "Procedure Disposables", "Sterile Components"],
+    variants: [
+      {
+        productCode: "AP HIV 01",
+        productName: "HIV Safety Kit - Standard",
+        packingPerBox: "20 kits",
+        gstPercentage: "12.00%",
+        hsnCode: "90189090"
+      }
+    ],
+    features: [
+      "Includes PPE and disposables",
+      "Supports safe testing protocols",
+      "Convenient kit packaging"
+    ],
+    applications: [
+      "HIV testing",
+      "Sample handling",
+      "Infection control"
+    ],
+    certifications: ["ISO 13485", "CE Mark"],
+    slug: "hiv-test-safety-kit",
+    metaTitle: "HIV Test & Safety Kit | Acuron Products",
+    metaDescription: "Comprehensive HIV procedure safety kit with PPE and disposables for safe testing and handling.",
+    keywords: ["HIV kit", "safety kit", "testing kit"]
+  },
+  {
+    id: 504,
+    name: "Delivery Kit",
+    description: "Complete sterile delivery kit for maternity care.",
+    detailedDescription: "A sterile delivery kit designed for maternity care, including essential drapes, disposables, and PPE for safe delivery procedures.",
+    category: "Medical Kits",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
+    featured: false,
+    specs: ["Sterile", "OT Grade", "Comprehensive Set"],
+    variants: [
+      {
+        productCode: "AP DEL 01",
+        productName: "Delivery Kit - Standard",
+        packingPerBox: "10 kits",
+        gstPercentage: "12.00%",
+        hsnCode: "90189090"
+      }
+    ],
+    features: [
+      "Comprehensive components",
+      "Sterile packaging",
+      "Convenient and ready-to-use"
+    ],
+    applications: [
+      "Maternity care",
+      "Labour and delivery",
+      "Emergency delivery"
+    ],
+    certifications: ["ISO 13485", "CE Mark"],
+    slug: "delivery-kit",
+    metaTitle: "Delivery Kit - Sterile Maternity Care | Acuron Products",
+    metaDescription: "Sterile delivery kit for maternity care with comprehensive components and OT-grade disposables.",
+    keywords: ["delivery kit", "maternity kit", "sterile kit"]
+  },
+  {
+    id: 505,
+    name: "OT Premium On/Off Kit",
+    description: "Premium operating theatre on/off procedure kit.",
+    detailedDescription: "A premium OT on/off kit including gowns, towels, drapes, and disposables for efficient pre/post procedure workflows.",
+    category: "Medical Kits",
+    image: "/products/plain-sheet.jpg",
+    secondaryImage: "/products/plain-sheet.jpg",
+    featured: true,
+    specs: ["Premium Components", "OT Workflow", "Sterile"],
+    variants: [
+      {
+        productCode: "AP OTPOK 01",
+        productName: "OT Premium On/Off Kit",
+        packingPerBox: "15 kits",
+        gstPercentage: "12.00%",
+        hsnCode: "90189090"
+      }
+    ],
+    features: [
+      "Optimized for OT workflows",
+      "High quality materials",
+      "Sterile components"
+    ],
+    applications: [
+      "Operating theatre",
+      "Pre/Post procedure",
+      "General surgery"
+    ],
+    certifications: ["ISO 13485", "CE Mark"],
+    slug: "ot-premium-on-off-kit",
+    metaTitle: "OT Premium On/Off Kit | Acuron Products",
+    metaDescription: "Premium OT on/off kit with gowns, drapes, and disposables for efficient operating theatre workflows.",
+    keywords: ["OT kit", "on/off kit", "premium OT kit"]
   },
 
   // General Medical & Surgical Disposables

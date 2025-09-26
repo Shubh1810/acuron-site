@@ -64,7 +64,7 @@ function ProductsContent() {
 
   // Apple-like navbar categories with predicates
   const categories: Array<{ key: string; label: string; predicate: (p: typeof allProducts[number]) => boolean }> = [
-    { key: 'kits', label: 'Kits', predicate: (p) => includesAny(p.name, ['kit', 'pack', 'set']) || includesAny(p.category, ['kits', 'packs']) },
+    { key: 'kits', label: 'Kits', predicate: (p) => p.category === 'Medical Kits' },
     { key: 'surgical-gowns', label: 'Surgical Gowns', predicate: (p) => includesAny(p.name, ['gown']) },
     { key: 'medical-coveralls', label: 'Medical Coveralls', predicate: (p) => includesAny(p.name, ['coverall', 'labcoat', 'scrub', 'scrub suit']) },
     { key: 'drapes', label: 'Drapes', predicate: (p) =>
