@@ -547,7 +547,15 @@ function ProductsContent() {
                   {/* Image Container - Smaller */}
                   <div className="relative overflow-hidden aspect-[4/3] mb-2 rounded-t-2xl bg-white">
                   <Image 
-                      src={product.image}
+                      src={
+                        (product as any).__variantCode === 'AP N95 03' && product.secondaryImage
+                          ? product.secondaryImage
+                          : (product as any).__variantCode === 'AP FM T 01'
+                            ? '/3ply-tie.webp'
+                            : (product as any).__variantCode === 'AP FM L 04' && product.secondaryImage
+                              ? product.secondaryImage
+                              : product.image
+                      }
                     alt={product.name}
                     fill
                       className="object-contain transition-all duration-500 group-hover:scale-105 p-4"

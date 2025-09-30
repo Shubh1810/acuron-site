@@ -28,92 +28,7 @@ export interface Product {
 
 export const allProducts: Product[] = [
   // Protective Apparel
-  {
-    id: 101,
-    name: "Surgical Gowns",
-    description: "Standard nonwoven surgical gown for basic protection.",
-    detailedDescription: "Our surgical gowns are designed to provide optimal protection and comfort for healthcare professionals during surgical procedures. Made from high-quality nonwoven fabric, these gowns offer excellent fluid resistance while maintaining breathability.",
-    category: "Protective Apparel",
-    image: "/products/surgical-gown2.png",
-    secondaryImage: "/products/surgical-gown2.png",
-    featured: false,
-    specs: ["Nonwoven Fabric", "Fluid Resistant", "Comfortable Fit"],
-    variants: [
-      {
-        productCode: "AP SG 01",
-        productName: "Nonwoven Gown 40 gsm",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "62101000"
-      },
-      {
-        productCode: "AP SG L 01",
-        productName: "LAMINATED Gown 20 + 15 gsm",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "62101000"
-      },
-      {
-        productCode: "AP SG35 01",
-        productName: "SMS Gown 35 gsm",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "62101000"
-      },
-      {
-        productCode: "AP SG43 01",
-        productName: "SMMS Gown 43 gsm",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "62101000"
-      },
-      {
-        productCode: "AP SG43U01",
-        productName: "SSMMS Gown (L) with Ultrasonic Stitching (ARAS) with Towel",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "62101000"
-      },
-      {
-        productCode: "AP SGW 01",
-        productName: "SMS WRAP AROUND Gown with Towel",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "62101000"
-      },
-      {
-        productCode: "AP SGR4301",
-        productName: "Reinforced Surgeon Gown 43 gsm Eco",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "62101000"
-      },
-      {
-        productCode: "AP SGR50 01",
-        productName: "Reinforced Surgeon Gown 50 gsm with Towel",
-        packingPerBox: "Ind. Pack",
-        gstPercentage: "5.00%",
-        hsnCode: "62101000"
-      }
-    ],
-    features: [
-      "Fluid-resistant barrier protection",
-      "Comfortable and breathable fabric",
-      "Easy tie-back closure system",
-      "Reinforced seams for durability"
-    ],
-    applications: [
-      "Surgical procedures",
-      "Operating room use",
-      "Medical examinations",
-      "Infection control protocols"
-    ],
-    certifications: ["ISO 13485", "CE Mark", "FDA Registered"],
-    slug: "surgical-gowns",
-    metaTitle: "Surgical Gowns - Medical Protection Wear | Acuron Products",
-    metaDescription: "High-quality surgical gowns with fluid resistance and comfort. ISO certified medical protection wear for healthcare professionals.",
-    keywords: ["surgical gowns", "medical gowns", "protective apparel", "hospital wear"]
-  },
+  
   // Individual Surgical Gown variants as separate products
   {
     id: 1011,
@@ -150,8 +65,8 @@ export const allProducts: Product[] = [
     description: "Laminated surgical gown 20 + 15 gsm.",
     detailedDescription: "Laminated gown offering enhanced barrier performance with comfortable wear for extended procedures.",
     category: "Protective Apparel",
-    image: "/products/surgical-gown.jpeg",
-    secondaryImage: "/products/surgical-gown.jpg",
+    image: "/laminatedgown.webp",
+    secondaryImage: "/laminatedgown.webp",
     featured: false,
     specs: ["Laminated", "20 + 15 gsm", "Fluid Resistant"],
     variants: [],
@@ -212,8 +127,8 @@ export const allProducts: Product[] = [
     description: "SSMMS (L) gown with ultrasonic stitching and towel.",
     detailedDescription: "Large SSMMS gown with ultrasonic stitching (ARAS) including towel for high-demand procedures.",
     category: "Protective Apparel",
-    image: "/products/surgical-gown.jpeg",
-    secondaryImage: "/products/surgical-gown.jpg",
+    image: "/ultrasonicgown.jpg",
+    secondaryImage: "/ultrasonicgown.jpg",
     featured: false,
     specs: ["SSMMS", "Ultrasonic Stitching", "Includes Towel"],
     variants: [],
@@ -231,8 +146,8 @@ export const allProducts: Product[] = [
     description: "SMS wrap around gown including towel.",
     detailedDescription: "SMS wrap-around surgical gown with included towel for convenience and protection.",
     category: "Protective Apparel",
-    image: "/products/surgical-gown.jpeg",
-    secondaryImage: "/products/surgical-gown.jpg",
+    image: "/wraparound.webp",
+    secondaryImage: "/wraparound.webp",
     featured: false,
     specs: ["SMS", "Wrap Around", "Includes Towel"],
     variants: [],
@@ -250,8 +165,8 @@ export const allProducts: Product[] = [
     description: "Reinforced surgeon gown 43 gsm eco.",
     detailedDescription: "Reinforced surgeon gown offering additional protection at critical zones, 43 gsm eco variant.",
     category: "Protective Apparel",
-    image: "/products/surgical-gown.jpeg",
-    secondaryImage: "/products/surgical-gown.jpg",
+    image: "/reinforced.webp",
+    secondaryImage: "/reinforced.webp",
     featured: false,
     specs: ["Reinforced", "43 gsm", "Eco"],
     variants: [],
@@ -421,8 +336,8 @@ export const allProducts: Product[] = [
     description: "Nonwoven 40 gsm labcoat.",
     detailedDescription: "Lightweight 40 gsm nonwoven labcoat suitable for labs and general medical use.",
     category: "Protective Apparel",
-    image: "/products/medcoverall.jpg",
-    secondaryImage: "/products/coverall-2.jpg",
+    image: "/labcoat.jpg",
+    secondaryImage: "/labcoat.jpg",
     featured: false,
     specs: ["Nonwoven", "40 gsm", "Knee-Length"],
     variants: [
@@ -442,8 +357,8 @@ export const allProducts: Product[] = [
     description: "Nonwoven 40 gsm labcoat & pant set.",
     detailedDescription: "Labcoat and pant set made from 40 gsm nonwoven fabric for hygienic protection.",
     category: "Protective Apparel",
-    image: "/products/gown.jpg",
-    secondaryImage: "/products/coverall-2.jpg",
+    image: "/labcoat-pant.webp",
+    secondaryImage: "/labcoat-pant.webp",
     featured: false,
     specs: ["Nonwoven", "40 gsm", "Two-piece set"],
     variants: [
@@ -463,8 +378,8 @@ export const allProducts: Product[] = [
     description: "Disposable SSMMS scrub suit (shirt & pant).",
     detailedDescription: "Disposable scrub suit made from SSMMS fabric offering comfort and protection for medical staff.",
     category: "Protective Apparel",
-    image: "/products/patgown.JPEG",
-    secondaryImage: "/products/coverall-2.jpg",
+    image: "/scrub-suit.jpg",
+    secondaryImage: "/scrub-suit.jpg",
     featured: false,
     specs: ["SSMMS", "Two-piece", "Breathable"],
     variants: [
@@ -560,7 +475,7 @@ export const allProducts: Product[] = [
     detailedDescription: "Our N95/FFP2 respirator masks provide the highest level of respiratory protection available in disposable masks. Designed to filter at least 95% of airborne particles, these masks are essential for high-risk medical procedures and environments.",
     category: "Masks & Headwear",
     image: "/products/n95-box.png",
-    secondaryImage: "/products/n95-banner.png",
+    secondaryImage: "/n95-headloop-mask.jpeg",
     featured: false,
     specs: ["N95/FFP2 Standard", "High Filtration", "Earloop"],
     variants: [

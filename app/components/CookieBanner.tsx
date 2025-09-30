@@ -305,27 +305,24 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed z-50 ${className}`}>
+    <div className={`fixed bottom-5 left-5 z-[80] ${className}`}>
       {/* Main Banner */}
       <div 
-        className="bg-white/95 backdrop-blur-lg border border-gray-200/50 rounded-2xl shadow-2xl 
-                   w-[340px] sm:w-[380px] mx-4 mb-4
-                   transition-all duration-500 ease-out transform
-                   hover:shadow-xl hover:scale-[1.02]"
+        className="bg-white/95 backdrop-blur-lg border border-gray-200/60 rounded-2xl shadow-2xl 
+                   w-[520px] sm:w-[640px] max-w-[92vw] mx-0 mb-0
+                   transition-all duration-300 ease-out"
         style={{
-          bottom: '20px',
-          left: '20px',
-          maxHeight: showDetails ? '500px' : '200px'
+          maxHeight: showDetails ? '420px' : '160px'
         }}
       >
         {/* Header */}
-        <div className="p-5 pb-3">
-          <div className="flex items-start justify-between mb-3">
-            <div className="flex items-center space-x-2">
-              <div className="p-2 bg-[#0F4679]/10 rounded-lg">
+        <div className="px-4 sm:px-5 pt-4 pb-3">
+          <div className="flex items-center justify-between gap-3 mb-2">
+            <div className="flex items-center gap-2 min-w-0">
+              <div className="p-2 bg-[#0F4679]/10 rounded-lg shrink-0">
                 <Cookie className="w-4 h-4 text-[#0F4679]" />
               </div>
-              <h3 className="font-semibold text-gray-900 text-sm">
+              <h3 className="font-semibold text-gray-900 text-sm truncate">
                 {cookieTitle}
               </h3>
             </div>
@@ -336,14 +333,32 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
               <X className="w-4 h-4" />
             </button>
           </div>
-          
-          <p className="text-xs text-gray-600 leading-relaxed mb-4">
+
+          <p className="text-[11px] sm:text-xs text-gray-600 leading-relaxed mb-3 sm:mb-3.5">
             {cookieDescription}
           </p>
 
+          {/* Privacy links moved higher */}
+          <div className="mb-3 sm:mb-3.5">
+            <div className="flex justify-start gap-4">
+              <a 
+                href="/privacy" 
+                className="text-xs text-[#0F4679] hover:underline transition-colors duration-200"
+              >
+                {privacyPolicyText}
+              </a>
+              <a 
+                href="/cookies" 
+                className="text-xs text-[#0F4679] hover:underline transition-colors duration-200"
+              >
+                Cookie Policy
+              </a>
+            </div>
+          </div>
+
           {/* Cookie Categories (when expanded) */}
           {showDetails && (
-            <div className="space-y-3 mb-4 max-h-48 overflow-y-auto">
+            <div className="space-y-3 mb-3 max-h-40 overflow-y-auto pr-1">
               {/* Essential Cookies */}
               <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
                 <Shield className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
@@ -426,7 +441,7 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
           )}
 
           {/* Action Buttons */}
-          <div className="space-y-2">
+          <div className="space-y-2 px-4 sm:px-5">
             {showDetails ? (
               <div className="space-y-2">
                 <div className="flex space-x-2">
@@ -473,23 +488,8 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
             )}
           </div>
 
-          {/* Privacy Policy Link */}
-          <div className="text-center mt-3 pt-3 border-t border-gray-100">
-            <div className="flex justify-center space-x-4">
-              <a 
-                href="/privacy" 
-                className="text-xs text-[#0F4679] hover:underline transition-colors duration-200"
-              >
-                {privacyPolicyText}
-              </a>
-              <a 
-                href="/cookies" 
-                className="text-xs text-[#0F4679] hover:underline transition-colors duration-200"
-              >
-                Cookie Policy
-              </a>
-            </div>
-          </div>
+          {/* Divider under actions for subtle separation */}
+          <div className="px-4 sm:px-5 mt-2 border-t border-gray-100"></div>
         </div>
       </div>
     </div>
