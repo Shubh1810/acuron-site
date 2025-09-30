@@ -322,23 +322,6 @@ export default function ContactSection() {
                     <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
                       <div className="flex items-start space-x-3">
                         <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
-                          <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                          </svg>
-                        </div>
-                        <div className="min-w-0">
-                          <h3 className="text-white/90 font-semibold text-sm mb-1 leading-tight">
-                            {emailUsText}
-                          </h3>
-                          <p className="text-white/70 text-xs leading-relaxed break-words">
-                            sales@acuron.in
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
-                      <div className="flex items-start space-x-3">
-                        <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
                           <svg className="w-5 h-5 text-cyan-300" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                           </svg>
@@ -349,6 +332,23 @@ export default function ContactSection() {
                           </h3>
                           <p className="text-white/70 text-xs leading-relaxed break-words">
                             138D, Kuber Complex, New Link Road, Andheri West, Mumbai - 400053, Maharashtra, India
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
+                      <div className="flex items-start space-x-3">
+                        <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
+                          <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                          </svg>
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="text-white/90 font-semibold text-sm mb-1 leading-tight">
+                            {emailUsText}
+                          </h3>
+                          <p className="text-white/70 text-xs leading-relaxed break-words">
+                            sales@acuron.in
                           </p>
                         </div>
                       </div>
