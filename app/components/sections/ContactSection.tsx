@@ -59,6 +59,14 @@ export default function ContactSection() {
     pt: 'Visite-nos'
   });
 
+  const headOfficeText = getLocalizedContent('Head Office', {
+    de: 'Hauptsitz',
+    fr: 'Siège',
+    ja: '本社',
+    zh: '总部',
+    pt: 'Sede'
+  });
+
   const emailUsText = getLocalizedContent('Email Us', {
     de: 'E-Mail an uns',
     fr: 'Envoyez-nous un e-mail',
@@ -306,7 +314,7 @@ export default function ContactSection() {
                             {visitUsText}
                           </h3>
                           <p className="text-white/70 text-xs leading-relaxed break-words">
-                            Gala No. 112,112,112 1st Floor, B/10, Pritesh Complex, Dapoda Road, Bhiwandi - 421302, Maharashtra, India
+                            Gala No. 117,118, 1st Floor, B/10, Pritesh Complex, Dapoda Road, Bhiwandi - 421302, Maharashtra, India
                           </p>
                         </div>
                       </div>
@@ -328,6 +336,23 @@ export default function ContactSection() {
                         </div>
                       </div>
                     </div>
+                    <div className="backdrop-blur-sm bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-4 hover:bg-white/10 transition-colors duration-300">
+                      <div className="flex items-start space-x-3">
+                        <div className="p-2 bg-accent-400/20 rounded-xl shrink-0">
+                          <svg className="w-5 h-5 text-cyan-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                          </svg>
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="text-white/90 font-semibold text-sm mb-1 leading-tight">
+                            {headOfficeText}
+                          </h3>
+                          <p className="text-white/70 text-xs leading-relaxed break-words">
+                            138D, Kuber Complex, New Link Road, Andheri West, Mumbai - 400053, Maharashtra, India
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   
                   {/* Call Us Card */}
@@ -344,10 +369,7 @@ export default function ContactSection() {
                         </h3>
                         <div className="space-y-1">
                           <p className="text-white/70 text-xs leading-relaxed break-words">
-                            +91 98200 72148
-                          </p>
-                          <p className="text-white/70 text-xs leading-relaxed break-words">
-                            +91 98200 43274
+                            +91 93229 61664
                           </p>
                         </div>
                       </div>

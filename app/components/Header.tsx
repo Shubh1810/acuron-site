@@ -155,7 +155,7 @@ const Header: FC = () => {
   });
 
   // Localized top navigation links
-  const ourCompanyText = "+91 98200 43274";
+  const ourCompanyText = "+91 93229 61664";
 
   const contactText = getLocalizedContent('INQUIRE', {
     de: 'ANFRAGE',
@@ -291,7 +291,7 @@ const Header: FC = () => {
           {/* Right side navigation items */}
           <div className="flex items-center space-x-3 sm:space-x-6">
           <a 
-            href="tel:+919820043274" 
+            href="tel:+919322961664" 
             className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300 cursor-pointer"
           >
             {ourCompanyText}
