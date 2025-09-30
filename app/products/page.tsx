@@ -68,7 +68,8 @@ function ProductsContent() {
     { key: 'surgical-gowns', label: 'Surgical Gowns', predicate: (p) => includesAny(p.name, ['gown']) },
     { key: 'medical-coveralls', label: 'Medical Coveralls', predicate: (p) => includesAny(p.name, ['coverall', 'labcoat', 'scrub', 'scrub suit']) },
     { key: 'drapes', label: 'Drapes', predicate: (p) =>
-      !includesAny(p.name, ['wrap']) && (
+      !includesAny(p.name, ['wrap']) &&
+      !includesAny(p.name, ['sheet', 'underpad']) && (
         includesAny(p.name, ['drape']) ||
         includesAny(p.category, ['drapes', 'linens', 'underpads']) ||
         (includesAny(p.name, ['pack', 'kit']) && includesAny(p.category, ['drapes', 'linens', 'underpads']))
@@ -114,11 +115,13 @@ function ProductsContent() {
 
       const isMaskProduct = /mask/i.test(p.name) || /mask/i.test(p.category);
       const isCapProduct = /cap/i.test(p.name) || /cap/i.test(p.category);
+      const isBouffant = /bouffant/i.test(p.name);
       const isShoeProduct = /shoe/i.test(p.name) || /shoe/i.test(p.category) || /legging/i.test(p.name);
       const isKitProduct = /kit/i.test(p.name) || /pack/i.test(p.name) || /set/i.test(p.name) || /kit/i.test(p.category) || /pack/i.test(p.category);
 
       // Decide whether to expand variants for this item
-      const shouldExpand = (isMasks && isMaskProduct) || (isCaps && isCapProduct) || (isShoes && isShoeProduct) || (isKits && isKitProduct);
+      // Do not expand Bouffant Caps into separate cards; keep as single product
+      const shouldExpand = (isMasks && isMaskProduct) || (isCaps && isCapProduct && !isBouffant) || (isShoes && isShoeProduct) || (isKits && isKitProduct);
 
       if (shouldExpand && p.variants && p.variants.length > 0) {
         const isN95 = isMasks && (/n95/i.test(p.name) || p.variants.some(v => /n95/i.test(v.productName)));
@@ -140,6 +143,11 @@ function ProductsContent() {
           continue;
         }
         items.push(p as DisplayProduct);
+      } else {
+        // If not expanding (e.g., Bouffant Caps), include the base product once
+        if (isCaps && isBouffant) {
+          items.push(p as DisplayProduct);
+        }
       }
     }
     return items;
