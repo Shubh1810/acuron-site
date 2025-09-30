@@ -781,6 +781,43 @@ export const allProducts: Product[] = [
     keywords: ["shoe leggings", "leg protection", "polyethylene covers", "waterproof leggings"]
   },
 
+  // New Nonwoven Shoe Covers product
+  {
+    id: 303,
+    name: "Non-woven 25GSM - pack of 25 pairs",
+    description: "Disposable nonwoven shoe covers, 25 GSM, pack of 25 pairs.",
+    detailedDescription: "Lightweight nonwoven 25 GSM shoe covers designed to maintain hygiene and reduce contamination risk in clinical and clean environments. Comfortable elastic opening for a secure fit.",
+    category: "Shoe & Leg Protection",
+    image: "/products/shoecover-white.avif",
+    secondaryImage: "/products/shoecover.avif",
+    featured: false,
+    specs: ["Nonwoven", "25 GSM", "Pack of 25 pairs"],
+    variants: [
+      {
+        productCode: "AP SC NW 01",
+        productName: "Non-woven Shoe Covers 25 GSM - 25 pairs",
+        packingPerBox: "25 pairs",
+        gstPercentage: "5.00%",
+        hsnCode: "63079090"
+      }
+    ],
+    features: [
+      "Nonwoven breathable material",
+      "Elastic opening for secure fit",
+      "Hygienic single-use design"
+    ],
+    applications: [
+      "Clinics and hospitals",
+      "Clean rooms",
+      "Laboratories"
+    ],
+    certifications: ["ISO 13485"],
+    slug: "nonwoven-shoe-covers-25gsm-pack-25-pairs",
+    metaTitle: "Non-woven Shoe Covers 25 GSM - Pack of 25 Pairs | Acuron Products",
+    metaDescription: "Disposable nonwoven 25 GSM shoe covers, pack of 25 pairs, hygienic and comfortable for clinical and clean room use.",
+    keywords: ["shoe covers", "nonwoven", "25 gsm", "disposable shoe covers"]
+  },
+
   // Drapes, Linens & Underpads - Additional Products
   
   // Individual Bedsheet and Set products

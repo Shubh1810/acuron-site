@@ -64,9 +64,7 @@ function ProductsContent() {
 
   // Apple-like navbar categories with predicates
   const categories: Array<{ key: string; label: string; predicate: (p: typeof allProducts[number]) => boolean }> = [
-    { key: 'kits', label: 'Kits', predicate: (p) => p.category === 'Medical Kits' },
-    { key: 'surgical-gowns', label: 'Surgical Gowns', predicate: (p) => includesAny(p.name, ['gown']) },
-    { key: 'medical-coveralls', label: 'Medical Coveralls', predicate: (p) => includesAny(p.name, ['coverall', 'labcoat', 'scrub', 'scrub suit']) },
+    // Drapes first
     { key: 'drapes', label: 'Drapes', predicate: (p) =>
       !includesAny(p.name, ['wrap']) &&
       !includesAny(p.name, ['sheet', 'underpad']) && (
@@ -76,17 +74,24 @@ function ProductsContent() {
       )
     },
     { key: 'sheets', label: 'Sheets', predicate: (p) => includesAny(p.name, ['sheet', 'underpad', 'wrap']) && !includesAny(p.name, ['gown']) },
+    { key: 'surgical-gowns', label: 'Surgical Gowns', predicate: (p) => includesAny(p.name, ['gown']) },
+    { key: 'medical-coveralls', label: 'Medical Coveralls', predicate: (p) => includesAny(p.name, ['coverall', 'labcoat', 'scrub', 'scrub suit']) },
     { key: 'face-masks', label: 'Face Masks', predicate: (p) => includesAny(p.name, ['mask']) || includesAny(p.category, ['masks']) },
-    { key: 'razors', label: 'Razors', predicate: (p) => includesAny(p.name, ['razor']) },
     { key: 'surgical-caps', label: 'Surgical Caps', predicate: (p) => includesAny(p.name, ['cap']) },
-    { key: 'shoe-covers', label: 'Shoe Covers', predicate: (p) => includesAny(p.name, ['shoe cover', 'shoe']) },
+    { key: 'shoe-covers', label: 'Shoe Covers', predicate: (p) => 
+      includesAny(p.name, ['shoe cover', 'shoe']) || includesAny(p.category, ['shoe', 'leg protection']) 
+    },
     { key: 'gloves', label: 'Gloves', predicate: (p) => includesAny(p.name, ['glove']) },
+    { key: 'razors', label: 'Razors', predicate: (p) => includesAny(p.name, ['razor']) },
+    // Position-independent Misc
     { key: 'miscellaneous', label: 'Miscellaneous', predicate: (p) => {
-        // Not matching any of the above specific categories
-        const matched = categories.slice(0, -1).some(c => c.predicate(p));
+        const nonMisc = categories.filter(c => c.key !== 'miscellaneous');
+        const matched = nonMisc.some(c => c.predicate(p));
         return !matched;
       }
     },
+    // Kits last
+    { key: 'kits', label: 'Kits', predicate: (p) => p.category === 'Medical Kits' },
   ];
 
   // Filter products based on active category
