@@ -215,7 +215,7 @@ export default function EventsSection() {
             </div>
 
             {/* Navigation Controls - Containerless */}
-            <div className="flex items-center justify-center lg:justify-start space-x-6">
+            <div className="flex items-center justify-center lg:justify-start space-x-6 mt-3 md:mt-4">
               <button
                 onClick={prevSlide}
                 onMouseEnter={() => setIsAutoPlaying(false)}
