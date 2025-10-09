@@ -51,20 +51,20 @@ export default function ContactSection() {
     pt: 'Estamos aqui para ajudá-lo'
   });
 
-  const visitUsText = getLocalizedContent('Visit Us', {
-    de: 'Besuchen Sie uns',
-    fr: 'Visitez-nous',
-    ja: 'お越しください',
-    zh: '拜访我们',
-    pt: 'Visite-nos'
+  const visitUsText = getLocalizedContent('Manufacturing Plant', {
+    de: 'Produktionsstätte',
+    fr: 'Usine de fabrication',
+    ja: '製造工場',
+    zh: '制造工厂',
+    pt: 'Planta de Fabricação'
   });
 
-  const headOfficeText = getLocalizedContent('Head Office', {
-    de: 'Hauptsitz',
-    fr: 'Siège',
-    ja: '本社',
-    zh: '总部',
-    pt: 'Sede'
+  const headOfficeText = getLocalizedContent('Corporate Office', {
+    de: 'Unternehmenszentrale',
+    fr: 'Siège Social',
+    ja: '本社オフィス',
+    zh: '企业办公室',
+    pt: 'Escritório Corporativo'
   });
 
   const emailUsText = getLocalizedContent('Email Us', {
@@ -290,7 +290,7 @@ export default function ContactSection() {
                       height="100%"
                       frameBorder="0" 
                       scrolling="no" 
-                      src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=pritesh comple&amp;t=p&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.3382007688183!2d72.82973997439017!3d19.13666768208044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b73f095ce8ed%3A0x6bb63e63bffbda45!2sKuber%20Complex!5e0!3m2!1sen!2sin!4v1760012941486!5m2!1sen!2sin"
                       style={{ border: 0 }}
                       allowFullScreen
                       loading="lazy"
@@ -458,27 +458,21 @@ export default function ContactSection() {
 
                     <div className="space-y-1.5">
                       <label className="block text-sm font-medium text-gray-700 leading-tight">
-                        {productInterestText} (Optional)
+                        {productInterestText}
                       </label>
-                      <select 
+                      <input 
+                        type="text"
                         name="productInterest"
                         value={formData.productInterest}
                         onChange={handleInputChange}
+                        placeholder={selectProductPlaceholder}
                         className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 text-sm transition-colors duration-200"
-                      >
-                        <option value="" className="bg-white">{selectProductPlaceholder}</option>
-                        <option value="surgical" className="bg-white">Surgical Products</option>
-                        <option value="orthopedic" className="bg-white">Orthopedic Drapes</option>
-                        <option value="gynecology" className="bg-white">Gynecology Drapes</option>
-                        <option value="urology" className="bg-white">Urology Drapes</option>
-                        <option value="protective" className="bg-white">Protective Equipment</option>
-                        <option value="other" className="bg-white">Other</option>
-                      </select>
+                      />
                     </div>
 
                     <div className="space-y-1.5 flex-1">
                       <label className="block text-sm font-medium text-gray-700 leading-tight">
-                        {messageText} (Optional)
+                        {messageText}
                       </label>
                       <textarea 
                         name="message"

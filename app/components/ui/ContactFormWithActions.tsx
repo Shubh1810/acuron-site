@@ -141,15 +141,6 @@ export default function ContactFormWithActions({ onSuccess }: ContactFormWithAct
     }
   };
 
-  const productOptions = [
-    'Surgical Gowns',
-    'N95 Masks',
-    'PPE Equipment',
-    'Medical Disposables',
-    'Surgical Drapes',
-    'Other Medical Supplies',
-  ];
-
   return (
     <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-8">
       <div className="mb-8">
@@ -269,18 +260,13 @@ export default function ContactFormWithActions({ onSuccess }: ContactFormWithAct
             <Package size={16} className="inline mr-2" />
             Product Interest
           </label>
-          <select
+          <input
+            type="text"
             name="productInterest"
+            placeholder="Enter product category or name"
             className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0F4679] focus:ring-2 focus:ring-[#0F4679]/20 transition-colors duration-200"
             disabled={isPending}
-          >
-            <option value="">Select a product category</option>
-            {productOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+          />
         </div>
 
         {/* Message Field */}
