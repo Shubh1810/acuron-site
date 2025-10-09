@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">Dr. Sharma</h3>
-                  <p className="text-sm text-gray-600">Chief Surgeon, Apollo Hospital</p>
+                  <p className="text-sm text-gray-600">Apollo Hospital</p>
                 </div>
               </div>
               <p className="text-gray-700 italic">
@@ -64,7 +64,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">Dr. Patel</h3>
-                  <p className="text-sm text-gray-600">Gynecologist, Manipal Hospitals</p>
+                  <p className="text-sm text-gray-600">Manipal Hospitals</p>
                 </div>
               </div>
               <p className="text-gray-700 italic">
@@ -93,7 +93,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">Dr. Reddy</h3>
-                  <p className="text-sm text-gray-600">Director, AIIMS Orthopedics</p>
+                  <p className="text-sm text-gray-600">AIIMS Orthopedics</p>
                 </div>
               </div>
               <p className="text-gray-700 italic">

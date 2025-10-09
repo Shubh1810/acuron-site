@@ -6,6 +6,8 @@ import Header from "../components/Header";
 import TransparentNavbar from "../components/TransparentNavbar";
 import WhiteGridBackground from "../components/ui/white-grid-background";
 import PharmaCorporateGiftingShowcase from "../components/PharmaCorporateGiftingShowcase";
+import FoodProcessingShowcase from "../components/FoodProcessingShowcase";
+import ChemicalShowcase from "../components/ChemicalShowcase";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
@@ -24,8 +26,10 @@ function ProductsContent() {
   const productsSectionRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   
-  // Check if pharma category is selected
+  // Check which category is selected
   const isPharmaCategory = searchParams.get('category') === 'pharma';
+  const isFoodCategory = searchParams.get('category') === 'food';
+  const isChemicalCategory = searchParams.get('category') === 'chemical';
 
   // Newsletter modal functionality
   const handleActualDownload = () => {
@@ -50,7 +54,9 @@ function ProductsContent() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Products' },
-    ...(isPharmaCategory ? [{ label: 'Pharmaceuticals' }] : [])
+    ...(isPharmaCategory ? [{ label: 'Pharmaceuticals' }] : []),
+    ...(isFoodCategory ? [{ label: 'Food Processing' }] : []),
+    ...(isChemicalCategory ? [{ label: 'Chemical Industry' }] : [])
   ];
 
   // Products are now imported from productData.ts
@@ -197,10 +203,22 @@ function ProductsContent() {
         <div className="pt-[0px] min-h-screen relative z-10">
         <div className="max-w-7xl mx-auto px-4 py-8">
           
-          {/* Pharma Corporate Gifting Showcase - Only show when pharma category is selected */}
+          {/* Category-Specific Showcases */}
           {isPharmaCategory && (
             <div className="mb-16">
               <PharmaCorporateGiftingShowcase />
+            </div>
+          )}
+          
+          {isFoodCategory && (
+            <div className="mb-16">
+              <FoodProcessingShowcase />
+            </div>
+          )}
+          
+          {isChemicalCategory && (
+            <div className="mb-16">
+              <ChemicalShowcase />
             </div>
           )}
           {/* Web3 Category Navigation with Glass Effect */}

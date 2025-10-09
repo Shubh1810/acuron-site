@@ -5,28 +5,28 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const PharmaCorporateGiftingShowcase: React.FC = () => {
-  const pharmaGiftingKits = [
+const ChemicalShowcase: React.FC = () => {
+  const chemicalIndustryProducts = [
     {
-      id: 'pharma-executive-kit',
-      name: 'Executive Pharma Kit',
-      description: 'Premium corporate gifting solution for pharmaceutical executives and partners',
-      image: '/products/ot-premium-kit.jpg',
-      features: ['Premium Packaging', 'Custom Branding', 'Executive Quality'],
+      id: 'chemical-protection-kit',
+      name: 'Chemical Safety Protection Kit',
+      description: 'Comprehensive protective equipment for chemical handling and processing operations',
+      image: '/products/hivkit.png',
+      features: ['Chemical Resistant', 'Full Protection', 'Industrial Grade'],
       price: 'Contact for Quote'
     },
     {
       id: 'disposable-safety-equipment',
       name: 'Disposable Safety Equipment',
-      description: 'Premium disposable safety equipment for pharmaceutical facilities ensuring maximum hygiene standards',
+      description: 'Industrial-grade disposable safety equipment for chemical plant operations and hazardous material handling',
       image: '/disposable-safety-equipment.webp',
-      features: ['Medical Grade', 'Complete Protection', 'Sterile Packaging'],
+      features: ['Chemical Resistant', 'Complete Protection', 'Industrial Grade'],
       price: 'Contact for Quote'
     },
     {
       id: 'visitor-safety-kit',
       name: 'Visitor Disposable Safety Kit',
-      description: 'Complete disposable safety kit for pharmaceutical facility visitors ensuring hygiene and compliance',
+      description: 'Complete disposable safety kit for chemical plant visitors ensuring maximum protection and safety',
       image: '/visitor-safety-kit.avif',
       features: ['Visitor Protection', 'Single Use', 'Complete Safety'],
       price: 'Contact for Quote'
@@ -38,7 +38,7 @@ const PharmaCorporateGiftingShowcase: React.FC = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative overflow-hidden bg-gradient-to-br from-[#0F4679] via-[#1A5A8A] to-[#2B5A7A] py-16 md:py-20 mb-16 rounded-3xl"
+      className="relative overflow-hidden bg-gradient-to-br from-[#6B21A8] via-[#7C3AED] to-[#8B5CF6] py-16 md:py-20 mb-16 rounded-3xl"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0">
@@ -70,23 +70,23 @@ const PharmaCorporateGiftingShowcase: React.FC = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 mb-6 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
-              <span className="text-white font-medium">Pharmaceuticals</span>
+              <span className="text-white font-medium">Chemical Industry</span>
             </div>
 
             {/* Main Heading */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Pharma Corporate
-              <span className="block bg-gradient-to-r from-white via-blue-50 to-slate-100 bg-clip-text text-transparent">
-                Gifting Solutions
+              Chemical Protection
+              <span className="block bg-gradient-to-r from-white via-purple-50 to-violet-100 bg-clip-text text-transparent">
+                Safety Equipment
               </span>
             </h2>
             
             {/* Subtitle */}
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
-              Premium corporate gifting kits designed specifically for pharmaceutical industry professionals. 
-              <span className="block mt-2">Elevate your corporate relationships with our specialized pharma gifting solutions.</span>
+              Advanced protective equipment for chemical manufacturing and handling operations. 
+              <span className="block mt-2">Ensure worker safety with our certified chemical-resistant protective gear.</span>
             </p>
 
             {/* Decorative Elements */}
@@ -102,9 +102,9 @@ const PharmaCorporateGiftingShowcase: React.FC = () => {
 
         {/* Product Showcase Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {pharmaGiftingKits.map((kit, index) => (
+          {chemicalIndustryProducts.map((product, index) => (
             <motion.div
-              key={kit.id}
+              key={product.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
@@ -115,8 +115,8 @@ const PharmaCorporateGiftingShowcase: React.FC = () => {
                 {/* Image Container */}
                 <div className="relative overflow-hidden aspect-[4/3] mb-6 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100">
                   <Image 
-                    src={kit.image}
-                    alt={kit.name}
+                    src={product.image}
+                    alt={product.name}
                     fill
                     className="object-cover transition-all duration-500 group-hover:scale-110"
                     onError={(e) => {
@@ -131,22 +131,22 @@ const PharmaCorporateGiftingShowcase: React.FC = () => {
 
                 {/* Content */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-[#0F4679] group-hover:text-[#1A5A8A] transition-colors duration-300">
-                    {kit.name}
+                  <h3 className="text-xl font-bold text-[#7C3AED] group-hover:text-[#8B5CF6] transition-colors duration-300">
+                    {product.name}
                   </h3>
                   
                   <p className="text-gray-600 leading-relaxed">
-                    {kit.description}
+                    {product.description}
                   </p>
 
                   {/* Features */}
                   <div className="space-y-2">
                     <h4 className="text-sm font-semibold text-gray-700">Key Features:</h4>
                     <div className="flex flex-wrap gap-2">
-                      {kit.features.map((feature, idx) => (
+                      {product.features.map((feature, idx) => (
                         <span 
                           key={idx}
-                          className="px-3 py-1 bg-[#0F4679]/10 text-[#0F4679] text-xs rounded-full font-medium border border-[#0F4679]/20"
+                          className="px-3 py-1 bg-[#7C3AED]/10 text-[#7C3AED] text-xs rounded-full font-medium border border-[#7C3AED]/20"
                         >
                           {feature}
                         </span>
@@ -156,13 +156,13 @@ const PharmaCorporateGiftingShowcase: React.FC = () => {
 
                   {/* Price */}
                   <div className="pt-2">
-                    <span className="text-lg font-bold text-[#1A5A8A]">{kit.price}</span>
+                    <span className="text-lg font-bold text-[#8B5CF6]">{product.price}</span>
                   </div>
 
                   {/* Action Button */}
                   <Link 
                     href="/#contact-us-section"
-                    className="block w-full mt-6 px-6 py-3 bg-gradient-to-r from-[#0F4679] to-[#1A5A8A] text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 text-center"
+                    className="block w-full mt-6 px-6 py-3 bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 text-center"
                   >
                     Get Custom Quote
                   </Link>
@@ -176,4 +176,5 @@ const PharmaCorporateGiftingShowcase: React.FC = () => {
   );
 };
 
-export default PharmaCorporateGiftingShowcase;
+export default ChemicalShowcase;
+

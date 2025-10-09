@@ -82,7 +82,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
         zh: '食品加工',
         pt: 'Processamento de Alimentos'
       }),
-      href: '/products'
+      href: '/products?category=food'
     },
     {
       label: getLocalizedContent('Pharmaceuticals', {
@@ -102,7 +102,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
         zh: '化学',
         pt: 'Químico'
       }),
-      href: '/products'
+      href: '/products?category=chemical'
     }
   ], [selectedCountry]);
 
