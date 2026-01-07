@@ -133,11 +133,44 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
 
     setIsSubmitting(true);
     
-    // Simulate API call for newsletter signup
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    onSuccess();
+    try {
+      // Send newsletter signup to API
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log('✅ Newsletter signup successful:', result);
+        
+        // Trigger catalog download if available
+        if (result.data?.catalogDownloadUrl) {
+          const link = document.createElement('a');
+          link.href = result.data.catalogDownloadUrl;
+          link.download = 'Acuron-Medical-Catalog.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        
+        // Reset form and show success
+        setFormData({ name: '', email: '', phone: '', company: '' });
+        onSuccess();
+      } else {
+        console.error('❌ Newsletter signup failed:', result);
+        alert(result.error || 'Failed to sign up. Please try again.');
+      }
+    } catch (error) {
+      console.error('❌ Newsletter signup error:', error);
+      alert('Failed to sign up. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;

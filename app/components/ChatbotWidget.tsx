@@ -63,7 +63,7 @@ export default function ChatbotWidget() {
       // Fallback response
       const errorResponse = {
         type: 'bot',
-        content: 'I apologize for the technical issue. Please contact our sales team directly at +91 98200 72148 or email sales@acuron.in for immediate assistance.',
+        content: 'I apologize for the technical issue. Please contact our sales team directly at +91 +91 93229 61664 or email sales@acuron.in for immediate assistance.',
         timestamp: new Date()
       };
       

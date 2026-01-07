@@ -29,12 +29,10 @@ async function subscribeToNewsletter(
   prevState: NewsletterFormState,
   formData: FormData
 ): Promise<NewsletterFormState> {
-  // Simulate network delay
-  await new Promise(resolve => setTimeout(resolve, 2000));
-
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const company = formData.get('company') as string;
+  const phone = formData.get('phone') as string;
 
   // Validation
   const errors: NonNullable<NewsletterFormState['errors']> = {};
@@ -58,22 +56,46 @@ async function subscribeToNewsletter(
   }
 
   try {
-    // Here you would call your newsletter API
-    // For now, we'll simulate success/failure
-    const success = Math.random() > 0.2; // 80% success rate for demo
-    
-    if (!success) {
-      throw new Error('Subscription failed');
+    // Call the newsletter API to save to Google Sheets
+    const response = await fetch('/api/newsletter', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone?.trim() || '',
+        company: company?.trim() || '',
+      }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Subscription failed');
+    }
+
+    // Trigger catalog download if available
+    if (result.data?.catalogDownloadUrl) {
+      // Create download link
+      const link = document.createElement('a');
+      link.href = result.data.catalogDownloadUrl;
+      link.download = 'Acuron-Medical-Catalog.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
 
     return {
       status: 'success',
-      message: 'Successfully subscribed! Check your email for the download link.',
+      message: 'Successfully subscribed! Your catalog download has started.',
     };
   } catch (error) {
+    console.error('Newsletter subscription error:', error);
     return {
       status: 'error',
-      message: 'Failed to subscribe. Please try again.',
+      message: error instanceof Error ? error.message : 'Failed to subscribe. Please try again.',
     };
   }
 }
@@ -282,6 +304,32 @@ export default function NewsletterWithActions({ isOpen, onClose, onSuccess }: Ne
               {state.errors?.email && (
                 <p className="mt-1 text-xs text-red-600">{state.errors.email}</p>
               )}
+            </div>
+
+            {/* Phone Field */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {getLocalizedContent('Phone Number', {
+                  de: 'Telefonnummer',
+                  fr: 'Numéro de téléphone',
+                  ja: '電話番号',
+                  zh: '电话号码',
+                  pt: 'Número de Telefone'
+                })} (Optional)
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0F4679] focus:ring-2 focus:ring-[#0F4679]/20 transition-colors duration-200 text-sm"
+                placeholder={getLocalizedContent('Enter your phone number', {
+                  de: 'Geben Sie Ihre Telefonnummer ein',
+                  fr: 'Entrez votre numéro de téléphone',
+                  ja: '電話番号を入力してください',
+                  zh: '输入您的电话号码',
+                  pt: 'Digite seu número de telefone'
+                })}
+                disabled={isPending}
+              />
             </div>
 
             {/* Company Field */}
