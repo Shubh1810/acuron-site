@@ -62,7 +62,7 @@ async function sendChatMessage(
     return {
       status: 'error',
       message: 'Failed to send message. Please try again.',
-      lastResponse: 'I apologize for the technical issue. Please contact our sales team directly at +91 98200 72148 or email sales@acuron.in for immediate assistance.',
+      lastResponse: 'I apologize for the technical issue. Please contact our sales team directly at +91 93229 61664 or email sales@acuron.in for immediate assistance.',
     };
   }
 }
@@ -73,7 +73,7 @@ export default function ChatbotWithActions() {
     {
       id: '1',
       type: 'bot',
-      content: "Hello! I am your Acuron virtual assistant, specializing in our range of medical supplies. Whether you have questions about specifications, usage, or inquiries, I'm here to support you. How can I assist you today?",
+      content: "Hello! I am your Acuron virtual Healthcare Assistant, specializing in our range of medical supplies. Whether you have questions about specifications, usage, or inquiries, I'm here to support you. How can I assist you today?",
       timestamp: new Date(),
       status: 'sent',
     }

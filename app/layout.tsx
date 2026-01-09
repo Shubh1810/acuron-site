@@ -6,6 +6,8 @@ import CacheCleanupClient from './lib/CacheCleanupClient';
 import { Analytics } from "@vercel/analytics/react"
 import ChatbotWidget from './components/ChatbotWidget'
 import CookieBanner from './components/CookieBanner'
+import { PostHogProvider, PostHogPageView } from './providers/PostHogProvider'
+import { PostHogErrorBoundary } from './components/PostHogErrorBoundary'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -254,16 +256,21 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body 
-        className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${rubik.variable} font-sans w-full max-w-[100vw] overflow-x-hidden`}
-        suppressHydrationWarning={true} // Suppress hydration warnings caused by browser extensions (Grammarly, etc.)
-      >
-        <CacheCleanupClient />
-        {children}
-        <ChatbotWidget />
-        <CookieBanner />
-        <Analytics />
-      </body>
+      <PostHogProvider>
+        <body 
+          className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${rubik.variable} font-sans w-full max-w-[100vw] overflow-x-hidden`}
+          suppressHydrationWarning={true} // Suppress hydration warnings caused by browser extensions (Grammarly, etc.)
+        >
+          <PostHogErrorBoundary>
+            <PostHogPageView />
+            <CacheCleanupClient />
+            {children}
+            <ChatbotWidget />
+            <CookieBanner />
+            <Analytics />
+          </PostHogErrorBoundary>
+        </body>
+      </PostHogProvider>
     </html>
   )
 } 
