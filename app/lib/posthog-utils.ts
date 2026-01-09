@@ -180,7 +180,7 @@ export const featureFlags = {
 
   // Get all active feature flags
   getAll: (): Record<string, string | boolean> => {
-    return posthog.getFeatureFlags();
+    return posthog.getActiveFlags() || {};
   },
 
   // Reload feature flags (useful after user identification)
@@ -292,7 +292,14 @@ export const abTest = {
 export const surveys = {
   // Get active surveys for current user
   getActiveSurveys: () => {
-    return posthog.getActiveMatchingSurveys();
+    // Note: This method requires surveys to be enabled in PostHog
+    // Returns undefined if surveys feature is not available
+    try {
+      return (posthog as any).getActiveMatchingSurveys?.() || [];
+    } catch (error) {
+      console.warn('Surveys feature not available:', error);
+      return [];
+    }
   },
 };
 
@@ -318,7 +325,7 @@ export const debug = {
       console.log('PostHog State:', {
         distinctId: posthog.get_distinct_id(),
         sessionId: posthog.get_session_id(),
-        featureFlags: posthog.getFeatureFlags(),
+        featureFlags: posthog.getActiveFlags(),
         isOptedOut: posthog.has_opted_out_capturing(),
       });
     }

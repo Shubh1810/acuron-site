@@ -41,6 +41,9 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
     posthog.init(POSTHOG_KEY, {
       api_host: POSTHOG_HOST,
       
+      // Use latest defaults for breaking changes
+      defaults: '2025-11-30',
+      
       // Enable autocapture for automatic event tracking
       autocapture: {
         dom_event_allowlist: ['click', 'submit', 'change'], // Only capture specific events
