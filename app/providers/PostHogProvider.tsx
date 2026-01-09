@@ -2,7 +2,7 @@
 
 import posthog from 'posthog-js';
 import { PostHogProvider as PHProvider } from '@posthog/react';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 /**
@@ -116,7 +116,7 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
  * Tracks pageviews automatically on route changes
  * Add this component inside PostHogProvider in your layout
  */
-export function PostHogPageView() {
+function PostHogPageViewInternal() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -136,5 +136,13 @@ export function PostHogPageView() {
   }, [pathname, searchParams]);
 
   return null;
+}
+
+export function PostHogPageView() {
+  return (
+    <React.Suspense fallback={null}>
+      <PostHogPageViewInternal />
+    </React.Suspense>
+  );
 }
 
