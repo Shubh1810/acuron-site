@@ -179,8 +179,16 @@ export const featureFlags = {
   },
 
   // Get all active feature flags
+  // Note: PostHog doesn't provide a direct method to get all flags
+  // This returns the feature flags from the instance or empty object
   getAll: (): Record<string, string | boolean> => {
-    return posthog.getActiveFlags() || {};
+    try {
+      // Access internal feature flags if available
+      const flags = (posthog as any)._flags || (posthog as any).featureFlags || {};
+      return flags;
+    } catch {
+      return {};
+    }
   },
 
   // Reload feature flags (useful after user identification)
@@ -325,7 +333,7 @@ export const debug = {
       console.log('PostHog State:', {
         distinctId: posthog.get_distinct_id(),
         sessionId: posthog.get_session_id(),
-        featureFlags: posthog.getActiveFlags(),
+        featureFlags: (posthog as any)._flags || {},
         isOptedOut: posthog.has_opted_out_capturing(),
       });
     }
