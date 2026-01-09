@@ -6,6 +6,7 @@ import CacheCleanupClient from './lib/CacheCleanupClient';
 import { Analytics } from "@vercel/analytics/react"
 import ChatbotWidget from './components/ChatbotWidget'
 import CookieBanner from './components/CookieBanner'
+// PostHog temporarily disabled - configure NEXT_PUBLIC_POSTHOG_KEY to enable
 import { PostHogProvider, PostHogPageView } from './providers/PostHogProvider'
 import { PostHogErrorBoundary } from './components/PostHogErrorBoundary'
 
@@ -81,8 +82,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' }
     ],
     apple: [

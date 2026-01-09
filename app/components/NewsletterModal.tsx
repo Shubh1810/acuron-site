@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { X, Download, Mail, User, Building2, Phone } from 'lucide-react';
 import { useCountryStore } from '../../lib/store';
+import { trackEvent } from '../lib/posthog-utils';
 
 interface NewsletterModalProps {
   isOpen: boolean;
@@ -148,6 +149,13 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
       if (response.ok) {
         console.log('✅ Newsletter signup successful:', result);
         
+        // Track newsletter subscription and catalog download in PostHog
+        trackEvent.newsletterSubscribed(formData.email);
+        trackEvent.catalogDownload();
+        trackEvent.formSubmit('catalog_download_form', true, {
+          has_company: !!formData.company
+        });
+        
         // Trigger catalog download if available
         if (result.data?.catalogDownloadUrl) {
           const link = document.createElement('a');
@@ -163,10 +171,22 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
         onSuccess();
       } else {
         console.error('❌ Newsletter signup failed:', result);
+        
+        // Track failed form submission
+        trackEvent.formSubmit('catalog_download_form', false, {
+          error_message: result.error
+        });
+        
         alert(result.error || 'Failed to sign up. Please try again.');
       }
     } catch (error) {
       console.error('❌ Newsletter signup error:', error);
+      
+      // Track form submission error
+      trackEvent.formSubmit('catalog_download_form', false, {
+        error_message: error instanceof Error ? error.message : 'Unknown error'
+      });
+      
       alert('Failed to sign up. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);

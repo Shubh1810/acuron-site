@@ -79,7 +79,8 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
         // This callback runs after PostHog is fully loaded
         if (process.env.NODE_ENV === 'development') {
           console.log('PostHog initialized successfully');
-          // Optionally enable debug mode in development
+          console.log('PostHog User ID:', ph.get_distinct_id());
+          // Enable debug mode to see all events
           ph.debug();
         }
       },

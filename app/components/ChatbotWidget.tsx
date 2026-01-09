@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
+import { trackEvent } from '../lib/posthog-utils';
 
 export default function ChatbotWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +29,9 @@ export default function ChatbotWidget() {
     const currentMessage = message;
     setMessage('');
     setIsLoading(true);
+    
+    // Track chatbot message sent
+    trackEvent.chatbotInteraction('message_sent', currentMessage);
 
     try {
       const response = await fetch('/api/chat', {
@@ -57,8 +61,15 @@ export default function ChatbotWidget() {
       };
       
       setMessages(prev => [...prev, botResponse]);
+      
+      // Track successful chatbot response
+      trackEvent.chatbotInteraction('response_received');
     } catch (error) {
       console.error('Chat error:', error);
+      
+      // Track chatbot error
+      trackEvent.chatbotInteraction('error_occurred');
+      trackEvent.errorOccurred('chatbot_error', error instanceof Error ? error.message : 'Unknown error');
       
       // Fallback response
       const errorResponse = {
@@ -109,7 +120,18 @@ export default function ChatbotWidget() {
         transition={{ delay: 2, duration: 0.5, ease: "easeOut" }}
       >
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            const newState = !isOpen;
+            setIsOpen(newState);
+            
+            // Track chatbot open/close
+            if (newState) {
+              trackEvent.chatbotInteraction('opened');
+              trackEvent.buttonClick('chatbot_open');
+            } else {
+              trackEvent.chatbotInteraction('closed');
+            }
+          }}
           className="group relative w-16 h-16 bg-gradient-radial from-[#158C07] via-[#158C07]/90 to-[#0F6007] rounded-full shadow-2xl hover:shadow-[#158C07]/25 transition-all duration-300 hover:scale-105 backdrop-blur-xl border border-white/10"
         >
           {/* Glow Effect */}

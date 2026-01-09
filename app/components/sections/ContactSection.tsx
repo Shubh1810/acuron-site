@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { useCountryStore } from '../../../lib/store';
+import { trackEvent } from '../../lib/posthog-utils';
 
 export default function ContactSection() {
   const { selectedCountry } = useCountryStore();
@@ -231,6 +232,20 @@ export default function ContactSection() {
 
       if (response.ok) {
         setSubmitStatus('success');
+        
+        // Track successful form submission in PostHog
+        trackEvent.contactFormSubmitted({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.productInterest
+        });
+        
+        trackEvent.formSubmit('contact_form', true, {
+          has_product_interest: !!formData.productInterest,
+          has_organization: !!formData.organization,
+          message_length: formData.message.length
+        });
+        
         setFormData({
           name: '',
           organization: '',
@@ -246,6 +261,11 @@ export default function ContactSection() {
     } catch (error) {
       console.error('❌ Form submission error:', error);
       setSubmitStatus('error');
+      
+      // Track form submission error in PostHog
+      trackEvent.formSubmit('contact_form', false, {
+        error_message: error instanceof Error ? error.message : 'Unknown error'
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -443,7 +463,7 @@ export default function ContactSection() {
                       </div>
                       <div className="space-y-1.5">
                         <label className="block text-sm font-medium text-gray-700 leading-tight">
-                          {phoneText} (Optional)
+                          {phoneText}*
                         </label>
                         <input 
                           type="tel"
@@ -452,6 +472,7 @@ export default function ContactSection() {
                           onChange={handleInputChange}
                           className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 text-gray-900 placeholder-gray-400 text-sm transition-colors duration-200"
                           placeholder="+1 (555) 000-0000"
+                          required
                         />
                       </div>
                     </div>

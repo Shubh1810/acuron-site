@@ -9,6 +9,12 @@ export default function EventsSection() {
   const { selectedCountry } = useCountryStore();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Handle client-side mounting to prevent hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Get localized content based on selected country
   const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
@@ -152,36 +158,39 @@ export default function EventsSection() {
     if (!isAutoPlaying) return;
     
     const interval = setInterval(() => {
-      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      if (!isMounted) return;
+      const isMobile = window.innerWidth < 768;
       const cardsPerPage = isMobile ? 4 : 2;
       setCurrentIndex((prevIndex) => (prevIndex + 1) % Math.ceil(events.length / cardsPerPage));
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, events.length]);
+  }, [isAutoPlaying, events.length, isMounted]);
 
   const getCurrentEvents = () => {
     // Mobile: 4 cards, Desktop: 2 cards
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const isMobile = isMounted && window.innerWidth < 768;
     const cardsPerPage = isMobile ? 4 : 2;
     const startIndex = currentIndex * cardsPerPage;
     return events.slice(startIndex, startIndex + cardsPerPage);
   };
 
   const nextSlide = () => {
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const isMobile = isMounted && window.innerWidth < 768;
     const cardsPerPage = isMobile ? 4 : 2;
     setCurrentIndex((prevIndex) => (prevIndex + 1) % Math.ceil(events.length / cardsPerPage));
   };
 
   const prevSlide = () => {
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    if (!isMounted) return;
+    const isMobile = window.innerWidth < 768;
     const cardsPerPage = isMobile ? 4 : 2;
     setCurrentIndex((prevIndex) => (prevIndex - 1 + Math.ceil(events.length / cardsPerPage)) % Math.ceil(events.length / cardsPerPage));
   };
 
   return (
-    <section className="py-16 bg-[#0F4679] relative overflow-hidden">
+    <section className="bg-white px-2 md:px-4 w-full max-w-[100vw] overflow-x-hidden">
+      <div className="py-16 bg-[#0F4679] relative overflow-hidden rounded-3xl border-2 border-white/20">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -238,8 +247,16 @@ export default function EventsSection() {
                 </svg>
               </button>
 
-              <div className="text-sm text-blue-200/70 font-medium">
-                {currentIndex + 1} / {Math.ceil(events.length / (typeof window !== 'undefined' && window.innerWidth < 768 ? 4 : 2))}
+              <div className="text-sm text-blue-200/70 font-medium" suppressHydrationWarning>
+                {isMounted ? (
+                  <>
+                    {currentIndex + 1} / {Math.ceil(events.length / (window.innerWidth < 768 ? 4 : 2))}
+                  </>
+                ) : (
+                  <>
+                    {currentIndex + 1} / {Math.ceil(events.length / 2)}
+                  </>
+                )}
               </div>
             </div>
           </motion.div>
@@ -314,6 +331,7 @@ export default function EventsSection() {
             </div>
           </motion.div>
         </div>
+      </div>
       </div>
     </section>
   );

@@ -157,7 +157,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-9 gap-8">
           {/* Logo Column */}
           <div className="md:col-span-3">
-            <div className="mb-2 sm:mb-6">
+            <div className="flex items-start">
               <Image 
                 src="/oglogo2.png" 
                 alt="Acuron Logo" 

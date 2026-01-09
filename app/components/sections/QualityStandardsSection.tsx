@@ -18,7 +18,8 @@ export default function QualityStandardsSection() {
 
 
   return (
-    <section className="py-12 bg-[#0F4679] relative overflow-hidden">
+    <section className="bg-white px-2 md:px-4 w-full max-w-[100vw] overflow-x-hidden">
+      <div className="py-12 bg-[#0F4679] relative overflow-hidden rounded-3xl border-2 border-white/20">
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 relative z-10">
         {/* Header */}
@@ -186,6 +187,7 @@ export default function QualityStandardsSection() {
             })}
           </p>
         </motion.div>
+      </div>
       </div>
     </section>
   );

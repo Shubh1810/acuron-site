@@ -14,7 +14,6 @@ import TestimonialsSection from './components/sections/TestimonialsSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
 import LogosSection from './components/LogosSection';
-import SectionDivider from './components/ui/SectionDivider';
 import { TextGenerateEffect } from './components/ui/textgenerateeffect';
 import { generatePageMetadata, pageKeywords } from './lib/seo-utils';
 
@@ -43,23 +42,14 @@ export default function Home() {
         />
 
         <LogosSection />
-        <SectionDivider />
         <MissionSection />
-        <SectionDivider />
         <AboutSection />
-        <SectionDivider />
         <QualityStandardsSection />
-        <SectionDivider />
         <ProductPreviewSection />
-        <SectionDivider />
         <TendersSection />
-        <SectionDivider />
         <DistributionSection />
-        <SectionDivider />
         <EventsSection />
-        <SectionDivider />
         <TestimonialsSection />
-        <SectionDivider />
         <ContactSection />
         <Footer />
       </main>

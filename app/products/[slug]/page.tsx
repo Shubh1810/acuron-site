@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, use } from "react";
+import React, { useState, use, useEffect } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Header from "../../components/Header";
@@ -9,6 +9,7 @@ import Breadcrumbs from "../../components/ui/Breadcrumbs";
 import Footer from "../../components/sections/Footer";
 import ProductSpecTable from "../../components/ProductSpecTable";
 import { getProductBySlug } from "../../lib/productData";
+import { trackEvent } from "../../lib/posthog-utils";
 
 interface ProductDetailPageProps {
   params: Promise<{
@@ -25,6 +26,11 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   }
 
   const [activeImage, setActiveImage] = useState(product.image);
+
+  // Track product view in PostHog
+  useEffect(() => {
+    trackEvent.productViewed(slug, product.name, product.category);
+  }, [slug, product.name, product.category]);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -99,10 +105,22 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               </div>
 
               <div className="flex gap-3">
-                <button className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700">
+                <button 
+                  onClick={() => {
+                    trackEvent.productInquiry(slug, product.name, 'get_quote');
+                    trackEvent.buttonClick('product_get_quote', { product_name: product.name, product_id: slug });
+                  }}
+                  className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
+                >
                   Get Quote
                 </button>
-                <button className="px-4 py-2 border border-gray-300 text-gray-700 text-sm rounded hover:bg-gray-50">
+                <button 
+                  onClick={() => {
+                    trackEvent.productInquiry(slug, product.name, 'contact');
+                    trackEvent.buttonClick('product_contact', { product_name: product.name, product_id: slug });
+                  }}
+                  className="px-4 py-2 border border-gray-300 text-gray-700 text-sm rounded hover:bg-gray-50"
+                >
                   Contact
                 </button>
               </div>
