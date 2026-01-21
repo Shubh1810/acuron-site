@@ -3,14 +3,15 @@ import Image from 'next/image';
 const LogosSection = () => {
   const logos = [
     { src: '/gemm.png', alt: 'GEMM Certification', name: 'GEMM' },
-    { src: '/ce-mark.png', alt: 'CE Mark Certification', name: 'CE Mark' },
+    { src: '/isop.png', alt: 'ISO Certification', name: 'ISO' },
+    { src: '/msmep.png', alt: 'MSME Certification', name: 'MSME' },
     { src: '/cdsco-logo.webp', alt: 'CDSCO Certification', name: 'CDSCO' },
     { src: '/NSIC.PNG', alt: 'NSIC Certification', name: 'NSIC' },
-    { src: '/msmep.png', alt: 'MSME Certification', name: 'MSME' },
+    { src: '/ce-mark.png', alt: 'CE Mark Certification', name: 'CE Mark' },
+
     { src: '/who.png', alt: 'WHO Guidelines', name: 'WHO' },
     { src: '/Make_In_India.png', alt: 'Make In India', name: 'Make In India' },
     { src: '/atma.png', alt: 'ATMA Certification', name: 'ATMA' },
-    { src: '/isop.png', alt: 'ISO Certification', name: 'ISO' },
   ];
 
   return (
@@ -42,7 +43,7 @@ const LogosSection = () => {
                     alt={logo.alt}
                     width={120}
                     height={86}
-                    className="max-w-full max-h-full object-contain opacity-90 transition-all duration-300 hover:opacity-100"
+                    className="max-w-full max-h-full object-contain opacity-70 transition-all duration-300 filter grayscale hover:grayscale-0 hover:opacity-100"
                     style={{ width: 'auto', height: 'auto' }}
                     sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
                   />

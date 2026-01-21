@@ -68,7 +68,7 @@ export function generateCanonicalLink(path: string = ''): string {
 // Page-specific keyword suggestions (use sparingly, 3-5 max per page)
 export const pageKeywords = {
   home: ['medical disposables India', 'Acuron products', 'PPE equipment manufacturer'],
-  products: ['surgical gowns', 'N95 masks', 'medical drapes, nitrile gloves'],
+  products: ['surgical gowns', 'N95 masks', 'medical drapes', 'nitrile gloves'],
   certificates: ['ISO certified medical', 'CE marked surgical supplies'],
   events: ['medical trade shows', 'healthcare exhibitions'],
   faq: ['medical supplies FAQ', 'surgical wear questions'],
