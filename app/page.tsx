@@ -1,4 +1,5 @@
 import React from 'react';
+import PartnerBanner from './components/PartnerBanner';
 import Header from './components/Header';
 import TransparentNavbar from './components/TransparentNavbar';
 import HeroSection from './components/HeroSection';
@@ -29,6 +30,7 @@ export default function Home() {
   return (
     <>
       <GridBackground />
+      <PartnerBanner />
       <div className="sticky top-0 z-[60]">
         <Header />
         <TransparentNavbar isHeroSection={false} /> {/* Remove hero conditional since wrapper is sticky */}

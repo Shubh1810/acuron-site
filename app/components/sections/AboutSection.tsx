@@ -115,7 +115,7 @@ export default function AboutSection() {
         {/* Header */}
         <div className="flex justify-start ml-4 sm:ml-6 md:ml-8 mb-6 sm:mb-8">
           <div className="relative">
-            <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+            <h2 className="lato-regular section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
               {aboutUsTitle}
             </h2>
             <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-[#0F4679] mt-1 sm:mt-2 md:mt-3 font-sans leading-tight">

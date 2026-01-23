@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { X, Cookie, Shield, Settings, BarChart3, Target } from 'lucide-react';
+import { X, Shield, Settings, BarChart3, Target } from 'lucide-react';
 import { useCountryStore } from '../../lib/store';
 
 interface CookieBannerProps {
@@ -305,193 +305,196 @@ export default function CookieBanner({ className = '' }: CookieBannerProps) {
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed bottom-5 left-5 z-[80] ${className}`}>
-      {/* Main Banner */}
-      <div 
-        className="bg-white/95 backdrop-blur-lg border border-gray-200/60 rounded-2xl shadow-2xl 
-                   w-[520px] sm:w-[640px] max-w-[92vw] mx-0 mb-0
-                   transition-all duration-300 ease-out"
+    <div className={`fixed bottom-6 left-6 z-[80] ${className}`}>
+      <div
+        className="bg-white border border-gray-200/80 rounded-lg shadow-lg w-[480px] sm:w-[560px] max-w-[calc(100vw-3rem)] transition-all duration-300 ease-out overflow-hidden"
         style={{
-          maxHeight: showDetails ? '420px' : '160px'
+          maxHeight: showDetails ? '500px' : 'auto'
         }}
       >
-        {/* Header */}
-        <div className="px-4 sm:px-5 pt-4 pb-3">
-          <div className="flex items-center justify-between gap-3 mb-2">
-            <div className="flex items-center gap-2 min-w-0">
-              <div className="p-2 bg-[#0F4679]/10 rounded-lg shrink-0">
-                <Cookie className="w-4 h-4 text-[#0F4679]" />
+        <div className="p-5">
+          {!showDetails ? (
+            <>
+              {/* Simple banner view */}
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-gray-900 text-base mb-2">
+                    {cookieTitle}
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed mb-1.5">
+                    {cookieDescription}
+                  </p>
+                  <p className="text-xs text-gray-500 leading-relaxed">
+                    By clicking <span className="font-semibold">"{acceptAllText}"</span>, you consent to our use of cookies.{' '}
+                    <a
+                      href="/cookies"
+                      className="text-[#0066FF] hover:text-[#0052CC] underline underline-offset-2"
+                    >
+                      Cookie Policy
+                    </a>
+                    .
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsVisible(false)}
+                  className="p-1.5 text-gray-400 hover:text-gray-600 transition-colors rounded-none hover:bg-gray-100 flex-shrink-0"
+                  aria-label="Close"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
-              <h3 className="font-semibold text-gray-900 text-sm truncate">
-                {cookieTitle}
-              </h3>
-            </div>
-            <button
-              onClick={() => setIsVisible(false)}
-              className="p-1 text-gray-400 hover:text-gray-600 transition-colors duration-200"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
 
-          <p className="text-[11px] sm:text-xs text-gray-600 leading-relaxed mb-3 sm:mb-3.5">
-            {cookieDescription}
-          </p>
+              {/* Action buttons row */}
+              <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={handleCustomize}
+                  className="w-full sm:flex-1 border border-[#0066FF] text-[#0066FF] text-sm font-medium py-2.5 rounded-none hover:bg-[#0066FF]/5 transition-colors"
+                >
+                  {customizeText}
+                </button>
+                <button
+                  onClick={handleRejectAll}
+                  className="w-full sm:flex-1 border border-gray-300 text-gray-800 text-sm font-medium py-2.5 rounded-none hover:bg-gray-50 transition-colors"
+                >
+                  {rejectAllText}
+                </button>
+                <button
+                  onClick={handleAcceptAll}
+                  className="w-full sm:flex-1 bg-[#0066FF] text-white text-sm font-medium py-2.5 rounded-none hover:bg-[#0052CC] transition-colors"
+                >
+                  {acceptAllText}
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Detailed preferences view */}
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-gray-900 text-base mb-1.5">
+                    Cookie preferences
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Choose which types of cookies you want to allow. You can change these settings at any time.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowDetails(false)}
+                  className="text-xs text-[#0066FF] hover:text-[#0052CC] underline underline-offset-2"
+                >
+                  Back
+                </button>
+              </div>
 
-          {/* Privacy links moved higher */}
-          <div className="mb-3 sm:mb-3.5">
-            <div className="flex justify-start gap-4">
-              <a 
-                href="/privacy" 
-                className="text-xs text-[#0F4679] hover:underline transition-colors duration-200"
-              >
-                {privacyPolicyText}
-              </a>
-              <a 
-                href="/cookies" 
-                className="text-xs text-[#0F4679] hover:underline transition-colors duration-200"
-              >
-                Cookie Policy
-              </a>
-            </div>
-          </div>
-
-          {/* Cookie Categories (when expanded) */}
-          {showDetails && (
-            <div className="space-y-3 mb-3 max-h-40 overflow-y-auto pr-1">
+              <div className="space-y-3 mb-5 max-h-[280px] overflow-y-auto pr-2">
               {/* Essential Cookies */}
-              <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                <Shield className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                <div className="min-w-0">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-gray-900">
+              <div className="flex items-start gap-3 p-3 rounded-lg border border-gray-100">
+                <Shield className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm font-medium text-gray-900">
                       {essentialCookiesText}
                     </span>
-                    <span className="text-xs text-green-600 font-medium">Required</span>
+                    <span className="text-xs text-emerald-600 font-medium px-2 py-0.5 bg-emerald-50 rounded">Required</span>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 leading-relaxed">
                     {essentialDescription}
                   </p>
                 </div>
               </div>
 
               {/* Analytics Cookies */}
-              <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+              <div className="flex items-start gap-3 p-3 rounded-lg border border-gray-100">
                 <BarChart3 className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-gray-900">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm font-medium text-gray-900">
                       {analyticsCookiesText}
                     </span>
-                    <input 
-                      type="checkbox" 
-                      className="w-4 h-4 text-[#0F4679] rounded border-gray-300 focus:ring-[#0F4679] focus:ring-2" 
-                      checked={preferences.analytics}
-                      onChange={(e) => updatePreference('analytics', e.target.checked)}
-                    />
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        className="sr-only peer" 
+                        checked={preferences.analytics}
+                        onChange={(e) => updatePreference('analytics', e.target.checked)}
+                      />
+                      <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#0066FF] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#0066FF]"></div>
+                    </label>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 leading-relaxed">
                     {analyticsDescription}
                   </p>
                 </div>
               </div>
 
               {/* Functional Cookies */}
-              <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+              <div className="flex items-start gap-3 p-3 rounded-lg border border-gray-100">
                 <Settings className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-gray-900">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm font-medium text-gray-900">
                       {functionalCookiesText}
                     </span>
-                    <input 
-                      type="checkbox" 
-                      className="w-4 h-4 text-[#0F4679] rounded border-gray-300 focus:ring-[#0F4679] focus:ring-2" 
-                      checked={preferences.functional}
-                      onChange={(e) => updatePreference('functional', e.target.checked)}
-                    />
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        className="sr-only peer" 
+                        checked={preferences.functional}
+                        onChange={(e) => updatePreference('functional', e.target.checked)}
+                      />
+                      <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#0066FF] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#0066FF]"></div>
+                    </label>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 leading-relaxed">
                     {functionalDescription}
                   </p>
                 </div>
               </div>
 
               {/* Marketing Cookies */}
-              <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+              <div className="flex items-start gap-3 p-3 rounded-lg border border-gray-100">
                 <Target className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-gray-900">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm font-medium text-gray-900">
                       {marketingCookiesText}
                     </span>
-                    <input 
-                      type="checkbox" 
-                      className="w-4 h-4 text-[#0F4679] rounded border-gray-300 focus:ring-[#0F4679] focus:ring-2" 
-                      checked={preferences.marketing}
-                      onChange={(e) => updatePreference('marketing', e.target.checked)}
-                    />
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        className="sr-only peer" 
+                        checked={preferences.marketing}
+                        onChange={(e) => updatePreference('marketing', e.target.checked)}
+                      />
+                      <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#0066FF] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#0066FF]"></div>
+                    </label>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 leading-relaxed">
                     {marketingDescription}
                   </p>
                 </div>
               </div>
             </div>
+
+            {/* Action Buttons for details view */}
+            <div className="flex gap-3">
+              <button
+                onClick={handleSavePreferences}
+                className="flex-1 bg-[#0066FF] text-white text-sm font-medium py-2.5 px-4 rounded-none hover:bg-[#0052CC] transition-colors"
+              >
+                Save Preferences
+              </button>
+              <button
+                onClick={handleRejectAll}
+                className="px-4 py-2.5 text-sm font-medium text-gray-800 border border-gray-300 rounded-none hover:bg-gray-50 transition-colors"
+              >
+                {rejectAllText}
+              </button>
+            </div>
+          </>
           )}
-
-          {/* Action Buttons */}
-          <div className="space-y-2 px-4 sm:px-5">
-            {showDetails ? (
-              <div className="space-y-2">
-                <div className="flex space-x-2">
-                  <button
-                    onClick={handleAcceptAll}
-                    className="flex-1 bg-[#0F4679] text-white text-xs font-medium py-2 px-3 rounded-lg 
-                             hover:bg-[#0A3356] transition-colors duration-200"
-                  >
-                    {acceptAllText}
-                  </button>
-                  <button
-                    onClick={handleRejectAll}
-                    className="flex-1 bg-gray-100 text-gray-700 text-xs font-medium py-2 px-3 rounded-lg 
-                             hover:bg-gray-200 transition-colors duration-200"
-                  >
-                    {rejectAllText}
-                  </button>
-                </div>
-                <button
-                  onClick={handleSavePreferences}
-                  className="w-full bg-green-600 text-white text-xs font-medium py-2 px-3 rounded-lg 
-                           hover:bg-green-700 transition-colors duration-200"
-                >
-                  Save Preferences
-                </button>
-              </div>
-            ) : (
-              <div className="flex space-x-2">
-                <button
-                  onClick={handleAcceptAll}
-                  className="flex-1 bg-[#0F4679] text-white text-xs font-medium py-2.5 px-4 rounded-lg 
-                           hover:bg-[#0A3356] transition-colors duration-200"
-                >
-                  {acceptAllText}
-                </button>
-                <button
-                  onClick={handleCustomize}
-                  className="p-2.5 text-gray-600 hover:text-[#0F4679] transition-colors duration-200"
-                  title={customizeText}
-                >
-                  <Settings className="w-4 h-4" />
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Divider under actions for subtle separation */}
-          <div className="px-4 sm:px-5 mt-2 border-t border-gray-100"></div>
         </div>
       </div>
     </div>
   );
-} 
+}

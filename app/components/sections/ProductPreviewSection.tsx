@@ -134,7 +134,7 @@ export default function ProductPreviewSection() {
         <div className="mb-12">
           <div className="flex justify-start ml-8">
             <div className="relative">
-              <h2 className="section-heading text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+              <h2 className="lato-regular section-heading text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
                 {discoverTitle}
               </h2>
             </div>

@@ -31,7 +31,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
   const navigationLinks = useMemo(() => [
     { 
       href: '/', 
-      label: getLocalizedContent('HOME', {
+      label: getLocalizedContent('Home', {
         de: 'STARTSEITE',
         fr: 'ACCUEIL',
         ja: 'ホーム',
@@ -41,7 +41,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     },
     { 
       href: '/certificates', 
-      label: getLocalizedContent('CERTIFICATES', {
+      label: getLocalizedContent('Certificates', {
         de: 'ZERTIFIKATE',
         fr: 'CERTIFICATS',
         ja: '証明書',
@@ -106,7 +106,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     }
   ], [selectedCountry]);
 
-  const productsText = getLocalizedContent('PRODUCTS', {
+  const productsText = getLocalizedContent('Products', {
     de: 'PRODUKTE',
     fr: 'PRODUITS',
     ja: '製品',
@@ -130,7 +130,7 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     pt: 'CATÁLOGO'
   });
 
-  const searchPlaceholder = getLocalizedContent('SEARCH', {
+  const searchPlaceholder = getLocalizedContent('Search', {
     de: 'SUCHEN',
     fr: 'RECHERCHER',
     ja: '検索',
@@ -150,10 +150,10 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
   const logoClass = 'object-contain';
 
   return (
-    <nav className="relative z-[60] w-full max-w-[100vw] overflow-visible transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 py-1.5 sm:py-2 flex justify-between items-center w-full">
+    <nav className="relative z-[60] w-full max-w-[100vw] overflow-visible transition-all duration-300 bg-white backdrop-blur-md">
+      <div className="w-full pl-4 pr-2 sm:pr-4 py-1.5 sm:py-2 flex justify-between items-center">
         {/* Logo - Hidden on mobile */}
-        <Link href="/" className="flex-shrink-0 hidden md:block md:ml-4 lg:ml-8">
+        <Link href="/" className="flex-shrink-0 hidden md:block">
           <div className="w-32 sm:w-36 md:w-40 lg:w-44 h-12 sm:h-14 md:h-16 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">
             <Image
               src={logoSrc}
@@ -171,78 +171,74 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
         <div className="md:hidden"></div>
         
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-4 xl:space-x-8">
+        <nav className="hidden lg:flex items-center ml-auto">
           {/* HOME Link */}
           <Link 
             href="/" 
-            className="text-xs font-semibold relative group transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
+            className="text-sm font-normal relative group transition-colors duration-300 text-gray-600 hover:text-gray-700 mr-6 xl:mr-10"
           >
             {navigationLinks[0].label}
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-[#0F4679]/80"></span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-gray-600"></span>
           </Link>
 
           {/* Products Dropdown */}
           <div 
-            className="relative group"
+            className="relative group mr-3 xl:mr-5"
             onMouseEnter={() => setIsProductsDropdownOpen(true)}
             onMouseLeave={() => setIsProductsDropdownOpen(false)}
           >
             <Link 
               href="/products"
-              className="flex items-center text-xs font-semibold relative group transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
+              className="flex items-center text-sm font-normal relative group transition-colors duration-300 text-gray-600 hover:text-gray-700"
             >
               {productsText}
               <svg 
-                className={`ml-2 w-4 h-4 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180' : ''}`}
+                className={`ml-1 w-4 h-4 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180' : ''}`}
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-[#0F4679]/80"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-gray-600"></span>
             </Link>
             
             {/* Dropdown Menu */}
             <div 
-              className={`absolute top-full left-0 mt-3 w-80 z-[100] transition-all duration-500 ease-out transform-gpu ${
+              className={`absolute top-full left-0 mt-2 w-72 z-[100] transition-all duration-200 ease-out ${
                 isProductsDropdownOpen 
-                  ? 'opacity-100 translate-y-0 visible scale-100' 
-                  : 'opacity-0 -translate-y-4 invisible scale-95'
+                  ? 'opacity-100 translate-y-0 visible' 
+                  : 'opacity-0 -translate-y-2 invisible'
               }`}
               style={{
-                background: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(20px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                borderRadius: '16px',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
-                boxShadow: '0 20px 40px -12px rgba(0, 0, 0, 0.25)',
+                background: 'white',
+                border: '1px solid #e5e7eb',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                 transformOrigin: 'top center'
               }}
             >
-              <div className="p-3">
+              <div className="py-2">
                 {productCategories.map((category, index) => (
                   <Link
                     key={index}
                     href={category.href}
-                    className="group flex items-center px-4 py-3 text-sm font-medium text-gray-800 rounded-xl transition-all duration-300 hover:bg-white/70 hover:shadow-md"
+                    className="block px-4 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-150"
                     onClick={() => setIsProductsDropdownOpen(false)}
                   >
-                    <div className="w-2.5 h-2.5 rounded-full mr-3 bg-gradient-to-r from-[#0F4679] to-[#0F4679]/90 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">{category.label}</span>
+                    {category.label}
                   </Link>
                 ))}
               </div>
               
-              <div className="border-t border-gray-200/50 m-3 mt-0 rounded-b-xl overflow-hidden">
+              <div className="border-t border-gray-200">
                 <Link
                   href="/products"
-                  className="flex items-center justify-center px-4 py-4 text-sm font-bold text-[#0F4679] hover:text-[#0D3C6B] transition-colors duration-300 rounded-lg bg-gradient-to-r from-[#0F4679]/5 to-[#158C07]/10 hover:from-[#0F4679]/10 hover:to-[#158C07]/20 group"
+                  className="flex items-center justify-center px-4 py-3 text-sm font-medium text-[#0F4679] hover:text-[#0D3C6B] transition-colors duration-150"
                   onClick={() => setIsProductsDropdownOpen(false)}
                 >
-                  <span className="group-hover:scale-105 transition-transform duration-300">{viewAllProductsText}</span>
-                  <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  {viewAllProductsText}
+                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
               </div>
@@ -250,24 +246,24 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
           </div>
 
           {/* Other Navigation Links */}
-          {navigationLinks.slice(1).map((link) => (
+          {navigationLinks.slice(1).map((link, index) => (
             <Link 
               key={link.href} 
               href={link.href} 
-              className="text-xs font-semibold relative group transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
+              className="text-sm font-normal relative group transition-colors duration-300 text-gray-600 hover:text-gray-700 mr-6 xl:mr-10"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-[#0F4679]/80"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 bg-gray-600"></span>
             </Link>
           ))}
         </nav>
         
         {/* Right Side Actions */}
-        <div className="flex items-center space-x-2 sm:space-x-4 md:mr-4 lg:mr-8">
+        <div className="flex items-center space-x-2 sm:space-x-4 ml-4">
           {/* Catalog Button - Trigger modal */}
           <button 
             onClick={triggerNewsletterModal}
-            className="hidden lg:flex items-center text-xs font-semibold transition-colors duration-300 text-[#0F4679]/90 hover:text-[#0F4679]"
+            className="hidden lg:flex items-center text-xs font-semibold transition-colors duration-300 text-[#0F4679] hover:text-[#0F4679] underline"
             title="Download Catalog"
           >
             <Download size={16} className="mr-2" />

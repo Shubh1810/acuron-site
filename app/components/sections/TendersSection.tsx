@@ -66,7 +66,7 @@ export default function TendersSection() {
           }}
         >
           <div className="relative mb-2 sm:mb-4 ml-8">
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-left leading-tight transition-all duration-900 delay-100 ${
+            <h2 className={`lato-regular text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-left leading-tight transition-all duration-900 delay-100 ${
               isVisible 
                 ? 'opacity-100 transform translate-x-0' 
                 : 'opacity-0 transform -translate-x-12'

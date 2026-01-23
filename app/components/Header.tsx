@@ -194,51 +194,19 @@ const Header: FC = () => {
 
   return (
     <header className="w-full">
-      {/* Top Navigation Bar - Glassmorphism effect with dot pattern */}
+      {/* Top Navigation Bar - Gradient from white to flagship blue */}
       <div 
-        className="bg-white/70 backdrop-blur-md relative"
+        className="relative"
         style={{
-          backgroundImage: `
-            radial-gradient(circle at 1px 1px, transparent 1.2px, rgba(255,255,255,0.7) 1.2px),
-            radial-gradient(circle at 3px 2px, transparent 1px, transparent 1px),
-            radial-gradient(circle at 5px 1px, transparent 1.1px, transparent 1.1px),
-            radial-gradient(circle at 2px 4px, transparent 0.9px, transparent 0.9px),
-            radial-gradient(circle at 6px 3px, transparent 1.3px, transparent 1.3px),
-            radial-gradient(circle at 0.5px 2.5px, transparent 0.8px, transparent 0.8px),
-            radial-gradient(circle at 2.5px 0.5px, transparent 1px, transparent 1px),
-            radial-gradient(circle at 4px 4px, transparent 1.2px, transparent 1.2px),
-            radial-gradient(circle at 6.5px 1.5px, transparent 0.9px, transparent 0.9px),
-            radial-gradient(circle at 1.5px 3.5px, transparent 1.1px, transparent 1.1px),
-            radial-gradient(circle at 3.5px 5px, transparent 0.8px, transparent 0.8px),
-            radial-gradient(circle at 5.5px 2.5px, transparent 1px, transparent 1px),
-            radial-gradient(circle at 0.8px 5.5px, transparent 1.2px, transparent 1.2px),
-            radial-gradient(circle at 4.5px 0.8px, transparent 0.9px, transparent 0.9px),
-            radial-gradient(circle at 7px 4.5px, transparent 1.3px, transparent 1.3px),
-            radial-gradient(circle at 0.2px 0.8px, transparent 0.7px, transparent 0.7px),
-            radial-gradient(circle at 1.8px 1.8px, transparent 1px, transparent 1px),
-            radial-gradient(circle at 3.2px 3.2px, transparent 0.8px, transparent 0.8px),
-            radial-gradient(circle at 4.8px 2.2px, transparent 1.1px, transparent 1.1px),
-            radial-gradient(circle at 6.2px 0.2px, transparent 0.9px, transparent 0.9px),
-            radial-gradient(circle at 7.5px 1.8px, transparent 1px, transparent 1px),
-            radial-gradient(circle at 0.8px 4.2px, transparent 1.2px, transparent 1.2px),
-            radial-gradient(circle at 2.2px 5.8px, transparent 0.8px, transparent 0.8px),
-            radial-gradient(circle at 3.8px 6.5px, transparent 1px, transparent 1px),
-            radial-gradient(circle at 5.2px 5.2px, transparent 1.1px, transparent 1.1px),
-            radial-gradient(circle at 6.8px 6.8px, transparent 0.9px, transparent 0.9px),
-            radial-gradient(circle at 7.2px 2.8px, transparent 1px, transparent 1px),
-            radial-gradient(circle at 1.2px 6.2px, transparent 1.2px, transparent 1.2px),
-            radial-gradient(circle at 4.2px 1.2px, transparent 0.8px, transparent 0.8px),
-            radial-gradient(circle at 5.8px 4.8px, transparent 1.1px, transparent 1.1px)
-          `,
-          backgroundSize: '8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px'
+          background: 'linear-gradient(to right, white 0%, white 15%,rgb(0, 81, 157) 100%)'
         }}
       >
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-1 sm:py-1.5 flex justify-between items-center">
+        <div className="w-full pl-7 pr-2 sm:pr-4 py-1 sm:py-1.5 flex justify-between items-center">
           {/* Left side - Available on platforms (desktop only) */}
           {isClient && (
             <div className="hidden md:flex items-center space-x-2">
-              <span className="text-[9px] sm:text-[10px] text-[#0F4679]/70 font-medium">Available on:</span>
-              <div className="flex items-center space-x-1">
+              <span className="text-[11px] sm:text-[12px] text-[#0F4679]/90 font-bold">Available on:</span>
+              <div className="flex items-center gap-0.5">
                 <a 
                   href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1"
                   target="_blank"
@@ -267,6 +235,34 @@ const Header: FC = () => {
                     className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain cursor-pointer"
                   />
                 </a>
+                <a 
+                  href="https://www.flipkart.com/search?q=acuron"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-100 transition-opacity duration-300"
+                >
+                  <Image
+                    src="/flip.png"
+                    alt="Available on Flipkart"
+                    width={60}
+                    height={20}
+                    className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain cursor-pointer"
+                  />
+                </a>
+                <a 
+                  href="https://www.meesho.com/search?q=acuron"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-100 transition-opacity duration-300"
+                >
+                  <Image
+                    src="/meesho.png"
+                    alt="Available on Meesho"
+                    width={36}
+                    height={12}
+                    className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain cursor-pointer"
+                  />
+                </a>
               </div>
             </div>
           )}
@@ -292,11 +288,11 @@ const Header: FC = () => {
           <div className="flex items-center space-x-3 sm:space-x-6">
           <a 
             href="tel:+919322961664" 
-            className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300 cursor-pointer"
+            className="text-[10px] sm:text-[11px] tracking-wide font-bold text-white hover:text-white/80 transition-colors duration-300 cursor-pointer"
           >
             {ourCompanyText}
           </a>
-          <Link href="/#contact-us-section" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-[#0F4679] hover:text-[#16599D] transition-colors duration-300">
+          <Link href="/#contact-us-section" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-white hover:text-white/80 transition-colors duration-300">
             {contactText}
           </Link>
           {isClient && <CountrySelector />}

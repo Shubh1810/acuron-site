@@ -145,7 +145,7 @@ export default function MissionSection() {
             {/* Header Section */}
             <div className="flex justify-start ml-8 mb-6 text-left">
               <div className="relative z-10">
-                <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight mb-3">
+                <h2 className="lato-regular text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight mb-3">
                   {ourMissionText}
                 </h2>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-heading tracking-tight text-white/95 leading-tight text-left">

@@ -289,7 +289,7 @@ export default function ContactSection() {
                 <div className="relative">
                   <div className="flex justify-start">
                     <div className="relative">
-                      <h2 className="text-4xl md:text-5xl font-bold font-sans bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
+                      <h2 className="lato-regular text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
                         {getInTouchText}
                       </h2>
                     </div>

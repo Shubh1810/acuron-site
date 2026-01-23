@@ -212,7 +212,7 @@ export default function EventsSection() {
           >
             <div className="flex justify-start">
               <div className="relative">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight text-left">
+                <h2 className="lato-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight text-left">
                   {joinUsText} at Industry {eventsText}
                 </h2>
               </div>

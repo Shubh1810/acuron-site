@@ -273,7 +273,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
   
   return (
     <div id="hero-section" className="bg-white px-2 md:px-4 pb-0 w-full max-w-[100vw] overflow-x-hidden">
-      <div className="relative h-[85vh] sm:h-[82vh] md:h-[80vh] lg:h-[78vh] min-h-[600px] flex flex-col rounded-3xl md:rounded-3xl rounded-t-3xl overflow-hidden w-full">
+      <div className="relative h-[85vh] sm:h-[82vh] md:h-[80vh] lg:h-[78vh] min-h-[600px] flex flex-col rounded-2xl md:rounded-2xl rounded-t-2xl overflow-hidden w-full">
         {/* Background Images with Fade Effect */}
         {backgroundImages.map((image, index) => (
           <div 
