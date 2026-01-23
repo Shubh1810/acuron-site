@@ -286,7 +286,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
-              filter: 'brightness(0.5)'
+              filter: 'brightness(0.5) blur(4px)'
             }}
           />
         ))}
