@@ -30,7 +30,9 @@ export default function PartnerBanner() {
           Acuron & Whizzo Announce Strategic Partnership to Strengthen Healthcare Manufacturing
           </p>
           <a 
-            href="#" 
+            href="https://whizzo.org" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-xs sm:text-sm text-[#0F4679] underline hover:text-[#0D3C6B] transition-colors whitespace-nowrap flex-shrink-0"
           >
             Learn More

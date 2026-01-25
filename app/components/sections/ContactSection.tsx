@@ -334,7 +334,7 @@ export default function ContactSection() {
                             {visitUsText}
                           </h3>
                           <p className="text-white/70 text-xs leading-relaxed break-words">
-                            Gala No. 117,118, 1st Floor, B/10, Pritesh Complex, Dapoda Road, Bhiwandi - 421302, Maharashtra, India
+                            Gala No. 112,113,114, 1st & 2nd Floor, Block B/10, Pritesh Complex, Dapoda Road, Val Village, Bhiwandi, Thane - 421302, Maharashtra, India
                           </p>
                         </div>
                       </div>
