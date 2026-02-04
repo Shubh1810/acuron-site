@@ -3,7 +3,7 @@ import Image from 'next/image';
 const LogosSection = () => {
   const logos = [
     { src: '/gemm.png', alt: 'GEMM Certification', name: 'GEMM' },
-    { src: '/isop.png', alt: 'ISO Certification', name: 'ISO' },
+    { src: '/iso134.webp', alt: 'ISO Certification', name: 'ISO' },
     { src: '/msmep.png', alt: 'MSME Certification', name: 'MSME' },
     { src: '/cdsco-logo.webp', alt: 'CDSCO Certification', name: 'CDSCO' },
     { src: '/NSIC.PNG', alt: 'NSIC Certification', name: 'NSIC' },

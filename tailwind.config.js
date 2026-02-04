@@ -39,6 +39,9 @@ module.exports = {
         sakamoto: ['Sakamoto', 'sans-serif'],
         roboto: ['var(--font-roboto)', 'Arial', 'sans-serif'],
         rubik: ['var(--font-rubik)', 'sans-serif'],
+        oswald: ['var(--font-oswald)', 'sans-serif'],
+        ubuntu: ['var(--font-ubuntu)', 'sans-serif'],
+        'google-sans': ['"Google Sans"', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

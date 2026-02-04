@@ -7,13 +7,15 @@ interface MetricProps {
   label: string;
   suffix?: string;
   className?: string;
+  labelClassName?: string;
 }
 
 export default function Metric({ 
   value, 
   label, 
   suffix = '+', 
-  className = ''
+  className = '',
+  labelClassName = 'text-white/50'
 }: MetricProps) {
   const [counter, setCounter] = useState(0);
   const counterRef = useRef<HTMLDivElement>(null);
@@ -106,7 +108,7 @@ export default function Metric({
         {counter}
         {suffix}
       </div>
-      <div className="text-xs sm:text-sm md:text-base text-white/50">{label}</div>
+      <div className={`text-xs sm:text-sm md:text-base ${labelClassName}`}>{label}</div>
     </div>
   );
 }

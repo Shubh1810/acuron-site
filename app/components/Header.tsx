@@ -2,27 +2,30 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FC, useState, useMemo, useCallback, useEffect } from 'react';
-import { Download } from 'lucide-react';
+import { FC, useState, useMemo, useCallback, useEffect, useRef } from 'react';
+import { Download, Search, Menu } from 'lucide-react';
 import CountrySelector from './CountrySelector';
 import { useCountryStore } from '../../lib/store';
+import { triggerNewsletterModal } from '../lib/modalEvents';
 
 const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
-  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const searchButtonRef = useRef<HTMLButtonElement>(null);
   const { selectedCountry } = useCountryStore();
-
-  // Fix hydration issues by ensuring client-side rendering
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Flagship blue color
-  const flagshipBlue = "#0F4679";
+  useEffect(() => {
+    if (isSearchExpanded) {
+      searchInputRef.current?.focus();
+    }
+  }, [isSearchExpanded]);
 
-  // Get localized content based on selected country
   const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
     if (selectedCountry.useEnglishContent) {
       return englishText;
@@ -30,278 +33,229 @@ const Header: FC = () => {
     return translations[selectedCountry.language] || englishText;
   };
 
-  // Memoize navigation links with localization
   const navigationLinks = useMemo(() => [
-    { 
-      href: '/', 
-      label: getLocalizedContent('HOME', {
-        de: 'STARTSEITE',
-        fr: 'ACCUEIL',
-        ja: 'ホーム',
-        zh: '首页',
-        pt: 'INÍCIO'
-      })
-    },
-    { 
-      href: '/certificates', 
-      label: getLocalizedContent('CERTIFICATES', {
-        de: 'ZERTIFIKATE',
-        fr: 'CERTIFICATS',
-        ja: '証明書',
-        zh: '证书',
-        pt: 'CERTIFICADOS'
-      })
-    },
-    { 
-      href: '/events', 
-      label: getLocalizedContent('EVENTS', {
-        de: 'VERANSTALTUNGEN',
-        fr: 'ÉVÉNEMENTS',
-        ja: 'イベント',
-        zh: '活动',
-        pt: 'EVENTOS'
-      })
-    },
-    { 
-      href: '/faq', 
-      label: getLocalizedContent('FAQ', {
-        de: 'FAQ',
-        fr: 'FAQ',
-        ja: 'よくある質問',
-        zh: '常见问题',
-        pt: 'FAQ'
-      })
-    },
+    { href: '/', label: getLocalizedContent('Home', { de: 'STARTSEITE', fr: 'ACCUEIL', ja: 'ホーム', zh: '首页', pt: 'INÍCIO' }) },
+    { href: '/certificates', label: getLocalizedContent('Certificates', { de: 'ZERTIFIKATE', fr: 'CERTIFICATS', ja: '証明書', zh: '证书', pt: 'CERTIFICADOS' }) },
+    { href: '/faq', label: getLocalizedContent('FAQ', { de: 'FAQ', fr: 'FAQ', ja: 'よくある質問', zh: '常见问题', pt: 'FAQ' }) },
   ], [selectedCountry]);
 
-  // Products dropdown categories
   const productCategories = useMemo(() => [
-    {
-      label: getLocalizedContent('Protective Apparel', {
-        de: 'Schutzkleidung',
-        fr: 'Vêtements de protection',
-        ja: '保護服',
-        zh: '防护服',
-        pt: 'Vestuário de Proteção'
-      }),
-      href: '/products'
-    },
-    {
-      label: getLocalizedContent('Masks & Headwear', {
-        de: 'Masken & Kopfbedeckungen',
-        fr: 'Masques et couvre-chefs',
-        ja: 'マスク・帽子',
-        zh: '口罩和头饰',
-        pt: 'Máscaras e Chapéus'
-      }),
-      href: '/products'
-    },
-    {
-      label: getLocalizedContent('Shoe & Leg Protection', {
-        de: 'Schuh- & Beinschutz',
-        fr: 'Protection des chaussures et jambes',
-        ja: '靴・脚保護',
-        zh: '鞋套和腿部保护',
-        pt: 'Proteção de Sapatos e Pernas'
-      }),
-      href: '/products'
-    },
-    {
-      label: getLocalizedContent('Drapes Linens & Underpads', {
-        de: 'Tücher, Bettwäsche & Unterlagen',
-        fr: 'Draps, linge et alèses',
-        ja: 'ドレープ・リネン・パッド',
-        zh: '手术巾、床单和护垫',
-        pt: 'Campos, Roupas de Cama e Forrações'
-      }),
-      href: '/products'
-    },
-    {
-      label: getLocalizedContent('Medical Kits', {
-        de: 'Medizinische Kits',
-        fr: 'Kits médicaux',
-        ja: '医療キット',
-        zh: '医疗套件',
-        pt: 'Kits Médicos'
-      }),
-      href: '/products'
-    },
-    {
-      label: getLocalizedContent('General Medical & Surgical Disposables', {
-        de: 'Allgemeine medizinische & chirurgische Einwegartikel',
-        fr: 'Jetables médicaux et chirurgicaux généraux',
-        ja: '一般医療・外科用使い捨て用品',
-        zh: '一般医疗和手术一次性用品',
-        pt: 'Descartáveis Médicos e Cirúrgicos Gerais'
-      }),
-      href: '/products'
-    }
+    { label: getLocalizedContent('Healthcare', { de: 'Gesundheitswesen', fr: 'Soins de santé', ja: 'ヘルスケア', zh: '医疗保健', pt: 'Cuidados de Saúde' }), href: '/products' },
+    { label: getLocalizedContent('Food Processing', { de: 'Lebensmittelverarbeitung', fr: 'Transformation alimentaire', ja: '食品加工', zh: '食品加工', pt: 'Processamento de Alimentos' }), href: '/products?category=food' },
+    { label: getLocalizedContent('Pharmaceuticals', { de: 'Pharmazeutika', fr: 'Pharmaceutiques', ja: '製薬', zh: '制药', pt: 'Farmacêuticos' }), href: '/products?category=pharma' },
+    { label: getLocalizedContent('Chemical', { de: 'Chemisch', fr: 'Chimique', ja: '化学', zh: '化学', pt: 'Químico' }), href: '/products?category=chemical' },
   ], [selectedCountry]);
 
-  const productsText = getLocalizedContent('PRODUCTS', {
-    de: 'PRODUKTE',
-    fr: 'PRODUITS',
-    ja: '製品',
-    zh: '产品',
-    pt: 'PRODUTOS'
-  });
+  const productsText = getLocalizedContent('Products', { de: 'PRODUKTE', fr: 'PRODUITS', ja: '製品', zh: '产品', pt: 'PRODUTOS' });
+  const viewAllProductsText = getLocalizedContent('View All Products', { de: 'Alle Produkte anzeigen', fr: 'Voir tous les produits', ja: 'すべての製品を見る', zh: '查看所有产品', pt: 'Ver Todos os Produtos' });
+  const catalogText = getLocalizedContent('Catalog', { de: 'KATALOG', fr: 'CATALOGUE', ja: 'カタログ', zh: '目录', pt: 'CATÁLOGO' });
+  const searchPlaceholder = getLocalizedContent('Search', { de: 'SUCHEN', fr: 'RECHERCHER', ja: '検索', zh: '搜索', pt: 'PESQUISAR' });
 
-  const viewAllProductsText = getLocalizedContent('View All Products', {
-    de: 'Alle Produkte anzeigen',
-    fr: 'Voir tous les produits',
-    ja: 'すべての製品を見る',
-    zh: '查看所有产品',
-    pt: 'Ver Todos os Produtos'
-  });
+  const toggleMobileMenu = useCallback(() => setIsMobileMenuOpen((prev) => !prev), []);
 
-  // Localized top navigation links
-  const ourCompanyText = "+91 93229 61664";
+  const pillBase = 'neu-pill rounded-full bg-[#0F4679]/[0.06] backdrop-blur-md border border-[#0F4679]/10 transition-all duration-300';
+  const rightPillClass = `${pillBase} flex items-center justify-center px-2.5 py-1.5`;
 
-  const contactText = getLocalizedContent('INQUIRE', {
-    de: 'ANFRAGE',
-    fr: 'DEMANDE',
-    ja: 'お問い合わせ',
-    zh: '询问',
-    pt: 'INQUÉRITO'
-  });
-
-  const catalogText = getLocalizedContent('CATALOG', {
-    de: 'KATALOG',
-    fr: 'CATALOGUE',
-    ja: 'カタログ',
-    zh: '目录',
-    pt: 'CATÁLOGO'
-  });
-
-  const searchPlaceholder = getLocalizedContent('SEARCH', {
-    de: 'SUCHEN',
-    fr: 'RECHERCHER',
-    ja: '検索',
-    zh: '搜索',
-    pt: 'PESQUISAR'
-  });
-
-
-  // Memoize the toggle function to prevent recreation on renders
-  const toggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen(prev => {
-      if (!prev) {
-        setIsMobileProductsOpen(false); // Reset products dropdown when opening menu
-      }
-      return !prev;
-    });
-  }, []);
+  const ourCompanyText = '+91 93229 61664';
 
   return (
-    <header className="w-full">
-      {/* Top Navigation Bar - Gradient from white to flagship blue */}
-      <div 
-        className="relative"
-        style={{
-          background: 'linear-gradient(to right, white 0%, white 15%,rgb(0, 81, 157) 100%)'
-        }}
-      >
-        <div className="w-full pl-7 pr-2 sm:pr-4 py-1 sm:py-1.5 flex justify-between items-center">
-          {/* Left side - Available on platforms (desktop only) */}
-          {isClient && (
-            <div className="hidden md:flex items-center space-x-2">
-              <span className="text-[11px] sm:text-[12px] text-[#0F4679]/90 font-bold">Available on:</span>
-              <div className="flex items-center gap-0.5">
-                <a 
-                  href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:opacity-100 transition-opacity duration-300"
-                >
-                  <Image
-                    src="/amazon.png"
-                    alt="Available on Amazon"
-                    width={48}
-                    height={16}
-                    className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain cursor-pointer"
-                  />
-                </a>
-                <a 
-                  href="https://dir.indiamart.com/search.mp?ss=acuron&prdsrc=1&v=4&mcatid=&catid=&sref=as-popular%7Ckwd%3Dacuron%7Cpos%3D2%7Ccat%3D-2%7Cmcat%3D-2%7Ckwd_len%3D6%7Ckwd_cnt%3D1&cq=mumbai&tags=res:RC1-R5%7Cktp:N0%7Cmtp:S%7Cwc:1%7Clcf:3%7Ccq:mumbai%7Cqr_nm:localhgmct-gl-gd%7Ccs:17898%7Ccom-cf:nl%7Cptrs:na%7Cmc:186459%7Ccat:855%7Cqry_typ:P%7Clang:en%7Ctyr:1%7Cqrd:250923%7Cmrd:250923%7Cprdt:250923%7Cmsf:hs%7Cpfen:1%7Cgli:G0I0%7Cgc:Mumbai%7Cic:Mumbai%7Cscw:1%7Clf:5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:opacity-100 transition-opacity duration-300"
-                >
-                  <Image
-                    src="/indiamart.png"
-                    alt="Available on IndiaMART"
-                    width={48}
-                    height={16}
-                    className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain cursor-pointer"
-                  />
-                </a>
-                <a 
-                  href="https://www.flipkart.com/search?q=acuron"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:opacity-100 transition-opacity duration-300"
-                >
-                  <Image
-                    src="/flip.png"
-                    alt="Available on Flipkart"
-                    width={60}
-                    height={20}
-                    className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain cursor-pointer"
-                  />
-                </a>
-                <a 
-                  href="https://www.meesho.com/search?q=acuron"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:opacity-100 transition-opacity duration-300"
-                >
-                  <Image
-                    src="/meesho.png"
-                    alt="Available on Meesho"
-                    width={36}
-                    height={12}
-                    className="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain cursor-pointer"
-                  />
-                </a>
+    <header className="w-full px-4 sm:px-6 lg:px-8 pt-2 pb-3">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-4">
+        {/* Left Pill - Logo + Nav (covers ~50% on desktop) */}
+        <div className={`${pillBase} w-full lg:w-[50%] xl:w-[48%] flex items-center justify-between lg:justify-start px-2 sm:px-3 py-1 sm:py-1.5`}>
+          <Link href="/" className="flex-shrink-0">
+            <Image
+              src="/acprod.png"
+              alt="Acuron Logo"
+              width={140}
+              height={42}
+              priority
+              className="object-contain h-8 sm:h-9 w-auto"
+            />
+          </Link>
+
+          {/* Desktop Nav Links - right-aligned away from logo */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 ml-auto flex-1 justify-end">
+            <Link
+              href="/"
+              className="text-sm font-google-sans font-normal px-2.5 py-1 rounded-full text-black"
+            >
+              {navigationLinks[0].label}
+            </Link>
+
+            {/* Products Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsProductsDropdownOpen(true)}
+              onMouseLeave={() => setIsProductsDropdownOpen(false)}
+            >
+              <Link
+                href="/products"
+                className="flex items-center gap-0.5 text-sm font-google-sans font-normal px-2.5 py-1 rounded-full text-black"
+              >
+                {productsText}
+                <svg className={`w-4 h-4 transition-transform ${isProductsDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </Link>
+              <div
+                className={`absolute top-full left-0 mt-1 w-56 rounded-2xl bg-white shadow-xl border border-gray-200 py-2 z-50 transition-all ${
+                  isProductsDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'
+                }`}
+              >
+                {productCategories.map((cat, i) => (
+                  <Link key={i} href={cat.href} className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#0F4679]">
+                    {cat.label}
+                  </Link>
+                ))}
+                <Link href="/products" className="block px-4 py-2.5 text-sm font-medium text-[#0F4679] hover:bg-[#0F4679]/5 border-t border-gray-100 mt-1 pt-2">
+                  {viewAllProductsText} →
+                </Link>
               </div>
             </div>
-          )}
-          
-          {/* Placeholder for server-side rendering */}
-          {!isClient && <div className="hidden md:block w-48 h-5"></div>}
 
-          {/* Mobile Logo - Center on mobile */}
-          <Link href="/" className="md:hidden flex-shrink-0">
-            <div className="w-28 h-8 flex items-center justify-start hover:opacity-90 transition-opacity duration-300">
-              <Image
-                src="/acprod.png"
-                alt="Acuron Logo"
-                width={160}
-                height={48}
-                priority
-                className="object-contain scale-100"
+            {navigationLinks.slice(1).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-google-sans font-normal px-2.5 py-1 rounded-full text-black"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile Hamburger */}
+          <button
+            onClick={toggleMobileMenu}
+            className="lg:hidden flex items-center justify-center w-9 h-9 rounded-full bg-[#0F4679] text-white hover:bg-[#0D3C6B] transition-colors"
+            aria-label="Toggle menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Right Side - Floating Pills: logos, catalog, phone, search, language */}
+        <div className="flex items-center gap-2 sm:gap-3 w-full lg:w-auto justify-end">
+          {/* Platform logos - Amazon, IndiaMART (links), Meesho, Flipkart (icons) - first */}
+          {isClient && (
+            <div className="hidden lg:flex items-center gap-1">
+              <a
+                href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+              >
+                <Image src="/amazon.png" alt="Amazon" width={36} height={12} className="object-contain h-3 w-auto" />
+              </a>
+              <a
+                href="https://dir.indiamart.com/search.mp?ss=acuron&prdsrc=1&v=4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity -mx-0.5 shrink-0"
+              >
+                <Image src="/indiamart.png" alt="IndiaMART" width={40} height={14} className="object-contain h-5 w-auto" />
+              </a>
+              <span className="inline-flex opacity-70 -mx-0.5 shrink-0">
+                <Image src="/flip.png" alt="Flipkart" width={40} height={14} className="object-contain h-5 w-auto" />
+              </span>
+              <span className="inline-flex opacity-70">
+                <Image src="/meesho.png" alt="Meesho" width={40} height={14} className="object-contain h-6 w-auto" />
+              </span>
+            </div>
+          )}
+
+          {/* Catalog Download - Neumorphic button */}
+          <button
+            type="button"
+            onClick={triggerNewsletterModal}
+            className="neu-button flex items-center gap-2"
+            title="Download Catalog"
+          >
+            <Download className="w-4 h-4 flex-shrink-0" />
+            <span className="hidden sm:inline">{catalogText}</span>
+          </button>
+
+          {/* Phone Number - floating, no pill */}
+          {isClient && (
+            <a
+              href="tel:+919322961664"
+              className="text-black hover:text-gray-800 font-medium text-[10px] sm:text-xs whitespace-nowrap hidden lg:flex transition-colors"
+            >
+              {ourCompanyText}
+            </a>
+          )}
+
+          {/* Search Icon - expands to search bar when clicked; no container when closed */}
+          {isSearchExpanded ? (
+            <div className={`${pillBase} flex items-center w-[150px] sm:w-[190px] px-2.5 py-1.5 overflow-hidden transition-all duration-300 ease-out`}>
+              <button
+                ref={searchButtonRef}
+                type="button"
+                onClick={() => setIsSearchExpanded(false)}
+                className="flex-shrink-0 flex items-center justify-center text-black hover:text-gray-800 transition-colors"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder={searchPlaceholder}
+                onBlur={(e) => {
+                  if (!e.relatedTarget || !searchButtonRef.current?.contains(e.relatedTarget as Node)) {
+                    setIsSearchExpanded(false);
+                  }
+                }}
+                onKeyDown={(e) => e.key === 'Escape' && setIsSearchExpanded(false)}
+                className="bg-transparent text-xs sm:text-sm text-gray-700 placeholder-gray-400 focus:outline-none border-0 flex-1 min-w-0 ml-2"
               />
             </div>
-          </Link>
-          
-          {/* Right side navigation items */}
-          <div className="flex items-center space-x-3 sm:space-x-6">
-          <a 
-            href="tel:+919322961664" 
-            className="text-[10px] sm:text-[11px] tracking-wide font-bold text-white hover:text-white/80 transition-colors duration-300 cursor-pointer"
-          >
-            {ourCompanyText}
-          </a>
-          <Link href="/#contact-us-section" className="text-[10px] sm:text-[11px] tracking-wide font-bold text-white hover:text-white/80 transition-colors duration-300">
-            {contactText}
-          </Link>
+          ) : (
+            <button
+              ref={searchButtonRef}
+              type="button"
+              onClick={() => setIsSearchExpanded(true)}
+              className="flex items-center justify-center text-black hover:text-gray-800 transition-colors"
+              aria-label="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          )}
+
+          {/* Language Selector - last */}
           {isClient && <CountrySelector />}
-          </div>
         </div>
       </div>
-      
 
-
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden mt-2 overflow-hidden transition-all duration-300 ${
+          isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className={`${pillBase} p-3`}>
+          <nav className="flex flex-col gap-1">
+            {navigationLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-4 py-3 text-sm font-normal text-gray-700 hover:bg-gray-100 rounded-xl transition-colors"
+                onClick={toggleMobileMenu}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/products"
+              className="px-4 py-3 text-sm font-normal text-gray-700 hover:bg-gray-100 rounded-xl transition-colors"
+              onClick={toggleMobileMenu}
+            >
+              {productsText}
+            </Link>
+          </nav>
+        </div>
+      </div>
     </header>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import PartnerBanner from './components/PartnerBanner';
 import Header from './components/Header';
-import TransparentNavbar from './components/TransparentNavbar';
 import HeroSection from './components/HeroSection';
 import GridBackground from './components/ui/grid-background';
 import AboutSection from './components/sections/AboutSection';
@@ -30,16 +29,15 @@ export default function Home() {
   return (
     <>
       <GridBackground />
-      <PartnerBanner />
       <div className="sticky top-0 z-[60]">
+        <PartnerBanner />
         <Header />
-        <TransparentNavbar isHeroSection={false} /> {/* Remove hero conditional since wrapper is sticky */}
       </div>
-      <main className="min-h-screen w-full max-w-[100vw] overflow-x-hidden">
-        <HeroSection 
+      <main className="min-h-screen w-full max-w-[100vw] overflow-x-hidden -mt-20 sm:-mt-24">
+          <HeroSection 
           title="Revolutionizing Medical Supply with Precision & Care."
           subtitle="India's trusted manufacturer of ISO-certified PPE and medical disposable products and kits, empowering hospitals nationwide."
-          ctaText="EXPLORE PRODUCTS"
+          ctaText="Explore All Products"
           ctaLink="/products"
         />
 

@@ -3,7 +3,6 @@ import React, { useState, use, useEffect } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Header from "../../components/Header";
-import TransparentNavbar from "../../components/TransparentNavbar";
 import WhiteGridBackground from "../../components/ui/white-grid-background";
 import Breadcrumbs from "../../components/ui/Breadcrumbs";
 import Footer from "../../components/sections/Footer";
@@ -42,11 +41,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
     <>
       <WhiteGridBackground />
       <Header />
-      <div>
-        <TransparentNavbar />
-      </div>
-      
-      <div className="pt-[0px] min-h-screen relative z-10">
+      <div className="pt-4 min-h-screen relative z-10">
         <div className="max-w-6xl mx-auto px-4 py-6">
           {/* Breadcrumbs */}
           <div className="mb-6">

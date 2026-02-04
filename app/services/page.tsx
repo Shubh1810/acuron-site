@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Header from "../components/Header";
-import TransparentNavbar from "../components/TransparentNavbar";
 import Image from "next/image";
 import WhiteGridBackground from "../components/ui/white-grid-background";
 import Footer from "../components/sections/Footer";
@@ -132,9 +131,7 @@ export default function ServicesPage() {
     <>
       <WhiteGridBackground />
       <Header />
-      <TransparentNavbar />
-      
-      <div className="pt-[0px] min-h-screen">
+      <div className="pt-4 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 py-12">
           {/* Hero section */}
           <div className="text-center mb-16">

@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import Header from "../components/Header";
-import TransparentNavbar from "../components/TransparentNavbar";
 import WhiteGridBackground from "../components/ui/white-grid-background";
 import PharmaCorporateGiftingShowcase from "../components/PharmaCorporateGiftingShowcase";
 import FoodProcessingShowcase from "../components/FoodProcessingShowcase";
@@ -196,11 +195,7 @@ function ProductsContent() {
       <WhiteGridBackground />
       
               <Header />
-        <div>
-          <TransparentNavbar />
-        </div>
-        
-        <div className="pt-[0px] min-h-screen relative z-10">
+        <div className="pt-4 min-h-screen relative z-10">
         <div className="max-w-7xl mx-auto px-4 py-8">
           
           {/* Category-Specific Showcases */}
@@ -712,10 +707,7 @@ function ProductsLoading() {
     <>
       <WhiteGridBackground />
       <Header />
-      <div>
-        <TransparentNavbar />
-      </div>
-      <div className="pt-[0px] min-h-screen relative z-10">
+      <div className="pt-4 min-h-screen relative z-10">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex items-center justify-center min-h-[400px]">
             <div className="text-center">

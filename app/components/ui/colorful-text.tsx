@@ -64,7 +64,7 @@ export function ColourfulText({ text }: { text: string }) {
             delay: index * 0.05,
             ease: "easeInOut"
           }}
-          className="inline-block whitespace-pre font-sans tracking-tight"
+          className="inline-block whitespace-pre font-ubuntu font-normal tracking-tight"
           onAnimationStart={() => {
             // Wrap heavy calculations in useTransition
             if (index === 0) {

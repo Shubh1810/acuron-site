@@ -3,7 +3,6 @@ import React, { useState, useTransition } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "motion/react";
 import Image from "next/image";
 import Header from "../components/Header";
-import TransparentNavbar from "../components/TransparentNavbar";
 import Footer from "../components/sections/Footer";
 import WhiteGridBackground from "../components/ui/white-grid-background";
 
@@ -176,12 +175,8 @@ export default function CertificatesPage() {
     <>
       <WhiteGridBackground />
       <Header />
-      <div>
-        <TransparentNavbar />
-      </div>
       <AnimatedMotif />
-      
-      <div className="pt-[0px] min-h-screen">
+      <div className="pt-4 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 py-16">
           
           <motion.div 

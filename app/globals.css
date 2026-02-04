@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -258,4 +260,39 @@ input:focus {
   font-family: "Lato", sans-serif;
   font-weight: 700;
   font-style: normal;
+}
+
+/* Neumorphic button – Catalog (small, light blue glass tint, theme #0F4679) */
+.neu-button {
+  background: rgba(15, 70, 121, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 50px;
+  box-shadow: inset 2px 2px 6px rgba(184, 204, 224, 0.5), inset -2px -2px 6px rgba(255, 255, 255, 0.9);
+  color: #0F4679;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid rgba(15, 70, 121, 0.12);
+}
+
+.neu-button:hover {
+  background: rgba(15, 70, 121, 0.08);
+  box-shadow: inset 1px 1px 3px rgba(184, 204, 224, 0.4), inset -1px -1px 3px rgba(255, 255, 255, 0.95), 2px 2px 6px rgba(184, 204, 224, 0.25);
+}
+
+.neu-button:focus {
+  outline: none;
+  box-shadow: inset 1px 1px 3px rgba(184, 204, 224, 0.4), inset -1px -1px 3px rgba(255, 255, 255, 0.95), 0 0 0 2px rgba(15, 70, 121, 0.2);
+}
+
+/* Neumorphic pill – header pills (light blue glass tint, theme #0F4679) */
+.neu-pill {
+  box-shadow: inset 2px 2px 6px rgba(184, 204, 224, 0.5), inset -2px -2px 6px rgba(255, 255, 255, 0.9);
+}
+
+.neu-pill:hover {
+  box-shadow: inset 1px 1px 4px rgba(184, 204, 224, 0.45), inset -1px -1px 4px rgba(255, 255, 255, 0.95), 2px 2px 8px rgba(184, 204, 224, 0.2);
 }

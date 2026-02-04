@@ -19,7 +19,7 @@ export default function QualityStandardsSection() {
 
   return (
     <section className="bg-white px-2 md:px-4 w-full max-w-[100vw] overflow-x-hidden">
-      <div className="py-12 bg-[#0F4679] relative overflow-hidden rounded-3xl border-2 border-white/20">
+      <div className="py-12 relative overflow-hidden rounded-3xl">
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 relative z-10">
         {/* Header */}
@@ -32,7 +32,7 @@ export default function QualityStandardsSection() {
         >
           <div className="flex justify-start ml-8">
             <div className="relative">
-              <h2 className="lato-regular text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
+              <h2 className="lato-regular text-4xl md:text-5xl font-bold text-[#0F4679] leading-tight">
                 {getLocalizedContent('Quality Assurance Policy', {
                   de: 'Qualitätssicherungsrichtlinie',
                   fr: 'Politique d\'Assurance Qualité',
@@ -44,7 +44,7 @@ export default function QualityStandardsSection() {
             </div>
           </div>
           <div className="mt-6 ml-8">
-            <p className="text-blue-100 max-w-2xl">
+            <p className="text-gray-600 max-w-2xl">
               {getLocalizedContent('At Acuron Products, quality is our top priority. We are committed to manufacturing and delivering superior surgical disposables and medical devices that meet international standards.', {
                 de: 'Bei Acuron Products ist Qualität unsere oberste Priorität. Wir verpflichten uns zur Herstellung und Lieferung hochwertiger chirurgischer Einwegartikel.',
                 fr: 'Chez Acuron Products, la qualité est notre priorité absolue. Nous nous engageons à fabriquer des dispositifs médicaux supérieurs.',
@@ -67,7 +67,7 @@ export default function QualityStandardsSection() {
           <div 
             className="rounded-lg p-[2px]"
             style={{
-              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, #5A4FCF 100%)'
+              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, white 100%)'
             }}
           >
             <div className="bg-[#0F4679] rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
@@ -100,7 +100,7 @@ export default function QualityStandardsSection() {
           <div 
             className="rounded-lg p-[2px]"
             style={{
-              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, #5A4FCF 100%)'
+              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, white 100%)'
             }}
           >
             <div className="bg-[#0F4679] rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
@@ -133,7 +133,7 @@ export default function QualityStandardsSection() {
           <div 
             className="rounded-lg p-[2px]"
             style={{
-              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, #5A4FCF 100%)'
+              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, white 100%)'
             }}
           >
             <div className="bg-[#0F4679] rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
@@ -166,7 +166,7 @@ export default function QualityStandardsSection() {
           <div 
             className="rounded-lg p-[2px]"
             style={{
-              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, #5A4FCF 100%)'
+              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, white 100%)'
             }}
           >
             <div className="bg-[#0F4679] rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
@@ -205,7 +205,7 @@ export default function QualityStandardsSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-blue-100 max-w-3xl mx-auto">
+          <p className="text-gray-600 max-w-3xl mx-auto">
             {getLocalizedContent('With advanced QC systems, a dedicated team, and a customer-centric approach, we aim to exceed expectations and maintain our reputation as a trusted name in the healthcare industry.', {
               de: 'Mit fortschrittlichen QC-Systemen, einem engagierten Team und einem kundenorientierten Ansatz wollen wir Erwartungen übertreffen.',
               fr: 'Avec des systèmes QC avancés, une équipe dédiée et une approche centrée sur le client, nous visons à dépasser les attentes.',

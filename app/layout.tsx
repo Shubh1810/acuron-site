@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next'
-import { Inter, Montserrat, Playfair_Display, Roboto, Rubik } from 'next/font/google'
+import { Inter, Montserrat, Oswald, Playfair_Display, Roboto, Rubik, Ubuntu } from 'next/font/google'
 import './globals.css'
 import CacheCleanupClient from './lib/CacheCleanupClient';
 import { Analytics } from "@vercel/analytics/react"
@@ -36,14 +36,26 @@ const rubik = Rubik({
   variable: '--font-rubik',
 })
 
+const oswald = Oswald({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-oswald',
+})
+
+const ubuntu = Ubuntu({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  variable: '--font-ubuntu',
+})
+
 export const metadata: Metadata = {
   title: {
     default: 'Acuron Products India | Medical Supplies, Surgical Wear & PPE Manufacturer',
     template: '%s | Acuron Products India'
   },
   description: 'Acuron Products - Leading manufacturer of surgical supplies, surgical wear, 3 ply masks, N95 masks, surgical gowns, bouffant caps, razors, and medical equipment. Wide distribution network across India with exports globally. ISO certified Primawear & Shi Mediwear quality.',
-  metadataBase: new URL('https://acuron-site.vercel.app'),
-  authors: [{ name: 'Acuron Products India', url: 'https://acuron-site.vercel.app' }],
+  metadataBase: new URL('https://acuron.in'),
+  authors: [{ name: 'Acuron Products India', url: 'https://acuron.in' }],
   creator: 'Acuron Products India',
   publisher: 'Acuron Products India',
   robots: {
@@ -60,7 +72,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://acuron-site.vercel.app',
+    url: 'https://acuron.in',
     siteName: 'Acuron Products India',
     title: 'Acuron Products India | Surgical Wear, Medical Supplies & PPE Manufacturer',
     description: 'Leading manufacturer of surgical wear, 3 ply masks, N95 masks, surgical gowns, bouffant caps, and medical equipment. Wide distribution network across India with global exports. Primawear & Shi Mediwear quality.',
@@ -103,8 +115,8 @@ export default function RootLayout({
     '@type': 'Organization',
     name: 'Acuron Products India',
     alternateName: ['Acuron', 'Primawear', 'Shi Mediwear'],
-    url: 'https://acuron-site.vercel.app',
-    logo: 'https://acuron-site.vercel.app/logo.png',
+    url: 'https://acuron.in',
+    logo: 'https://acuron.in/logo.png',
     description: 'Leading manufacturer of surgical wear, surgical supplies, 3 ply masks, N95 masks, surgical gowns, bouffant caps, razors, and medical equipment with wide distribution network across India and exports globally.',
     foundingDate: '2010',
     slogan: 'Revolutionizing Medical Supply with Precision & Care',
@@ -258,7 +270,7 @@ export default function RootLayout({
       </head>
       <PostHogProvider>
         <body 
-          className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${rubik.variable} font-sans w-full max-w-[100vw] overflow-x-hidden`}
+          className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${rubik.variable} ${oswald.variable} ${ubuntu.variable} font-sans w-full max-w-[100vw] overflow-x-hidden`}
           suppressHydrationWarning={true} // Suppress hydration warnings caused by browser extensions (Grammarly, etc.)
         >
           <PostHogErrorBoundary>
