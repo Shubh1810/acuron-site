@@ -187,7 +187,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                 { src: '/iso134.webp', alt: 'ISO Certification', name: 'ISO' },
                 { src: '/ce-mark.png', alt: 'CE Mark Certification', name: 'CE Mark' },
                 { src: '/cdsco-logo.webp', alt: 'CDSCO Certification', name: 'CDSCO' },
-                { src: '/NSIC.PNG', alt: 'NSIC Certification', name: 'NSIC' },
+                { src: '/nsic.png', alt: 'NSIC Certification', name: 'NSIC' },
               ].map((logo, index) => (
                 <div
                   key={index}
@@ -196,8 +196,8 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   <Image
                     src={logo.src}
                     alt={logo.alt}
-                    width={logo.name === 'CDSCO' || logo.name === 'NSIC' ? 80 : 60}
-                    height={logo.name === 'CDSCO' || logo.name === 'NSIC' ? 48 : 36}
+                    width={logo.name === 'CDSCO' ? 80 : logo.name === 'NSIC' ? 120 : 60}
+                    height={logo.name === 'CDSCO' ? 48 : logo.name === 'NSIC' ? 72 : 36}
                     className={`max-w-full max-h-full object-contain ${
                       logo.name === 'CDSCO'
                         ? 'brightness-0'
@@ -206,7 +206,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                           : 'opacity-70 filter grayscale'
                     }`}
                     style={{ width: 'auto', height: 'auto' }}
-                    sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
+                    sizes={logo.name === 'NSIC' ? '(max-width: 640px) 80px, (max-width: 768px) 120px, 160px' : '(max-width: 640px) 60px, (max-width: 768px) 80px, 120px'}
                   />
                 </div>
               ))}
