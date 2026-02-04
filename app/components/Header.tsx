@@ -135,36 +135,8 @@ const Header: FC = () => {
           </button>
         </div>
 
-        {/* Right Side - Floating Pills: logos, catalog, phone, search, language */}
+        {/* Right Side - Catalog, phone, search, language */}
         <div className="flex items-center gap-2 sm:gap-3 w-full lg:w-auto justify-end">
-          {/* Platform logos - Amazon, IndiaMART (links), Meesho, Flipkart (icons) - first */}
-          {isClient && (
-            <div className="hidden lg:flex items-center gap-1">
-              <a
-                href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity"
-              >
-                <Image src="/amazon.png" alt="Amazon" width={36} height={12} className="object-contain h-3 w-auto" />
-              </a>
-              <a
-                href="https://dir.indiamart.com/search.mp?ss=acuron&prdsrc=1&v=4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity -mx-0.5 shrink-0"
-              >
-                <Image src="/indiamart.png" alt="IndiaMART" width={40} height={14} className="object-contain h-5 w-auto" />
-              </a>
-              <span className="inline-flex opacity-70 -mx-0.5 shrink-0">
-                <Image src="/flip.png" alt="Flipkart" width={40} height={14} className="object-contain h-5 w-auto" />
-              </span>
-              <span className="inline-flex opacity-70">
-                <Image src="/meesho.png" alt="Meesho" width={40} height={14} className="object-contain h-6 w-auto" />
-              </span>
-            </div>
-          )}
-
           {/* Catalog Download - Neumorphic button */}
           <button
             type="button"

@@ -265,7 +265,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               </button>
               <Link
                 href={ctaLink}
-                className="group relative inline-flex p-[2px] rounded-full bg-gradient-to-r from-cyan-400 to-emerald-500 hover:from-cyan-300 hover:to-emerald-400 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.4),0_0_30px_rgba(16,185,129,0.25)]"
+                className="group relative inline-flex p-[2px] rounded-full bg-gradient-to-r from-[#0F4679] to-[#158C07] hover:from-[#0D3C6B] hover:to-emerald-600 transition-all duration-300 shadow-[0_0_15px_rgba(15,70,121,0.35),0_0_30px_rgba(21,140,7,0.25)]"
               >
                 <span className="flex items-center px-4 py-2.5 text-sm rounded-full bg-white text-[#0F4679] font-semibold group-hover:bg-gray-50 transition-colors">
                   {localizedCtaText}
@@ -431,6 +431,26 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   <Image src="/indiamart.png" alt="IndiaMART" width={48} height={16} className="h-4 sm:h-5 w-auto object-contain" />
                 </a>
               </div>
+            </div>
+
+            {/* Second duplicate grid + shadow motif under the hero image */}
+            <div className="absolute bottom-0 left-0 lg:left-auto lg:right-0 w-28 h-28 sm:w-40 sm:h-40 rounded-md pointer-events-none z-[5] translate-y-4 lg:translate-y-6">
+              <div
+                className="absolute inset-0 rounded-md border border-gray-200/80"
+                style={{
+                  backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(to bottom, #f8fafc, #ffffff)',
+                  backgroundSize: '14px 14px, 14px 14px, 100% 100%',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.06), 0 2px 8px rgba(15,70,121,0.08)'
+                }}
+                aria-hidden
+              />
+              <div
+                className="absolute inset-0 rounded-md"
+                style={{
+                  background: 'radial-gradient(circle at 50% 50%, transparent 35%, #f8fafc 70%, #ffffff 100%)'
+                }}
+                aria-hidden
+              />
             </div>
           </div>
         </div>
