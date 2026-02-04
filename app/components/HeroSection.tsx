@@ -193,22 +193,29 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   key={index}
                   className={`flex shrink-0 items-center justify-center ${logo.name === 'NSIC' ? 'h-44' : logo.name === 'CDSCO' ? 'h-24' : 'h-20'} ${logo.name === 'CDSCO' ? '-mx-3' : ''} ${logo.name === 'NSIC' ? '-mx-4 translate-y-1' : ''}`}
                 >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={logo.name === 'CDSCO' ? 80 : logo.name === 'NSIC' ? 120 : 60}
-                    height={logo.name === 'CDSCO' ? 48 : logo.name === 'NSIC' ? 72 : 36}
-                    className={`max-w-full max-h-full object-contain ${
-                      logo.name === 'CDSCO'
-                        ? 'brightness-0'
-                        : logo.name === 'ISO'
-                          ? 'opacity-100'
-                          : 'opacity-70 filter grayscale'
-                    }`}
-                    style={{ width: 'auto', height: 'auto' }}
-                    sizes={logo.name === 'NSIC' ? '(max-width: 640px) 80px, (max-width: 768px) 120px, 160px' : '(max-width: 640px) 60px, (max-width: 768px) 80px, 120px'}
-                    unoptimized={logo.name === 'NSIC'}
-                  />
+                  {logo.name === 'NSIC' ? (
+                    <img
+                      src="/nsic.png"
+                      alt={logo.alt}
+                      className="h-full w-auto max-h-full object-contain opacity-70 filter grayscale"
+                    />
+                  ) : (
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={logo.name === 'CDSCO' ? 80 : 60}
+                      height={logo.name === 'CDSCO' ? 48 : 36}
+                      className={`max-w-full max-h-full object-contain ${
+                        logo.name === 'CDSCO'
+                          ? 'brightness-0'
+                          : logo.name === 'ISO'
+                            ? 'opacity-100'
+                            : 'opacity-70 filter grayscale'
+                      }`}
+                      style={{ width: 'auto', height: 'auto' }}
+                      sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
+                    />
+                  )}
                 </div>
               ))}
             </div>
