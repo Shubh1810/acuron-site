@@ -196,8 +196,8 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   <Image
                     src={logo.src}
                     alt={logo.alt}
-                    width={logo.name === 'NSIC' ? 176 : logo.name === 'CDSCO' ? 80 : 60}
-                    height={logo.name === 'NSIC' ? 117 : logo.name === 'CDSCO' ? 48 : 36}
+                    width={logo.name === 'NSIC' ? 264 : logo.name === 'CDSCO' ? 80 : 60}
+                    height={logo.name === 'NSIC' ? 176 : logo.name === 'CDSCO' ? 48 : 36}
                     className={`max-w-full max-h-full object-contain ${
                       logo.name === 'CDSCO'
                         ? 'brightness-0'
@@ -206,7 +206,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                           : 'opacity-70 filter grayscale'
                     }`}
                     style={{ width: 'auto', height: 'auto' }}
-                    sizes={logo.name === 'NSIC' ? '(max-width: 640px) 100px, (max-width: 768px) 140px, 176px' : '(max-width: 640px) 60px, (max-width: 768px) 80px, 120px'}
+                    sizes={logo.name === 'NSIC' ? '(max-width: 640px) 120px, (max-width: 768px) 180px, 264px' : '(max-width: 640px) 60px, (max-width: 768px) 80px, 120px'}
                   />
                 </div>
               ))}
