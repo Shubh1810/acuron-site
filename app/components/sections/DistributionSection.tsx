@@ -59,17 +59,17 @@ export default function DistributionSection() {
     {
       value: getLocalizedContent('28+', { de: '28+', fr: '28+', ja: '28+', zh: '28+', pt: '28+' }),
       label: getLocalizedContent('States Covered', { de: 'Abgedeckte Staaten', fr: 'États Couverts', ja: 'カバー州', zh: '覆盖州', pt: 'Estados' }),
-      height: 'h-32 md:h-36'
+      height: 'h-36 md:h-40'
     },
     {
       value: getLocalizedContent('500+', { de: '500+', fr: '500+', ja: '500+', zh: '500+', pt: '500+' }),
       label: getLocalizedContent('Healthcare Partners', { de: 'Gesundheitspartner', fr: 'Partenaires Santé', ja: 'パートナー', zh: '医疗合作伙伴', pt: 'Parceiros' }),
-      height: 'h-40 md:h-44'
+      height: 'h-44 md:h-48'
     },
     {
       value: getLocalizedContent('50+', {}),
       label: getLocalizedContent('Logistics Partners', { de: 'Logistikpartner', fr: 'Partenaires Logistiques', ja: '物流パートナー', zh: '物流合作伙伴', pt: 'Logística' }),
-      height: 'h-36 md:h-40'
+      height: 'h-40 md:h-44'
     }
   ];
 
@@ -112,8 +112,8 @@ export default function DistributionSection() {
 
           {/* RIGHT: Heading + Metrics + Features */}
           <div className="flex flex-col justify-center">
-            <div className={`mb-2 md:mb-3 text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight mb-3">
+            <div className={`-mb-4 md:-mb-8 text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight mb-2">
                 {content.title}
               </h2>
               <p className="text-gray-500 text-lg md:text-xl max-w-3xl leading-relaxed font-light">
@@ -122,19 +122,19 @@ export default function DistributionSection() {
             </div>
 
             {/* Metrics bars - taller */}
-            <div className="flex items-end justify-between gap-4 mb-6 md:mb-8 h-[240px] md:h-[280px]">
+            <div className="flex items-end justify-between gap-4 mb-6 md:mb-8 h-[260px] md:h-[300px]">
               {metrics.map((metric, idx) => (
                 <div
                   key={idx}
-                  className={`flex-1 min-w-0 border-2 border-gray-800 bg-white flex flex-col justify-end p-4 md:p-5 transition-all duration-500 ease-out group hover:bg-gray-900 hover:text-white hover:border-gray-900 ${metric.height} ${
+                  className={`flex-1 min-w-0 border-2 border-[#0a2540] bg-white flex flex-col justify-end p-4 md:p-5 transition-all duration-500 ease-out group hover:bg-[#0a2540] hover:text-white hover:border-[#0a2540] ${metric.height} ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
                   style={{ transitionDelay: `${150 + idx * 80}ms` }}
                 >
-                  <span className="block text-2xl md:text-3xl font-bold tracking-tight">
+                  <span className="block text-2xl md:text-3xl font-bold tracking-tight text-[#0a2540] group-hover:text-white">
                     {metric.value}
                   </span>
-                  <span className="text-xs md:text-sm font-medium uppercase tracking-wider text-gray-600 group-hover:text-gray-200">
+                  <span className="text-xs md:text-sm font-medium uppercase tracking-wider text-[#0a2540]/90 group-hover:text-white/90">
                     {metric.label}
                   </span>
                 </div>
@@ -151,11 +151,11 @@ export default function DistributionSection() {
                   }`}
                   style={{ transitionDelay: `${400 + idx * 80}ms` }}
                 >
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-gray-800 rounded-full shrink-0" />
+                  <h3 className="text-base md:text-lg font-bold text-[#0a2540] mb-2 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#0a2540] rounded-full shrink-0" />
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-snug pl-4 border-l-2 border-gray-200">
+                  <p className="text-sm text-gray-600 leading-snug pl-4 border-l-2 border-[#0a2540]/30">
                     {feature.desc}
                   </p>
                 </div>

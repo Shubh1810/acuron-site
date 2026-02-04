@@ -105,7 +105,7 @@ export default function ContactSection() {
           {/* LEFT COLUMN: Map & Info */}
           <div className="lg:col-span-5 space-y-6 text-white">
             <div className="mb-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+              <h2 className="lato-regular section-heading text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
                 {textContent.getInTouch}
               </h2>
               <p className="text-blue-100 text-lg">
@@ -114,9 +114,9 @@ export default function ContactSection() {
             </div>
 
             {/* Info Card - Rounded & Minimal */}
-            <div className="bg-white text-gray-900 border-2 border-black rounded-3xl overflow-hidden shadow-xl">
+            <div className="bg-white text-gray-900 border-2 border-[#0a2540] rounded-3xl overflow-hidden shadow-xl">
               {/* Map Section */}
-              <div className="h-48 w-full border-b-2 border-black relative grayscale-[50%] hover:grayscale-0 transition-all duration-500">
+              <div className="h-48 w-full border-b-2 border-[#0a2540] relative grayscale-[50%] hover:grayscale-0 transition-all duration-500">
                 <iframe 
                   className="absolute inset-0 w-full h-full"
                   frameBorder="0" 
@@ -134,7 +134,7 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 gap-5">
                     {/* Plant */}
                     <div className="flex gap-4 group">
-                        <div className="w-10 h-10 rounded-xl border border-black flex items-center justify-center bg-gray-50 group-hover:bg-black group-hover:text-white transition-colors duration-300 shrink-0">
+                        <div className="w-10 h-10 rounded-xl border border-[#0a2540] flex items-center justify-center bg-gray-50 group-hover:bg-[#0a2540] group-hover:text-white transition-colors duration-300 shrink-0">
                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                         </div>
                         <div>
@@ -145,7 +145,7 @@ export default function ContactSection() {
 
                     {/* Office */}
                     <div className="flex gap-4 group">
-                        <div className="w-10 h-10 rounded-xl border border-black flex items-center justify-center bg-gray-50 group-hover:bg-black group-hover:text-white transition-colors duration-300 shrink-0">
+                        <div className="w-10 h-10 rounded-xl border border-[#0a2540] flex items-center justify-center bg-gray-50 group-hover:bg-[#0a2540] group-hover:text-white transition-colors duration-300 shrink-0">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                         </div>
                         <div>
@@ -172,7 +172,7 @@ export default function ContactSection() {
 
           {/* RIGHT COLUMN: Form - Compact & Rounded */}
           <div className="lg:col-span-7">
-            <div className="bg-white p-6 md:p-8 border-2 border-black rounded-3xl relative z-10">
+            <div className="bg-white p-6 md:p-8 border-2 border-[#0a2540] rounded-3xl relative z-10">
               {/* Logo - Smaller container */}
               <div className="mb-6 w-[180px] h-12 relative">
                 <Image src="/acprod.png" alt="Acuron Logo" fill className="object-contain object-left" priority />
@@ -184,14 +184,14 @@ export default function ContactSection() {
                     <label className="text-xs font-bold text-gray-800 uppercase tracking-wide ml-1">{textContent.labels.name}</label>
                     <input 
                       type="text" name="name" value={formData.name} onChange={handleInputChange} required placeholder={textContent.placeholders.name}
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-black focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-[#0a2540] focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
                     />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-gray-800 uppercase tracking-wide ml-1">{textContent.labels.org}</label>
                     <input 
                       type="text" name="organization" value={formData.organization} onChange={handleInputChange} required placeholder={textContent.placeholders.org}
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-black focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-[#0a2540] focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
                     />
                   </div>
                 </div>
@@ -201,14 +201,14 @@ export default function ContactSection() {
                     <label className="text-xs font-bold text-gray-800 uppercase tracking-wide ml-1">{textContent.labels.email}</label>
                     <input 
                       type="email" name="email" value={formData.email} onChange={handleInputChange} required placeholder="email@example.com"
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-black focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-[#0a2540] focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
                     />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-gray-800 uppercase tracking-wide ml-1">{textContent.labels.phone}*</label>
                     <input 
                       type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required placeholder="+1 (555) 000-0000"
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-black focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-[#0a2540] focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
                     />
                   </div>
                 </div>
@@ -217,7 +217,7 @@ export default function ContactSection() {
                   <label className="text-xs font-bold text-gray-800 uppercase tracking-wide ml-1">{textContent.labels.product}</label>
                   <input 
                     type="text" name="productInterest" value={formData.productInterest} onChange={handleInputChange} placeholder={textContent.placeholders.product}
-                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-black focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-[#0a2540] focus:ring-0 outline-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
                   />
                 </div>
 
@@ -225,7 +225,7 @@ export default function ContactSection() {
                   <label className="text-xs font-bold text-gray-800 uppercase tracking-wide ml-1">{textContent.labels.message}</label>
                   <textarea 
                     name="message" value={formData.message} onChange={handleInputChange} rows={3} placeholder={textContent.placeholders.message}
-                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-black focus:ring-0 outline-none resize-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-[#0a2540] focus:ring-0 outline-none resize-none transition-colors duration-300 placeholder:text-gray-400 text-sm"
                   ></textarea>
                 </div>
 

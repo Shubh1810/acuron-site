@@ -211,12 +211,12 @@ export default function EventsSection() {
                   {getCurrentEvents().map((event) => (
                     <div 
                       key={event.id} 
-                      className="group relative h-full bg-white border-2 border-black flex flex-col transition-all duration-500 hover:bg-black hover:text-white"
+                      className="group relative h-full bg-white border-2 border-[#0a2540] flex flex-col transition-all duration-500 hover:bg-[#0a2540] hover:text-white"
                       onMouseEnter={() => setIsAutoPlaying(false)}
                       onMouseLeave={() => setIsAutoPlaying(true)}
                     >
                       {/* Image Section */}
-                      <div className="relative h-56 w-full overflow-hidden border-b-2 border-black">
+                      <div className="relative h-56 w-full overflow-hidden border-b-2 border-[#0a2540]">
                         <Image
                           src={event.image}
                           alt={event.name}
@@ -224,7 +224,7 @@ export default function EventsSection() {
                           className="object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         {/* Date Tag */}
-                        <div className="absolute top-0 right-0 bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-wider group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                        <div className="absolute top-0 right-0 bg-[#0a2540] text-white px-4 py-2 text-xs font-bold uppercase tracking-wider group-hover:bg-white group-hover:text-[#0a2540] transition-colors duration-300">
                            {event.date.split(',')[0]}
                         </div>
                       </div>
@@ -232,7 +232,7 @@ export default function EventsSection() {
                       {/* Content Section */}
                       <div className="p-6 flex flex-col justify-between flex-1">
                         <div>
-                          <span className="inline-block px-2 py-1 mb-3 text-[10px] font-bold uppercase tracking-widest border border-black rounded-full group-hover:border-white group-hover:bg-white group-hover:text-black transition-colors">
+                          <span className="inline-block px-2 py-1 mb-3 text-[10px] font-bold uppercase tracking-widest border border-[#0a2540] rounded-full group-hover:border-white group-hover:bg-white group-hover:text-[#0a2540] transition-colors">
                             {event.category}
                           </span>
                           <h3 className="text-xl font-bold mb-2 leading-tight group-hover:text-white transition-colors">
@@ -269,10 +269,10 @@ export default function EventsSection() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[0.9]">
-                <span className="text-blue-900">{joinUsText}</span> <br/>
+              <h2 className="lato-regular section-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-[0.9]">
+                <span className="text-[#0a2540]">{joinUsText}</span> <br/>
                 <span className="text-slate-400">at Industry</span> <br/>
-                <span className="text-blue-900">{eventsText}</span>
+                <span className="text-[#0a2540]">{eventsText}</span>
               </h2>
               
               <p className="text-lg text-gray-600 leading-relaxed max-w-md">
@@ -283,7 +283,7 @@ export default function EventsSection() {
               <div className="flex items-center gap-4 pt-4">
                 <button
                   onClick={prevSlide}
-                  className="w-14 h-14 border-2 border-black flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 active:scale-95"
+                  className="w-14 h-14 border-2 border-[#0a2540] flex items-center justify-center hover:bg-[#0a2540] hover:text-white transition-all duration-300 active:scale-95"
                   aria-label="Previous"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -293,7 +293,7 @@ export default function EventsSection() {
                 
                 <button
                   onClick={nextSlide}
-                  className="w-14 h-14 border-2 border-black flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 active:scale-95"
+                  className="w-14 h-14 border-2 border-[#0a2540] flex items-center justify-center hover:bg-[#0a2540] hover:text-white transition-all duration-300 active:scale-95"
                   aria-label="Next"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -302,7 +302,7 @@ export default function EventsSection() {
                 </button>
 
                 <div className="ml-4 text-sm font-bold tracking-widest">
-                  <span className="text-black">
+                  <span className="text-[#0a2540]">
                     {String(currentIndex + 1).padStart(2, '0')}
                   </span>
                   <span className="mx-2 text-gray-400">/</span>

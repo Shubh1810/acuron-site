@@ -66,11 +66,12 @@ const AboutUsSection = () => {
   );
 
   return (
-    <section className="relative w-full bg-gradient-to-br from-slate-50 via-white to-slate-50/50 py-20 lg:py-28 overflow-hidden">
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 opacity-30" aria-hidden="true">
-        <div className="absolute top-20 right-1/4 w-96 h-96 bg-blue-100 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-teal-100 rounded-full blur-3xl" />
+    <section className="relative w-full bg-white py-20 lg:py-28 overflow-hidden">
+      {/* Halo blur: soft blue–green gradient towards bottom */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-blue-200/40 via-teal-100/30 to-transparent blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-[80%] max-w-2xl h-80 bg-blue-300/25 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-[60%] max-w-xl h-64 bg-emerald-200/30 rounded-full blur-[80px]" />
       </div>
 
       <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -129,10 +130,10 @@ const AboutUsSection = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300">
                 <div className="relative w-full h-full">
                   <Image
-                    src="/dnaa.jpeg"
+                    src="/gloveabout.jpeg"
                     alt="Acuron Healthcare"
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 {/* Fallback gradient overlay */}
