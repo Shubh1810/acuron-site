@@ -207,6 +207,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                     }`}
                     style={{ width: 'auto', height: 'auto' }}
                     sizes={logo.name === 'NSIC' ? '(max-width: 640px) 80px, (max-width: 768px) 120px, 160px' : '(max-width: 640px) 60px, (max-width: 768px) 80px, 120px'}
+                    unoptimized={logo.name === 'NSIC'}
                   />
                 </div>
               ))}

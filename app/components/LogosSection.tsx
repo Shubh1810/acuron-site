@@ -56,6 +56,7 @@ const LogosSection = () => {
                     className="max-w-full max-h-full object-contain opacity-70 transition-all duration-300 filter grayscale hover:grayscale-0 hover:opacity-100"
                     style={{ width: 'auto', height: 'auto' }}
                     sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
+                    unoptimized={logo.name === 'NSIC'}
                   />
                 )}
               </div>
