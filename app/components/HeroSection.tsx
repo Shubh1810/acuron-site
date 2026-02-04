@@ -187,7 +187,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                 { src: '/iso134.webp', alt: 'ISO Certification', name: 'ISO' },
                 { src: '/ce-mark.png', alt: 'CE Mark Certification', name: 'CE Mark' },
                 { src: '/cdsco-logo.webp', alt: 'CDSCO Certification', name: 'CDSCO' },
-                { src: '/NSIC.PNG', alt: 'NSIC Certification', name: 'NSIC' },
+                { src: '/nsic-logo.png', alt: 'NSIC Certification', name: 'NSIC' },
               ].map((logo, index) => (
                 <div
                   key={index}

@@ -6,7 +6,7 @@ const LogosSection = () => {
     { src: '/iso134.webp', alt: 'ISO Certification', name: 'ISO' },
     { src: '/msmep.png', alt: 'MSME Certification', name: 'MSME' },
     { src: '/cdsco-logo.webp', alt: 'CDSCO Certification', name: 'CDSCO' },
-    { src: '/NSIC.PNG', alt: 'NSIC Certification', name: 'NSIC' },
+    { src: '/nsic.png', alt: 'NSIC Certification', name: 'NSIC' },
     { src: '/ce-mark.png', alt: 'CE Mark Certification', name: 'CE Mark' },
 
     { src: '/who.png', alt: 'WHO Guidelines', name: 'WHO' },
