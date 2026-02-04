@@ -6,14 +6,12 @@ import GridBackground from './components/ui/grid-background';
 import AboutSection from './components/sections/AboutSection';
 import EventsSection from './components/sections/EventsSection';
 import MissionSection from './components/sections/MissionSection';
-import ProductPreviewSection from './components/sections/ProductPreviewSection';
 import QualityStandardsSection from './components/sections/QualityStandardsSection';
 import TendersSection from './components/sections/TendersSection';
 import DistributionSection from './components/sections/DistributionSection';
 import TestimonialsSection from './components/sections/TestimonialsSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/sections/Footer';
-import LogosSection from './components/LogosSection';
 import { TextGenerateEffect } from './components/ui/textgenerateeffect';
 import { generatePageMetadata, pageKeywords } from './lib/seo-utils';
 
@@ -41,11 +39,9 @@ export default function Home() {
           ctaLink="/products"
         />
 
-        <LogosSection />
         <MissionSection />
         <AboutSection />
         <QualityStandardsSection />
-        <ProductPreviewSection />
         <TendersSection />
         <DistributionSection />
         <EventsSection />

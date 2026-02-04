@@ -56,7 +56,7 @@ export default function TendersSection() {
         {/* Tenders Section */}
         <div 
           ref={tendersRef}
-          className={`mb-1 mt-1 sm:mb-2 sm:mt-2 transition-all duration-800 ${
+          className={`mb-0 mt-0 transition-all duration-800 ${
             isVisible 
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 -translate-x-16'
@@ -65,7 +65,7 @@ export default function TendersSection() {
             transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
           }}
         >
-          <div className="relative mb-2 sm:mb-4 ml-8">
+          <div className="relative mb-0 ml-8">
             <h2 className={`lato-regular text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-left leading-tight transition-all duration-900 delay-100 ${
               isVisible 
                 ? 'opacity-100 transform translate-x-0' 
@@ -79,22 +79,42 @@ export default function TendersSection() {
           </div>
         </div>
         
-        {/* Infinite Carousel Tender Logos */}
-        <div className="relative w-full overflow-hidden h-48 sm:h-64 lg:h-72 xl:h-80">
+        {/* Desktop: single responsive row, no carousel */}
+        <div 
+          className="hidden md:flex w-full flex-nowrap gap-0 -mx-2 lg:-mx-3 xl:-mx-4 -mt-8 items-center justify-center min-h-[180px] lg:min-h-[220px] xl:min-h-[260px]"
+          role="region" 
+          aria-label="Tender logos"
+        >
+          {Array.from({ length: 11 }).map((_, index) => (
+            <div 
+              key={`desktop-${index}`} 
+              className="relative flex-1 min-w-0 h-36 lg:h-48 xl:h-56 flex items-center justify-center drop-shadow-lg hover:drop-shadow-2xl hover:scale-105 transition-all duration-300 px-0.5"
+            >
+              <Image 
+                src={`/tender${index + 1}.png`} 
+                alt={`Tender ${index + 1}`} 
+                width={600} 
+                height={600}
+                className="object-contain w-full h-full"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile only: carousel */}
+        <div className="relative w-full overflow-hidden h-48 sm:h-64 md:hidden -mt-2">
           <div 
             className="flex tender-carousel"
-            style={{
-              width: 'max-content'
-            }}
+            style={{ width: 'max-content' }}
             role="region" 
-            aria-label="Tender logos"
+            aria-label="Tender logos carousel"
           >
-            {/* Render logos twice for seamless infinite loop */}
             {[...Array(2)].map((_, setIndex) => 
               Array.from({ length: 11 }).map((_, index) => (
                 <div 
                   key={`set-${setIndex}-${index}`} 
-                  className="relative flex-shrink-0 -mx-12 sm:-mx-4 lg:-mx-6 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 flex items-center justify-center"
+                  className="relative flex-shrink-0 -mx-12 sm:-mx-4 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center"
                 >
                   <Image 
                     src={`/tender${index + 1}.png`} 

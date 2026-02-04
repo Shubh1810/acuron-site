@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FC, useState, useMemo, useEffect } from 'react';
-import { Download, User } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { ColourfulText } from './ui/colorful-text';
 import { useCountryStore } from '../../lib/store';
 import NewsletterModal from './NewsletterModal';
@@ -61,11 +61,10 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
     pt: "EXPLORAR TODOS OS PRODUTOS"
   });
 
-  const trustedHospitalsText = getLocalizedContent('Trusted Hospitals', { de: 'VERTRAUTE KRANKENHÄUSER', fr: 'HÔPITAUX DE CONFIANCE', ja: '信頼される病院', zh: '信赖医院', pt: 'HOSPITAIS CONFIÁVEIS' });
   const downloadCatalogText = getLocalizedContent('Download Catalog', { de: 'Katalog herunterladen', fr: 'Télécharger le catalogue', ja: 'カタログをダウンロード', zh: '下载目录', pt: 'Baixar Catálogo' });
   const totalProductsText = getLocalizedContent('Products', { de: 'Produkte', fr: 'Produits', ja: '製品', zh: '产品', pt: 'Produtos' });
-  const hospitalsServedText = getLocalizedContent('Hospitals Served', { de: 'Krankenhäuser bedient', fr: 'Hôpitaux desservis', ja: 'サービス病院', zh: '服务医院', pt: 'Hospitais Atendidos' });
-  const certifiedQualityText = getLocalizedContent('Certified Quality', { de: 'Zertifizierte Qualität', fr: 'Qualité certifiée', ja: '認証品質', zh: '认证质量', pt: 'Qualidade Certificada' });
+  const hospitalsServedText = getLocalizedContent('Healthcare Partners', { de: 'Gesundheitspartner', fr: 'Partenaires de santé', ja: 'ヘルスケアパートナー', zh: '医疗合作伙伴', pt: 'Parceiros de Saúde' });
+  const certifiedQualityText = getLocalizedContent('Satisfied customer', { de: 'Zufriedener Kunde', fr: 'Client satisfait', ja: '満足した顧客', zh: '满意客户', pt: 'Cliente satisfeito' });
   const supportAvailableText = getLocalizedContent('Support Available', { de: 'Support verfügbar', fr: 'Support disponible', ja: 'サポート対応', zh: '支持可用', pt: 'Suporte Disponível' });
 
   const handleCatalogDownload = () => setIsNewsletterModalOpen(true);
@@ -125,7 +124,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
 
   const precisionCareBlock = (
     <>
-      <span className=" text-[#0F4679]">Precision</span> &<br />
+      <span className=" text-[#0F4679]">Precision</span> <span className="font-bold">&</span><br />
       <span className="inline-flex items-center mt-1">
         <span className=" text-[#0F4679]">Care</span>
       </span>
@@ -142,31 +141,6 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
 
   return (
     <div id="hero-section" className="bg-gradient-to-b from-slate-50 to-white px-2 md:px-4 pb-0 w-full max-w-[100vw] overflow-x-hidden pt-20 sm:pt-28">
-      <svg viewBox="0 0 1 1" preserveAspectRatio="none" style={{ position: 'absolute', width: 0, height: 0 }} aria-hidden>
-        <defs>
-          <clipPath id="heroClip" clipPathUnits="objectBoundingBox">
-            <path
-              d="
-                M 0,0
-                L 1,0
-                L 1,0.85
-                C 1,0.87 0.97,0.895 0.94,0.9
-                L 0.55,0.9
-                C 0.54,0.905 0.535,0.915 0.53,0.93
-                L 0.515,0.965
-                C 0.51,0.975 0.505,0.98 0.50,0.98
-                L 0.12,0.98
-                Q 0.1,0.98 0.1,0.96
-                L 0.1,0.92
-                Q 0.1,0.9 0.08,0.9
-                L 0.02,0.9
-                Q 0,0.9 0,0.88
-                Z
-              "
-            />
-          </clipPath>
-        </defs>
-      </svg>
       <div className="max-w-7xl mx-auto">
         {/* Two-column Hero Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 py-8 lg:py-12 px-4 md:px-6">
@@ -207,26 +181,42 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               />
             </div>
 
-            {/* Social proof - avatars + stat */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-full bg-[#0F4679]/20 border-2 border-white flex items-center justify-center overflow-hidden">
-                    <User className="w-5 h-5 text-[#0F4679]" />
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">500+</div>
-                <div className="text-xs text-gray-600 uppercase tracking-wide">{trustedHospitalsText}</div>
-              </div>
+            {/* Recognition logos – compact, single line */}
+            <div className="flex flex-nowrap items-center justify-start gap-1 sm:gap-1.5 mb-8 overflow-hidden">
+              {[
+                { src: '/iso134.webp', alt: 'ISO Certification', name: 'ISO' },
+                { src: '/ce-mark.png', alt: 'CE Mark Certification', name: 'CE Mark' },
+                { src: '/cdsco-logo.webp', alt: 'CDSCO Certification', name: 'CDSCO' },
+                { src: '/NSIC.PNG', alt: 'NSIC Certification', name: 'NSIC' },
+              ].map((logo, index) => (
+                <div
+                  key={index}
+                  className={`flex shrink-0 items-center justify-center ${logo.name === 'NSIC' ? 'h-44' : logo.name === 'CDSCO' ? 'h-24' : 'h-20'} ${logo.name === 'CDSCO' ? '-mx-3' : ''} ${logo.name === 'NSIC' ? '-mx-4 translate-y-1' : ''}`}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.name === 'CDSCO' || logo.name === 'NSIC' ? 80 : 60}
+                    height={logo.name === 'CDSCO' || logo.name === 'NSIC' ? 48 : 36}
+                    className={`max-w-full max-h-full object-contain ${
+                      logo.name === 'CDSCO'
+                        ? 'brightness-0'
+                        : logo.name === 'ISO'
+                          ? 'opacity-100'
+                          : 'opacity-70 filter grayscale'
+                    }`}
+                    style={{ width: 'auto', height: 'auto' }}
+                    sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
+                  />
+                </div>
+              ))}
             </div>
 
             {/* Main headline */}
-            <h1 className="font-ubuntu text-3xl sm:text-4xl lg:text-5xl font-normal text-gray-900 leading-tight mb-4">
+            <h1 className="font-inter text-3xl sm:text-4xl lg:text-5xl font-normal text-[#0F4679] leading-tight mb-4">
               {hasKeyPhrase ? (
                 <>
-                  <span className="font-normal">
+                  <span className="font-semibold">
                     {titleParts[0]}
                     <span className="whitespace-nowrap">
                       <ColourfulText text={keyPhrase} />
@@ -276,13 +266,10 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
 
           {/* Right Column - Visual / Interactive; bottom cutout for category pills */}
           <div className="relative min-h-[430px] sm:min-h-[480px] lg:min-h-[580px] -mt-16 order-1 lg:order-2">
-            <div
-              className="absolute inset-0 z-10 overflow-hidden"
-              style={{ clipPath: 'url(#heroClip)' }}
-            >
+            <div className="absolute inset-0 z-10 overflow-hidden">
             {/* Background image */}
             <div
-              className="absolute inset-0 z-0 rounded-t-3xl overflow-hidden"
+              className="absolute inset-0 z-0 rounded-3xl overflow-hidden"
               style={{
                 backgroundImage: 'url(/heromain.jpeg)',
                 backgroundSize: 'cover',
@@ -290,6 +277,19 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                 filter: 'brightness(0.85)'
               }}
             />
+
+            {/* Category button – top right of hero image, circular with arrow icon */}
+            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
+              <Link
+                href="/products"
+                className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-400/80 hover:bg-gray-500/90 text-white backdrop-blur-sm transition-colors"
+                aria-label={getLocalizedContent('View All Products', { de: 'Alle Produkte', fr: 'Tous les produits', ja: 'すべての製品', zh: '查看所有产品', pt: 'Todos os produtos' })}
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17 17 7M17 7h-6M17 7v6" />
+                </svg>
+              </Link>
+            </div>
 
             {/* Minimal line illustration – top-left of hero image (rounded square-like shapes) */}
             <div className="absolute top-2 left-2 sm:top-4 sm:left-4 z-10 pointer-events-none" aria-hidden>
@@ -301,19 +301,34 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
             </div>
 
             {/* Procurement Partner card with hole – hero image shows through center */}
-            <div className="absolute bottom-36 right-4 sm:right-6 sm:bottom-40 w-[180px] sm:w-[200px] z-20 flex flex-col rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,70,121,0.18),0_2px_8px_rgba(0,0,0,0.08)] border border-white/95">
-              {/* Frame with hole – transparent middle shows hero image; white border creates hole cutout */}
-              <div
-                className="h-24 sm:h-28 flex-shrink-0 border-[14px] sm:border-[16px] border-white rounded-t-3xl bg-transparent relative"
-                style={{ boxSizing: 'content-box' }}
-                aria-hidden
-              >
-                {/* Subtle inner glow on hole edges */}
-                <div className="absolute inset-0 rounded-t-[20px] shadow-[inset_0_0_20px_rgba(15,70,121,0.08)]" />
+            <div className="absolute bottom-20 right-4 sm:right-6 sm:bottom-24 w-[180px] sm:w-[200px] z-20 flex flex-col rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,70,121,0.18),0_2px_8px_rgba(0,0,0,0.08)] border border-white/95">
+              {/* SVG mask: sharp outer bottom, rounded inner hole – scales with taller hole */}
+              <svg className="absolute w-0 h-0" aria-hidden>
+                <defs>
+                  <mask id="hole-frame-mask" maskContentUnits="objectBoundingBox">
+                    <rect x="0" y="0" width="1" height="1" fill="white" />
+                    <rect x="0.078" y="0.075" width="0.844" height="0.85" rx="0.08" ry="0.12" fill="black" />
+                  </mask>
+                </defs>
+              </svg>
+              <div className="relative flex-shrink-0 -mb-1 sm:-mb-0">
+                {/* Frame: white bg, sharp bottom (outer), mask cuts hole – increased height */}
+                <div
+                  className="h-52 sm:h-56 rounded-t-3xl rounded-b-none bg-white"
+                  style={{
+                    maskImage: 'url(#hole-frame-mask)',
+                    WebkitMaskImage: 'url(#hole-frame-mask)',
+                    maskSize: '100% 100%',
+                    WebkitMaskSize: '100% 100%',
+                  }}
+                  aria-hidden
+                />
+                {/* Inner glow – matches taller hole proportions */}
+                <div className="absolute inset-[14px] sm:inset-[16px] rounded-t-[18px] rounded-b-[16px] sm:rounded-b-[24px] shadow-[inset_0_0_20px_rgba(15,70,121,0.08)] pointer-events-none" aria-hidden />
               </div>
 
-              {/* Content below hole - seamless connection, minimal spacing */}
-              <div className="bg-gradient-to-br from-white via-white to-slate-50/30 rounded-b-3xl px-3.5 pt-1 pb-1.5">
+              {/* Content below hole – overlaps arc so it tucks behind */}
+              <div className="relative z-10 -mt-3 sm:-mt-4 bg-gradient-to-br from-white via-white to-slate-50/30 rounded-t-2xl rounded-b-3xl px-3.5 pt-0 pb-1.5">
                 {/* Procurement Partner heading - right below hole */}
                 <h4 className="text-[10px] font-semibold text-[#0F4679] uppercase tracking-wide mb-0.5">
                   {getLocalizedContent('Procurement Partner', { de: 'Beschaffungspartner', fr: 'Partenaire d\'approvisionnement', ja: '調達パートナー', zh: '采购合作伙伴', pt: 'Parceiro de Compras' })}
@@ -324,123 +339,93 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   {getLocalizedContent('End-to-End Procurement Support', { de: 'Umfassende Beschaffungsunterstützung', fr: 'Support d\'approvisionnement de bout en bout', ja: 'エンドツーエンド調達サポート', zh: '端到端采购支持', pt: 'Suporte de Compras Completo' })}
                 </h3>
 
-                {/* Feature list with bullets - tight spacing */}
-                <div className="space-y-0.5 mb-1">
-                  {[
-                    getLocalizedContent('SKU planning', { de: 'SKU-Planung', fr: 'Planification SKU', ja: 'SKU計画', zh: 'SKU规划', pt: 'Planejamento de SKU' }),
-                    getLocalizedContent('Volume forecasting', { de: 'Volumenprognose', fr: 'Prévision de volume', ja: '数量予測', zh: '数量预测', pt: 'Previsão de Volume' }),
-                    getLocalizedContent('Compliance documentation', { de: 'Konformitätsdokumentation', fr: 'Documentation de conformité', ja: 'コンプライアンス文書', zh: '合规文档', pt: 'Documentação de Conformidade' })
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <div className="w-1 h-1 rounded-full bg-[#0F4679]/60 mt-1 flex-shrink-0" />
-                      <span className="text-[10.5px] text-gray-600 leading-relaxed">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
                 {/* Footer icon + label */}
-                <div className="flex items-center gap-2 pt-1.5 border-t border-gray-100">
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#0F4679]/10 to-[#0F4679]/5 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-3.5 h-3.5 text-[#0F4679]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                <div className="pt-1.5 my-3">
+                  <div className="hole-card-dotted-divider mb-2 -mx-3.5" style={{ width: 'calc(100% + 1.75rem)' }} />
+                  <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
+                    <Image src="/favicon-og.jpeg" alt="Acuron" width={28} height={28} className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-semibold text-[#0F4679]">Acuron</p>
+                    <p className="text-[12px] font-semibold text-[#0F4679]">Acuron</p>
                     <p className="text-[9px] text-gray-500">
                       {getLocalizedContent('Trusted Partner', { de: 'Vertrauenspartner', fr: 'Partenaire de confiance', ja: '信頼のパートナー', zh: '值得信赖的合作伙伴', pt: 'Parceiro Confiável' })}
                     </p>
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Healthcare & Chemicals – left aligned, lower; Healthcare selected by default (white fill, black text) */}
-            <div className="absolute bottom-6 left-4 sm:left-16 sm:bottom-6 flex flex-wrap items-center gap-2 z-20">
-              <Link
-                href="/products"
-                onClick={() => setSelectedCategory('healthcare')}
-                className={`px-3 py-2 rounded-full text-xs sm:text-sm font-medium border whitespace-nowrap transition-colors backdrop-blur-sm ${
-                  selectedCategory === 'healthcare'
-                    ? 'bg-white text-gray-900 border-white'
-                    : 'border-white/90 bg-white/10 text-white/95 hover:bg-white/20'
-                }`}
-              >
-                {getLocalizedContent('Healthcare', { de: 'Gesundheitswesen', fr: 'Santé', ja: 'ヘルスケア', zh: '医疗保健', pt: 'Saúde' })}
-              </Link>
-              <Link
-                href="/products"
-                onClick={() => setSelectedCategory('chemicals')}
-                className={`px-3 py-2 rounded-full text-xs sm:text-sm font-medium border whitespace-nowrap transition-colors backdrop-blur-sm ${
-                  selectedCategory === 'chemicals'
-                    ? 'bg-white text-gray-900 border-white'
-                    : 'border-white/90 bg-white/10 text-white/95 hover:bg-white/20'
-                }`}
-              >
-                {getLocalizedContent('Chemicals', { de: 'Chemikalien', fr: 'Chimiques', ja: '化学', zh: '化工', pt: 'Químicos' })}
-              </Link>
-            </div>
-
-            {/* Pharmaceuticals & Food Processing – below the hole container, right */}
-            <div className="absolute bottom-16 right-4 sm:right-6 sm:bottom-20 flex items-center gap-2 z-20">
-              <Link
-                href="/products"
-                onClick={() => setSelectedCategory('pharmaceuticals')}
-                className={`px-3 py-2 rounded-full text-xs sm:text-sm font-medium border whitespace-nowrap transition-colors backdrop-blur-sm ${
-                  selectedCategory === 'pharmaceuticals'
-                    ? 'bg-white text-gray-900 border-white'
-                    : 'border-white/90 bg-white/10 text-white/95 hover:bg-white/20'
-                }`}
-              >
-                {getLocalizedContent('Pharmaceuticals', { de: 'Pharmazeutika', fr: 'Pharmaceutique', ja: '製薬', zh: '制药', pt: 'Farmacêutico' })}
-              </Link>
-              <Link
-                href="/products"
-                onClick={() => setSelectedCategory('food-processing')}
-                className={`px-3 py-2 rounded-full text-xs sm:text-sm font-medium border whitespace-nowrap transition-colors backdrop-blur-sm ${
-                  selectedCategory === 'food-processing'
-                    ? 'bg-white text-gray-900 border-white'
-                    : 'border-white/90 bg-white/10 text-white/95 hover:bg-white/20'
-                }`}
-              >
-                {getLocalizedContent('Food Processing', { de: 'Lebensmittelverarbeitung', fr: 'Transformation alimentaire', ja: '食品加工', zh: '食品加工', pt: 'Processamento de Alimentos' })}
-              </Link>
+            {/* Category buttons – in a single line at bottom of hero image */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2 z-20 px-2">
+              {[
+                { id: 'healthcare' as const, label: getLocalizedContent('Healthcare', { de: 'Gesundheitswesen', fr: 'Santé', ja: 'ヘルスケア', zh: '医疗保健', pt: 'Saúde' }) },
+                { id: 'chemicals' as const, label: getLocalizedContent('Chemicals', { de: 'Chemikalien', fr: 'Chimiques', ja: '化学', zh: '化工', pt: 'Químicos' }) },
+                { id: 'pharmaceuticals' as const, label: getLocalizedContent('Pharmaceuticals', { de: 'Pharmazeutika', fr: 'Pharmaceutique', ja: '製薬', zh: '制药', pt: 'Farmacêutico' }) },
+                { id: 'food-processing' as const, label: getLocalizedContent('Food Processing', { de: 'Lebensmittelverarbeitung', fr: 'Transformation alimentaire', ja: '食品加工', zh: '食品加工', pt: 'Processamento de Alimentos' }) },
+              ].map(({ id, label }) => (
+                <Link
+                  key={id}
+                  href="/products"
+                  onClick={() => setSelectedCategory(id)}
+                  className={`px-3 py-2 rounded-full text-xs sm:text-sm font-medium border whitespace-nowrap transition-colors backdrop-blur-sm ${
+                    selectedCategory === id
+                      ? 'bg-white text-gray-900 border-white'
+                      : 'border-white/90 bg-white/10 text-white/95 hover:bg-white/20'
+                  }`}
+                >
+                  {label}
+                </Link>
+              ))}
             </div>
 
             </div>
 
-            {/* Available on – text on line 1, logos on line 2; compact, more rounded; outside clip, peeping from top-left */}
+            {/* Bulk Orders & Institutional Pricing – redesigned with better layout */}
             <div
-              className="absolute top-6 -left-4 sm:top-12 sm:-left-20 w-auto max-w-[90vw] bg-white rounded-2xl px-2 py-1.5 border border-gray-100 z-20"
-              style={{ boxShadow: '0 0 20px rgba(15, 70, 121, 0.45), 0 0 40px rgba(15, 70, 121, 0.3), 0 4px 6px -1px rgba(0,0,0,0.1)' }}
+              className="absolute top-6 -left-4 sm:top-12 sm:-left-20 w-auto max-w-[90vw] bg-gradient-to-br from-white via-white to-slate-50/40 rounded-3xl px-4 py-4 border border-white/80 z-20 backdrop-blur-sm"
+              style={{
+                boxShadow: '0 0 25px rgba(15, 70, 121, 0.15), 0 8px 32px rgba(15, 70, 121, 0.12), 0 2px 8px rgba(0,0,0,0.08)',
+                minWidth: '280px'
+              }}
             >
-              <span className="block text-[10px] font-semibold text-gray-500 uppercase tracking-wide mb-0.5">
-                {getLocalizedContent('Available on', { de: 'Erhältlich bei', fr: 'Disponible sur', ja: '取扱い', zh: '可购买于', pt: 'Disponível em' })}
-              </span>
-              <div className="flex flex-nowrap items-center gap-0.5 -mx-0.5">
-                <a href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5">
-                  <Image src="/amazon.png" alt="Amazon" width={36} height={12} className="h-3 w-auto object-contain" />
-                </a>
-                <a href="https://www.meesho.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5">
-                  <Image src="/meesho.png" alt="Meesho" width={64} height={22} className="h-6 sm:h-7 w-auto object-contain" />
-                </a>
-                <a href="https://www.flipkart.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -mr-1.5">
-                  <Image src="/flip.png" alt="Flipkart" width={48} height={16} className="h-4 sm:h-5 w-auto object-contain" />
-                </a>
-                <a href="https://dir.indiamart.com/search.mp?ss=acuron&prdsrc=1&v=4" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -ml-1.5">
-                  <Image src="/indiamart.png" alt="IndiaMART" width={48} height={16} className="h-4 sm:h-5 w-auto object-contain" />
-                </a>
+              {/* Icon badge */}
+              <div className="inline-flex items-center gap-1.5 bg-[#0F4679]/8 px-2.5 py-1 rounded-full mb-2">
+                <svg className="w-3.5 h-3.5 text-[#0F4679]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                </svg>
+                <span className="text-[10px] font-bold text-[#0F4679] uppercase tracking-wider">
+                  {getLocalizedContent('Enterprise', { de: 'Unternehmen', fr: 'Entreprise', ja: '企業', zh: '企业', pt: 'Empresa' })}
+                </span>
               </div>
+
+              <h4 className="text-base sm:text-lg font-bold text-[#0F4679] mb-1.5 leading-tight">
+                {getLocalizedContent('Bulk Orders & Institutional Pricing', { de: 'Mengenbestellungen & institutionelle Preise', fr: 'Commandes en gros et tarifs institutionnels', ja: '大口注文・法人価格', zh: '批量订单与机构定价', pt: 'Pedidos em massa e preços institucionais' })}
+              </h4>
+
+              <p className="text-xs sm:text-sm text-gray-600 mb-3 leading-relaxed">
+                {getLocalizedContent('165+ certified medical products', { de: '165+ zertifizierte Medizinprodukte', fr: '165+ produits médicaux certifiés', ja: '165以上の認証医療製品', zh: '165+ 认证医疗产品', pt: '165+ produtos médicos certificados' })}
+              </p>
+
+              <Link
+                href="/#contact-us-section"
+                className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-[#0F4679] to-[#0D5A9E] hover:from-[#0D3C6B] hover:to-[#0B4D85] rounded-xl px-4 py-2.5 transition-all duration-300 shadow-[0_4px_14px_rgba(15,70,121,0.25)] hover:shadow-[0_6px_20px_rgba(15,70,121,0.35)] hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>{getLocalizedContent('Request Pricing', { de: 'Preis anfragen', fr: 'Demander un devis', ja: '価格をリクエスト', zh: '请求定价', pt: 'Solicitar preços' })}</span>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
             </div>
 
-            {/* Second duplicate grid + shadow motif under the hero image */}
+            {/* Second duplicate grid under the hero image – no shadow */}
             <div className="absolute bottom-0 left-0 lg:left-auto lg:right-0 w-28 h-28 sm:w-40 sm:h-40 rounded-md pointer-events-none z-[5] translate-y-4 lg:translate-y-6">
               <div
                 className="absolute inset-0 rounded-md border border-gray-200/80"
                 style={{
-                  backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(to bottom, #f8fafc, #ffffff)',
-                  backgroundSize: '14px 14px, 14px 14px, 100% 100%',
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.06), 0 2px 8px rgba(15,70,121,0.08)'
+                  backgroundImage: 'linear-gradient(to right, rgba(15,70,121,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,70,121,0.08) 1px, transparent 1px), linear-gradient(to bottom, #f8fafc, #ffffff)',
+                  backgroundSize: '14px 14px, 14px 14px, 100% 100%'
                 }}
                 aria-hidden
               />
@@ -455,18 +440,28 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
           </div>
         </div>
 
-        {/* Bottom metrics bar: 2 stats only (no category buttons) */}
-        <div className="relative z-20 grid grid-cols-2 gap-4 md:gap-6 py-6 px-4 md:px-6 bg-white border-t border-gray-200 items-center max-w-2xl mx-auto">
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-[#0F4679]">165+</div>
-            <div className="text-xs md:text-sm text-gray-600">{totalProductsText}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-[#0F4679]">500+</div>
-            <div className="text-xs md:text-sm text-gray-600">{hospitalsServedText}</div>
-          </div>
-        </div>
+      </div>
 
+      {/* Bottom metrics bar – full-width across screen, slightly darker blue */}
+      <div className="relative z-20 w-screen left-1/2 -translate-x-1/2 mt-8 md:mt-8 py-8 md:py-8 bg-[#d8e1ed] flex justify-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 md:gap-x-16 gap-y-4 md:gap-y-4 px-4 md:px-8 items-center justify-items-center max-w-3xl md:max-w-5xl">
+        <div className="text-center">
+          <div className="zalando-sans-expanded-metrics text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">165+</div>
+          <div className="text-sm md:text-base text-slate-500 mt-3 font-medium">{totalProductsText}</div>
+        </div>
+        <div className="text-center">
+          <div className="zalando-sans-expanded-metrics text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">500+</div>
+          <div className="text-sm md:text-base text-slate-500 mt-3 font-medium">{hospitalsServedText}</div>
+        </div>
+        <div className="text-center">
+          <div className="zalando-sans-expanded-metrics text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">10k+</div>
+          <div className="text-sm md:text-base text-slate-500 mt-3 font-medium">{certifiedQualityText}</div>
+        </div>
+        <div className="text-center">
+          <div className="zalando-sans-expanded-metrics text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">24/7</div>
+          <div className="text-sm md:text-base text-slate-500 mt-3 font-medium">{supportAvailableText}</div>
+        </div>
+        </div>
       </div>
 
       <NewsletterModal

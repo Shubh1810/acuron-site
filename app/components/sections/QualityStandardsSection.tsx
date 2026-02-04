@@ -15,36 +15,29 @@ export default function QualityStandardsSection() {
     return translations[selectedCountry.language] || englishText;
   };
 
-
-
   return (
-    <section className="bg-white px-2 md:px-4 w-full max-w-[100vw] overflow-x-hidden">
-      <div className="py-12 relative overflow-hidden rounded-3xl">
-
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <div className="flex justify-start ml-8">
-            <div className="relative">
-              <h2 className="lato-regular text-4xl md:text-5xl font-bold text-[#0F4679] leading-tight">
-                {getLocalizedContent('Quality Assurance Policy', {
-                  de: 'Qualitätssicherungsrichtlinie',
-                  fr: 'Politique d\'Assurance Qualité',
-                  ja: '品質保証ポリシー',
-                  zh: '质量保证政策',
-                  pt: 'Política de Garantia de Qualidade'
-                })}
-              </h2>
-            </div>
-          </div>
-          <div className="mt-6 ml-8">
-            <p className="text-gray-600 max-w-2xl">
+    <section className="bg-gradient-to-b from-gray-50 to-white px-4 md:px-6 w-full max-w-[100vw] overflow-x-hidden">
+      <div className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          
+          {/* Header - same style as About Us / Our Mission, left-aligned */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-16 md:mb-20 text-left"
+          >
+            <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight mb-6">
+              {getLocalizedContent('Quality Assurance Policy', {
+                de: 'Qualitätssicherungsrichtlinie',
+                fr: 'Politique d\'Assurance Qualité',
+                ja: '品質保証ポリシー',
+                zh: '质量保证政策',
+                pt: 'Política de Garantia de Qualidade'
+              })}
+            </h2>
+            <p className="text-gray-500 text-lg md:text-xl max-w-3xl leading-relaxed font-light text-left">
               {getLocalizedContent('At Acuron Products, quality is our top priority. We are committed to manufacturing and delivering superior surgical disposables and medical devices that meet international standards.', {
                 de: 'Bei Acuron Products ist Qualität unsere oberste Priorität. Wir verpflichten uns zur Herstellung und Lieferung hochwertiger chirurgischer Einwegartikel.',
                 fr: 'Chez Acuron Products, la qualité est notre priorité absolue. Nous nous engageons à fabriquer des dispositifs médicaux supérieurs.',
@@ -53,169 +46,205 @@ export default function QualityStandardsSection() {
                 pt: 'Na Acuron Products, qualidade é nossa prioridade máxima. Estamos comprometidos em fabricar dispositivos médicos superiores.'
               })}
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Quality Pillars */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-        >
-          <div 
-            className="rounded-lg p-[2px]"
-            style={{
-              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, white 100%)'
-            }}
-          >
-            <div className="bg-[#0F4679] rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
-              <div className="flex items-center justify-start mb-4">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
+          {/* Quality Pillars - Modern Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6 lg:gap-8 mb-16 md:mb-20">
+            
+            {/* Card 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <div
+                className="rounded-[50px] p-8 md:p-10 aspect-square bg-gray-50 border border-transparent transition-colors duration-300 group-hover:border-[#0F4679] flex flex-col"
+                style={{
+                  boxShadow:
+                    '-26px -26px 52px #d4d4d4, 26px 26px 52px #ffffff',
+                }}
+              >
+                <div className="flex items-start gap-5 mb-6">
+                  <div className="neu-button w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 p-0 border-0 group-hover:bg-[#0F4679] transition-colors duration-300">
+                    <svg className="w-6 h-6 text-[#0F4679] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-2xl font-medium text-gray-900 mb-3">
+                  {getLocalizedContent('Continuous Improvement', {
+                    de: 'Kontinuierliche Verbesserung',
+                    fr: 'Amélioration Continue',
+                    ja: '継続的改善',
+                    zh: '持续改进',
+                    pt: 'Melhoria Contínua'
+                  })}
+                </h3>
+                <p className="text-gray-600 leading-relaxed font-light">
+                  {getLocalizedContent('Enhance product quality through R&D and innovation', {
+                    de: 'Produktqualität durch F&E und Innovation verbessern',
+                    fr: 'Améliorer la qualité des produits par R&D et innovation',
+                    ja: 'R&Dとイノベーションによる製品品質の向上',
+                    zh: '通过研发和创新提升产品质量',
+                    pt: 'Melhorar qualidade através de P&D e inovação'
+                  })}
+                </p>
               </div>
-              <h3 className="font-semibold text-white mb-2">
-                {getLocalizedContent('Continuous Improvement', {
-                  de: 'Kontinuierliche Verbesserung',
-                  fr: 'Amélioration Continue',
-                  ja: '継続的改善',
-                  zh: '持续改进',
-                  pt: 'Melhoria Contínua'
-                })}
-              </h3>
-              <p className="text-sm text-white">
-                {getLocalizedContent('Enhance product quality through R&D and innovation', {
-                  de: 'Produktqualität durch F&E und Innovation verbessern',
-                  fr: 'Améliorer la qualité des produits par R&D et innovation',
-                  ja: 'R&Dとイノベーションによる製品品質の向上',
-                  zh: '通过研发和创新提升产品质量',
-                  pt: 'Melhorar qualidade através de P&D e inovação'
-                })}
-              </p>
-            </div>
-          </div>
+            </motion.div>
 
-          <div 
-            className="rounded-lg p-[2px]"
-            style={{
-              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, white 100%)'
-            }}
-          >
-            <div className="bg-[#0F4679] rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
-              <div className="flex items-center justify-start mb-4">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+            {/* Card 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <div
+                className="rounded-[50px] p-8 md:p-10 aspect-square bg-gray-50 border border-transparent transition-colors duration-300 group-hover:border-[#0F4679] flex flex-col"
+                style={{
+                  boxShadow:
+                    '-26px -26px 52px #d4d4d4, 26px 26px 52px #ffffff',
+                }}
+              >
+                <div className="flex items-start gap-5 mb-6">
+                  <div className="neu-button w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 p-0 border-0 group-hover:bg-[#0F4679] transition-colors duration-300">
+                    <svg className="w-6 h-6 text-[#0F4679] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-2xl font-medium text-gray-900 mb-3">
+                  {getLocalizedContent('Global Compliance', {
+                    de: 'Globale Compliance',
+                    fr: 'Conformité Mondiale',
+                    ja: 'グローバル・コンプライアンス',
+                    zh: '全球合规',
+                    pt: 'Conformidade Global'
+                  })}
+                </h3>
+                <p className="text-gray-600 leading-relaxed font-light">
+                  {getLocalizedContent('Adhere to international quality and safety standards', {
+                    de: 'Einhaltung internationaler Qualitäts- und Sicherheitsstandards',
+                    fr: 'Respecter les normes internationales de qualité et sécurité',
+                    ja: '国際的な品質・安全基準への準拠',
+                    zh: '遵循国际质量和安全标准',
+                    pt: 'Aderir aos padrões internacionais de qualidade e segurança'
+                  })}
+                </p>
               </div>
-              <h3 className="font-semibold text-white mb-2">
-                {getLocalizedContent('Global Compliance', {
-                  de: 'Globale Compliance',
-                  fr: 'Conformité Mondiale',
-                  ja: 'グローバル・コンプライアンス',
-                  zh: '全球合规',
-                  pt: 'Conformidade Global'
-                })}
-              </h3>
-              <p className="text-sm text-white">
-                {getLocalizedContent('Adhere to international quality and safety standards', {
-                  de: 'Einhaltung internationaler Qualitäts- und Sicherheitsstandards',
-                  fr: 'Respecter les normes internationales de qualité et sécurité',
-                  ja: '国際的な品質・安全基準への準拠',
-                  zh: '遵循国际质量和安全标准',
-                  pt: 'Aderir aos padrões internacionais de qualidade e segurança'
-                })}
-              </p>
-            </div>
-          </div>
+            </motion.div>
 
-          <div 
-            className="rounded-lg p-[2px]"
-            style={{
-              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, white 100%)'
-            }}
-          >
-            <div className="bg-[#0F4679] rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
-              <div className="flex items-center justify-start mb-4">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+            {/* Card 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <div
+                className="rounded-[50px] p-8 md:p-10 aspect-square bg-gray-50 border border-transparent transition-colors duration-300 group-hover:border-[#0F4679] flex flex-col"
+                style={{
+                  boxShadow:
+                    '-26px -26px 52px #d4d4d4, 26px 26px 52px #ffffff',
+                }}
+              >
+                <div className="flex items-start gap-5 mb-6">
+                  <div className="neu-button w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 p-0 border-0 group-hover:bg-[#0F4679] transition-colors duration-300">
+                    <svg className="w-6 h-6 text-[#0F4679] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-2xl font-medium text-gray-900 mb-3">
+                  {getLocalizedContent('Strict Quality Control', {
+                    de: 'Strenge Qualitätskontrolle',
+                    fr: 'Contrôle Qualité Strict',
+                    ja: '厳格な品質管理',
+                    zh: '严格的质量控制',
+                    pt: 'Controle de Qualidade Rigoroso'
+                  })}
+                </h3>
+                <p className="text-gray-600 leading-relaxed font-light">
+                  {getLocalizedContent('Ensure every product undergoes rigorous testing', {
+                    de: 'Jedes Produkt durchläuft strenge Tests',
+                    fr: 'Chaque produit subit des tests rigoureux',
+                    ja: '全ての製品に厳格なテストを実施',
+                    zh: '确保每个产品都经过严格测试',
+                    pt: 'Garantir que cada produto passe por testes rigorosos'
+                  })}
+                </p>
               </div>
-              <h3 className="font-semibold text-white mb-2">
-                {getLocalizedContent('Strict Quality Control', {
-                  de: 'Strenge Qualitätskontrolle',
-                  fr: 'Contrôle Qualité Strict',
-                  ja: '厳格な品質管理',
-                  zh: '严格的质量控制',
-                  pt: 'Controle de Qualidade Rigoroso'
-                })}
-              </h3>
-              <p className="text-sm text-white">
-                {getLocalizedContent('Ensure every product undergoes rigorous testing', {
-                  de: 'Jedes Produkt durchläuft strenge Tests',
-                  fr: 'Chaque produit subit des tests rigoureux',
-                  ja: '全ての製品に厳格なテストを実施',
-                  zh: '确保每个产品都经过严格测试',
-                  pt: 'Garantir que cada produto passe por testes rigorosos'
-                })}
-              </p>
-            </div>
-          </div>
+            </motion.div>
 
-          <div 
-            className="rounded-lg p-[2px]"
-            style={{
-              background: 'linear-gradient(135deg, white 0%, white 25%, #10b981 50%, #3b82f6 75%, white 100%)'
-            }}
-          >
-            <div className="bg-[#0F4679] rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
-              <div className="flex items-center justify-start mb-4">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+            {/* Card 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <div
+                className="rounded-[50px] p-8 md:p-10 aspect-square bg-gray-50 border border-transparent transition-colors duration-300 group-hover:border-[#0F4679] flex flex-col"
+                style={{
+                  boxShadow:
+                    '-26px -26px 52px #d4d4d4, 26px 26px 52px #ffffff',
+                }}
+              >
+                <div className="flex items-start gap-5 mb-6">
+                  <div className="neu-button w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 p-0 border-0 group-hover:bg-[#0F4679] transition-colors duration-300">
+                    <svg className="w-6 h-6 text-[#0F4679] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-2xl font-medium text-gray-900 mb-3">
+                  {getLocalizedContent('Customer Satisfaction', {
+                    de: 'Kundenzufriedenheit',
+                    fr: 'Satisfaction Client',
+                    ja: '顧客満足',
+                    zh: '客户满意',
+                    pt: 'Satisfação do Cliente'
+                  })}
+                </h3>
+                <p className="text-gray-600 leading-relaxed font-light">
+                  {getLocalizedContent('Focus on delivering reliable products, timely service, and custom solutions', {
+                    de: 'Fokus auf zuverlässige Produkte, pünktlichen Service und maßgeschneiderte Lösungen',
+                    fr: 'Focus sur des produits fiables, service ponctuel et solutions personnalisées',
+                    ja: '信頼性の高い製品、タイムリーなサービス、カスタムソリューションの提供に注力',
+                    zh: '专注于提供可靠产品、及时服务和定制解决方案',
+                    pt: 'Foco em entregar produtos confiáveis, serviço pontual e soluções personalizadas'
+                  })}
+                </p>
               </div>
-              <h3 className="font-semibold text-white mb-2">
-                {getLocalizedContent('Customer Satisfaction', {
-                  de: 'Kundenzufriedenheit',
-                  fr: 'Satisfaction Client',
-                  ja: '顧客満足',
-                  zh: '客户满意',
-                  pt: 'Satisfação do Cliente'
-                })}
-              </h3>
-              <p className="text-sm text-white">
-                {getLocalizedContent('Focus on delivering reliable products, timely service, and custom solutions', {
-                  de: 'Fokus auf zuverlässige Produkte, pünktlichen Service und maßgeschneiderte Lösungen',
-                  fr: 'Focus sur des produits fiables, service ponctuel et solutions personnalisées',
-                  ja: '信頼性の高い製品、タイムリーなサービス、カスタムソリューションの提供に注力',
-                  zh: '专注于提供可靠产品、及时服务和定制解决方案',
-                  pt: 'Foco em entregar produtos confiáveis, serviço pontual e soluções personalizadas'
-                })}
-              </p>
-            </div>
-          </div>
-        </motion.div>
+            </motion.div>
 
-        {/* Bottom Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <p className="text-gray-600 max-w-3xl mx-auto">
-            {getLocalizedContent('With advanced QC systems, a dedicated team, and a customer-centric approach, we aim to exceed expectations and maintain our reputation as a trusted name in the healthcare industry.', {
-              de: 'Mit fortschrittlichen QC-Systemen, einem engagierten Team und einem kundenorientierten Ansatz wollen wir Erwartungen übertreffen.',
-              fr: 'Avec des systèmes QC avancés, une équipe dédiée et une approche centrée sur le client, nous visons à dépasser les attentes.',
-              ja: '先進的なQCシステム、専任チーム、顧客中心のアプローチにより、期待を上回り、信頼される企業としての評判を維持します。',
-              zh: '凭借先进的质控系统、专业团队和以客户为中心的方法，我们致力于超越期望，保持在医疗行业的可信声誉。',
-              pt: 'Com sistemas QC avançados, equipe dedicada e abordagem centrada no cliente, visamos superar expectativas e manter nossa reputação confiável.'
-            })}
-          </p>
-        </motion.div>
-      </div>
+          </div>
+
+          {/* Bottom Statement */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <p className="text-gray-600 text-lg md:text-xl leading-relaxed font-light">
+              {getLocalizedContent('With advanced QC systems, a dedicated team, and a customer-centric approach, we aim to exceed expectations and maintain our reputation as a trusted name in the healthcare industry.', {
+                de: 'Mit fortschrittlichen QC-Systemen, einem engagierten Team und einem kundenorientierten Ansatz wollen wir Erwartungen übertreffen.',
+                fr: 'Avec des systèmes QC avancés, une équipe dédiée et une approche centrée sur le client, nous visons à dépasser les attentes.',
+                ja: '先進的なQCシステム、専任チーム、顧客中心のアプローチにより、期待を上回り、信頼される企業としての評判を維持します。',
+                zh: '凭借先进的质控系统、专业团队和以客户为中心的方法，我们致力于超越期望，保持在医疗行业的可信声誉。',
+                pt: 'Com sistemas QC avançados, equipe dedicada e abordagem centrada no cliente, visamos superar expectativas e manter nossa reputação confiável.'
+              })}
+            </p>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

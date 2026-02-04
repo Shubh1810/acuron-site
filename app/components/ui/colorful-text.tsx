@@ -8,10 +8,10 @@ export function ColourfulText({ text }: { text: string }) {
   // Create a gradient effect from bright blue to sky blue
   const getColorForIndex = (index: number, totalChars: number) => {
     // Define gradient endpoints
-    const startColor = { r: 0, g: 191, b: 255 };  // #00BFFF - Deep Sky Blue
-    const midColor1 = { r: 30, g: 144, b: 255 };  // #1E90FF - Dodger Blue
+    const startColor = { r: 135, g: 206, b: 250 };  // #87CEFA - Light Sky Blue
+    const midColor1 = { r: 0, g: 191, b: 255 };  // #00BFFF - Deep Sky Blue
     const midColor2 = { r: 0, g: 150, b: 255 };   // #0096FF - Azure Blue
-    const endColor = { r: 135, g: 206, b: 250 };  // #87CEFA - Light Sky Blue
+    const endColor = { r: 30, g: 144, b: 255 };  // #1E90FF - Dodger Blue
     
     // Get position in the gradient (0 to 1)
     const position = index / (totalChars - 1);
@@ -64,7 +64,7 @@ export function ColourfulText({ text }: { text: string }) {
             delay: index * 0.05,
             ease: "easeInOut"
           }}
-          className="inline-block whitespace-pre font-ubuntu font-normal tracking-tight"
+          className="inline-block whitespace-pre font-sans font-semibold tracking-tight"
           onAnimationStart={() => {
             // Wrap heavy calculations in useTransition
             if (index === 0) {

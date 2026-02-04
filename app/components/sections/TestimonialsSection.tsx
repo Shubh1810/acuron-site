@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function TestimonialsSection() {
   return (
@@ -26,12 +27,14 @@ export default function TestimonialsSection() {
             {/* Testimonial 1 */}
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg p-6 transition-transform hover:scale-105">
               <div className="flex items-start mb-4">
-                <div className="relative w-16 h-16 mr-4">
-                  <div className="w-16 h-16 rounded-full bg-[#0F4679]/10 border-2 border-[#0F4679]/20 flex items-center justify-center">
-                    <svg className="w-8 h-8 text-[#0F4679]/60" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
+                <div className="relative w-16 h-16 mr-4 rounded-full overflow-hidden bg-[#0F4679]/10 border-2 border-[#0F4679]/20 flex-shrink-0">
+                  <Image
+                    src="/apollo-hospitals.png"
+                    alt="Apollo Hospitals"
+                    fill
+                    className="object-cover object-center"
+                    sizes="64px"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">Dr. Sharma</h3>
@@ -55,12 +58,14 @@ export default function TestimonialsSection() {
             {/* Testimonial 2 */}
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg p-6 transition-transform hover:scale-105">
               <div className="flex items-start mb-4">
-                <div className="relative w-16 h-16 mr-4">
-                  <div className="w-16 h-16 rounded-full bg-[#0F4679]/10 border-2 border-[#0F4679]/20 flex items-center justify-center">
-                    <svg className="w-8 h-8 text-[#0F4679]/60" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
+                <div className="relative w-16 h-16 mr-4 rounded-full overflow-hidden bg-[#0F4679]/10 border-2 border-[#0F4679]/20 flex-shrink-0">
+                  <Image
+                    src="/manipal-hospitals.png"
+                    alt="Manipal Hospitals"
+                    fill
+                    className="object-cover object-center"
+                    sizes="64px"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">Dr. Patel</h3>
@@ -84,12 +89,14 @@ export default function TestimonialsSection() {
             {/* Testimonial 3 */}
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg p-6 transition-transform hover:scale-105">
               <div className="flex items-start mb-4">
-                <div className="relative w-16 h-16 mr-4">
-                  <div className="w-16 h-16 rounded-full bg-[#0F4679]/10 border-2 border-[#0F4679]/20 flex items-center justify-center">
-                    <svg className="w-8 h-8 text-[#0F4679]/60" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
+                <div className="relative w-16 h-16 mr-4 rounded-full overflow-hidden bg-[#0F4679]/10 border-2 border-[#0F4679]/20 flex-shrink-0">
+                  <Image
+                    src="/aiims.png"
+                    alt="AIIMS"
+                    fill
+                    className="object-cover object-center"
+                    sizes="64px"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">Dr. Reddy</h3>

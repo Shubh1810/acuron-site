@@ -135,8 +135,23 @@ const Header: FC = () => {
           </button>
         </div>
 
-        {/* Right Side - Catalog, phone, search, language */}
+        {/* Right Side - Platform logos, Catalog, phone, search, language */}
         <div className="flex items-center gap-2 sm:gap-3 w-full lg:w-auto justify-end">
+          {/* Platform logos – to the left of Catalog button */}
+          <div className="hidden lg:flex flex-nowrap items-center gap-0.5 -mx-0.5 shrink-0">
+            <a href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 mt-1">
+              <Image src="/amazon.png" alt="Amazon" width={36} height={12} className="h-3 w-auto object-contain" />
+            </a>
+            <a href="https://www.meesho.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 ml-1">
+              <Image src="/meesho.png" alt="Meesho" width={64} height={22} className="h-6 sm:h-7 w-auto object-contain" />
+            </a>
+            <a href="https://www.flipkart.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -mr-1.5">
+              <Image src="/flip.png" alt="Flipkart" width={48} height={16} className="h-4 sm:h-5 w-auto object-contain" />
+            </a>
+            <a href="https://dir.indiamart.com/search.mp?ss=acuron&prdsrc=1&v=4" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -ml-0.5">
+              <Image src="/indiamart.png" alt="IndiaMART" width={48} height={16} className="h-4 sm:h-5 w-auto object-contain" />
+            </a>
+          </div>
           {/* Catalog Download - Neumorphic button */}
           <button
             type="button"
