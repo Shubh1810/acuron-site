@@ -6,7 +6,7 @@ const LogosSection = () => {
     { src: '/iso134.webp', alt: 'ISO Certification', name: 'ISO' },
     { src: '/msmep.png', alt: 'MSME Certification', name: 'MSME' },
     { src: '/cdsco-logo.webp', alt: 'CDSCO Certification', name: 'CDSCO' },
-    { src: '/nsic.png', alt: 'NSIC Certification', name: 'NSIC' },
+    { src: '/NSIC.PNG', alt: 'NSIC Certification', name: 'NSIC' },
     { src: '/ce-mark.png', alt: 'CE Mark Certification', name: 'CE Mark' },
 
     { src: '/who.png', alt: 'WHO Guidelines', name: 'WHO' },
@@ -46,12 +46,6 @@ const LogosSection = () => {
                     className="max-w-full max-h-full object-contain opacity-70 transition-all duration-300 filter grayscale hover:grayscale-0 hover:opacity-100"
                     style={{ width: 'auto', height: 'auto' }}
                     sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, 120px"
-                  />
-                ) : logo.name === 'NSIC' ? (
-                  <img
-                    src="/nsic.png"
-                    alt={logo.alt}
-                    className="max-w-full max-h-full object-contain opacity-70 transition-all duration-300 filter grayscale hover:grayscale-0 hover:opacity-100 h-full w-auto"
                   />
                 ) : (
                   <Image
