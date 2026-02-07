@@ -417,16 +417,17 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               </Link>
             </div>
 
-            {/* Second duplicate grid under the hero image – no shadow */}
-            <div className="absolute bottom-0 left-0 lg:left-auto lg:right-0 w-28 h-28 sm:w-40 sm:h-40 rounded-md pointer-events-none z-[5] translate-y-4 lg:translate-y-6">
+            {/* Second grid – same implementation as first grid (left column), different position */}
+            <div className="absolute bottom-0 left-0 lg:left-auto lg:right-0 w-28 h-28 sm:w-40 sm:h-40 rounded-md pointer-events-none translate-y-12 lg:translate-y-20">
               <div
                 className="absolute inset-0 rounded-md border border-gray-200/80"
                 style={{
-                  backgroundImage: 'linear-gradient(to right, rgba(15,70,121,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,70,121,0.08) 1px, transparent 1px), linear-gradient(to bottom, #f8fafc, #ffffff)',
+                  backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(to bottom, #f8fafc, #ffffff)',
                   backgroundSize: '14px 14px, 14px 14px, 100% 100%'
                 }}
                 aria-hidden
               />
+              {/* Overlay on top: same as first grid – transparent center so edges blend with white */}
               <div
                 className="absolute inset-0 rounded-md"
                 style={{

@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { useCountryStore } from '@/lib/store';
 
@@ -24,12 +23,19 @@ const AboutUsSection = () => {
     pt: 'Sobre nós',
   });
 
-  const whyChooseText = getLocalizedContent('Why Choose', {
+  const whyChooseLine1 = getLocalizedContent('Why Choose', {
     de: 'Warum wählen',
     fr: 'Pourquoi choisir',
     ja: 'なぜ選ぶ',
     zh: '为什么选择',
     pt: 'Por que escolher',
+  });
+  const whyChooseLine2 = getLocalizedContent('Us?', {
+    de: 'uns?',
+    fr: 'nous ?',
+    ja: '私たち？',
+    zh: '我们？',
+    pt: 'nós?',
   });
 
   const paragraph1 = getLocalizedContent(
@@ -66,12 +72,17 @@ const AboutUsSection = () => {
   );
 
   return (
-    <section className="relative w-full bg-white py-20 lg:py-28 overflow-hidden">
-      {/* Halo blur: soft blue–green gradient towards bottom */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-blue-200/40 via-teal-100/30 to-transparent blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 w-[80%] max-w-2xl h-80 bg-blue-300/25 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-[60%] max-w-xl h-64 bg-emerald-200/30 rounded-full blur-[80px]" />
+    <section className="relative w-full py-20 lg:py-28 overflow-hidden">
+      {/* Background: aboutbg.jpeg only, rotated 90° counter-clockwise */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute w-[100vmax] h-[100vmax] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-90deg]"
+          style={{
+            backgroundImage: 'url(/aboutbg.jpeg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
       </div>
 
       <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,21 +99,10 @@ const AboutUsSection = () => {
               <span className="text-sm font-semibold text-[#0F4679] uppercase tracking-wider">{aboutUsLabel}</span>
             </div>
 
-            {/* Main Heading - same style as Our Mission, logo on next line; ? positioned in gap */}
+            {/* Main Heading */}
             <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight mb-6">
-              <span className="block">{whyChooseText}</span>
-              <span className="relative inline-flex items-end mt-0">
-                <Link href="/" className="inline-block">
-                  <Image
-                    src="/acprod.png"
-                    alt="Acuron"
-                    width={240}
-                    height={72}
-                    className="object-contain h-14 sm:h-16 lg:h-20 w-auto"
-                  />
-                </Link>
-                <span className="absolute -right-4 bottom-full -mb-16 bg-clip-text text-transparent bg-gradient-to-r from-gray-600 to-gray-400">?</span>
-              </span>
+              <span className="block">{whyChooseLine1}</span>
+              <span className="block">{whyChooseLine2}</span>
             </h2>
 
             {/* Description Text - Clean Typography (localized) */}
@@ -124,7 +124,7 @@ const AboutUsSection = () => {
           <div className="relative order-1 lg:order-2 h-full min-h-[280px] sm:min-h-[320px]">
             
             {/* Main Image Container - same height as text block */}
-            <div className="relative w-full h-full rounded-[2.5rem] bg-gradient-to-br from-white to-slate-100 shadow-[20px_20px_40px_rgba(148,163,184,0.25),-20px_-20px_40px_rgba(255,255,255,0.9)] overflow-hidden border border-white/80 group">
+            <div className="relative w-full h-full rounded-[2.5rem] bg-white shadow-lg overflow-hidden group">
               
               {/* Image - dnaa.jpeg */}
               <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300">

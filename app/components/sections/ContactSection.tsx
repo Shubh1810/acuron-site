@@ -105,7 +105,7 @@ export default function ContactSection() {
           {/* LEFT COLUMN: Map & Info */}
           <div className="lg:col-span-5 space-y-6 text-white">
             <div className="mb-6">
-              <h2 className="lato-regular section-heading text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+              <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
                 {textContent.getInTouch}
               </h2>
               <p className="text-blue-100 text-lg">
