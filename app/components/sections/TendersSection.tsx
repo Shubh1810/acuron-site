@@ -81,14 +81,14 @@ export default function TendersSection() {
         
         {/* Desktop: single responsive row, no carousel */}
         <div 
-          className="hidden md:flex w-full flex-nowrap gap-0 -mx-2 lg:-mx-3 xl:-mx-4 -mt-8 items-center justify-center min-h-[180px] lg:min-h-[220px] xl:min-h-[260px]"
+          className="hidden md:flex w-full flex-nowrap gap-0 -mx-2 lg:-mx-3 xl:-mx-4 -mt-8 items-center justify-center min-h-[220px] lg:min-h-[280px] xl:min-h-[320px]"
           role="region" 
           aria-label="Tender logos"
         >
           {Array.from({ length: 11 }).map((_, index) => (
             <div 
               key={`desktop-${index}`} 
-              className="relative flex-1 min-w-0 h-36 lg:h-48 xl:h-56 flex items-center justify-center drop-shadow-lg hover:drop-shadow-2xl hover:scale-105 transition-all duration-300 px-0.5"
+              className="relative flex-1 min-w-0 h-44 lg:h-56 xl:h-64 flex items-center justify-center drop-shadow-lg hover:drop-shadow-2xl hover:scale-105 transition-all duration-300 px-0.5"
             >
               <Image 
                 src={`/tender${index + 1}.png`} 
@@ -102,8 +102,8 @@ export default function TendersSection() {
           ))}
         </div>
 
-        {/* Mobile only: carousel */}
-        <div className="relative w-full overflow-hidden h-48 sm:h-64 md:hidden -mt-2">
+        {/* Mobile only: carousel (infinite scroll via CSS animation) */}
+        <div className="relative w-full overflow-hidden h-56 sm:h-72 md:hidden -mt-2">
           <div 
             className="flex tender-carousel"
             style={{ width: 'max-content' }}
@@ -114,7 +114,7 @@ export default function TendersSection() {
               Array.from({ length: 11 }).map((_, index) => (
                 <div 
                   key={`set-${setIndex}-${index}`} 
-                  className="relative flex-shrink-0 -mx-12 sm:-mx-4 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center"
+                  className="relative flex-shrink-0 -mx-10 sm:-mx-3 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center"
                 >
                   <Image 
                     src={`/tender${index + 1}.png`} 
