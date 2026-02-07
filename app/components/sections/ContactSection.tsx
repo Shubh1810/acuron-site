@@ -139,7 +139,7 @@ export default function ContactSection() {
                         </div>
                         <div>
                             <h3 className="font-bold text-sm uppercase tracking-wider mb-1">{textContent.visitUs}</h3>
-                            <p className="text-sm text-gray-600 leading-snug">Gala No. 112-114, Pritesh Complex, Dapoda Road, Bhiwandi, Thane - 421302, India</p>
+                            <p className="text-sm text-gray-600 leading-snug">Gala No. 112,113,114, Pritesh Complex, Dapoda Road, Bhiwandi, Thane - 421302, India</p>
                         </div>
                     </div>
 

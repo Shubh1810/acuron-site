@@ -191,13 +191,13 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               ].map((logo, index) => (
                 <div
                   key={index}
-                  className={`flex shrink-0 items-center justify-center ${logo.name === 'NSIC' ? 'h-44' : logo.name === 'CDSCO' ? 'h-24' : 'h-20'} ${logo.name === 'CDSCO' ? '-mx-3' : ''} ${logo.name === 'NSIC' ? '-mx-4 translate-y-1' : ''}`}
+                  className={`flex shrink-0 items-center justify-center ${logo.name === 'NSIC' ? 'h-40' : logo.name === 'CDSCO' ? 'h-20' : 'h-16'} ${logo.name === 'CDSCO' ? '-mx-3' : ''} ${logo.name === 'NSIC' ? '-mx-4 translate-y-1' : ''}`}
                 >
                   <Image
                     src={logo.src}
                     alt={logo.alt}
-                    width={logo.name === 'NSIC' ? 264 : logo.name === 'CDSCO' ? 80 : 60}
-                    height={logo.name === 'NSIC' ? 176 : logo.name === 'CDSCO' ? 48 : 36}
+                    width={logo.name === 'NSIC' ? 240 : logo.name === 'CDSCO' ? 72 : 52}
+                    height={logo.name === 'NSIC' ? 160 : logo.name === 'CDSCO' ? 42 : 32}
                     className={`max-w-full max-h-full object-contain ${
                       logo.name === 'CDSCO'
                         ? 'brightness-0'
@@ -206,14 +206,14 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                           : 'opacity-70 filter grayscale'
                     }`}
                     style={{ width: 'auto', height: 'auto' }}
-                    sizes={logo.name === 'NSIC' ? '(max-width: 640px) 120px, (max-width: 768px) 180px, 264px' : '(max-width: 640px) 60px, (max-width: 768px) 80px, 120px'}
+                    sizes={logo.name === 'NSIC' ? '(max-width: 640px) 110px, (max-width: 768px) 160px, 220px' : '(max-width: 640px) 50px, (max-width: 768px) 70px, 110px'}
                   />
                 </div>
               ))}
             </div>
 
             {/* Main headline */}
-            <h1 className="font-inter text-3xl sm:text-4xl lg:text-5xl font-normal text-[#0F4679] leading-tight mb-4">
+            <h1 className="font-inter text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-normal text-[#0F4679] leading-tight mb-4">
               {hasKeyPhrase ? (
                 <>
                   <span className="font-semibold">
@@ -301,20 +301,21 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
             </div>
 
             {/* Procurement Partner card with hole – hero image shows through center */}
-            <div className="absolute bottom-20 right-4 sm:right-6 sm:bottom-24 w-[180px] sm:w-[200px] z-20 flex flex-col rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,70,121,0.18),0_2px_8px_rgba(0,0,0,0.08)] border border-white/95">
-              {/* SVG mask: sharp outer bottom, rounded inner hole – scales with taller hole */}
+            <div className="absolute bottom-20 right-4 sm:right-6 sm:bottom-24 w-[180px] sm:w-[200px] z-20 flex flex-col rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,70,121,0.18),0_2px_8px_rgba(0,0,0,0.08)]">
+              {/* SVG mask: objectBoundingBox (0–1), hole centered and smoothly rounded to match h-52/sm:h-56 frame */}
               <svg className="absolute w-0 h-0" aria-hidden>
                 <defs>
                   <mask id="hole-frame-mask" maskContentUnits="objectBoundingBox">
                     <rect x="0" y="0" width="1" height="1" fill="white" />
-                    <rect x="0.078" y="0.075" width="0.844" height="0.85" rx="0.08" ry="0.12" fill="black" />
+                    {/* Centered hole: 7% margin all sides, rx=ry for smooth elliptical corners matching frame aspect */}
+                    <rect x="0.07" y="0.07" width="0.86" height="0.86" rx="0.14" ry="0.14" fill="black" />
                   </mask>
                 </defs>
               </svg>
               <div className="relative flex-shrink-0 -mb-1 sm:-mb-0">
-                {/* Frame: white bg, sharp bottom (outer), mask cuts hole – increased height */}
+                {/* Frame: white bg, mask cuts hole – hole aligned to this div’s h-52 / sm:h-56 */}
                 <div
-                  className="h-52 sm:h-56 rounded-t-3xl rounded-b-none bg-white"
+                  className="h-52 sm:h-56 rounded-t-3xl rounded-b-none bg-white w-full"
                   style={{
                     maskImage: 'url(#hole-frame-mask)',
                     WebkitMaskImage: 'url(#hole-frame-mask)',
@@ -323,8 +324,15 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   }}
                   aria-hidden
                 />
-                {/* Inner glow – matches taller hole proportions */}
-                <div className="absolute inset-[14px] sm:inset-[16px] rounded-t-[18px] rounded-b-[16px] sm:rounded-b-[24px] shadow-[inset_0_0_20px_rgba(15,70,121,0.08)] pointer-events-none" aria-hidden />
+                {/* Inner glow: inset 7% to match hole margin, radius ~14% of frame for smooth arc */}
+                <div
+                  className="absolute shadow-[inset_0_0_20px_rgba(15,70,121,0.08)] pointer-events-none"
+                  style={{
+                    inset: '7%',
+                    borderRadius: '14% / 14%',
+                  }}
+                  aria-hidden
+                />
               </div>
 
               {/* Content below hole – overlaps arc so it tucks behind */}
@@ -390,17 +398,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                 minWidth: '280px'
               }}
             >
-              {/* Icon badge */}
-              <div className="inline-flex items-center gap-1.5 bg-[#0F4679]/8 px-2.5 py-1 rounded-full mb-2">
-                <svg className="w-3.5 h-3.5 text-[#0F4679]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                </svg>
-                <span className="text-[10px] font-bold text-[#0F4679] uppercase tracking-wider">
-                  {getLocalizedContent('Enterprise', { de: 'Unternehmen', fr: 'Entreprise', ja: '企業', zh: '企业', pt: 'Empresa' })}
-                </span>
-              </div>
-
-              <h4 className="text-base sm:text-lg font-bold text-[#0F4679] mb-1.5 leading-tight">
+              <h4 className="text-sm sm:text-base font-bold text-[#0F4679] mb-1.5 leading-tight">
                 {getLocalizedContent('Bulk Orders & Institutional Pricing', { de: 'Mengenbestellungen & institutionelle Preise', fr: 'Commandes en gros et tarifs institutionnels', ja: '大口注文・法人価格', zh: '批量订单与机构定价', pt: 'Pedidos em massa e preços institucionais' })}
               </h4>
 
