@@ -153,8 +153,8 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900 text-white py-8 md:py-16 mt-0">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="grid grid-cols-1 md:grid-cols-9 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-9 gap-8">
           {/* Logo Column */}
           <div className="md:col-span-3">
             <div className="flex items-start">
@@ -223,7 +223,7 @@ export default function Footer() {
         </div>
 
         {/* Legal Footer */}
-        <div className="border-t border-gray-800 mt-12 pt-8 text-sm text-gray-400">
+        <div className="border-t border-gray-800 mt-8 sm:mt-12 pt-6 sm:pt-8 text-sm text-gray-400">
           <div className="flex flex-col md:flex-row justify-between">
             <div className="mb-4 md:mb-0">
               © {new Date().getFullYear()} Acuron Products. {allRightsReservedText}

@@ -192,13 +192,13 @@ export default function EventsSection() {
   };
 
   return (
-    <section className="bg-white py-24 px-6 md:px-12 w-full overflow-hidden">
+    <section className="bg-white py-14 sm:py-24 px-3 sm:px-6 md:px-12 w-full overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-20 items-center">
           
           {/* LEFT SIDE: Event Carousel (Visuals) */}
           <div className="lg:col-span-7 order-2 lg:order-1">
-            <div className="relative h-[480px]">
+            <div className="relative h-[420px] sm:h-[480px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -216,7 +216,7 @@ export default function EventsSection() {
                       onMouseLeave={() => setIsAutoPlaying(true)}
                     >
                       {/* Image Section */}
-                      <div className="relative h-56 w-full overflow-hidden border-b-2 border-[#0a2540]">
+                      <div className="relative h-44 sm:h-56 w-full overflow-hidden border-b-2 border-[#0a2540]">
                         <Image
                           src={event.image}
                           alt={event.name}
@@ -230,7 +230,7 @@ export default function EventsSection() {
                       </div>
 
                       {/* Content Section */}
-                      <div className="p-6 flex flex-col justify-between flex-1">
+                      <div className="p-4 sm:p-6 flex flex-col justify-between flex-1">
                         <div>
                           <span className="inline-block px-2 py-1 mb-3 text-[10px] font-bold uppercase tracking-widest border border-[#0a2540] rounded-full group-hover:border-white group-hover:bg-white group-hover:text-[#0a2540] transition-colors">
                             {event.category}
@@ -261,7 +261,7 @@ export default function EventsSection() {
           </div>
 
           {/* RIGHT SIDE: Header & Controls */}
-          <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col justify-center h-full">
+          <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col justify-center h-full mb-4 lg:mb-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -269,21 +269,21 @@ export default function EventsSection() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h2 className="lato-regular section-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-[0.9]">
+              <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[0.9]">
                 <span className="text-[#0a2540]">{joinUsText}</span> <br/>
                 <span className="text-slate-400">at Industry</span> <br/>
                 <span className="text-[#0a2540]">{eventsText}</span>
               </h2>
               
-              <p className="text-lg text-gray-600 leading-relaxed max-w-md">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-md">
                 Connect with us at leading medical exhibitions and conferences worldwide. Discover our latest innovations and solutions in person.
               </p>
 
               {/* Custom Controls */}
-              <div className="flex items-center gap-4 pt-4">
+              <div className="flex items-center gap-3 sm:gap-4 pt-2 sm:pt-4">
                 <button
                   onClick={prevSlide}
-                  className="w-14 h-14 border-2 border-[#0a2540] flex items-center justify-center hover:bg-[#0a2540] hover:text-white transition-all duration-300 active:scale-95"
+                  className="w-11 h-11 sm:w-14 sm:h-14 border-2 border-[#0a2540] flex items-center justify-center hover:bg-[#0a2540] hover:text-white transition-all duration-300 active:scale-95"
                   aria-label="Previous"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -293,7 +293,7 @@ export default function EventsSection() {
                 
                 <button
                   onClick={nextSlide}
-                  className="w-14 h-14 border-2 border-[#0a2540] flex items-center justify-center hover:bg-[#0a2540] hover:text-white transition-all duration-300 active:scale-95"
+                  className="w-11 h-11 sm:w-14 sm:h-14 border-2 border-[#0a2540] flex items-center justify-center hover:bg-[#0a2540] hover:text-white transition-all duration-300 active:scale-95"
                   aria-label="Next"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>

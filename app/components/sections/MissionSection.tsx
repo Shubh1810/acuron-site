@@ -107,14 +107,14 @@ const MissionSection = () => {
   });
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-white to-slate-50/30 py-16 lg:py-20">
+    <section className="relative w-full bg-gradient-to-b from-white to-slate-50/30 py-12 sm:py-16 lg:py-20">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
           
           {/* LEFT HALF - Product Video Showcase */}
-          <div className="relative w-full mx-auto aspect-[3/4] lg:aspect-video rounded-2xl mb-12 lg:mb-0">
+          <div className="relative w-full mx-auto aspect-[4/5] sm:aspect-[3/4] lg:aspect-video rounded-2xl mb-8 sm:mb-12 lg:mb-0">
             <video
               className="w-full h-full object-cover rounded-2xl"
               autoPlay
@@ -134,27 +134,27 @@ const MissionSection = () => {
 
             {/* Metrics - left and right, raised; gradient fade at outer edges into bg */}
             <div
-              className="absolute bottom-16 sm:bottom-20 left-0 right-1/2 z-10 flex justify-start pl-8 sm:pl-12"
+              className="absolute bottom-10 sm:bottom-20 left-0 right-1/2 z-10 flex justify-start pl-4 sm:pl-12"
               style={{
                 maskImage: 'linear-gradient(to right, transparent 0%, black 35%, black 100%)',
                 WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 25%, black 100%)',
               }}
             >
               <div className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-500">500+</div>
-                <div className="text-xs text-gray-600 font-medium">{hospitalsServed}</div>
+                <div className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-500">500+</div>
+                <div className="text-[10px] sm:text-xs text-gray-600 font-medium">{hospitalsServed}</div>
               </div>
             </div>
             <div
-              className="absolute bottom-16 sm:bottom-20 left-1/2 right-0 z-10 flex justify-end pr-8 sm:pr-12"
+              className="absolute bottom-10 sm:bottom-20 left-1/2 right-0 z-10 flex justify-end pr-4 sm:pr-12"
               style={{
                 maskImage: 'linear-gradient(to left, transparent 0%, black 35%, black 100%)',
                 WebkitMaskImage: 'linear-gradient(to left, transparent 0%, black 25%, black 100%)',
               }}
             >
               <div className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-500">15+</div>
-                <div className="text-xs text-gray-600 font-medium">{yearsExperience}</div>
+                <div className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-500">15+</div>
+                <div className="text-[10px] sm:text-xs text-gray-600 font-medium">{yearsExperience}</div>
               </div>
             </div>
           </div>
@@ -167,12 +167,12 @@ const MissionSection = () => {
             </h2>
 
             {/* Mission Statement */}
-            <p className="text-lg sm:text-xl font-semibold text-gray-600 mb-12 leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg md:text-xl font-semibold text-gray-600 mb-8 sm:mb-12 leading-relaxed max-w-xl">
               {missionStatement}
             </p>
 
             {/* Feature list - icon inline with heading */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {/* Innovation Driven */}
               <div className="group">
                 <h3 className="text-xl font-bold text-slate-600 mb-2 inline-flex items-center gap-2">

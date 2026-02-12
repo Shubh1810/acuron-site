@@ -98,9 +98,9 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
 
   const { keyPhrase, titleParts, hasKeyPhrase } = getKeyPhraseAndParts();
 
-  /** Horizontal pill outline (stroke only) – smooth pill shape, edges aligned to pixel */
+  /** Horizontal pill outline (stroke only) – vertically centered with subheading text, isolated spacing */
   const PillOutlineIllust = () => (
-    <span className="inline-flex align-middle mx-0.5 shrink-0" aria-hidden>
+    <span className="inline-flex items-center justify-center shrink-0 mr-1.5 -translate-y-0" aria-hidden>
       <svg width="40" height="10" viewBox="0 0 40 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#0F4679]" shapeRendering="geometricPrecision">
         <rect x="1" y="1" width="38" height="8" rx="4" ry="4" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
@@ -140,10 +140,10 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
   ], [selectedCountry]);
 
   return (
-    <div id="hero-section" className="bg-gradient-to-b from-slate-50 to-white px-2 md:px-4 pb-0 w-full max-w-[100vw] overflow-x-hidden pt-20 sm:pt-28">
+    <div id="hero-section" className="bg-gradient-to-b from-slate-50 to-white px-3 md:px-4 pb-0 w-full max-w-[100vw] overflow-x-hidden pt-24 sm:pt-28">
       <div className="max-w-7xl mx-auto">
         {/* Two-column Hero Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 py-8 lg:py-12 px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 py-6 lg:py-12 px-2 sm:px-4 md:px-6">
           {/* Left Column - Content */}
           <div className="relative flex flex-col justify-center order-2 lg:order-1">
             {/* Small light grey grid patch – empty area between subheading and hero (left column, top-right); overlay on top blends edges with bg */}
@@ -166,8 +166,8 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               />
             </div>
 
-            {/* Minimal compact subtitle - inline with sparkle, narrow width for ~4 lines */}
-            <div className="flex items-start gap-6 sm:gap-8 mb-4 max-w-[17.5rem] sm:max-w-[21rem] -mt-4 sm:-mt-5">
+            {/* Minimal compact subtitle - inline with sparkle, isolated from main heading */}
+            <div className="flex items-start gap-6 sm:gap-3 mb-4 mt-2 sm:mt-3 max-w-[17.5rem] sm:max-w-[21rem]">
               <p className="text-[12px] sm:text-[13px] text-[#0F4679] font-semibold uppercase tracking-wide leading-snug flex-1 min-w-0">
                 {subtitleWithPill}
               </p>
@@ -176,7 +176,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                 alt=""
                 width={48}
                 height={48}
-                className="w-9 h-9 sm:w-11 sm:h-11 flex-shrink-0 mt-0.5 object-contain ml-4"
+                className="w-9 h-9 sm:w-11 sm:h-11 flex-shrink-0 mt-0.5 object-contain ml-4 sm:ml-0"
                 style={{ filter: 'brightness(0) saturate(100%) invert(22%) sepia(58%) saturate(1200%) hue-rotate(195deg)' }}
               />
             </div>
@@ -213,7 +213,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
             </div>
 
             {/* Main headline */}
-            <h1 className="font-inter text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-normal text-[#0F4679] leading-tight mb-4">
+            <h1 className="font-inter text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-normal text-[#0F4679] leading-tight mb-4">
               {hasKeyPhrase ? (
                 <>
                   <span className="font-semibold">
@@ -265,7 +265,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
           </div>
 
           {/* Right Column - Visual / Interactive; bottom cutout for category pills */}
-          <div className="relative min-h-[430px] sm:min-h-[480px] lg:min-h-[580px] -mt-16 order-1 lg:order-2">
+          <div className="relative min-h-[340px] sm:min-h-[480px] lg:min-h-[580px] -mt-4 sm:-mt-16 order-1 lg:order-2">
             <div className="absolute inset-0 z-10 overflow-hidden">
             {/* Background image */}
             <div
@@ -300,8 +300,8 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               </svg>
             </div>
 
-            {/* Procurement Partner card with hole – hero image shows through center */}
-            <div className="absolute bottom-20 right-4 sm:right-6 sm:bottom-24 w-[180px] sm:w-[200px] z-20 flex flex-col rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,70,121,0.18),0_2px_8px_rgba(0,0,0,0.08)]">
+            {/* Procurement Partner card with hole – hero image shows through center; hidden on mobile only */}
+            <div className="absolute bottom-14 right-2 sm:right-6 sm:bottom-24 w-[150px] sm:w-[200px] z-20 hidden sm:flex flex-col rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,70,121,0.18),0_2px_8px_rgba(0,0,0,0.08)]">
               {/* SVG mask: objectBoundingBox (0–1), hole centered and smoothly rounded to match h-52/sm:h-56 frame */}
               <svg className="absolute w-0 h-0" aria-hidden>
                 <defs>
@@ -315,7 +315,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               <div className="relative flex-shrink-0 -mb-1 sm:-mb-0">
                 {/* Frame: white bg, mask cuts hole – hole aligned to this div’s h-52 / sm:h-56 */}
                 <div
-                  className="h-52 sm:h-56 rounded-t-3xl rounded-b-none bg-white w-full"
+                  className="h-40 sm:h-56 rounded-t-3xl rounded-b-none bg-white w-full"
                   style={{
                     maskImage: 'url(#hole-frame-mask)',
                     WebkitMaskImage: 'url(#hole-frame-mask)',
@@ -366,7 +366,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
             </div>
 
             {/* Category buttons – in a single line at bottom of hero image */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2 z-20 px-2">
+            <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-wrap sm:flex-nowrap items-center justify-center gap-1 sm:gap-2 z-20 px-2 w-[95%] sm:w-auto">
               {[
                 { id: 'healthcare' as const, label: getLocalizedContent('Healthcare', { de: 'Gesundheitswesen', fr: 'Santé', ja: 'ヘルスケア', zh: '医疗保健', pt: 'Saúde' }) },
                 { id: 'chemicals' as const, label: getLocalizedContent('Chemicals', { de: 'Chemikalien', fr: 'Chimiques', ja: '化学', zh: '化工', pt: 'Químicos' }) },
@@ -377,7 +377,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   key={id}
                   href="/products"
                   onClick={() => setSelectedCategory(id)}
-                  className={`px-3 py-2 rounded-full text-xs sm:text-sm font-medium border whitespace-nowrap transition-colors backdrop-blur-sm ${
+                  className={`px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full text-[11px] sm:text-sm font-medium border whitespace-nowrap transition-colors backdrop-blur-sm ${
                     selectedCategory === id
                       ? 'bg-white text-gray-900 border-white'
                       : 'border-white/90 bg-white/10 text-white/95 hover:bg-white/20'
@@ -390,12 +390,12 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
 
             </div>
 
-            {/* Bulk Orders & Institutional Pricing – redesigned with better layout */}
+            {/* Bulk Orders & Institutional Pricing – pops slightly outside hero on all breakpoints; hole card hidden on mobile */}
             <div
-              className="absolute top-6 -left-4 sm:top-12 sm:-left-20 w-auto max-w-[90vw] bg-gradient-to-br from-white via-white to-slate-50/40 rounded-3xl px-4 py-4 border border-white/80 z-20 backdrop-blur-sm"
+              className="absolute top-4 -left-4 sm:top-12 sm:-left-20 w-auto max-w-[85vw] sm:max-w-[90vw] bg-gradient-to-br from-white via-white to-slate-50/40 rounded-2xl sm:rounded-3xl px-3 py-3 sm:px-4 sm:py-4 border border-white/80 z-20 backdrop-blur-sm"
               style={{
                 boxShadow: '0 0 25px rgba(15, 70, 121, 0.15), 0 8px 32px rgba(15, 70, 121, 0.12), 0 2px 8px rgba(0,0,0,0.08)',
-                minWidth: '280px'
+                minWidth: 'min(260px, 75vw)'
               }}
             >
               <h4 className="text-sm sm:text-base font-bold text-[#0F4679] mb-1.5 leading-tight">
@@ -442,23 +442,23 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
       </div>
 
       {/* Bottom metrics bar – full-width across screen, slightly darker blue */}
-      <div className="relative z-20 w-screen left-1/2 -translate-x-1/2 mt-8 md:mt-8 py-8 md:py-8 bg-[#d8e1ed] flex justify-center">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 md:gap-x-16 gap-y-4 md:gap-y-4 px-4 md:px-8 items-center justify-items-center max-w-3xl md:max-w-5xl">
+      <div className="relative z-20 w-screen left-1/2 -translate-x-1/2 mt-6 md:mt-8 py-6 md:py-8 bg-[#d8e1ed] flex justify-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 sm:gap-x-10 md:gap-x-16 gap-y-5 md:gap-y-4 px-4 md:px-8 items-center justify-items-center max-w-3xl md:max-w-5xl">
         <div className="text-center">
-          <div className="zalando-sans-expanded-metrics text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">165+</div>
-          <div className="text-sm md:text-base text-slate-500 mt-3 font-medium">{totalProductsText}</div>
+          <div className="zalando-sans-expanded-metrics text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">165+</div>
+          <div className="text-xs sm:text-sm md:text-base text-slate-500 mt-1.5 sm:mt-3 font-medium">{totalProductsText}</div>
         </div>
         <div className="text-center">
-          <div className="zalando-sans-expanded-metrics text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">500+</div>
-          <div className="text-sm md:text-base text-slate-500 mt-3 font-medium">{hospitalsServedText}</div>
+          <div className="zalando-sans-expanded-metrics text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">500+</div>
+          <div className="text-xs sm:text-sm md:text-base text-slate-500 mt-1.5 sm:mt-3 font-medium">{hospitalsServedText}</div>
         </div>
         <div className="text-center">
-          <div className="zalando-sans-expanded-metrics text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">10k+</div>
-          <div className="text-sm md:text-base text-slate-500 mt-3 font-medium">{certifiedQualityText}</div>
+          <div className="zalando-sans-expanded-metrics text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">10k+</div>
+          <div className="text-xs sm:text-sm md:text-base text-slate-500 mt-1.5 sm:mt-3 font-medium">{certifiedQualityText}</div>
         </div>
         <div className="text-center">
-          <div className="zalando-sans-expanded-metrics text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">24/7</div>
-          <div className="text-sm md:text-base text-slate-500 mt-3 font-medium">{supportAvailableText}</div>
+          <div className="zalando-sans-expanded-metrics text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 tracking-tight">24/7</div>
+          <div className="text-xs sm:text-sm md:text-base text-slate-500 mt-1.5 sm:mt-3 font-medium">{supportAvailableText}</div>
         </div>
         </div>
       </div>

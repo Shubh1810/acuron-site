@@ -51,7 +51,7 @@ export default function TendersSection() {
   });
 
   return (
-    <section className="py-16 px-6 md:px-8 bg-white">
+    <section className="py-12 sm:py-16 px-3 sm:px-6 md:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Tenders Section */}
         <div 
@@ -65,7 +65,7 @@ export default function TendersSection() {
             transitionTimingFunction: isVisible ? 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'ease-out'
           }}
         >
-          <div className="relative mb-0 ml-8">
+          <div className="relative mb-0 ml-2 sm:ml-8">
             <h2 className={`lato-regular text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent text-left leading-tight transition-all duration-900 delay-100 ${
               isVisible 
                 ? 'opacity-100 transform translate-x-0' 
@@ -103,7 +103,7 @@ export default function TendersSection() {
         </div>
 
         {/* Mobile only: carousel (infinite scroll via CSS animation) */}
-        <div className="relative w-full overflow-hidden h-56 sm:h-72 md:hidden -mt-2">
+        <div className="relative w-full overflow-hidden h-48 sm:h-72 md:hidden -mt-2">
           <div 
             className="flex tender-carousel"
             style={{ width: 'max-content' }}
@@ -114,7 +114,7 @@ export default function TendersSection() {
               Array.from({ length: 11 }).map((_, index) => (
                 <div 
                   key={`set-${setIndex}-${index}`} 
-                  className="relative flex-shrink-0 -mx-10 sm:-mx-3 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center"
+                  className="relative flex-shrink-0 -mx-4 sm:-mx-3 drop-shadow-lg hover:drop-shadow-2xl hover:scale-110 transition-all duration-300 w-48 h-48 sm:w-72 sm:h-72 flex items-center justify-center"
                 >
                   <Image 
                     src={`/tender${index + 1}.png`} 

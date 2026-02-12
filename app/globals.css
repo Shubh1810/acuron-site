@@ -10,14 +10,14 @@
     @apply scroll-smooth;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
-    overscroll-behavior: none;
-    overflow-x: hidden; /* Single declaration for horizontal scroll prevention */
+    /* Do NOT set overflow-x on html – it breaks vertical scroll on iOS/mobile */
   }
   
   body {
     @apply antialiased text-gray-800;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+    overflow-x: hidden; /* Prevent horizontal scroll; keep on body only so vertical scroll works */
   }
 
   /* Hide scrollbars for all elements */
@@ -157,12 +157,11 @@ input:focus {
 
 /* Additional mobile viewport adjustments */
 @media (max-width: 767px) {
-  /* Ensure scrollbar is visible and not hidden by browser UI on mobile */
+  /* Ensure smooth mobile scrolling – do not disable overscroll on html/body or scroll breaks */
   html, body {
-    overscroll-behavior-y: none;
-    overscroll-behavior-x: none;
     position: relative;
-    touch-action: pan-y;
+    touch-action: pan-y pan-x; /* Allow both vertical and horizontal touch scroll */
+    -webkit-overflow-scrolling: touch;
   }
   
   /* Ensure scrollbar component is visible above all content */
@@ -175,12 +174,6 @@ input:focus {
   /* Mobile-specific text alignment and spacing */
   .mobile-left {
     text-align: left !important;
-  }
-
-  /* Mobile section padding adjustments */
-  section {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
   }
 
   /* Mobile heading adjustments - allow individual control */

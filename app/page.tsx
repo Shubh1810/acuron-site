@@ -31,7 +31,7 @@ export default function Home() {
         <PartnerBanner />
         <Header />
       </div>
-      <main className="min-h-screen w-full max-w-[100vw] overflow-x-hidden -mt-20 sm:-mt-24">
+      <main className="min-h-screen w-full max-w-[100vw] overflow-x-hidden -mt-16 sm:-mt-24">
           <HeroSection 
           title="Revolutionizing Medical Supply with Precision & Care."
           subtitle="India's trusted manufacturer of ISO-certified PPE and medical disposable products and kits, empowering hospitals nationwide."

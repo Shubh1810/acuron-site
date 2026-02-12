@@ -2,7 +2,7 @@ import React from "react";
 
 export default function GridBackground() {
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
       {/* White base with light blue grid lines */}
       <div
         className="absolute inset-0 bg-white"

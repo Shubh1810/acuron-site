@@ -89,7 +89,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative py-20 bg-[#0F4679] overflow-hidden" id="contact-us-section">
+    <section className="relative py-12 sm:py-20 bg-[#0F4679] overflow-hidden" id="contact-us-section">
       {/* Background Pattern - Subtle Grid */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" 
         style={{ backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)`, backgroundSize: '30px 30px' }}>
@@ -99,13 +99,13 @@ export default function ContactSection() {
       <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-gradient-to-t from-[#158C07] via-[#0FB36D] to-transparent opacity-30 blur-[100px] pointer-events-none z-0"></div>
       <div className="absolute -bottom-10 right-0 w-[400px] h-[400px] bg-emerald-400/20 blur-[80px] animate-pulse pointer-events-none z-0"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           
           {/* LEFT COLUMN: Map & Info */}
           <div className="lg:col-span-5 space-y-6 text-white">
             <div className="mb-6">
-              <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+              <h2 className="lato-regular section-heading text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 sm:mb-4">
                 {textContent.getInTouch}
               </h2>
               <p className="text-blue-100 text-lg">
@@ -116,7 +116,7 @@ export default function ContactSection() {
             {/* Info Card - Rounded & Minimal */}
             <div className="bg-white text-gray-900 border-2 border-[#0a2540] rounded-3xl overflow-hidden shadow-xl">
               {/* Map Section */}
-              <div className="h-48 w-full border-b-2 border-[#0a2540] relative grayscale-[50%] hover:grayscale-0 transition-all duration-500">
+              <div className="h-36 sm:h-48 w-full border-b-2 border-[#0a2540] relative grayscale-[50%] hover:grayscale-0 transition-all duration-500">
                 <iframe 
                   className="absolute inset-0 w-full h-full"
                   frameBorder="0" 
@@ -172,7 +172,7 @@ export default function ContactSection() {
 
           {/* RIGHT COLUMN: Form - Compact & Rounded */}
           <div className="lg:col-span-7">
-            <div className="bg-white p-6 md:p-8 border-2 border-[#0a2540] rounded-3xl relative z-10">
+            <div className="bg-white p-4 sm:p-6 md:p-8 border-2 border-[#0a2540] rounded-2xl sm:rounded-3xl relative z-10">
               {/* Logo - Smaller container */}
               <div className="mb-6 w-[180px] h-12 relative">
                 <Image src="/acprod.png" alt="Acuron Logo" fill className="object-contain object-left" priority />
@@ -263,7 +263,7 @@ export default function ContactSection() {
                   </div>
                   
                   <p className="text-xs text-gray-400 mt-4 text-center">
-                    {textContent.privacy} <Link href="/privacy" className="text-white hover:underline">{textContent.privacyPolicy}</Link>
+                    {textContent.privacy} <Link href="/privacy" className="text-[#0F4679] hover:underline">{textContent.privacyPolicy}</Link>
                   </p>
                 </div>
               </form>

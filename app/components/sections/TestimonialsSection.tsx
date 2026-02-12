@@ -3,27 +3,27 @@ import Image from 'next/image';
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-16 px-8 bg-white">
+    <section className="py-12 sm:py-16 px-3 sm:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-10 sm:gap-16">
           {/* Header */}
-          <div className="mb-12">
-            <div className="flex justify-start ml-8">
+          <div className="mb-6 sm:mb-12">
+            <div className="flex justify-start ml-0 sm:ml-8">
               <div className="relative">
-                <h2 className="lato-regular section-heading text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+                <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
                   Why Healthcare Professionals Trust Us
                 </h2>
               </div>
             </div>
-            <div className="mt-6 ml-8">
-              <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+            <div className="mt-4 sm:mt-6 ml-0 sm:ml-8">
+              <p className="text-base sm:text-lg text-gray-600 max-w-3xl leading-relaxed">
                 Our medical products are trusted by healthcare professionals worldwide for their quality, reliability, and innovation.
               </p>
             </div>
           </div>
 
           {/* Doctor Testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-8 sm:mb-12">
             {/* Testimonial 1 */}
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg p-6 transition-transform hover:scale-105">
               <div className="flex items-start mb-4">

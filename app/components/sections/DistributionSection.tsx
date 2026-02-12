@@ -91,13 +91,13 @@ export default function DistributionSection() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen max-h-screen flex flex-col justify-center py-10 md:py-14 px-6 md:px-12 bg-white relative overflow-hidden"
+      className="min-h-0 lg:min-h-screen lg:max-h-screen flex flex-col justify-center py-12 sm:py-10 md:py-14 px-3 sm:px-6 md:px-12 bg-white relative overflow-hidden"
     >
       <div className="max-w-6xl mx-auto w-full flex-1 min-h-0 flex flex-col justify-center">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-14 items-center">
           {/* LEFT: Map - viewport-relative so it scales */}
           <div
-            className={`relative w-full h-[min(52vh,460px)] lg:h-[min(60vh,580px)] transition-all duration-1000 ${
+            className={`relative w-full h-[280px] sm:h-[min(52vh,460px)] lg:h-[min(60vh,580px)] transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
@@ -112,7 +112,7 @@ export default function DistributionSection() {
 
           {/* RIGHT: Heading + Metrics + Features */}
           <div className="flex flex-col justify-center">
-            <div className={`-mb-4 md:-mb-8 text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className={`mb-2 sm:-mb-4 md:-mb-8 text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight mb-2">
                 {content.title}
               </h2>
@@ -122,7 +122,7 @@ export default function DistributionSection() {
             </div>
 
             {/* Metrics bars - taller */}
-            <div className="flex items-end justify-between gap-4 mb-6 md:mb-8 h-[260px] md:h-[300px]">
+            <div className="flex items-end justify-between gap-3 sm:gap-4 mb-6 md:mb-8 h-[180px] sm:h-[260px] md:h-[300px]">
               {metrics.map((metric, idx) => (
                 <div
                   key={idx}
@@ -142,7 +142,7 @@ export default function DistributionSection() {
             </div>
 
             {/* Features */}
-            <div className="grid sm:grid-cols-3 gap-5 lg:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
               {features.map((feature, idx) => (
                 <div
                   key={idx}

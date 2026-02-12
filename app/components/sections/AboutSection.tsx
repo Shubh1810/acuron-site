@@ -72,7 +72,7 @@ const AboutUsSection = () => {
   );
 
   return (
-    <section className="relative w-full py-20 lg:py-28 overflow-hidden">
+    <section className="relative w-full py-8 sm:py-12 lg:py-16 overflow-hidden">
       {/* Background: aboutbg.jpeg only, rotated 90° counter-clockwise */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div
@@ -85,35 +85,35 @@ const AboutUsSection = () => {
         />
       </div>
 
-      <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-[1200px] mx-auto px-3 sm:px-6 lg:px-8">
         
-        {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+        {/* Two Column Layout - tighter to fit bg */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-stretch">
           
           {/* LEFT SIDE - Content */}
           <div className="relative z-10 order-2 lg:order-1">
             
             {/* Section Label - Neumorphic Style */}
-            <div className="inline-flex items-center gap-3 mb-8 px-5 py-2.5 rounded-2xl bg-gradient-to-br from-white to-slate-50 shadow-[8px_8px_16px_rgba(148,163,184,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] border border-white/60">
-              <div className="w-2 h-2 rounded-full bg-gradient-to-br from-[#0F4679] to-teal-600 shadow-lg shadow-[#0F4679]/30" />
-              <span className="text-sm font-semibold text-[#0F4679] uppercase tracking-wider">{aboutUsLabel}</span>
+            <div className="inline-flex items-center gap-3 mb-3 sm:mb-5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-gradient-to-br from-white to-slate-50 shadow-[8px_8px_16px_rgba(148,163,184,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] border border-white/60">
+              <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#0F4679] to-teal-600 shadow-lg shadow-[#0F4679]/30" />
+              <span className="text-xs sm:text-sm font-semibold text-[#0F4679] uppercase tracking-wider">{aboutUsLabel}</span>
             </div>
 
-            {/* Main Heading */}
-            <h2 className="lato-regular section-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight mb-6">
+            {/* Main Heading - smaller to fit bg */}
+            <h2 className="lato-regular section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight mb-4">
               <span className="block">{whyChooseLine1}</span>
               <span className="block">{whyChooseLine2}</span>
             </h2>
 
             {/* Description Text - Clean Typography (localized) */}
-            <div className="space-y-5 text-gray-600 leading-relaxed mb-10">
-              <p className="text-lg">
+            <div className="space-y-3 sm:space-y-4 text-gray-600 leading-relaxed mb-6 sm:mb-8">
+              <p className="text-sm sm:text-base">
                 {paragraph1}
               </p>
-              <p className="text-base">
+              <p className="text-sm sm:text-base">
                 {paragraph2}
               </p>
-              <p className="text-base">
+              <p className="text-sm sm:text-base">
                 {paragraph3}
               </p>
             </div>
@@ -121,10 +121,10 @@ const AboutUsSection = () => {
           </div>
 
           {/* RIGHT SIDE - Image matches left column height */}
-          <div className="relative order-1 lg:order-2 h-full min-h-[280px] sm:min-h-[320px]">
+          <div className="relative order-1 lg:order-2 h-full min-h-[200px] sm:min-h-[280px]">
             
             {/* Main Image Container - same height as text block */}
-            <div className="relative w-full h-full rounded-[2.5rem] bg-white shadow-lg overflow-hidden group">
+            <div className="relative w-full h-full rounded-2xl sm:rounded-[2rem] bg-white shadow-lg overflow-hidden group">
               
               {/* Image - dnaa.jpeg */}
               <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300">
@@ -149,8 +149,8 @@ const AboutUsSection = () => {
             </div>
 
             {/* Decorative Floating Element - Behind Image */}
-            <div className="absolute -bottom-8 -left-8 w-48 h-48 rounded-full bg-gradient-to-br from-blue-100 to-teal-100 blur-3xl opacity-60 -z-10" />
-            <div className="absolute -top-8 -right-8 w-40 h-40 rounded-full bg-gradient-to-br from-[#0F4679]/10 to-blue-200 blur-2xl opacity-50 -z-10" />
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-blue-100 to-teal-100 blur-2xl opacity-50 -z-10" />
+            <div className="absolute -top-4 -right-4 w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-[#0F4679]/10 to-blue-200 blur-xl opacity-40 -z-10" />
 
           </div>
 
