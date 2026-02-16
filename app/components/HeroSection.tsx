@@ -359,7 +359,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   <div className="hole-card-dotted-divider mb-2 -mx-3.5" style={{ width: 'calc(100% + 1.75rem)' }} />
                   <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
-                    <Image src="/favicon-og.jpeg" alt="Acuron" width={28} height={28} className="w-full h-full object-cover" />
+                    <Image src="/favicon.ico" alt="Acuron" width={32} height={32} className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <p className="text-[12px] font-semibold text-[#0F4679]">Acuron</p>
@@ -372,8 +372,8 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               </div>
             </div>
 
-            {/* Category buttons – in a single line at bottom of hero image */}
-            <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-wrap sm:flex-nowrap items-center justify-center gap-1 sm:gap-2 z-20 px-2 w-[95%] sm:w-auto">
+            {/* Category buttons – dynamically sized to fit in single row across all devices */}
+            <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-nowrap items-center justify-center gap-1 sm:gap-1.5 md:gap-2 z-20 px-2 max-w-[98%]">
               {[
                 { id: 'healthcare' as const, label: getLocalizedContent('Healthcare', { de: 'Gesundheitswesen', fr: 'Santé', ja: 'ヘルスケア', zh: '医疗保健', pt: 'Saúde' }) },
                 { id: 'chemicals' as const, label: getLocalizedContent('Chemicals', { de: 'Chemikalien', fr: 'Chimiques', ja: '化学', zh: '化工', pt: 'Químicos' }) },
@@ -384,13 +384,16 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                   key={id}
                   href="/products"
                   onClick={() => setSelectedCategory(id)}
-                  className={`px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full text-[11px] sm:text-sm font-medium border whitespace-nowrap transition-colors backdrop-blur-sm ${
+                  className={`flex-1 min-w-0 px-1.5 py-1.5 xs:px-2 xs:py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2 rounded-full text-[9px] xs:text-[10px] sm:text-xs md:text-sm font-medium border whitespace-nowrap transition-colors backdrop-blur-sm text-center ${
                     selectedCategory === id
                       ? 'bg-white text-gray-900 border-white'
                       : 'border-white/90 bg-white/10 text-white/95 hover:bg-white/20'
                   }`}
+                  style={{
+                    maxWidth: 'calc(25% - 0.375rem)'
+                  }}
                 >
-                  {label}
+                  <span className="block truncate">{label}</span>
                 </Link>
               ))}
             </div>
