@@ -1,26 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 
 export default function PartnerBanner() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Check if user has dismissed the banner
-  useEffect(() => {
-    const dismissed = localStorage.getItem('partner-banner-dismissed');
-    if (!dismissed) {
-      setIsVisible(true);
-    }
-  }, []);
-
-  const handleClose = () => {
-    setIsVisible(false);
-    localStorage.setItem('partner-banner-dismissed', 'true');
-  };
-
-  if (!isVisible) return null;
-
   return (
     <div className="w-full bg-[#e0e8f7] py-1.5 relative z-[70]">
       <div className="w-full flex items-center justify-between gap-4 pl-4 sm:pl-6 md:pl-7 pr-4 sm:pr-6 md:pr-8">
@@ -40,14 +22,13 @@ export default function PartnerBanner() {
           </a>
         </div>
 
-        {/* Right side - Close button */}
-        <button
-          onClick={handleClose}
-          className="p-1 text-gray-800 hover:text-gray-900 transition-colors flex-shrink-0 mr-0"
-          aria-label="Close banner"
+        {/* Right side - Fake close icon (non-functional) */}
+        <div
+          className="p-1 text-gray-800 flex-shrink-0 mr-0 cursor-default"
+          aria-hidden="true"
         >
           <X className="w-5 h-5" />
-        </button>
+        </div>
       </div>
     </div>
   );

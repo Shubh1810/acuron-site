@@ -5,6 +5,7 @@ import './globals.css'
 import CacheCleanupClient from './lib/CacheCleanupClient';
 import { Analytics } from "@vercel/analytics/react"
 import ChatbotWidget from './components/ChatbotWidget'
+import WhatsAppWidget from './components/WhatsAppWidget'
 import CookieBanner from './components/CookieBanner'
 // PostHog temporarily disabled - configure NEXT_PUBLIC_POSTHOG_KEY to enable
 import { PostHogProvider, PostHogPageView } from './providers/PostHogProvider'
@@ -278,6 +279,7 @@ export default function RootLayout({
             <CacheCleanupClient />
             {children}
             <ChatbotWidget />
+            <WhatsAppWidget />
             <CookieBanner />
             <Analytics />
           </PostHogErrorBoundary>

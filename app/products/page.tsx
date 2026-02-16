@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useSearchParams } from "next/navigation";
-import Header from "../components/Header";
+import { Download, Search, Menu } from 'lucide-react';
 import WhiteGridBackground from "../components/ui/white-grid-background";
 import PharmaCorporateGiftingShowcase from "../components/PharmaCorporateGiftingShowcase";
 import FoodProcessingShowcase from "../components/FoodProcessingShowcase";
@@ -12,13 +12,385 @@ import Link from "next/link";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
 import Footer from "../components/sections/Footer";
 import NewsletterModal from "../components/NewsletterModal";
+import CountrySelector from "../components/CountrySelector";
 import { allProducts } from "../lib/productData";
 import { useNewsletterModalTrigger } from "../lib/modalEvents";
+import { useCountryStore } from "../../lib/store";
+import { triggerNewsletterModal } from "../lib/modalEvents";
 
+
+// Custom Header for Products Page - No Logo, Centered Nav
+function ProductsHeader() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const searchButtonRef = useRef<HTMLButtonElement>(null);
+  const { selectedCountry } = useCountryStore();
+  const searchParams = useSearchParams();
+  
+  // Check which category is selected
+  const isPharmaCategory = searchParams.get('category') === 'pharma';
+  const isFoodCategory = searchParams.get('category') === 'food';
+  const isChemicalCategory = searchParams.get('category') === 'chemical';
+  
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Products' },
+    ...(isPharmaCategory ? [{ label: 'Pharmaceuticals' }] : []),
+    ...(isFoodCategory ? [{ label: 'Food Processing' }] : []),
+    ...(isChemicalCategory ? [{ label: 'Chemical Industry' }] : [])
+  ];
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isSearchExpanded) {
+      searchInputRef.current?.focus();
+    }
+  }, [isSearchExpanded]);
+
+  const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
+    if (selectedCountry.useEnglishContent) {
+      return englishText;
+    }
+    return translations[selectedCountry.language] || englishText;
+  };
+
+  const navigationLinks = [
+    { href: '/', label: getLocalizedContent('Home', { de: 'STARTSEITE', fr: 'ACCUEIL', ja: 'ホーム', zh: '首页', pt: 'INÍCIO' }) },
+    { href: '/certificates', label: getLocalizedContent('Certificates', { de: 'ZERTIFIKATE', fr: 'CERTIFICATS', ja: '証明書', zh: '证书', pt: 'CERTIFICADOS' }) },
+    { href: '/faq', label: getLocalizedContent('FAQ', { de: 'FAQ', fr: 'FAQ', ja: 'よくある質問', zh: '常见问题', pt: 'FAQ' }) },
+  ];
+
+  const productCategories = [
+    { label: getLocalizedContent('Healthcare', { de: 'Gesundheitswesen', fr: 'Soins de santé', ja: 'ヘルスケア', zh: '医疗保健', pt: 'Cuidados de Saúde' }), href: '/products' },
+    { label: getLocalizedContent('Food Processing', { de: 'Lebensmittelverarbeitung', fr: 'Transformation alimentaire', ja: '食品加工', zh: '食品加工', pt: 'Processamento de Alimentos' }), href: '/products?category=food' },
+    { label: getLocalizedContent('Pharmaceuticals', { de: 'Pharmazeutika', fr: 'Pharmaceutiques', ja: '製薬', zh: '制药', pt: 'Farmacêuticos' }), href: '/products?category=pharma' },
+    { label: getLocalizedContent('Chemical', { de: 'Chemisch', fr: 'Chimique', ja: '化学', zh: '化学', pt: 'Químico' }), href: '/products?category=chemical' },
+  ];
+
+  const productsText = getLocalizedContent('Products', { de: 'PRODUKTE', fr: 'PRODUITS', ja: '製品', zh: '产品', pt: 'PRODUTOS' });
+  const viewAllProductsText = getLocalizedContent('View All Products', { de: 'Alle Produkte anzeigen', fr: 'Voir tous les produits', ja: 'すべての製品を見る', zh: '查看所有产品', pt: 'Ver Todos os Produtos' });
+  const catalogText = getLocalizedContent('Catalog', { de: 'KATALOG', fr: 'CATALOGUE', ja: 'カタログ', zh: '目录', pt: 'CATÁLOGO' });
+  const searchPlaceholder = getLocalizedContent('Search', { de: 'SUCHEN', fr: 'RECHERCHER', ja: '検索', zh: '搜索', pt: 'PESQUISAR' });
+
+  const pillBase = 'neu-pill rounded-full bg-[#0F4679]/[0.06] backdrop-blur-md border border-[#0F4679]/10 transition-all duration-300';
+
+  const ourCompanyText = '+91 93229 61664';
+
+  return (
+    <header className="w-full px-4 sm:px-6 lg:px-8 pt-2 pb-3 relative z-[100]">
+      <div className="max-w-7xl mx-auto">
+        {/* Main Header Row - Logo + Navigation + Actions all in one line */}
+        <div className="flex items-center gap-3 mb-3">
+          {/* Logo */}
+          <Image
+            src="/acprod.png"
+            alt="Acuron Products"
+            width={180}
+            height={72}
+            className="object-contain flex-shrink-0"
+            priority
+          />
+          
+          {/* Desktop: Unified Navigation + Actions */}
+          <div className="hidden lg:flex items-center gap-3 flex-1 relative z-[150]">
+            {/* Nav Pill */}
+            <div className={`${pillBase} flex items-center justify-center px-3 py-1.5 relative z-[150]`}>
+              <nav className="flex items-center gap-1 xl:gap-2">
+                <Link
+                  href="/"
+                  className="text-sm font-google-sans font-normal px-2.5 py-1 rounded-full text-black hover:bg-black/5 transition-colors"
+                >
+                  {navigationLinks[0].label}
+                </Link>
+
+                {/* Products Dropdown */}
+                <div
+                  className="relative z-[200]"
+                  onMouseEnter={() => setIsProductsDropdownOpen(true)}
+                  onMouseLeave={() => setIsProductsDropdownOpen(false)}
+                >
+                  <Link
+                    href="/products"
+                    className="flex items-center gap-0.5 text-sm font-google-sans font-normal px-2.5 py-1 rounded-full text-black hover:bg-black/5 transition-colors"
+                  >
+                    {productsText}
+                    <svg className={`w-4 h-4 transition-transform ${isProductsDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </Link>
+                  <div
+                    className={`absolute top-full left-0 mt-1 w-56 rounded-2xl bg-white shadow-xl border border-gray-200 py-2 z-[200] transition-all ${
+                      isProductsDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'
+                    }`}
+                  >
+                    {productCategories.map((cat, i) => (
+                      <Link key={i} href={cat.href} className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#0F4679]">
+                        {cat.label}
+                      </Link>
+                    ))}
+                    <Link href="/products" className="block px-4 py-2.5 text-sm font-medium text-[#0F4679] hover:bg-[#0F4679]/5 border-t border-gray-100 mt-1 pt-2">
+                      {viewAllProductsText} →
+                    </Link>
+                  </div>
+                </div>
+
+                {navigationLinks.slice(1).map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm font-google-sans font-normal px-2.5 py-1 rounded-full text-black hover:bg-black/5 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Divider */}
+            <div className="h-6 w-px bg-gray-200"></div>
+
+            {/* Platform logos */}
+            <div className="flex flex-nowrap items-center gap-0.5 -mx-0.5 shrink-0">
+              <a href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 mt-1">
+                <Image src="/amazon.png" alt="Amazon" width={36} height={12} className="h-3 w-auto object-contain" />
+              </a>
+              <a href="https://www.meesho.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 ml-1">
+                <Image src="/meesho.png" alt="Meesho" width={64} height={22} className="h-6 sm:h-7 w-auto object-contain" />
+              </a>
+              <a href="https://www.flipkart.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -mr-1.5">
+                <Image src="/flip.png" alt="Flipkart" width={48} height={16} className="h-4 sm:h-5 w-auto object-contain" />
+              </a>
+              <a href="https://dir.indiamart.com/search.mp?ss=acuron&prdsrc=1&v=4" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -ml-0.5">
+                <Image src="/indiamart.png" alt="IndiaMART" width={48} height={16} className="h-4 sm:h-5 w-auto object-contain" />
+              </a>
+            </div>
+
+            {/* Divider */}
+            <div className="h-6 w-px bg-gray-200"></div>
+
+            {/* Catalog Download */}
+            <button
+              type="button"
+              onClick={triggerNewsletterModal}
+              className="neu-button flex items-center gap-2"
+              title="Download Catalog"
+            >
+              <Download className="w-4 h-4 flex-shrink-0" />
+              <span className="hidden xl:inline">{catalogText}</span>
+            </button>
+
+            {/* Phone Number */}
+            {isClient && (
+              <a
+                href="tel:+919322961664"
+                className="text-black hover:text-gray-800 font-medium text-[10px] sm:text-xs whitespace-nowrap transition-colors"
+              >
+                {ourCompanyText}
+              </a>
+            )}
+
+            {/* Search Icon */}
+            {isSearchExpanded ? (
+              <div className={`${pillBase} flex items-center w-[190px] px-2.5 py-1.5 overflow-hidden transition-all duration-300 ease-out`}>
+                <button
+                  ref={searchButtonRef}
+                  type="button"
+                  onClick={() => setIsSearchExpanded(false)}
+                  className="flex-shrink-0 flex items-center justify-center text-black hover:text-gray-800 transition-colors"
+                  aria-label="Search"
+                >
+                  <Search className="w-4 h-4" />
+                </button>
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  placeholder={searchPlaceholder}
+                  onBlur={(e) => {
+                    if (!e.relatedTarget || !searchButtonRef.current?.contains(e.relatedTarget as Node)) {
+                      setIsSearchExpanded(false);
+                    }
+                  }}
+                  onKeyDown={(e) => e.key === 'Escape' && setIsSearchExpanded(false)}
+                  className="bg-transparent text-xs sm:text-sm text-gray-700 placeholder-gray-400 focus:outline-none border-0 flex-1 min-w-0 ml-2"
+                />
+              </div>
+            ) : (
+              <button
+                ref={searchButtonRef}
+                type="button"
+                onClick={() => setIsSearchExpanded(true)}
+                className="flex items-center justify-center text-black hover:text-gray-800 transition-colors"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+            )}
+
+            {/* Language Selector */}
+            {isClient && <CountrySelector />}
+          </div>
+
+          {/* Mobile Phone + Hamburger */}
+          <div className="lg:hidden flex items-center gap-2 ml-auto">
+            {isClient && (
+              <a
+                href="tel:+919322961664"
+                className="text-[#0F4679] hover:text-[#0D3C6B] font-semibold text-xs whitespace-nowrap transition-colors"
+              >
+                {ourCompanyText}
+              </a>
+            )}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-[#0F4679] text-white hover:bg-[#0D3C6B] transition-colors"
+              aria-label="Toggle menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+        
+        {/* Subheading with gradient background - Full width */}
+        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 mb-3 overflow-hidden">
+          {/* Background gradient image */}
+          <div className="absolute inset-0">
+            <Image
+              src="/bluegreengradient.jpeg"
+              alt=""
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          
+          {/* Content */}
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-end">
+            <p className="text-sm md:text-base text-white font-medium max-w-2xl text-right">
+              ISO-certified medical supplies designed for healthcare professionals who demand excellence.
+            </p>
+          </div>
+        </div>
+
+        {/* Mobile Actions Row with Breadcrumbs */}
+        <div className="flex lg:hidden items-center justify-between gap-2 mb-2">
+          {/* Breadcrumbs - Mobile (left side) */}
+          <div className="flex-shrink min-w-0 -mb-1">
+            <Breadcrumbs items={breadcrumbItems} className="!text-[9px] sm:!text-[10px] !mb-0" />
+          </div>
+          
+          {/* Right side actions */}
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            {/* Platform logos - Mobile */}
+            <div className="flex flex-nowrap items-center gap-0.5 -mx-0.5 shrink-0">
+              <a href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 mt-1">
+                <Image src="/amazon.png" alt="Amazon" width={36} height={12} className="h-2.5 sm:h-3 w-auto object-contain" />
+              </a>
+              <a href="https://www.meesho.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 ml-1">
+                <Image src="/meesho.png" alt="Meesho" width={64} height={22} className="h-5 sm:h-6 w-auto object-contain" />
+              </a>
+              <a href="https://www.flipkart.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -mr-1.5">
+                <Image src="/flip.png" alt="Flipkart" width={48} height={16} className="h-3.5 sm:h-4 w-auto object-contain" />
+              </a>
+              <a href="https://dir.indiamart.com/search.mp?ss=acuron&prdsrc=1&v=4" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -ml-0.5">
+                <Image src="/indiamart.png" alt="IndiaMART" width={48} height={16} className="h-3.5 sm:h-4 w-auto object-contain" />
+              </a>
+            </div>
+            
+            {/* Catalog Download */}
+            <button
+              type="button"
+              onClick={triggerNewsletterModal}
+              className="neu-button flex items-center gap-2"
+              title="Download Catalog"
+            >
+              <Download className="w-4 h-4 flex-shrink-0" />
+              <span className="hidden sm:inline">{catalogText}</span>
+            </button>
+
+            {/* Search Icon */}
+            {isSearchExpanded ? (
+            <div className={`${pillBase} flex items-center w-[150px] sm:w-[190px] px-2.5 py-1.5 overflow-hidden transition-all duration-300 ease-out`}>
+              <button
+                ref={searchButtonRef}
+                type="button"
+                onClick={() => setIsSearchExpanded(false)}
+                className="flex-shrink-0 flex items-center justify-center text-black hover:text-gray-800 transition-colors"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder={searchPlaceholder}
+                onBlur={(e) => {
+                  if (!e.relatedTarget || !searchButtonRef.current?.contains(e.relatedTarget as Node)) {
+                    setIsSearchExpanded(false);
+                  }
+                }}
+                onKeyDown={(e) => e.key === 'Escape' && setIsSearchExpanded(false)}
+                className="bg-transparent text-xs sm:text-sm text-gray-700 placeholder-gray-400 focus:outline-none border-0 flex-1 min-w-0 ml-2"
+              />
+            </div>
+          ) : (
+            <button
+              ref={searchButtonRef}
+              type="button"
+              onClick={() => setIsSearchExpanded(true)}
+              className="flex items-center justify-center text-black hover:text-gray-800 transition-colors"
+              aria-label="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+            )}
+
+            {/* Language Selector */}
+            {isClient && <CountrySelector />}
+          </div>
+        </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden mt-2 overflow-hidden transition-all duration-300 ${
+          isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className={`${pillBase} p-3 rounded-lg`}>
+          <nav className="flex flex-col gap-1">
+            {navigationLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-4 py-3 text-sm font-normal text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/products"
+              className="px-4 py-3 text-sm font-normal text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {productsText}
+            </Link>
+          </nav>
+        </div>
+      </div>
+      </div>
+    </header>
+  );
+}
 
 // Component that uses useSearchParams - needs to be wrapped in Suspense
 function ProductsContent() {
-  const [activeCategory, setActiveCategory] = useState("kits");
+  const [activeCategory, setActiveCategory] = useState("drapes");
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const scrollableNavRef = useRef<HTMLDivElement>(null);
@@ -67,7 +439,7 @@ function ProductsContent() {
     return terms.some(t => lower.includes(t));
   };
 
-  // Apple-like navbar categories with predicates
+  // Minimal navbar categories with predicates - Drapes first, Kits 4th
   const categories: Array<{ key: string; label: string; predicate: (p: typeof allProducts[number]) => boolean }> = [
     // Drapes first
     { key: 'drapes', label: 'Drapes', predicate: (p) =>
@@ -79,8 +451,10 @@ function ProductsContent() {
       )
     },
     { key: 'sheets', label: 'Sheets', predicate: (p) => includesAny(p.name, ['sheet', 'underpad', 'wrap']) && !includesAny(p.name, ['gown']) },
-    { key: 'surgical-gowns', label: 'Surgical Gowns', predicate: (p) => includesAny(p.name, ['gown']) },
-    { key: 'medical-coveralls', label: 'Medical Coveralls', predicate: (p) => includesAny(p.name, ['coverall', 'labcoat', 'scrub', 'scrub suit']) },
+    { key: 'surgical-gowns', label: 'Gowns', predicate: (p) => includesAny(p.name, ['gown']) },
+    { key: 'medical-coveralls', label: 'Coveralls/Labcoats', predicate: (p) => includesAny(p.name, ['coverall', 'labcoat', 'scrub', 'scrub suit']) },
+    // Kits 4th position
+    { key: 'kits', label: 'Kits & Packs', predicate: (p) => p.category === 'Medical Kits' },
     { key: 'face-masks', label: 'Face Masks', predicate: (p) => includesAny(p.name, ['mask']) || includesAny(p.category, ['masks']) },
     { key: 'surgical-caps', label: 'Surgical Caps', predicate: (p) => includesAny(p.name, ['cap']) },
     { key: 'shoe-covers', label: 'Shoe Covers', predicate: (p) => 
@@ -95,8 +469,6 @@ function ProductsContent() {
         return !matched;
       }
     },
-    // Kits last
-    { key: 'kits', label: 'Kits & Packs', predicate: (p) => p.category === 'Medical Kits' },
   ];
 
   // Filter products based on active category
@@ -192,38 +564,41 @@ function ProductsContent() {
 
   return (
     <>
-      <WhiteGridBackground />
+      {/* Minimal Clean Background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100 -z-50"></div>
       
-              <Header />
-        <div className="pt-4 min-h-screen relative z-10">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+      <ProductsHeader />
+      <div className="min-h-screen relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Category-Specific Showcases */}
           {isPharmaCategory && (
-            <div className="mb-16">
+            <div className="mb-12 pt-6">
               <PharmaCorporateGiftingShowcase />
             </div>
           )}
           
           {isFoodCategory && (
-            <div className="mb-16">
+            <div className="mb-12 pt-6">
               <FoodProcessingShowcase />
             </div>
           )}
           
           {isChemicalCategory && (
-            <div className="mb-16">
+            <div className="mb-12 pt-6">
               <ChemicalShowcase />
             </div>
           )}
-          {/* Web3 Category Navigation with Glass Effect */}
-          <div className="mb-6 pb-4 relative z-[60]">
-            <div className="relative bg-white/80 backdrop-blur-[24px] shadow-lg p-3 sm:p-4 md:p-6 border border-gray-200 overflow-hidden rounded-3xl">
-              {/* Subtle gradient accent */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 via-white to-teal-50/50 rounded-3xl opacity-60"></div>
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-200 to-transparent"></div>
-              <div ref={scrollableNavRef} className="relative flex items-center justify-start space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-5 overflow-x-auto scrollbar-hide z-10 px-2 sm:px-4">
+
+          {/* Breadcrumbs - Desktop only */}
+          <div className="hidden lg:block pt-6 pb-4">
+            <Breadcrumbs items={breadcrumbItems} />
+          </div>
+
+          {/* Minimal Category Navigation */}
+          <div className="sticky top-20 z-50 mb-8 pb-4">
+            <div className="relative liquid-glass-container rounded-2xl p-3 md:p-4">
+              <div ref={scrollableNavRef} className="relative flex items-center justify-start gap-2 md:gap-3 overflow-x-auto scrollbar-hide px-1">
                 {categories.map((category, index) => {
                   // Map categories to appropriate icons and display names
                   const getCategoryConfig = (categoryKey: string) => {
@@ -234,9 +609,9 @@ function ProductsContent() {
                             <Image
                               src="/medical.png"
                               alt="Medical Kits Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Kits & Packs"
@@ -247,9 +622,9 @@ function ProductsContent() {
                             <Image
                               src="/shave.png"
                               alt="Razors Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Razors"
@@ -260,9 +635,9 @@ function ProductsContent() {
                             <Image
                               src="/PPE Mask Icon.png"
                               alt="Face Masks Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Face Masks"
@@ -273,9 +648,9 @@ function ProductsContent() {
                             <Image
                               src="/caphood.png"
                               alt="Surgical Caps Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Surgical Caps"
@@ -286,9 +661,9 @@ function ProductsContent() {
                             <Image
                               src="/boot.png"
                               alt="PPE Shoe Covers Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Shoe Covers"
@@ -299,9 +674,9 @@ function ProductsContent() {
                             <Image
                               src="/Health Icon Apron.png"
                               alt="Surgical Gowns Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Gowns"
@@ -312,9 +687,9 @@ function ProductsContent() {
                             <Image
                               src="/PPE Suit Icon.png"
                               alt="Coveralls Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Coveralls/Labcoats"
@@ -325,9 +700,9 @@ function ProductsContent() {
                             <Image
                               src="/Vascular Surgery Icon.png"
                               alt="Drapes Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Drapes"
@@ -338,9 +713,9 @@ function ProductsContent() {
                             <Image
                               src="/surgery.png"
                               alt="ISO Sheets Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Sheets"
@@ -351,9 +726,9 @@ function ProductsContent() {
                             <Image
                               src="/PPE Gloves Icon.png"
                               alt="Gloves Icon"
-                              width={32}
-                              height={32}
-                              className="object-contain h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                              width={24}
+                              height={24}
+                              className="object-contain w-5 h-5 md:w-6 md:h-6"
                             />
                           ),
                           displayName: "Gloves"
@@ -361,7 +736,7 @@ function ProductsContent() {
                       case "miscellaneous":
                         return {
                           icon: (
-                            <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
                             </svg>
                           ),
@@ -370,7 +745,7 @@ function ProductsContent() {
                       default:
                         return {
                           icon: (
-                            <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                           ),
@@ -383,196 +758,91 @@ function ProductsContent() {
                   const isActive = activeCategory === category.key;
 
                   return (
-                    <motion.div
+                    <motion.button
                       key={category.key}
-                      initial={{ opacity: 0, scale: 0.9 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      transition={{ duration: 0.2, delay: index * 0.03 }}
                       onClick={() => {
                         setActiveCategory(category.key);
                         const el = productsSectionRef.current;
                         if (el) {
-                          const headerOffset = 120;
+                          const headerOffset = 140;
                           const y = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
                           window.scrollTo({ top: y, behavior: 'smooth' });
                         }
                       }}
-                      className="flex flex-col items-center space-y-0.5 sm:space-y-1 md:space-y-2 min-w-[70px] sm:min-w-[80px] md:min-w-[90px] group cursor-pointer shrink-0"
+                      className={`group relative flex items-center gap-2 rounded-xl transition-all duration-300 ${
+                        isActive 
+                          ? 'bg-[#0F4679]/[0.08] backdrop-blur-sm text-[#0F4679] shadow-sm border border-[#0F4679]/20 px-3 py-3 md:py-3.5' 
+                          : 'bg-white/70 backdrop-blur-sm text-gray-600 hover:text-[#0F4679] border border-gray-200/60 hover:border-[#0F4679]/15 hover:shadow-sm hover:bg-white/90 p-3 md:p-3.5 md:hover:px-3'
+                      }`}
                     >
-                                              <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 aspect-square rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 shrink-0 ${
-                          isActive 
-                            ? 'bg-gradient-to-br from-blue-500/20 to-teal-500/20 backdrop-blur-sm text-blue-700 shadow-lg border border-blue-300' 
-                            : 'text-gray-600 hover:bg-gray-100 hover:backdrop-blur-sm'
-                        }`}>
-                          {config.icon}
-                        </div>
-                        <span className={`text-[10px] sm:text-xs md:text-sm font-medium transition-colors duration-300 text-center ${
-                          isActive 
-                            ? 'text-blue-700 font-semibold' 
-                            : 'text-gray-600'
-                        }`}>
+                      {/* Icon - Always visible, full size on mobile */}
+                      <div className="flex-shrink-0 flex items-center justify-center min-w-[24px] min-h-[24px]">
+                        {config.icon}
+                      </div>
+                      
+                      {/* Category Name - Shows on active (mobile) or hover (desktop) */}
+                      <span className={`text-xs md:text-sm font-medium whitespace-nowrap transition-all duration-300 ${
+                        isActive 
+                          ? 'max-w-[120px] opacity-100' 
+                          : 'max-w-0 opacity-0 md:group-hover:max-w-[120px] md:group-hover:opacity-100'
+                      }`}>
                         {config.displayName}
                       </span>
-                    </motion.div>
+                    </motion.button>
                   );
                 })}
               </div>
 
-                              {/* Scroll Indicator - Mobile Only */}
-                {showScrollIndicator && (
-                  <div className="absolute top-0 right-0 h-full w-1.5 md:hidden pointer-events-none z-10 flex items-center">
-                    <div className="w-full h-full bg-gradient-to-b from-blue-500/70 via-blue-400/40 to-teal-500/30 opacity-80 blur-[6px] shadow-[0_0_8px_2px_#3B82F6]"></div>
-                  </div>
-                )}
-            </div>
-          </div>
-
-          {/* Breadcrumbs */}
-          <div className="mb-8">
-            <Breadcrumbs items={breadcrumbItems} />
-          </div>
-          
-          {/* Futuristic Hero Section */}
-          <div className="relative text-center mb-8 overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-br from-[#0F4679]/8 to-[#0F4679]/4 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-gradient-to-br from-[#3B82F6]/6 to-[#0F4679]/4 rounded-full blur-3xl"></div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative z-10"
-            >
-              {/* Header Layout: Logo + Badge Left, Description Right */}
-              {/* Mobile: Logo and Badge side-by-side, centered. Text below, centered. */}
-              {/* Desktop: Logo and Badge side-by-side on left. Text on right. */}
-              <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-0 px-4">
-                {/* Logo Block - Much Larger */}
-                <div className="flex flex-row items-center mb-0">
-                  <Image
-                    src="/acprod.png"
-                    alt="Acuron Products - Premium Medical Supplies Manufacturer"
-                    width={280} // Much larger width
-                    height={112} // Much larger height
-                    className="object-contain drop-shadow-lg md:w-[350px] md:h-[140px]" // Even larger on desktop
-                    priority
-                  />
+              {/* Scroll Indicator - Mobile Only */}
+              {showScrollIndicator && (
+                <div className="absolute top-0 right-0 h-full w-8 md:hidden pointer-events-none flex items-center justify-end pr-1">
+                  <div className="w-1 h-12 bg-gradient-to-b from-[#0F4679] to-transparent rounded-full opacity-50"></div>
                 </div>
-
-                {/* Description Text Block */}
-                <div className="w-full text-center md:flex-1 md:text-right md:pl-12 mt-0">
-                  <p className="text-sm md:text-xl text-gray-600 leading-relaxed font-light max-w-2xl mx-auto md:ml-auto md:mr-0">
-                    Discover our comprehensive range of ISO-certified medical supplies, designed for healthcare professionals who demand excellence in every procedure.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-
-          {/* Full-Width Explore Products Banner Divider */}
-          <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-16">
-            <div className="relative overflow-hidden bg-gradient-to-r from-[#0F4679] via-[#1A5A8A] to-[#158C07] py-16 md:py-24">
-              {/* Background Pattern */}
-              <div className="absolute inset-0">
-                <div className="absolute top-0 left-0 w-full h-full opacity-10">
-                  <div className="absolute top-10 left-1/4 w-32 h-32 bg-white rounded-full blur-2xl"></div>
-                  <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-white rounded-full blur-3xl"></div>
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white rounded-full blur-3xl opacity-50"></div>
-                </div>
-                
-                {/* Subtle Grid Pattern */}
-                <div className="absolute inset-0 opacity-[0.03]" style={{
-                  backgroundImage: `
-                    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-                  `,
-                  backgroundSize: '40px 40px'
-                }}></div>
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  viewport={{ once: true }}
-                >
-                  {/* Main Heading */}
-                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 -mt-10 leading-tight">
-                    Explore
-                    <span className="block bg-gradient-to-r from-white via-blue-100 to-green-100 bg-clip-text text-transparent">
-                      Products
-                    </span>
-                  </h2>
-                  
-                  {/* Subtitle */}
-                  <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light">
-                    Browse our extensive range of medical disposables and kits across all categories. 
-                    <span className="block mt-2">Filter by category to find exactly what you need.</span>
-                  </p>
-
-                  {/* Decorative Elements */}
-                  <div className="flex justify-center items-center mt-8 space-x-4">
-                    <div className="w-12 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
-                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                    <div className="w-16 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
-                    <div className="w-2 h-2 bg-white rounded-full animate-pulse delay-300"></div>
-                    <div className="w-12 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
-                  </div>
-
-                  {/* Category Count Badge */}
-                  <div className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
-                    <span className="text-white font-medium">
-                      {allProducts.length}+ Products • {categories.length} Categories
-                    </span>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Bottom Wave Divider */}
-              <div className="absolute bottom-0 left-0 w-full">
-                <svg className="relative block w-full h-12" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                  <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-current text-white"></path>
-                </svg>
-              </div>
+              )}
             </div>
           </div>
 
           {/* Scroll target for smooth jump from category navbar */}
-          <div ref={productsSectionRef}></div>
+          <div ref={productsSectionRef} className="mb-6"></div>
 
-          {/* Main Product Grid (Mini Replicas - Filterable) */}
+          {/* Minimal Section Header */}
+          <div className="mb-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
+                  {categories.find(c => c.key === activeCategory)?.label || 'Products'}
+                </h2>
+                <p className="text-sm text-gray-600 mt-1">
+                  {expandedProducts.length} {expandedProducts.length === 1 ? 'product' : 'products'} available
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Minimal Product Grid */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeCategory} // Ensure this key changes for AnimatePresence to work
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }} // Faster transition
-              className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10 mb-24" // Adjusted gap and columns
+              key={activeCategory}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 mb-16"
             >
               {expandedProducts.map((product, index) => (
-              <motion.div
-                  key={`${product.id}${product.__variantCode ? '-' + product.__variantCode : ''}`} // Ensure unique key per variant
+                <motion.div
+                  key={`${product.id}${product.__variantCode ? '-' + product.__variantCode : ''}`}
                   initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }} // Staggered animation for cards
-                  className="group relative flex flex-col h-full" // Added flex-col and h-full for consistent card height
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.03 }}
+                  className="group bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col"
                 >
-                  {/* Background Container - Extends behind image */}
-                  <div className="absolute inset-0 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 -z-10"></div>
-
-                  {/* Image Container - Smaller */}
-                  <div className="relative overflow-hidden aspect-[4/3] mb-2 rounded-t-2xl bg-white">
-                  <Image 
+                  {/* Image Container */}
+                  <div className="relative aspect-square bg-white overflow-hidden">
+                    <Image 
                       src={
                         (product as any).__variantCode === 'AP N95 03' && product.secondaryImage
                           ? product.secondaryImage
@@ -582,108 +852,116 @@ function ProductsContent() {
                               ? product.secondaryImage
                               : product.image
                       }
-                    alt={product.name}
-                    fill
-                      className="object-contain transition-all duration-500 group-hover:scale-105 p-4"
-                  />
-                </div>
-
-                  {/* Content Container - Scaled Down Replica */}
-                  <div className="flex flex-col flex-grow bg-gray-100/40 backdrop-blur-xl rounded-b-2xl p-5 border-t-0 border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-[#0F4679] transition-colors duration-300 leading-tight">
-                    {product.__displayName || product.name}
-                  </h3>
-                    <p className="text-gray-600 mb-3 text-xs leading-relaxed line-clamp-3 flex-grow hidden sm:block">
-                    {product.description}
-                  </p>
-
-                    {/* Specifications - Always visible */}
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {product.specs.slice(0, 2).map((spec, idx) => ( // Show fewer specs or make them smaller
-                      <span 
-                        key={idx}
-                          className="px-2 py-0.5 bg-white/50 backdrop-blur-sm text-gray-700 text-[10px] rounded-full font-medium border border-gray-200/40"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                      {product.specs.length > 2 && (
-                         <span className="px-2 py-0.5 bg-white/50 backdrop-blur-sm text-gray-700 text-[10px] rounded-full font-medium border border-gray-200/40">
-                           +{product.specs.length - 2} more
-                         </span>
-                      )}
+                      alt={product.name}
+                      fill
+                      className="object-contain p-6 transition-transform duration-300 group-hover:scale-105"
+                    />
                   </div>
 
-                    {/* Action Buttons - Smaller */}
-                    <div className="mt-auto flex flex-col sm:flex-row gap-2"> {/* mt-auto pushes to bottom */}
-                      <button className="flex-1 px-3 py-2 text-xs bg-gradient-to-r from-[#158C07]/10 to-[#0F4679]/10 hover:from-[#158C07]/20 hover:to-[#0F4679]/20 text-[#0F4679] rounded-lg transition-all duration-300 font-semibold border border-[#0F4679]/20 hover:border-[#0F4679]/40 hover:shadow-md">
-                      Get Quote
-                    </button>
+                  {/* Content */}
+                  <div className="flex flex-col flex-grow p-4">
+                    <h3 className="text-sm md:text-base font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[2.5rem]">
+                      {product.__displayName || product.name}
+                    </h3>
+                    
+                    <p className="text-xs text-gray-600 mb-3 line-clamp-2 hidden sm:block flex-grow">
+                      {product.description}
+                    </p>
+
+                    {/* Specs */}
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {product.specs.slice(0, 2).map((spec, idx) => (
+                        <span 
+                          key={idx}
+                          className="px-2 py-1 bg-gray-100 text-gray-700 text-[10px] rounded-md font-medium"
+                        >
+                          {spec}
+                        </span>
+                      ))}
+                      {product.specs.length > 2 && (
+                        <span className="px-2 py-1 bg-gray-100 text-gray-700 text-[10px] rounded-md font-medium">
+                          +{product.specs.length - 2}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Actions */}
+                    <div className="mt-auto flex gap-2">
+                      <button className="flex-1 px-3 py-2 text-xs font-medium text-[#0F4679] bg-[#0F4679]/5 hover:bg-[#0F4679]/10 rounded-lg transition-colors duration-200">
+                        Quote
+                      </button>
                       <Link 
                         href={`/products/${product.slug}`}
-                        className="relative flex-1 px-3 py-2 text-xs bg-white hover:bg-[#0F4679] rounded-lg transition-all duration-300 font-semibold shadow-md hover:shadow-lg hover:scale-105 overflow-hidden group text-center"
+                        className="flex-1 px-3 py-2 text-xs font-medium text-white bg-[#0F4679] hover:bg-[#0D3A64] rounded-lg transition-colors duration-200 text-center"
                       >
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#0F4679] to-[#158C07] rounded-lg p-px">
-                          <div className="w-full h-full bg-white group-hover:bg-[#0F4679] rounded-[7px] transition-all duration-300"></div>
-                      </div>
-                        <span className="relative bg-gradient-to-r from-[#0F4679] to-[#158C07] group-hover:text-white bg-clip-text text-transparent transition-all duration-300">
-                        Details →
-                      </span>
-                    </Link>
+                        Details
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-               {filteredMiniProducts.length === 0 && (
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{duration: 0.3}}
-                    className="col-span-full text-center py-12"
-                >
-                    <Image src="/placeholder.png" alt="No products found" width={128} height={128} className="mx-auto mb-4 opacity-50" />
-                    <p className="text-gray-600 text-lg">No products found in "{activeCategory}".</p>
-                    <p className="text-gray-500 text-sm">Try selecting another category to see available products.</p>
                 </motion.div>
-            )}
+              ))}
+              
+              {expandedProducts.length === 0 && (
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="col-span-full text-center py-16"
+                >
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
+                    <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-900 font-medium mb-1">No products found</p>
+                  <p className="text-sm text-gray-600">Try selecting another category</p>
+                </motion.div>
+              )}
             </motion.div>
           </AnimatePresence>
 
 
-          {/* Enhanced CTA Section */}
+          {/* Custom Solutions CTA Section with Gradient Background */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: filteredMiniProducts.length > 0 ? 0.4 : 0.1 }} // Adjust delay based on product loading
-            className="relative overflow-hidden bg-white rounded-3xl p-12 md:p-16 border border-gray-200 shadow-lg"
+            transition={{ duration: 0.4 }}
+            className="relative -mx-4 sm:-mx-6 lg:-mx-8 overflow-hidden"
           >
-            {/* Simple Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#0F4679] rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#158C07] rounded-full blur-3xl"></div>
+            {/* Background gradient image */}
+            <div className="absolute inset-0">
+              <Image
+                src="/bluegreengradient.jpeg"
+                alt=""
+                fill
+                className="object-cover"
+              />
             </div>
-
-            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-              <div className="text-center lg:text-left">
-                <h2 className="text-4xl md:text-5xl font-bold text-[#0F4679] mb-6 leading-tight">
-                  Need Custom Solutions?
-                </h2>
-                <p className="text-gray-600 max-w-2xl text-xl leading-relaxed">
-                  Our expert team specializes in creating tailored medical supply solutions for healthcare facilities of all sizes. From bulk orders to specialized requirements.
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-10 py-5 bg-[#0F4679] text-white font-bold rounded-2xl transition-all duration-300 hover:bg-[#0D3A64] hover:shadow-xl hover:scale-105 flex items-center gap-3 text-lg">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  Contact Expert
-                </button>
+            
+            {/* Content */}
+            <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-10 md:py-14">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+                <div className="text-center lg:text-left flex-1">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-white">
+                    Need Custom Solutions?
+                  </h2>
+                  <p className="text-white text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed">
+                    Our expert team specializes in creating tailored medical supply solutions for healthcare facilities of all sizes.
+                  </p>
+                </div>
                 
-                <button className="px-10 py-5 bg-white text-[#0F4679] font-bold rounded-2xl border-2 border-[#0F4679] hover:bg-[#0F4679] hover:text-white transition-all duration-300 hover:shadow-xl hover:scale-105 text-lg">
-                  View Catalog
-                </button>
+                <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+                  <button className="px-8 py-3.5 bg-white text-[#0F4679] font-semibold rounded-xl transition-all duration-200 hover:bg-gray-100 hover:shadow-lg flex items-center justify-center gap-2 text-sm md:text-base">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    Contact Us
+                  </button>
+                  
+                  <button className="px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border-2 border-white/40 hover:bg-white/20 transition-all duration-200 text-sm md:text-base">
+                    View Catalog
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -705,8 +983,8 @@ function ProductsContent() {
 function ProductsLoading() {
   return (
     <>
-      <WhiteGridBackground />
-      <Header />
+      <div className="fixed inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100 -z-50"></div>
+      <ProductsHeader />
       <div className="pt-4 min-h-screen relative z-10">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex items-center justify-center min-h-[400px]">

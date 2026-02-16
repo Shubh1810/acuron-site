@@ -73,16 +73,18 @@ const AboutUsSection = () => {
 
   return (
     <section className="relative w-full py-8 sm:py-12 lg:py-16 overflow-hidden">
-      {/* Background: aboutbg.jpeg only, rotated 90° counter-clockwise */}
+      {/* Background: whychoose.jpeg fitted to section */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div
-          className="absolute w-[100vmax] h-[100vmax] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-90deg]"
-          style={{
-            backgroundImage: 'url(/aboutbg.jpeg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
+        <Image
+          src="/why.jpeg"
+          alt=""
+          fill
+          className="object-cover object-center opacity-90"
+          priority
         />
+        {/* Blended white-blue overlay covering left half */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[80%] bg-gradient-to-r from-white via-white/90 via-white/70 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[70%] bg-gradient-to-br from-[#0F4679]/[0.04] via-blue-50/30 via-transparent to-transparent" />
       </div>
 
       <div className="relative max-w-[1200px] mx-auto px-3 sm:px-6 lg:px-8">
@@ -93,14 +95,41 @@ const AboutUsSection = () => {
           {/* LEFT SIDE - Content */}
           <div className="relative z-10 order-2 lg:order-1">
             
-            {/* Section Label - Neumorphic Style */}
-            <div className="inline-flex items-center gap-3 mb-3 sm:mb-5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-gradient-to-br from-white to-slate-50 shadow-[8px_8px_16px_rgba(148,163,184,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] border border-white/60">
+            {/* Mobile: Tag + Heading + Image all in same row */}
+            <div className="flex lg:hidden items-start gap-4 mb-6">
+              <div className="flex-1 min-w-0">
+                {/* Section Label - Neumorphic Style */}
+                <div className="inline-flex items-center gap-2 mb-3 px-3 py-1.5 rounded-xl bg-gradient-to-br from-white to-slate-50 shadow-[8px_8px_16px_rgba(148,163,184,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] border border-white/60">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#0F4679] to-teal-600 shadow-lg shadow-[#0F4679]/30" />
+                  <span className="text-[10px] sm:text-xs font-semibold text-[#0F4679] uppercase tracking-wider">{aboutUsLabel}</span>
+                </div>
+                
+                {/* Main Heading - Mobile (Larger) */}
+                <h2 className="lato-regular section-heading text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight">
+                  <span className="block">{whyChooseLine1}</span>
+                  <span className="block">{whyChooseLine2}</span>
+                </h2>
+              </div>
+              
+              {/* Square Image Container - Mobile (Pinned to top) */}
+              <div className="relative w-40 sm:w-48 aspect-square rounded-xl bg-white shadow-lg overflow-hidden flex-shrink-0 self-start">
+                <Image
+                  src="/gloveabout.jpeg"
+                  alt="Acuron Healthcare"
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
+            </div>
+
+            {/* Desktop: Section Label only */}
+            <div className="hidden lg:inline-flex items-center gap-3 mb-3 sm:mb-5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-gradient-to-br from-white to-slate-50 shadow-[8px_8px_16px_rgba(148,163,184,0.15),-8px_-8px_16px_rgba(255,255,255,0.7)] border border-white/60">
               <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#0F4679] to-teal-600 shadow-lg shadow-[#0F4679]/30" />
               <span className="text-xs sm:text-sm font-semibold text-[#0F4679] uppercase tracking-wider">{aboutUsLabel}</span>
             </div>
 
-            {/* Main Heading - smaller to fit bg */}
-            <h2 className="lato-regular section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight mb-4">
+            {/* Desktop: Heading only */}
+            <h2 className="hidden lg:block lato-regular section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent leading-tight mb-4">
               <span className="block">{whyChooseLine1}</span>
               <span className="block">{whyChooseLine2}</span>
             </h2>
@@ -120,13 +149,13 @@ const AboutUsSection = () => {
 
           </div>
 
-          {/* RIGHT SIDE - Image matches left column height */}
-          <div className="relative order-1 lg:order-2 h-full min-h-[200px] sm:min-h-[280px]">
+          {/* RIGHT SIDE - Image (Desktop only) */}
+          <div className="relative hidden lg:block order-1 lg:order-2 h-full min-h-[200px] sm:min-h-[280px]">
             
             {/* Main Image Container - same height as text block */}
             <div className="relative w-full h-full rounded-2xl sm:rounded-[2rem] bg-white shadow-lg overflow-hidden group">
               
-              {/* Image - dnaa.jpeg */}
+              {/* Image - gloveabout.jpeg */}
               <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300">
                 <div className="relative w-full h-full">
                   <Image

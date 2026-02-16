@@ -181,7 +181,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               />
             </div>
 
-            {/* Recognition logos – compact, single line */}
+            {/* Recognition logos – optimized for mobile */}
             <div className="flex flex-nowrap items-center justify-start gap-1 sm:gap-1.5 mb-8 overflow-hidden">
               {[
                 { src: '/iso134.webp', alt: 'ISO Certification', name: 'ISO' },
@@ -191,7 +191,13 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
               ].map((logo, index) => (
                 <div
                   key={index}
-                  className={`flex shrink-0 items-center justify-center ${logo.name === 'NSIC' ? 'h-40' : logo.name === 'CDSCO' ? 'h-20' : 'h-16'} ${logo.name === 'CDSCO' ? '-mx-3' : ''} ${logo.name === 'NSIC' ? '-mx-4 translate-y-1' : ''}`}
+                  className={`flex shrink-0 items-center justify-center ${
+                    logo.name === 'NSIC' 
+                      ? 'h-20 sm:h-28 lg:h-40' 
+                      : logo.name === 'CDSCO' 
+                        ? 'h-12 sm:h-16 lg:h-20' 
+                        : 'h-10 sm:h-12 lg:h-16'
+                  } ${logo.name === 'CDSCO' ? '-mx-1 sm:-mx-2 lg:-mx-3' : ''} ${logo.name === 'NSIC' ? '-mx-2 sm:-mx-3 lg:-mx-4 translate-y-0.5 sm:translate-y-1' : ''}`}
                 >
                   <Image
                     src={logo.src}
@@ -206,7 +212,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
                           : 'opacity-70 filter grayscale'
                     }`}
                     style={{ width: 'auto', height: 'auto' }}
-                    sizes={logo.name === 'NSIC' ? '(max-width: 640px) 110px, (max-width: 768px) 160px, 220px' : '(max-width: 640px) 50px, (max-width: 768px) 70px, 110px'}
+                    sizes={logo.name === 'NSIC' ? '(max-width: 640px) 80px, (max-width: 768px) 120px, 220px' : '(max-width: 640px) 40px, (max-width: 768px) 50px, 110px'}
                   />
                 </div>
               ))}
@@ -249,8 +255,9 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
             <div className="flex flex-wrap gap-4 mt-6">
               <button
                 onClick={handleCatalogDownload}
-                className="inline-flex items-center px-4 py-2.5 text-sm border-2 border-gray-800 rounded-full text-gray-900 font-semibold hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-sm border-2 border-gray-800 rounded-full text-gray-900 font-semibold hover:bg-gray-50 transition-colors"
               >
+                <Download className="w-4 h-4" />
                 {downloadCatalogText}
               </button>
               <Link

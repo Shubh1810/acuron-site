@@ -8,11 +8,10 @@ import WhiteGridBackground from "../components/ui/white-grid-background";
 
 function AnimatedMotif() {
   const motifs = [
-    { size: 250, x: '10vw', y: '20vh', duration: 40, opacity: 0.03 },
-    { size: 180, x: '80vw', y: '30vh', duration: 30, opacity: 0.05 },
-    { size: 120, x: '50vw', y: '75vh', duration: 50, opacity: 0.04 },
-    { size: 160, x: '20vw', y: '80vh', duration: 35, opacity: 0.04 },
-    { size: 90, x: '90vw', y: '70vh', duration: 45, opacity: 0.03 },
+    { size: 300, x: '5vw', y: '15vh', duration: 50, opacity: 0.02 },
+    { size: 200, x: '85vw', y: '25vh', duration: 45, opacity: 0.025 },
+    { size: 150, x: '45vw', y: '70vh', duration: 55, opacity: 0.02 },
+    { size: 180, x: '15vw', y: '85vh', duration: 48, opacity: 0.02 },
   ];
 
   return (
@@ -20,16 +19,16 @@ function AnimatedMotif() {
       {motifs.map((motif, i) => (
         <motion.div
           key={i}
-          initial={{ x: motif.x, y: motif.y, scale: 0.5, opacity: 0 }}
-          animate={{ scale: [1, 1.2, 1], rotate: 360 }}
+          initial={{ x: motif.x, y: motif.y, scale: 0.8, opacity: 0 }}
+          animate={{ scale: [1, 1.15, 1], rotate: 360 }}
           transition={{
             duration: motif.duration,
             repeat: Infinity,
             repeatType: 'mirror',
             ease: 'easeInOut',
-            delay: i * 2,
+            delay: i * 3,
           }}
-          className="absolute rounded-full bg-gradient-to-br from-[#0F4679] to-[#158C07]"
+          className="absolute rounded-full bg-gradient-to-br from-[#0F4679]/40 via-[#0F4679]/20 to-[#158C07]/40 blur-3xl"
           style={{ 
             width: motif.size, 
             height: motif.size,
@@ -93,9 +92,10 @@ function CertificateCard({ certificate, index }: CertificateCardProps) {
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="relative"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F4679]/20 to-[#158C07]/20 rounded-3xl blur-xl scale-105 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+        {/* Subtle glow on hover */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F4679]/10 via-[#0F4679]/5 to-[#158C07]/10 rounded-2xl blur-2xl scale-105 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
         
-        <div style={{ transformStyle: "preserve-3d" }} className="relative bg-white rounded-3xl shadow-2xl overflow-hidden transform group-hover:scale-105 transition-all duration-500">
+        <div style={{ transformStyle: "preserve-3d" }} className="relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transform group-hover:scale-[1.02] group-hover:shadow-xl transition-all duration-500">
           <div className="aspect-[3/4] relative">
             <Image
               src={certificate.image}
@@ -107,22 +107,25 @@ function CertificateCard({ certificate, index }: CertificateCardProps) {
               }}
             />
             
-            <motion.div style={{ transform: "translateZ(40px)" }} className="absolute top-4 right-4 bg-[#158C07] text-white p-2 rounded-full shadow-lg">
+            {/* Verified badge - subtle green */}
+            <motion.div style={{ transform: "translateZ(40px)" }} className="absolute top-3 right-3 bg-[#158C07]/90 backdrop-blur-sm text-white p-2 rounded-lg shadow-md">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
               </svg>
             </motion.div>
 
-            <motion.div style={{ transform: "translateZ(30px)" }} className="absolute top-4 left-4 bg-black/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+            {/* Year badge - subtle */}
+            <motion.div style={{ transform: "translateZ(30px)" }} className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[#0F4679] px-3 py-1 rounded-lg text-xs font-semibold shadow-sm border border-[#0F4679]/10">
               {certificate.year}
             </motion.div>
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-            <motion.h3 style={{ transform: "translateZ(50px)" }} className="text-white font-bold text-lg mb-1">
+          {/* Gradient overlay on bottom - more subtle */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0F4679]/90 via-[#0F4679]/70 to-transparent p-5">
+            <motion.h3 style={{ transform: "translateZ(50px)" }} className="text-white font-semibold text-base mb-1">
               {certificate.name}
             </motion.h3>
-            <motion.p style={{ transform: "translateZ(40px)" }} className="text-white/90 text-sm">
+            <motion.p style={{ transform: "translateZ(40px)" }} className="text-white/95 text-xs">
               {certificate.description}
             </motion.p>
           </div>
@@ -130,15 +133,15 @@ function CertificateCard({ certificate, index }: CertificateCardProps) {
       </motion.div>
 
       <motion.div 
-        className="text-center mt-6"
+        className="text-center mt-5"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 + index * 0.1 }}
       >
-        <h4 className="text-xl font-bold text-[#0F4679] mb-2">
+        <h4 className="text-lg font-semibold text-gray-900 mb-2">
           {certificate.name}
         </h4>
-        <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
+        <span className="inline-block px-3 py-1 bg-[#0F4679]/[0.06] text-[#0F4679] rounded-lg text-xs font-medium border border-[#0F4679]/10">
           {certificate.category}
         </span>
       </motion.div>
@@ -183,12 +186,12 @@ export default function CertificatesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#0F4679] to-[#158C07] bg-clip-text text-transparent mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#0F4679] via-[#0F4679] to-[#158C07] bg-clip-text text-transparent mb-3">
               Our Certificates
             </h1>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
               Quality. Compliance. Trust.
             </p>
           </motion.div>
@@ -197,18 +200,18 @@ export default function CertificatesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center mb-20"
+            className="flex justify-center mb-16"
           >
-            <div className="bg-white/80 backdrop-blur-xl rounded-full p-2 shadow-lg border border-gray-200">
-              <div className="flex gap-2">
+            <div className="bg-white/70 backdrop-blur-md rounded-2xl p-1.5 shadow-sm border border-gray-200/60">
+              <div className="flex gap-1">
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => startTransition(() => setActiveCategory(category))}
-                    className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                    className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
                       activeCategory === category
-                        ? 'bg-[#0F4679] text-white shadow-lg'
-                        : 'text-gray-600 hover:text-[#0F4679] hover:bg-gray-50'
+                        ? 'bg-[#0F4679] text-white shadow-md'
+                        : 'text-gray-600 hover:text-[#0F4679] hover:bg-[#0F4679]/5'
                     } ${isPending ? 'opacity-50' : ''}`}
                   >
                     {category}
@@ -239,12 +242,12 @@ export default function CertificatesPage() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-4 bg-white/80 backdrop-blur-xl rounded-full px-8 py-4 shadow-lg border border-gray-200">
+            <div className="inline-flex items-center gap-3 bg-white/60 backdrop-blur-md rounded-2xl px-6 py-3 shadow-sm border border-gray-200/60">
               <div className="w-2 h-2 bg-[#158C07] rounded-full animate-pulse"></div>
-              <span className="text-gray-700 font-medium">
+              <span className="text-gray-700 font-medium text-sm">
                 Trusted by 500+ healthcare providers worldwide
               </span>
-              <div className="w-2 h-2 bg-[#0F4679] rounded-full animate-pulse delay-500"></div>
+              <div className="w-2 h-2 bg-[#0F4679] rounded-full animate-pulse" style={{ animationDelay: '500ms' }}></div>
             </div>
           </motion.div>
 

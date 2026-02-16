@@ -125,31 +125,41 @@ const Header: FC = () => {
             ))}
           </nav>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={toggleMobileMenu}
-            className="lg:hidden flex items-center justify-center w-9 h-9 rounded-full bg-[#0F4679] text-white hover:bg-[#0D3C6B] transition-colors"
-            aria-label="Toggle menu"
-          >
-            <Menu className="w-5 h-5" />
-          </button>
+          {/* Mobile Phone + Hamburger */}
+          <div className="lg:hidden flex items-center gap-2">
+            {isClient && (
+              <a
+                href="tel:+919322961664"
+                className="text-[#0F4679] hover:text-[#0D3C6B] font-semibold text-xs whitespace-nowrap transition-colors"
+              >
+                {ourCompanyText}
+              </a>
+            )}
+            <button
+              onClick={toggleMobileMenu}
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-[#0F4679] text-white hover:bg-[#0D3C6B] transition-colors"
+              aria-label="Toggle menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Right Side - Platform logos, Catalog, phone, search, language */}
         <div className="flex items-center gap-2 sm:gap-3 w-full lg:w-auto justify-end">
-          {/* Platform logos – to the left of Catalog button */}
-          <div className="hidden lg:flex flex-nowrap items-center gap-0.5 -mx-0.5 shrink-0">
+          {/* Platform logos – visible on all screen sizes */}
+          <div className="flex flex-nowrap items-center gap-0.5 -mx-0.5 shrink-0">
             <a href="https://www.amazon.in/s?k=acuron&crid=3LUINNVFBJX7Y&sprefix=acuron%2Caps%2C202&ref=nb_sb_noss_1" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 mt-1">
-              <Image src="/amazon.png" alt="Amazon" width={36} height={12} className="h-3 w-auto object-contain" />
+              <Image src="/amazon.png" alt="Amazon" width={36} height={12} className="h-2.5 sm:h-3 w-auto object-contain" />
             </a>
             <a href="https://www.meesho.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 ml-1">
-              <Image src="/meesho.png" alt="Meesho" width={64} height={22} className="h-6 sm:h-7 w-auto object-contain" />
+              <Image src="/meesho.png" alt="Meesho" width={64} height={22} className="h-5 sm:h-6 lg:h-7 w-auto object-contain" />
             </a>
             <a href="https://www.flipkart.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -mr-1.5">
-              <Image src="/flip.png" alt="Flipkart" width={48} height={16} className="h-4 sm:h-5 w-auto object-contain" />
+              <Image src="/flip.png" alt="Flipkart" width={48} height={16} className="h-3.5 sm:h-4 lg:h-5 w-auto object-contain" />
             </a>
             <a href="https://dir.indiamart.com/search.mp?ss=acuron&prdsrc=1&v=4" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex-shrink-0 -mx-0.5 -ml-0.5">
-              <Image src="/indiamart.png" alt="IndiaMART" width={48} height={16} className="h-4 sm:h-5 w-auto object-contain" />
+              <Image src="/indiamart.png" alt="IndiaMART" width={48} height={16} className="h-3.5 sm:h-4 lg:h-5 w-auto object-contain" />
             </a>
           </div>
           {/* Catalog Download - Neumorphic button */}
@@ -221,13 +231,13 @@ const Header: FC = () => {
           isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className={`${pillBase} p-3`}>
+        <div className={`${pillBase} p-3 rounded-lg`}>
           <nav className="flex flex-col gap-1">
             {navigationLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-3 text-sm font-normal text-gray-700 hover:bg-gray-100 rounded-xl transition-colors"
+                className="px-4 py-3 text-sm font-normal text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
                 onClick={toggleMobileMenu}
               >
                 {link.label}
@@ -235,7 +245,7 @@ const Header: FC = () => {
             ))}
             <Link
               href="/products"
-              className="px-4 py-3 text-sm font-normal text-gray-700 hover:bg-gray-100 rounded-xl transition-colors"
+              className="px-4 py-3 text-sm font-normal text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
               onClick={toggleMobileMenu}
             >
               {productsText}

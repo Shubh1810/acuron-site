@@ -289,22 +289,32 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
             </button>
           </div>
           
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={toggleMobileMenu}
-            className="lg:hidden flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 mb-1 sm:mb-2 rounded-md backdrop-blur-sm border transition-all duration-300 bg-white/90 border-[#0F4679]/20 text-[#0F4679] hover:bg-white"
-            aria-label="Toggle mobile menu"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+          {/* Mobile Phone + Menu Button */}
+          <div className="lg:hidden flex items-center gap-2 mb-1 sm:mb-2">
+            {isClient && (
+              <a
+                href="tel:+919322961664"
+                className="text-[#0F4679] hover:text-[#0D3C6B] font-semibold text-xs whitespace-nowrap transition-colors"
+              >
+                {ourCompanyText}
+              </a>
+            )}
+            <button 
+              onClick={toggleMobileMenu}
+              className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-md backdrop-blur-sm border transition-all duration-300 bg-white/90 border-[#0F4679]/20 text-[#0F4679] hover:bg-white"
+              aria-label="Toggle mobile menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile Navigation Menu */}
       <div className={`lg:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-        <div className="mx-4 mt-4 rounded-xl backdrop-blur-xl border bg-white/90 border-[#0F4679]/20">
+        <div className="mx-4 mt-4 rounded-lg backdrop-blur-xl border bg-white/90 border-[#0F4679]/20">
           <nav className="px-4 py-2 space-y-1">
             {navigationLinks.map((link) => (
               <Link 
