@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FC, useState, useMemo, useCallback } from 'react';
+import { FC, useState, useMemo, useCallback, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Download } from 'lucide-react';
 import CountrySelector from './CountrySelector';
@@ -16,8 +16,14 @@ interface TransparentNavbarProps {
 const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const { selectedCountry } = useCountryStore();
   const pathname = usePathname();
+
+  // Set isClient to true after component mounts (client-side only)
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Get localized content based on selected country
   const getLocalizedContent = (englishText: string, translations: Record<string, string>) => {
@@ -138,6 +144,13 @@ const TransparentNavbar: FC<TransparentNavbarProps> = ({ isHeroSection = false }
     pt: 'PESQUISAR'
   });
 
+  const ourCompanyText = getLocalizedContent('Our Company', {
+    de: 'Unser Unternehmen',
+    fr: 'Notre Entreprise',
+    ja: '私たちの会社',
+    zh: '我们的公司',
+    pt: 'Nossa Empresa'
+  });
 
   // Memoize the toggle function to prevent recreation on renders
   const toggleMobileMenu = useCallback(() => {

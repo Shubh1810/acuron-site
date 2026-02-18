@@ -20,7 +20,7 @@ import { triggerNewsletterModal } from "../lib/modalEvents";
 
 
 // Custom Header for Products Page - No Logo, Centered Nav
-function ProductsHeader() {
+function ProductsHeaderContent() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
@@ -385,6 +385,30 @@ function ProductsHeader() {
       </div>
       </div>
     </header>
+  );
+}
+
+// Wrapper component for ProductsHeader with Suspense
+function ProductsHeader() {
+  return (
+    <Suspense fallback={
+      <header className="w-full px-4 sm:px-6 lg:px-8 pt-2 pb-3 relative z-[100]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-3 mb-3">
+            <Image
+              src="/acprod.png"
+              alt="Acuron Products"
+              width={180}
+              height={72}
+              className="object-contain flex-shrink-0"
+              priority
+            />
+          </div>
+        </div>
+      </header>
+    }>
+      <ProductsHeaderContent />
+    </Suspense>
   );
 }
 
