@@ -137,11 +137,6 @@ export default function ChatbotWidget() {
           }}
           className="group relative w-16 h-16 bg-gradient-to-b from-[#0F4679] via-[#0F4679] to-[#0F4679] rounded-full shadow-2xl hover:shadow-[#0F4679]/25 transition-all duration-300 hover:scale-105 backdrop-blur-xl border border-white/10 overflow-hidden"
         >
-          {/* Blue glow at top */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0F4679] via-[#0F4679]/50 to-transparent rounded-full blur-lg opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-          
-          {/* Green halo glow at bottom - tiny and strong, contained inside */}
-          <div className="absolute inset-x-0 bottom-0 h-5 bg-[#158C07] blur-md opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
           
           {/* Icon */}
           <div className="relative z-10 flex items-center justify-center h-full">

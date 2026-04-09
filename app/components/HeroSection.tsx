@@ -309,34 +309,34 @@ const HeroSection: FC<HeroSectionProps> = ({ title, subtitle, ctaText, ctaLink }
 
             {/* Procurement Partner card with hole – hero image shows through center; hidden on mobile only */}
             <div className="absolute bottom-14 right-2 sm:right-6 sm:bottom-24 w-[150px] sm:w-[200px] z-20 hidden sm:flex flex-col rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,70,121,0.18),0_2px_8px_rgba(0,0,0,0.08)]">
-              {/* SVG mask: objectBoundingBox (0–1), hole centered and smoothly rounded to match h-52/sm:h-56 frame */}
-              <svg className="absolute w-0 h-0" aria-hidden>
-                <defs>
-                  <mask id="hole-frame-mask" maskContentUnits="objectBoundingBox">
-                    <rect x="0" y="0" width="1" height="1" fill="white" />
-                    {/* Centered hole: 7% margin all sides, rx=ry for smooth elliptical corners matching frame aspect */}
-                    <rect x="0.07" y="0.07" width="0.86" height="0.86" rx="0.14" ry="0.14" fill="black" />
-                  </mask>
-                </defs>
-              </svg>
               <div className="relative flex-shrink-0 -mb-1 sm:-mb-0">
-                {/* Frame: white bg, mask cuts hole – hole aligned to this div’s h-52 / sm:h-56 */}
+                {/* Frame: white border around transparent hole */}
                 <div
-                  className="h-40 sm:h-56 rounded-t-3xl rounded-b-none bg-white w-full"
-                  style={{
-                    maskImage: 'url(#hole-frame-mask)',
-                    WebkitMaskImage: 'url(#hole-frame-mask)',
-                    maskSize: '100% 100%',
-                    WebkitMaskSize: '100% 100%',
-                  }}
+                  className="h-40 sm:h-56 rounded-t-3xl rounded-b-none w-full relative"
                   aria-hidden
-                />
-                {/* Inner glow: inset 7% to match hole margin, radius ~14% of frame for smooth arc */}
+                >
+                  {/* Top border */}
+                  <div className="absolute top-0 left-0 right-0 h-[10px] sm:h-[14px] bg-white rounded-t-3xl" />
+                  {/* Left border */}
+                  <div className="absolute top-[10px] sm:top-[14px] left-0 bottom-0 w-[10px] sm:w-[14px] bg-white" />
+                  {/* Right border */}
+                  <div className="absolute top-[10px] sm:top-[14px] right-0 bottom-0 w-[10px] sm:w-[14px] bg-white" />
+                  {/* Bottom border - connects to content below */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[10px] sm:h-[14px] bg-white" />
+                  {/* Inner rounded corners using radial gradient for inverted radius effect */}
+                  <div className="absolute top-[10px] left-[10px] w-3 h-3 sm:top-[14px] sm:left-[14px] sm:w-4 sm:h-4" style={{ background: 'radial-gradient(circle at 100% 100%, transparent 70%, white 70%)' }} />
+                  <div className="absolute top-[10px] right-[10px] w-3 h-3 sm:top-[14px] sm:right-[14px] sm:w-4 sm:h-4" style={{ background: 'radial-gradient(circle at 0% 100%, transparent 70%, white 70%)' }} />
+                  <div className="absolute bottom-[10px] left-[10px] w-3 h-3 sm:bottom-[14px] sm:left-[14px] sm:w-4 sm:h-4" style={{ background: 'radial-gradient(circle at 100% 0%, transparent 70%, white 70%)' }} />
+                  <div className="absolute bottom-[10px] right-[10px] w-3 h-3 sm:bottom-[14px] sm:right-[14px] sm:w-4 sm:h-4" style={{ background: 'radial-gradient(circle at 0% 0%, transparent 70%, white 70%)' }} />
+                </div>
+                {/* Inner glow around the transparent hole */}
                 <div
-                  className="absolute shadow-[inset_0_0_20px_rgba(15,70,121,0.08)] pointer-events-none"
+                  className="absolute shadow-[inset_0_0_20px_rgba(15,70,121,0.08)] pointer-events-none rounded-xl"
                   style={{
-                    inset: '7%',
-                    borderRadius: '14% / 14%',
+                    top: '10px',
+                    left: '10px',
+                    right: '10px',
+                    bottom: '10px',
                   }}
                   aria-hidden
                 />

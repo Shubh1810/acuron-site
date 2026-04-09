@@ -114,9 +114,9 @@ const MissionSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 items-stretch">
           
           {/* LEFT HALF - Product Video Showcase */}
-          <div className="relative w-full mx-auto aspect-[4/5] sm:aspect-[3/4] lg:aspect-video rounded-2xl mb-8 sm:mb-12 lg:mb-0">
+          <div className="relative w-full mx-auto aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:h-full rounded-2xl mb-8 sm:mb-12 lg:mb-0">
             <video
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover rounded-2xl lg:absolute lg:inset-0"
               autoPlay
               loop
               muted

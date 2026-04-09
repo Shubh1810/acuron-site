@@ -169,17 +169,7 @@ const AboutUsSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0F4679]/5 to-teal-600/10 pointer-events-none" />
               </div>
 
-              {/* Floating Accent Element - Top Right */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-gradient-to-br from-blue-400/30 to-teal-500/30 blur-2xl" />
-              
-              {/* Floating Accent Element - Bottom Left */}
-              <div className="absolute -bottom-6 -left-6 w-40 h-40 rounded-full bg-gradient-to-br from-[#0F4679]/20 to-blue-600/20 blur-2xl" />
-
             </div>
-
-            {/* Decorative Floating Element - Behind Image */}
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-blue-100 to-teal-100 blur-2xl opacity-50 -z-10" />
-            <div className="absolute -top-4 -right-4 w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-[#0F4679]/10 to-blue-200 blur-xl opacity-40 -z-10" />
 
           </div>
 
