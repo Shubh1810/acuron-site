@@ -1,5 +1,4 @@
 import React from 'react';
-import PartnerBanner from './components/PartnerBanner';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import GridBackground from './components/ui/grid-background';
@@ -28,7 +27,6 @@ export default function Home() {
     <>
       <GridBackground />
       <div className="sticky top-0 z-[60]">
-        <PartnerBanner />
         <Header />
       </div>
       <main className="min-h-screen w-full max-w-[100vw] overflow-x-hidden -mt-16 sm:-mt-24">
